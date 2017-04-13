@@ -9,7 +9,7 @@ public class SaintTest{
     /* AAA 
     1. Arrange - Montagem dos dados de teste.
     */
-    Armadura estalactite = new Armadura ("Estalactite");
+    Armadura estalactite = new Armadura ("Estalactite",Categoria.OURO);
     Saint shun = new Saint("Shun",estalactite);
     /*
     2. Act - Invocar a ação a ser testada.
@@ -23,7 +23,7 @@ public class SaintTest{
     }
     @Test
     public void naoVestirArmaduraDeixaArmaduraNaoVestida(){
-    Saint hyoga = new Saint("Hyoga", new Armadura("Cisne"));
+    Saint hyoga = new Saint("Hyoga", new Armadura("Cisne",Categoria.BRONZE));
     assertEquals(false, hyoga.getArmaduraVestida());
     }
 }
