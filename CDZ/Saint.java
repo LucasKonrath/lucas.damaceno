@@ -4,8 +4,8 @@ public class Saint {
     private Armadura armadura;
     private boolean armaduraVestida;
     public Saint(String nome, Armadura armadura){
-        this.nome=nome;
         this.armadura=armadura;
+        this.nome=nome;
     }
     
     public void vestirArmadura(){
