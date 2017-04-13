@@ -11,5 +11,9 @@ public class Saint {
     public void vestirArmadura(){
        this.armaduraVestida = true;
     }
+    //camelCase
+    public boolean getArmaduraVestida(){
+        return this.armaduraVestida;
+    }
     
 }
