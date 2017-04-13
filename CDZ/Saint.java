@@ -1,3 +1,4 @@
+// Classe Saint (Cavaleirxs que entregam justiça cósmica.)
 public class Saint {
     private String nome;
     private Armadura armadura;
