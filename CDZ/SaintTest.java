@@ -26,5 +26,14 @@ public class SaintTest{
     Saint hyoga = new Saint("Hyoga", new Armadura("Cisne",Categoria.BRONZE));
     assertEquals(false, hyoga.getArmaduraVestida());
     }
-  
+    @Test
+    public void garantirQueSaintNascaVivo(){
+    Saint shun = new Saint("Shun", new Armadura ("Andrômeda",Categoria.BRONZE));
+    assertEquals(Status.VIVO, shun.getStatus());
+    }
+    @Test
+    public void garantirQueGeneroDefaultSejaNaoIdentificado(){
+    Saint ikki = new Saint("Ikki", new Armadura ("Fênix",Categoria.BRONZE));
+    assertEquals(Genero.NAO_INFORMADO, ikki.getGenero());
+    }
 }
