@@ -5,8 +5,7 @@ ele/ela precisa saber. Os comentários devem incluir, pelo menos:
 ------------------------------------------------------------------------
 
 TITULO DO PROJETO: Cavaleiros do Zodíaco - Crescer 2017-1
-OBJETIVO DO PROJETO: Desenvovler POO.
-VERSÃO ou DATA:
-COMO INICIAR O PROJETO:
-AUTORES:
-INSTRUÇÕES PARA O USUÁRIO:
+OBJETIVO DO PROJETO: Parte do Módulo I do Projeto Crescer 2017, tem como objetivo desenvolver programação orientada a objetos.
+VERSÃO ou DATA: CDZ V1
+AUTORES: Lucas Konrath Damaceno
+
