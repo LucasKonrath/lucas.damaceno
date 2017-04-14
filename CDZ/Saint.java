@@ -13,7 +13,7 @@ public class Saint {
     }
 // Método para vestir armadura do Saint.    
     public void vestirArmadura(){
-       this.armaduraVestida = true;
+        this.armaduraVestida = true;
     }
 // Método para despir armadura do Saint.
 	public void despirArmadura(){

@@ -9,17 +9,17 @@ public class SaintTest{
     /* AAA 
     1. Arrange - Montagem dos dados de teste.
     */
-    Armadura estalactite = new Armadura ("Estalactite",Categoria.OURO);
-    Saint shun = new Saint("Shun",estalactite);
+        Armadura estalactite = new Armadura ("Estalactite",Categoria.OURO);
+        Saint shun = new Saint("Shun",estalactite);
     /*
     2. Act - Invocar a ação a ser testada.
     */
-   shun.vestirArmadura();
-   boolean resultado = shun.getArmaduraVestida();
+        shun.vestirArmadura();
+        boolean resultado = shun.getArmaduraVestida();
    /*
     3. Assert - Verificação dos resultados do teste.
     */ 
-   assertEquals(true, resultado);
+        assertEquals(true, resultado);
     }
 	@Test 
 	public void garantirQueMetodoDespirArmaduraFuncione(){
