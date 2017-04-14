@@ -21,6 +21,13 @@ public class SaintTest{
     */ 
    assertEquals(true, resultado);
     }
+	@Test 
+	public void garantirQueMetodoDespirArmaduraFuncione(){
+	Saint shun = new Saint("Shun", new Armadura("Andrômeda",Categoria.BRONZE));
+	shun.vestirArmadura();
+	shun.despirArmadura();
+	assertEquals(false, shun.getArmaduraVestida());
+	}
     @Test
     public void naoVestirArmaduraDeixaArmaduraNaoVestida(){
     Saint hyoga = new Saint("Hyoga", new Armadura("Cisne",Categoria.BRONZE));
@@ -69,7 +76,7 @@ public class SaintTest{
     assertEquals(kanon.getVida(),100.0,0.01);
     }
     @Test
-    public void garantirQuePesoDaArmaduraSejaRespeitado(){
+    public void garantirQuePesoDaArmaduraSejaAdquirido(){
     Saint mu = new Saint("Mu", new Armadura("Áries", Categoria.PRATA));
     assertEquals(mu.getCategoriaArmadura(), 2);
     }
@@ -89,4 +96,15 @@ public class SaintTest{
     batalha1.iniciar();
     assertEquals(kanon.getVida(),90.0, 0.00001);
     }
+	@Test
+	public void garantirQueMetodoGetConstelacaoDoSaintFuncioneAdequadamente(){
+	Saint ikki = new Saint("Ikki", new Armadura("Fênix",Categoria.PRATA));
+	assertEquals(ikki.getConstelacao(),"Fênix");
+}
+	@Test
+	public void garantirQueMetodoGetConstelacaoDaArmaduraFuncioneAdequadamente(){
+	Armadura aries = new Armadura("Aries", Categoria.OURO);
+	assertEquals(aries.getConstelacao(),"Aries");
+	
+}
 }
