@@ -61,4 +61,9 @@ public class SaintTest{
     Saint kanon = new Saint("Kanon", new Armadura("Gêmeos", Categoria.OURO));
     assertEquals(kanon.getVida(),100.0,0.01);
     }
+    @Test
+    public void garantirQuePesoDaArmaduraSejaRespeitado(){
+    Saint mu = new Saint("Mu", new Armadura("Áries", Categoria.PRATA));
+    assertEquals(mu.getCategoriaArmadura(), 2);
+    }
 }

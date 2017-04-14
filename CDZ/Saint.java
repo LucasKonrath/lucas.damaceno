@@ -36,4 +36,7 @@ public class Saint {
     public double getVida(){
     return this.vida;
     }
+    public int getCategoriaArmadura(){
+    return this.armadura.categoria.getValor();
+    }
 }
