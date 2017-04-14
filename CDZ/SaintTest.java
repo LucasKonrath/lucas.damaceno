@@ -36,4 +36,16 @@ public class SaintTest{
     Saint ikki = new Saint("Ikki", new Armadura ("Fênix",Categoria.BRONZE));
     assertEquals(Genero.NAO_INFORMADO, ikki.getGenero());
     }
+    @Test
+    public void garantirQueTrocarGeneroTroqueDeFatoOGenero(){
+    Saint shun = new Saint("Shun", new Armadura ("Andrômeda", Categoria.BRONZE));
+    shun.setGenero(Genero.FEMININO);
+    assertEquals(Genero.FEMININO, shun.getGenero());
+    }
+    @Test
+    public void garantirQueTrocarStatusTroqueDeFatoOStatus(){
+    Saint jabu = new Saint("Jabu", new Armadura ("Unicórnio", Categoria.BRONZE));
+    jabu.setStatus(Status.DESACORDADO);
+    assertEquals(Status.DESACORDADO, jabu.getStatus());
+    }
 }
