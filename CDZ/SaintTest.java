@@ -26,4 +26,5 @@ public class SaintTest{
     Saint hyoga = new Saint("Hyoga", new Armadura("Cisne",Categoria.BRONZE));
     assertEquals(false, hyoga.getArmaduraVestida());
     }
+  
 }
