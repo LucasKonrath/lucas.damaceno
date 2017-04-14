@@ -33,4 +33,7 @@ public class Saint {
     public void perderVida(double dano) {
     this.vida = this.vida - dano;
     }
+    public double getVida(){
+    return this.vida;
+    }
 }
