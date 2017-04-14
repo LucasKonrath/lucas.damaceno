@@ -48,6 +48,13 @@ public class SaintTest{
     jabu.setStatus(Status.DESACORDADO);
     assertEquals(Status.DESACORDADO, jabu.getStatus());
     }
+	@Test
+	public void garantirQueStatusNaoSejaEstatico(){
+	Saint jabu = new Saint("Jabu", new Armadura ("Unicórnio", Categoria.BRONZE));
+    jabu.setStatus(Status.MORTO);
+    assertEquals(Status.MORTO, jabu.getStatus());
+	}
+	
     @Test
     public void garantirQueFuncaoPerderVidaEstejaCalculandoCorretamente(){
     Saint ichi = new Saint("Ichi", new Armadura("Hidra", Categoria.BRONZE));

@@ -28,7 +28,7 @@ public class Saint {
     return this.status;
     }
     public void setStatus(Status status){
-    this.status=status;
+    this.status = status;
     }
     public void perderVida(double dano) {
     this.vida = this.vida - dano;
