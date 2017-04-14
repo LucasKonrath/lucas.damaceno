@@ -66,4 +66,20 @@ public class SaintTest{
     Saint mu = new Saint("Mu", new Armadura("Áries", Categoria.PRATA));
     assertEquals(mu.getCategoriaArmadura(), 2);
     }
+    @Test
+    public void garantirQueBatalhaFuncioneAdequadamente(){
+    Saint ikki = new Saint("Ikki", new Armadura("Fênix",Categoria.PRATA));
+    Saint kanon = new Saint("Kanon", new Armadura("Gêmeos", Categoria.OURO));
+    Batalha batalha1 = new Batalha(ikki,kanon);
+    batalha1.iniciar();
+    assertEquals(ikki.getVida(),90.0, 0.00001);
+    }
+    @Test
+    public void garantirQueCasoArmadurasSejamIguaisOPrimeiroAtaque(){
+    Saint ikki = new Saint("Ikki", new Armadura("Fênix",Categoria.PRATA));
+    Saint kanon = new Saint("Kanon", new Armadura("Gêmeos", Categoria.PRATA));
+    Batalha batalha1 = new Batalha(ikki,kanon);
+    batalha1.iniciar();
+    assertEquals(kanon.getVida(),90.0, 0.00001);
+    }
 }

@@ -1,14 +1,14 @@
 // Classe Saint (Cavaleirxs que entregam justiça cósmica.)
 public class Saint {
-    private String nome;
-    private Armadura armadura;
+    public String nome;
+    public Armadura armadura;
     private boolean armaduraVestida;
     private Genero genero=Genero.NAO_INFORMADO;
     private Status status=Status.VIVO;
     private double vida = 100.0;
     public Saint(String nome, Armadura armadura){
         this.armadura=armadura;
-        this.nome=nome;
+        this.nome=nome;     
     }
     
     public void vestirArmadura(){
@@ -39,4 +39,5 @@ public class Saint {
     public int getCategoriaArmadura(){
     return this.armadura.categoria.getValor();
     }
+    
 }
