@@ -25,34 +25,34 @@ public class Saint {
     }
 // Método para checar gênero do Saint.
     public Genero getGenero(){
-    return this.genero;
+    	return this.genero;
     }
 // Método para alterar gênero do Saint.
     public void setGenero(Genero genero){
-    this.genero=genero;
+    	this.genero=genero;
     }
 // Método para retornar Status do saint.
     public Status getStatus(){
-    return this.status;
+    	return this.status;
     }
 // Método para alterar Status do saint.
     public void setStatus(Status status){
-    this.status = status;
+    	this.status = status;
     }
 // Metodo que causa dano no Saint.
     public void perderVida(double dano) {
-    this.vida = this.vida - dano;
+    	this.vida = this.vida - dano;
     }
 // Metodo que retorna a vida atual do Saint.
     public double getVida(){
-    return this.vida;
+    	return this.vida;
     }
 // Metodo que retorna o valor numerico da Categoria da Armadura do Saint (Ex: Ouro 3, Prata 2, Bronze 1)
     public int getCategoriaArmadura(){
-    return this.armadura.categoria.getValor();
+    	return this.armadura.categoria.getValor();
     }
 	public String getConstelacao(){
-	return this.armadura.getConstelacao();
+		return this.armadura.getConstelacao();
 	}
     
 }
