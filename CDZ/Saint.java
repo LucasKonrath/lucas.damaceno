@@ -49,7 +49,7 @@ public class Saint {
     }
 // Metodo que retorna o valor numerico da Categoria da Armadura do Saint (Ex: Ouro 3, Prata 2, Bronze 1)
     public int getCategoriaArmadura(){
-    	return this.armadura.categoria.getValor();
+    	return this.armadura.getValorCategoria();
     }
 	public String getConstelacao(){
 		return this.armadura.getConstelacao();
