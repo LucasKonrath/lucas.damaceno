@@ -124,12 +124,12 @@ public class SaintTest{
 	}
 	@Test
 	public void SaintPrataTem6Sentidos()throws Exception{
-	Saint shun = new Saint("Shun", new Armadura("Andrômeda",Categoria.PRATA));
+	SilverSaint shun = new SilverSaint("Shun", new Armadura("Andrômeda",Categoria.PRATA));
 	assertEquals(shun.getQtdSentidosDespertados(),6);
 	}
 	@Test
 	public void SaintOuroTem7Sentidos()throws Exception{
-	Saint shun = new Saint("Shun", new Armadura("Touro",Categoria.OURO));
+	GoldSaint shun = new GoldSaint("Shun", new Armadura("Touro",Categoria.OURO));
 	assertEquals(shun.getQtdSentidosDespertados(),7);
 	}
 }

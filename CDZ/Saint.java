@@ -1,7 +1,7 @@
 // Classe Saint (Cavaleirxs que entregam justiça cósmica.)
 public class Saint {
     public String nome;
-    private Armadura armadura;
+    protected Armadura armadura;
     private boolean armaduraVestida;
     private Genero genero=Genero.NAO_INFORMADO;
     private Status status=Status.VIVO;
@@ -10,19 +10,7 @@ public class Saint {
 // Construtor da classe Saint
     public Saint(String nome, Armadura armadura) throws Exception{
         	this.armadura=armadura;
-        	this.nome=nome;
-		if(this.getCategoriaArmadura() == 2) {
-			this.qtdSentidosDespertados = 6;
-		}
-			else if (this.getCategoriaArmadura() == 3){
-				this.qtdSentidosDespertados = 7;
-				String constelacao = this.armadura.getConstelacao();
-				if(!constelacao.equals("Áries") && !constelacao.equals("Touro")){
-		//dar erro
-				throw new Exception("Constelacao invalida");
-	
-				}
-			}		
+        	this.nome=nome;		
 		}     
     
 // Método para vestir armadura do Saint.    
