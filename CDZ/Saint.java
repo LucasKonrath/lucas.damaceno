@@ -8,20 +8,23 @@ public class Saint {
     private double vida = 100.0;
 	private int qtdSentidosDespertados = 5;
 // Construtor da classe Saint
-    public Saint(String nome, Armadura armadura){
-        this.armadura=armadura;
-        this.nome=nome;
-		switch(this.getCategoriaArmadura()){
-		case 2:
-		this.qtdSentidosDespertados= 6;
-		break;
-		case 3:
-		this.qtdSentidosDespertados = 7;
-		break;
-		default:
-		break;
-	}     
-    }
+    public Saint(String nome, Armadura armadura) throws Exception{
+        	this.armadura=armadura;
+        	this.nome=nome;
+		if(this.getCategoriaArmadura() == 2) {
+			this.qtdSentidosDespertados = 6;
+		}
+			else if (this.getCategoriaArmadura() == 3){
+				this.qtdSentidosDespertados = 7;
+				String constelacao = this.armadura.getConstelacao();
+				if(!constelacao.equals("Áries") && !constelacao.equals("Touro")){
+		//dar erro
+				throw new Exception("Constelacao invalida");
+	
+				}
+			}		
+		}     
+    
 // Método para vestir armadura do Saint.    
     public void vestirArmadura(){
         this.armaduraVestida = true;
