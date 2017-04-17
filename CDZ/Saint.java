@@ -6,10 +6,21 @@ public class Saint {
     private Genero genero=Genero.NAO_INFORMADO;
     private Status status=Status.VIVO;
     private double vida = 100.0;
+	private int qtdSentidosDespertados = 5;
 // Construtor da classe Saint
     public Saint(String nome, Armadura armadura){
         this.armadura=armadura;
-        this.nome=nome;     
+        this.nome=nome;
+		switch(this.getCategoriaArmadura()){
+		case 2:
+		this.qtdSentidosDespertados= 6;
+		break;
+		case 3:
+		this.qtdSentidosDespertados = 7;
+		break;
+		default:
+		break;
+	}     
     }
 // Método para vestir armadura do Saint.    
     public void vestirArmadura(){
@@ -59,6 +70,9 @@ public class Saint {
 	@Override
 	public String toString() {
 		return nome + " de " +  getConstelacao();
+	}
+	public int getQtdSentidosDespertados(){
+	return this.qtdSentidosDespertados;
 	}
     
 }

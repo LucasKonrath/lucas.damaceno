@@ -117,4 +117,19 @@ public class SaintTest{
         Armadura aries = new Armadura("Aries", Categoria.OURO);
         assertEquals(aries.getConstelacao(),"Aries");
     }
+	@Test
+	public void SaintNasceCom5SentidosDespertados(){
+	Saint shun = new Saint("Shun", new Armadura("Andrômeda",Categoria.BRONZE));
+	assertEquals(shun.getQtdSentidosDespertados(),5);
+	}
+	@Test
+	public void SaintPrataTem6Sentidos(){
+	Saint shun = new Saint("Shun", new Armadura("Andrômeda",Categoria.PRATA));
+	assertEquals(shun.getQtdSentidosDespertados(),6);
+	}
+	@Test
+	public void SaintOuroTem7Sentidos(){
+	Saint shun = new Saint("Shun", new Armadura("Andrômeda",Categoria.OURO));
+	assertEquals(shun.getQtdSentidosDespertados(),7);
+	}
 }
