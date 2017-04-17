@@ -1,7 +1,6 @@
 public class Batalha{
 
-  private Saint saint1;
-  private Saint saint2;
+  private Saint saint1, saint2;
 // Construtor da classe Batalha.
   public Batalha(Saint saint1, Saint saint2){
     this.saint1 = saint1;
@@ -21,6 +20,6 @@ public class Batalha{
       System.out.println(saint2.nome + " de " + saint2.getConstelacao() + " ataca " +
       saint1.nome + " de " + saint1.getConstelacao() + " causando 10 de dano.");
     }
-	}
+  }
 
 }

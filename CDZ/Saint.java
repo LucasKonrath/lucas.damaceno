@@ -35,13 +35,14 @@ public class Saint {
     public Status getStatus(){
     	return this.status;
     }
-// Método para alterar Status do saint.
+ // Método para alterar Status do saint.
     public void setStatus(Status status){
     	this.status = status;
     }
+
 // Metodo que causa dano no Saint.
     public void perderVida(double dano) {
-    	this.vida = this.vida - dano;
+    	this.vida -= dano;
     }
 // Metodo que retorna a vida atual do Saint.
     public double getVida(){

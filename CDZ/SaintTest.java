@@ -70,6 +70,22 @@ public class SaintTest{
         // parâmetro delta é a tolerância aceita.
         assertEquals(ichi.getVida(),76.8,0.01);
     }
+@Test
+    public void garantirQueFuncaoPerderVidaEstejaCalculandoCorretamenteParaDanoNegativo(){
+        Saint ichi = new Saint("Ichi", new Armadura("Hidra", Categoria.BRONZE));
+        ichi.perderVida(-23.2);
+        //assertEquals(expected, actual, delta) utilizado abaixo, para comparar valor obtido com o esperado.
+        // parâmetro delta é a tolerância aceita.
+        assertEquals(ichi.getVida(),123.2,0.01);
+    }
+@Test
+    public void garantirQueSaintTenha0deVidaAoTomar100DeDano(){
+        Saint ichi = new Saint("Ichi", new Armadura("Hidra", Categoria.BRONZE));
+        ichi.perderVida(100);
+        //assertEquals(expected, actual, delta) utilizado abaixo, para comparar valor obtido com o esperado.
+        // parâmetro delta é a tolerância aceita.
+        assertEquals(ichi.getVida(),0,0.01);
+    }
     @Test
     public void garantirQueVidaPadraoSeja100(){
         Saint kanon = new Saint("Kanon", new Armadura("Gêmeos", Categoria.OURO));
