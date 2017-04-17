@@ -8,17 +8,18 @@ public class Batalha{
   }
 
   public  void iniciar(){ 
+	final double dano = 10.0;
 // Se categoria da armadura do saint 1 for maior ou igual a do Saint 2, ele ataca primeiro.
     if(saint1.getCategoriaArmadura() >= saint2.getCategoriaArmadura()){
-      saint2.perderVida(10.0);
+      saint2.perderVida(dano);
       System.out.println(saint1.nome + " de " + saint1.getConstelacao() + " ataca " +
-      saint2.nome + " de " + saint2.getConstelacao()+ " causando 10 de dano.");
+      saint2.nome + " de " + saint2.getConstelacao()+ " causando" + dano + "de dano.");
     }
 // Senão, saint 2 ataca-o.
     else{
-      saint1.perderVida(10.0);
+      saint1.perderVida(dano);
       System.out.println(saint2.nome + " de " + saint2.getConstelacao() + " ataca " +
-      saint1.nome + " de " + saint1.getConstelacao() + " causando 10 de dano.");
+      saint1.nome + " de " + saint1.getConstelacao() + " causando " + dano + " de dano.");
     }
   }
 
