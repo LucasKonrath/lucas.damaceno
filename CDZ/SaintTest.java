@@ -49,18 +49,7 @@ public class SaintTest{
         shun.setGenero(Genero.FEMININO);
         assertEquals(Genero.FEMININO, shun.getGenero());
     }
-    @Test
-    public void garantirQueTrocarStatusTroqueDeFatoOStatus()throws Exception{
-        Saint jabu = new Saint("Jabu", new Armadura ("Unicórnio", Categoria.BRONZE));
-        jabu.setStatus(Status.DESACORDADO);
-        assertEquals(Status.DESACORDADO, jabu.getStatus());
-    }
-    @Test
-    public void garantirQueStatusNaoSejaEstatico()throws Exception{
-        Saint jabu = new Saint("Jabu", new Armadura ("Unicórnio", Categoria.BRONZE));
-        jabu.setStatus(Status.MORTO);
-        assertEquals(Status.MORTO, jabu.getStatus());
-    }
+   
     
     @Test
     public void garantirQueFuncaoPerderVidaEstejaCalculandoCorretamente()throws Exception{
@@ -70,15 +59,28 @@ public class SaintTest{
         // parâmetro delta é a tolerância aceita.
         assertEquals(ichi.getVida(),76.8,0.01);
     }
-@Test
-    public void garantirQueFuncaoPerderVidaEstejaCalculandoCorretamenteParaDanoNegativo()throws Exception{
+    @Test
+    public void garantirQueSaintFaleceComMenosDe1DeVida()throws Exception{
         Saint ichi = new Saint("Ichi", new Armadura("Hidra", Categoria.BRONZE));
-        ichi.perderVida(-23.2);
+        ichi.perderVida(98.9);
+        assertEquals(ichi.getStatus(), Status.VIVO);
+        ichi.perderVida(0.11);
+        assertEquals(ichi.getStatus(), Status.MORTO);
         //assertEquals(expected, actual, delta) utilizado abaixo, para comparar valor obtido com o esperado.
         // parâmetro delta é a tolerância aceita.
-        assertEquals(ichi.getVida(),123.2,0.01);
     }
-@Test
+    @Test
+    public void garantirQueSaintAoFicarComMenosDe1DeVidaFiqueCom0()throws Exception{
+        Saint ichi = new Saint("Ichi", new Armadura("Hidra", Categoria.BRONZE));
+        ichi.perderVida(99.2);
+        assertEquals(ichi.getVida(),0.0,0.0000001);
+        ichi.perderVida(20000);
+        assertEquals(ichi.getVida(),0.0,0.0000001);
+        //assertEquals(expected, actual, delta) utilizado abaixo, para comparar valor obtido com o esperado.
+        // parâmetro delta é a tolerância aceita.
+    }
+
+    @Test
     public void garantirQueSaintTenha0deVidaAoTomar100DeDano()throws Exception{
         Saint ichi = new Saint("Ichi", new Armadura("Hidra", Categoria.BRONZE));
         ichi.perderVida(100);
@@ -117,19 +119,38 @@ public class SaintTest{
         Armadura aries = new Armadura("Touro", Categoria.OURO);
         assertEquals(aries.getConstelacao(),"Touro");
     }
-	@Test
-	public void BronzeSaintNasceCom5SentidosDespertados()throws Exception{
-	BronzeSaint shun = new BronzeSaint("Shun", new Armadura("Andrômeda",Categoria.BRONZE));
-	assertEquals(shun.getQtdSentidosDespertados(),5);
-	}
-	@Test
-	public void SaintPrataTem6Sentidos()throws Exception{
-	SilverSaint shun = new SilverSaint("Shun", new Armadura("Andrômeda",Categoria.PRATA));
-	assertEquals(shun.getQtdSentidosDespertados(),6);
-	}
-	@Test
-	public void SaintOuroTem7Sentidos()throws Exception{
-	GoldSaint shun = new GoldSaint("Shun", new Armadura("Touro",Categoria.OURO));
-	assertEquals(shun.getQtdSentidosDespertados(),7);
-	}
+    @Test
+    public void BronzeSaintNasceCom5SentidosDespertados()throws Exception{
+    BronzeSaint shun = new BronzeSaint("Shun", new Armadura("Andrômeda",Categoria.BRONZE));
+    assertEquals(shun.getQtdSentidosDespertados(),5);
+    }
+    @Test
+    public void SaintPrataTem6Sentidos()throws Exception{
+    SilverSaint shun = new SilverSaint("Shun", new Armadura("Andrômeda",Categoria.PRATA));
+    assertEquals(shun.getQtdSentidosDespertados(),6);
+    }
+    @Test
+    public void SaintOuroTem7Sentidos()throws Exception{
+    GoldSaint shun = new GoldSaint("Shun", new Armadura("Touro",Categoria.OURO));
+    assertEquals(shun.getQtdSentidosDespertados(),7);
+    }
+    @Test
+    public void SaintFaleceAoFicarComMenosDe1DeVida() throws Exception{
+        GoldSaint shun = new GoldSaint("Shun", new Armadura("Touro",Categoria.OURO));
+        SilverSaint ikki = new SilverSaint("Ikki", new Armadura("Andrômeda",Categoria.PRATA));
+        Batalha batalhaAteAMorte = new Batalha(shun,ikki);
+        for(int x = 0; x<10;x++){
+        batalhaAteAMorte.iniciar();
+        }
+        assertEquals(ikki.getVida(),0.0,0.0001);
+        assertEquals(ikki.getStatus(),Status.MORTO);
+        batalhaAteAMorte.iniciar();
+        assertEquals(ikki.getVida(),0.0,0.0001);
+        assertEquals(ikki.getStatus(),Status.MORTO);
+    }
+    @Test(expected = Exception.class)
+    public void garantirQueDanoNegativoThrowsException()throws Exception{
+    SilverSaint ikki = new SilverSaint("Ikki", new Armadura("Andrômeda",Categoria.PRATA));
+    ikki.perderVida(-200);
+}
 }

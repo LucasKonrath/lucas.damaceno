@@ -10,7 +10,7 @@ public class Saint {
 // Construtor da classe Saint
     public Saint(String nome, Armadura armadura) throws Exception{
         	this.armadura=armadura;
-        	this.nome=nome;		
+        	this.nome=nome;
 		}     
     
 // Método para vestir armadura do Saint.    
@@ -38,13 +38,18 @@ public class Saint {
     	return this.status;
     }
  // Método para alterar Status do saint.
-    public void setStatus(Status status){
-    	this.status = status;
-    }
+    
 
 // Metodo que causa dano no Saint.
-    public void perderVida(double dano) {
-    	this.vida -= dano;
+    public void perderVida(double dano) throws Exception {
+        if (dano < 0){
+        throw new Exception ("Invalid Parameter Exception");
+        }
+    	if((this.vida) > 1)this.vida -= dano;
+    	if (this.vida < 1) {
+    	    this.vida=0;
+    	    this.status = Status.MORTO;
+    	   }
     }
 // Metodo que retorna a vida atual do Saint.
     public double getVida(){
