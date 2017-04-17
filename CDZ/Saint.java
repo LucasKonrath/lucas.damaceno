@@ -55,5 +55,10 @@ public class Saint {
 	public String getConstelacao(){
 		return this.armadura.getConstelacao();
 	}
+
+	@Override
+	public String toString() {
+		return nome + " de " +  getConstelacao();
+	}
     
 }
