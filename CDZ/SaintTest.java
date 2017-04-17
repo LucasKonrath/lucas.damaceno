@@ -118,8 +118,8 @@ public class SaintTest{
         assertEquals(aries.getConstelacao(),"Touro");
     }
 	@Test
-	public void SaintNasceCom5SentidosDespertados()throws Exception{
-	Saint shun = new Saint("Shun", new Armadura("Andrômeda",Categoria.BRONZE));
+	public void BronzeSaintNasceCom5SentidosDespertados()throws Exception{
+	BronzeSaint shun = new BronzeSaint("Shun", new Armadura("Andrômeda",Categoria.BRONZE));
 	assertEquals(shun.getQtdSentidosDespertados(),5);
 	}
 	@Test

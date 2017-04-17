@@ -6,7 +6,7 @@ public class Saint {
     private Genero genero=Genero.NAO_INFORMADO;
     private Status status=Status.VIVO;
     private double vida = 100.0;
-	private int qtdSentidosDespertados = 5;
+	protected int qtdSentidosDespertados;
 // Construtor da classe Saint
     public Saint(String nome, Armadura armadura) throws Exception{
         	this.armadura=armadura;
