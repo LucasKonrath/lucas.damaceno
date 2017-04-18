@@ -46,11 +46,13 @@ public class Saint {
         if (dano < 0){
         throw new InvalidParameterException ("Invalid Parameter Exception");
         }
-        if((this.vida) > 1)this.vida -= dano;
-        if (this.vida < 1) {
-            this.vida=0;
-            this.status = Status.MORTO;
-           }
+        else if((this.vida) > 1){
+            this.vida -= dano;
+                if (this.vida < 1) {
+                    this.vida=0;
+                    this.status = Status.MORTO;
+                }
+        }
     }
 // Metodo que retorna a vida atual do Saint.
     public double getVida(){

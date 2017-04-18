@@ -67,7 +67,7 @@ public class SaintTest{
         assertEquals(ichi.getStatus(), Status.VIVO);
         ichi.perderVida(0.11);
         assertEquals(ichi.getStatus(), Status.MORTO);
-        //assertEquals(expected, actual, delta) utilizado abaixo, para comparar valor obtido com o esperado.
+        //assertEquals(expected, actual, delta) utilizado acima, para comparar valor obtido com o esperado.
         // parâmetro delta é a tolerância aceita.
     }
     @Test
@@ -77,7 +77,18 @@ public class SaintTest{
         assertEquals(ichi.getVida(),0.0,0.0000001);
         ichi.perderVida(20000);
         assertEquals(ichi.getVida(),0.0,0.0000001);
-        //assertEquals(expected, actual, delta) utilizado abaixo, para comparar valor obtido com o esperado.
+        ichi.perderVida(20000);
+        assertEquals(ichi.getVida(),0.0,0.0000001);
+        //assertEquals(expected, actual, delta) utilizado acima, para comparar valor obtido com o esperado.
+        // parâmetro delta é a tolerância aceita.
+    }
+     @Test
+    public void garantirQueSaintAoPerderMuitaVidaFiqueCom0()throws Exception{
+        Saint ichi = new Saint("Ichi", new Armadura(new Constelacao("Hidra"), Categoria.BRONZE));
+        ichi.perderVida(20000);
+        assertEquals(ichi.getVida(),0.0,0.0000001);
+        assertEquals(Status.MORTO, ichi.getStatus());
+        //assertEquals(expected, actual, delta) utilizado acima, para comparar valor obtido com o esperado.
         // parâmetro delta é a tolerância aceita.
     }
 
@@ -85,7 +96,7 @@ public class SaintTest{
     public void garantirQueSaintTenha0deVidaAoTomar100DeDano()throws Exception{
         Saint ichi = new Saint("Ichi", new Armadura(new Constelacao("Hidra"), Categoria.BRONZE));
         ichi.perderVida(100);
-        //assertEquals(expected, actual, delta) utilizado abaixo, para comparar valor obtido com o esperado.
+        //assertEquals(expected, actual, delta) utilizado acima, para comparar valor obtido com o esperado.
         // parâmetro delta é a tolerância aceita.
         assertEquals(ichi.getVida(),0,0.01);
     }
