@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class Armadura {
 	private Constelacao constelacao;
 	public Categoria categoria;
@@ -13,7 +14,7 @@ public class Armadura {
 	public int getValorCategoria(){
 		return this.categoria.getValor();
 	}
-	public Golpe[] getGolpes(){
+	public ArrayList getGolpes(){
 	   return constelacao.getGolpes();
 	   }
 	public void aprenderGolpe(Golpe golpe){

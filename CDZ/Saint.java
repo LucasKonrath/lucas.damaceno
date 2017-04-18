@@ -1,4 +1,5 @@
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 // Classe Saint (Cavaleirxs que entregam justiça cósmica.)
 public class Saint {
     public String nome;
@@ -73,7 +74,7 @@ public class Saint {
     public int getQtdSentidosDespertados(){
     return this.qtdSentidosDespertados;
     }
-    public Golpe[] getGolpes(){
+    public ArrayList getGolpes(){
        return this.armadura.getGolpes();
     }
     public void aprenderGolpe(Golpe golpe){

@@ -4,8 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-
+import java.util.ArrayList;
 public class ConstelacaoTest
 { 
     @Test
@@ -22,10 +21,10 @@ public class ConstelacaoTest
         cisne.aprenderGolpe(doGanso);
         cisne.aprenderGolpe(daGarca);
         cisne.aprenderGolpe(jutsuProibido);
-        Golpe[] golpesRecebidos = cisne.getGolpes();
-        assertEquals(golpesRecebidos[0], doGanso);
-        assertEquals(golpesRecebidos[1], daGarca);
-        assertEquals(golpesRecebidos[2], jutsuProibido);
+        ArrayList golpesRecebidos = cisne.getGolpes();
+        assertEquals(golpesRecebidos.get(0), doGanso);
+        assertEquals(golpesRecebidos.get(1), daGarca);
+        assertEquals(golpesRecebidos.get(2), jutsuProibido);
         
     }
     @Test (expected = Exception.class)

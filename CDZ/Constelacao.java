@@ -1,6 +1,7 @@
+import java.util.ArrayList;
 public class Constelacao{
     private String nome;
-    private Golpe[] meusGolpes = new Golpe[3];
+    private ArrayList<Golpe> meusGolpes = new ArrayList<>();
     private int acumuladorProximoGolpe=0;
         
         public Constelacao(String nome){
@@ -8,28 +9,25 @@ public class Constelacao{
         }
     
         public void aprenderGolpe(Golpe golpe){
-            for (int i = 0; i<this.meusGolpes.length;i++){
-                if(meusGolpes[i] == null){
-                    this.meusGolpes[i] = golpe;
-                    break;
-                }
-            }
+            this.meusGolpes.add(golpe);
         }
       
     
         public String getNomeConstelacao(){
         return this.nome;
         }
-        
-        public Golpe[] getGolpes(){
+       
+        public ArrayList getGolpes(){
         return this.meusGolpes;
         }
-   
+      
+         
         public Golpe getProximoGolpe() throws Exception{
-            if(meusGolpes[0] == null) throw new Exception("Array não-populado"); 
+            if(meusGolpes.get(0) == null) throw new Exception("Array não-populado"); 
             meusGolpes = getGolpes();
-            int posicao = acumuladorProximoGolpe % meusGolpes.length;
+            int posicao = acumuladorProximoGolpe % meusGolpes.size();
             this.acumuladorProximoGolpe++;
-            return meusGolpes[posicao];
+            return meusGolpes.get(posicao);
         }
+          
 }
