@@ -2,6 +2,7 @@ public class Constelacao{
     private String nome;
     private Golpe[] meusGolpes = new Golpe[3];
     private int acumuladorProximoGolpe=0;
+        
         public Constelacao(String nome){
             this.nome = nome;
         }
