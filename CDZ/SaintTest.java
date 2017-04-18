@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.security.InvalidParameterException;
 
 public class SaintTest{
     @Test
@@ -148,8 +149,8 @@ public class SaintTest{
         assertEquals(ikki.getVida(),0.0,0.0001);
         assertEquals(ikki.getStatus(),Status.MORTO);
     }
-    @Test(expected = Exception.class)
-    public void garantirQueDanoNegativoThrowsException()throws Exception{
+    @Test(expected = InvalidParameterException.class)
+    public void garantirQueDanoNegativoThrowsException() throws Exception{
     SilverSaint ikki = new SilverSaint("Ikki", new Armadura(new Constelacao("Andrômeda"),Categoria.PRATA));
     ikki.perderVida(-200);
 }

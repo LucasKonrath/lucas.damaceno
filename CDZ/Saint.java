@@ -1,3 +1,4 @@
+import java.security.InvalidParameterException;
 // Classe Saint (Cavaleirxs que entregam justiça cósmica.)
 public class Saint {
     public String nome;
@@ -41,9 +42,9 @@ public class Saint {
     
 
 // Metodo que causa dano no Saint.
-    public void perderVida(double dano) throws Exception {
+    public void perderVida(double dano) {
         if (dano < 0){
-        throw new Exception ("Invalid Parameter Exception");
+        throw new InvalidParameterException ("Invalid Parameter Exception");
         }
         if((this.vida) > 1)this.vida -= dano;
         if (this.vida < 1) {
