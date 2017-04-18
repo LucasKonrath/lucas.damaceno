@@ -13,4 +13,7 @@ public class Armadura {
 	public int getValorCategoria(){
 		return this.categoria.getValor();
 	}
+	public Golpe[] getGolpes(){
+	   return constelacao.getGolpes();
+	   }
 }

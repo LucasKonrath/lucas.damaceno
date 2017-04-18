@@ -14,5 +14,8 @@ public class Constelacao{
     public String getNomeConstelacao(){
         return this.nome;
     }
+    public Golpe[] getGolpes(){
+    return this.meusGolpes;
+    }
 
 }

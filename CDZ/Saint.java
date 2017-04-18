@@ -70,5 +70,8 @@ public class Saint {
 	public int getQtdSentidosDespertados(){
 	return this.qtdSentidosDespertados;
 	}
-    
+	public Golpe[] getGolpes(){
+	   return this.armadura.getGolpes();
+	   }
+ 
 }
