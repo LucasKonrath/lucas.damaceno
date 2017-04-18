@@ -5,11 +5,14 @@ public class Constelacao{
     public Constelacao(String nome){
     this.nome = nome;
     }
-    void aprenderGolpe(Golpe golpe){
+    public void aprenderGolpe(Golpe golpe){
         meusGolpes[indiceAPopular] = golpe;
         if(indiceAPopular<2){
         this.indiceAPopular++;
         }
+    }
+    public String getNomeConstelacao(){
+        return this.nome;
     }
 
 }

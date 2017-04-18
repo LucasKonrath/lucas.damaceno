@@ -1,14 +1,14 @@
 public class Armadura {
-	private String constelacao;
+	private Constelacao constelacao;
 	public Categoria categoria;
 	// Construtor da classe Armadura.
-	public Armadura(String constelacao, Categoria categoria){
+	public Armadura(Constelacao constelacao, Categoria categoria){
 		this.constelacao = constelacao;
 		this.categoria = categoria;
 	}
 	// Metodo que retorna a constelaçao da armadura.
-	public String getConstelacao(){
-		return this.constelacao;
+	public String getNomeConstelacao(){
+		return this.constelacao.getNomeConstelacao();
 	}
 	public int getValorCategoria(){
 		return this.categoria.getValor();
