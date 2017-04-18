@@ -16,4 +16,10 @@ public class Armadura {
 	public Golpe[] getGolpes(){
 	   return constelacao.getGolpes();
 	   }
+	public void aprenderGolpe(Golpe golpe){
+	   this.constelacao.aprenderGolpe(golpe);
+	   }
+	public Golpe getProximoGolpe() throws Exception{
+	   return this.constelacao.getProximoGolpe();
+	   }
 }
