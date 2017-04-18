@@ -3,7 +3,9 @@ public class GoldSaint extends Saint{
     super(nome,armadura);
     this.qtdSentidosDespertados = 7;
 				String constelacao = this.getNomeConstelacao();
-				if(!constelacao.equals("Áries") && !constelacao.equals("Touro")){
+				if(!constelacao.equals("Áries") && !constelacao.equals("Touro") && !constelacao.equals("Gêmeos") && !constelacao.equals("Câncer") 
+				&& !constelacao.equals("Leão")&& !constelacao.equals("Virgem")&& !constelacao.equals("Libra")&& !constelacao.equals("Escorpião")
+				&& !constelacao.equals("Sagitário")&& !constelacao.equals("Capricórnio")&& !constelacao.equals("Aquário")&& !constelacao.equals("Peixes")){
 		//dar erro
 				throw new Exception("Constelacao invalida");
 	
