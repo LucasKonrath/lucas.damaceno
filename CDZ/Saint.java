@@ -59,13 +59,13 @@ public class Saint {
     public int getCategoriaArmadura(){
     	return this.armadura.getValorCategoria();
     }
-	public String getConstelacao(){
-		return this.armadura.getConstelacao();
+	public String getNomeConstelacao(){
+		return this.armadura.getNomeConstelacao();
 	}
 
 	@Override
 	public String toString() {
-		return nome + " de " +  getConstelacao();
+		return nome + " de " +  getNomeConstelacao();
 	}
 	public int getQtdSentidosDespertados(){
 	return this.qtdSentidosDespertados;
