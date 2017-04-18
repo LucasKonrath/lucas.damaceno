@@ -1,43 +1,34 @@
 public class Constelacao{
     private String nome;
     private Golpe[] meusGolpes = new Golpe[3];
-    private int indiceAPopular = 0;
-    private int indiceADevolverGolpe = 0;
-    private boolean ultimoCadastrado;
-    private boolean ultimoGolpeFoiZero;
-    public Constelacao(String nome){
-    this.nome = nome;
-    }
-    public void aprenderGolpe(Golpe golpe){
-        meusGolpes[indiceAPopular] = golpe;
-        if(indiceAPopular<meusGolpes.length-1){
-            this.indiceAPopular++;
+    private int acumuladorProximoGolpe=0;
+        public Constelacao(String nome){
+            this.nome = nome;
         }
-        else ultimoCadastrado=true;
-    }
-    public String getNomeConstelacao(){
-        return this.nome;
-    }
-    public Golpe[] getGolpes(){
-        return this.meusGolpes;
-    }
-    public Golpe getProximoGolpe() throws Exception{
     
-        if (indiceADevolverGolpe==0){
-            if (indiceAPopular==0) throw new Exception ("Nenhum golpe cadastrado");
-            else if (indiceAPopular==1) indiceADevolverGolpe=0;
-            else if (indiceAPopular==2){ 
-                if (ultimoGolpeFoiZero==true) indiceADevolverGolpe=1;
-                else indiceADevolverGolpe=0;
+        public void aprenderGolpe(Golpe golpe){
+            for (int i = 0; i<this.meusGolpes.length;i++){
+                if(meusGolpes[i] == null){
+                    this.meusGolpes[i] = golpe;
+                    break;
+                }
             }
         }
-        else if (indiceADevolverGolpe==1 && indiceAPopular==2 && ultimoCadastrado==true) indiceADevolverGolpe=2;
-        else indiceADevolverGolpe=0;
+      
     
-        if (indiceADevolverGolpe==0) ultimoGolpeFoiZero = true;
-        else ultimoGolpeFoiZero = false;
-        Golpe golpeADevolver = this.meusGolpes[indiceADevolverGolpe];
-        return golpeADevolver;
-    }
-
+        public String getNomeConstelacao(){
+        return this.nome;
+        }
+        
+        public Golpe[] getGolpes(){
+        return this.meusGolpes;
+        }
+   
+        public Golpe getProximoGolpe() throws Exception{
+            if(meusGolpes[0] == null) throw new Exception("Array não-populado"); 
+            meusGolpes = getGolpes();
+            int posicao = acumuladorProximoGolpe % meusGolpes.length;
+            this.acumuladorProximoGolpe++;
+            return meusGolpes[posicao];
+        }
 }

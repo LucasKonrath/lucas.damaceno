@@ -44,7 +44,7 @@ public class Saint {
 // Metodo que causa dano no Saint.
     public void perderVida(double dano) {
         if (dano < 0){
-        throw new InvalidParameterException ("Invalid Parameter Exception");
+            throw new InvalidParameterException ("Invalid Parameter Exception");
         }
         else if((this.vida) > 1){
             this.vida -= dano;

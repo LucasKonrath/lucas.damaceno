@@ -7,7 +7,7 @@ import org.junit.Test;
 
 
 public class ConstelacaoTest
-{
+{ 
     @Test
     public void garantirQueConstelacaoRetorneNomeCorreto(){
     Constelacao cisne = new Constelacao("Cisne");
@@ -33,6 +33,7 @@ public class ConstelacaoTest
     Constelacao cisne = new Constelacao("Cisne");
     cisne.getProximoGolpe();
     }
+    
     @Test 
     public void garantirFuncionamentoDoMetodoGetProximoGolpe()throws Exception{
     Constelacao cisne = new Constelacao("Cisne");
@@ -41,13 +42,11 @@ public class ConstelacaoTest
     Golpe doLindomar = new Golpe("Sub-Zero BR", 120);
     cisne.aprenderGolpe(doGanso);
     assertEquals(cisne.getProximoGolpe(),doGanso);
-    assertEquals(cisne.getProximoGolpe(),doGanso);
     cisne.aprenderGolpe(doDanielSan);
     assertEquals(cisne.getProximoGolpe(),doDanielSan);
-    assertEquals(cisne.getProximoGolpe(),doGanso);
     cisne.aprenderGolpe(doLindomar);
-    assertEquals(cisne.getProximoGolpe(),doDanielSan);
     assertEquals(cisne.getProximoGolpe(),doLindomar);
     assertEquals(cisne.getProximoGolpe(),doGanso);
     }
+    
 }
