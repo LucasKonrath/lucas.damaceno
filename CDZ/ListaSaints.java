@@ -5,7 +5,7 @@ public class ListaSaints{
     public void adicionaSaint(Saint saint){
         listaDeSaints.add(saint);
     }
-    public Saint getIndice(int indice){
+    public Saint getIndteice(int indice){
         return listaDeSaints.get(indice);
     } 
     public ArrayList todos(){
@@ -24,4 +24,12 @@ public class ListaSaints{
     }
      return null;   
     }
+    public ArrayList<Saint> buscarPorCategoria(Categoria categoria){
+        ArrayList<Saint> listaDaCategoria = new ArrayList<>();
+        for (int x = 0; x<listaDeSaints.size();x++){
+            Saint test = listaDeSaints.get(x);
+            if(test.getCategoriaArmadura() == categoria.getValor()) listaDaCategoria.add(test);
+        }
+        return listaDaCategoria;
+    } 
 }   
