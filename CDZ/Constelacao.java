@@ -17,7 +17,7 @@ public class Constelacao{
         return this.nome;
         }
        
-        public ArrayList getGolpes(){
+        public ArrayList<Golpe> getGolpes(){
         return this.meusGolpes;
         }
       
