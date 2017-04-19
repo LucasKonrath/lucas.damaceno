@@ -23,4 +23,7 @@ public class Armadura {
 	public Golpe getProximoGolpe() throws Exception{
 	   return this.constelacao.getProximoGolpe();
 	   }
+	public Categoria getCategoria(){
+	   return this.categoria;
+	   }
 }

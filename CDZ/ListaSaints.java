@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 public class ListaSaints{
     ArrayList <Saint> listaDeSaints = new ArrayList<>();
@@ -25,20 +26,22 @@ public class ListaSaints{
      return null;   
     }
     public ArrayList<Saint> buscarPorCategoria(Categoria categoria){
+       return (ArrayList<Saint>)this.listaDeSaints.stream()
+            .filter(s -> s.getArmadura().getCategoria().equals(categoria))
+            .collect(Collectors.toList());
+    }
+        /*
         ArrayList<Saint> listaDaCategoria = new ArrayList<>();
         for (int x = 0; x<listaDeSaints.size();x++){
             Saint test = listaDeSaints.get(x);
             if(test.getCategoriaArmadura() == categoria.getValor()) listaDaCategoria.add(test);
         }
         return listaDaCategoria;
-    } 
+    */ 
     public ArrayList<Saint> buscarPorStatus(Status status){
-        ArrayList<Saint> listaPeloStatus = new ArrayList<>();
-        for (int x = 0; x<listaDeSaints.size();x++){
-            Saint test = listaDeSaints.get(x);
-            if(test.getStatus().equals(status)) listaPeloStatus.add(test);
-        }
-        return listaPeloStatus;
+        return (ArrayList<Saint>)this.listaDeSaints.stream()
+            .filter(s -> s.getStatus().equals(status))
+           .collect(Collectors.toList());
     } 
     public Saint getSaintMaiorVida(){
         double vida = 0.0;

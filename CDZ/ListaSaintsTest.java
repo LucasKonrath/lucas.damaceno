@@ -122,6 +122,10 @@ public void garantirFuncionamentoDaBuscaPorCategoria()throws Exception{
     lista.remover(misty);
     ArrayList<Saint> todos = lista.todos();
     assertEquals(bronze, todos);
+    lista.remover(hyoga);
+    ArrayList<Saint> todos2 = lista.todos();
+    ArrayList<Saint> bronze2 = lista.buscarPorCategoria(Categoria.BRONZE);
+    assertEquals(todos2,bronze2);
 }
 @Test public void buscaPorCategoriaComListaVaziaRetornaNull(){
     ListaSaints lista = new ListaSaints();

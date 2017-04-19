@@ -61,6 +61,7 @@ public class Saint /* implements Comparable<Saint> */ {
     public double getVida(){
         return this.vida;
     }
+    
 // Metodo que retorna o valor numerico da Categoria da Armadura do Saint (Ex: Ouro 3, Prata 2, Bronze 1)
     public int getCategoriaArmadura(){
         return this.armadura.getValorCategoria();
@@ -85,8 +86,11 @@ public class Saint /* implements Comparable<Saint> */ {
     public Golpe getProximoGolpe() throws Exception{
         return this.armadura.getProximoGolpe();
     }
+    public Armadura getArmadura(){
+        return this.armadura;
+    }
     /*
-	@Override
+    @Override
     public int compareTo(Saint saint) {
     double outraVida = saint.getVida();
 
