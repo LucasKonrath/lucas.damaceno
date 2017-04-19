@@ -14,7 +14,9 @@ public class Saint {
             this.armadura=armadura;
             this.nome=nome;
         }     
-    
+    public String getNome(){
+        return this.nome;
+    }
 // Método para vestir armadura do Saint.    
     public void vestirArmadura(){
         this.armaduraVestida = true;
