@@ -1,7 +1,7 @@
 import java.security.InvalidParameterException;
 import java.util.*;
 // Classe Saint (Cavaleirxs que entregam justiça cósmica.)
-public class Saint implements Comparable<Saint> {
+public class Saint /* implements Comparable<Saint> */ {
     public String nome;
     protected Armadura armadura;
     private boolean armaduraVestida;
@@ -85,7 +85,7 @@ public class Saint implements Comparable<Saint> {
     public Golpe getProximoGolpe() throws Exception{
         return this.armadura.getProximoGolpe();
     }
-    
+    /*
 	@Override
     public int compareTo(Saint saint) {
     double outraVida = saint.getVida();
@@ -97,6 +97,7 @@ public class Saint implements Comparable<Saint> {
     else
         return -1;
     }
+    */
     
  
 }

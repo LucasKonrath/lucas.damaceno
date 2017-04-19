@@ -63,9 +63,24 @@ public class ListaSaints{
             }
         }
         return saint;
-    }	
-   	public void separarPorVidaCrescente(){
-		Collections.sort(listaDeSaints);
-	}
-	
+    }   
+    public void ordernar(){
+        Saint temp,arr;
+        for(int i=0;i<listaDeSaints.size();i++){
+            for (int j = 0; j<listaDeSaints.size()-1;j++){
+                if(listaDeSaints.get(j).getVida() > listaDeSaints.get(j+1).getVida()) {
+                    arr = listaDeSaints.get(j);
+                    temp=listaDeSaints.get(j+1);
+                    listaDeSaints.set(j,temp);
+                    listaDeSaints.set(j+1,arr);
+                } 
+            }
+        }
+    }
+    /*
+    public void separarPorVidaCrescente(){
+        Collections.sort(listaDeSaints);
+    }
+    */
+    
 }   
