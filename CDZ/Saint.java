@@ -85,6 +85,7 @@ public class Saint implements Comparable<Saint> {
     public Golpe getProximoGolpe() throws Exception{
         return this.armadura.getProximoGolpe();
     }
+    
 	@Override
     public int compareTo(Saint saint) {
     double outraVida = saint.getVida();
@@ -96,5 +97,6 @@ public class Saint implements Comparable<Saint> {
     else
         return -1;
     }
+    
  
 }
