@@ -52,6 +52,18 @@ public class ListaSaints{
         }
         return saint;
     }
+    public Saint getSaintMenorVida(){
+        double vida = 100.0;
+        Saint saint=null;
+        for (int x = 0; x<listaDeSaints.size();x++){
+            Saint test = listaDeSaints.get(x);
+            if (test.getVida()<vida){
+                saint = test;   
+                vida=test.getVida();
+            }
+        }
+        return saint;
+    }
     
     
 }   
