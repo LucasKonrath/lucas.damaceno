@@ -131,5 +131,77 @@ public void garantirFuncionamentoDaBuscaPorCategoria()throws Exception{
     ListaSaints lista = new ListaSaints();
     assertEquals(lista.buscarPorCategoria(Categoria.BRONZE), new ArrayList<Saint>());
 }
+@Test 
+public void ordenarComListaTotalmenteDesordenada()throws Exception{
+ ListaSaints lista = new ListaSaints();
+    Constelacao cisne = new Constelacao("Cisne");
+    Armadura deCisne = new Armadura(cisne,Categoria.BRONZE);
+    Constelacao fenix = new Constelacao("Fenix");
+    Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
+    Constelacao lagarto = new Constelacao("Lagarto");
+    Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
+    BronzeSaint ikki = new BronzeSaint("Ikki", deFenix);
+    BronzeSaint hyoga = new BronzeSaint("Hyoga", deCisne);
+    BronzeSaint misty = new BronzeSaint("Misty", deLagarto);
+    lista.adicionaSaint(ikki);
+    lista.adicionaSaint(hyoga);
+    lista.adicionaSaint(misty);
+    ikki.perderVida(10);
+    hyoga.perderVida(20);
+    misty.perderVida(30);
+    lista.ordenar();
+    ArrayList<Saint> resultado = lista.todos();
+    assertEquals(misty,resultado.get(0));
+    assertEquals(hyoga,resultado.get(1));
+    assertEquals(ikki,resultado.get(2));
+}
+@Test 
+public void ordenarComListaTotalmenteDesordenadaUtilizandoTipoOrdenacao()throws Exception{
+ ListaSaints lista = new ListaSaints();
+    Constelacao cisne = new Constelacao("Cisne");
+    Armadura deCisne = new Armadura(cisne,Categoria.BRONZE);
+    Constelacao fenix = new Constelacao("Fenix");
+    Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
+    Constelacao lagarto = new Constelacao("Lagarto");
+    Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
+    BronzeSaint ikki = new BronzeSaint("Ikki", deFenix);
+    BronzeSaint hyoga = new BronzeSaint("Hyoga", deCisne);
+    BronzeSaint misty = new BronzeSaint("Misty", deLagarto);
+    lista.adicionaSaint(ikki);
+    lista.adicionaSaint(hyoga);
+    lista.adicionaSaint(misty);
+    ikki.perderVida(10);
+    hyoga.perderVida(20);
+    misty.perderVida(30);
+    lista.ordenar(TipoOrdenacao.ASCENDENTE);
+    ArrayList<Saint> resultado = lista.todos();
+    assertEquals(misty,resultado.get(0));
+    assertEquals(hyoga,resultado.get(1));
+    assertEquals(ikki,resultado.get(2));
+}
+@Test 
+public void ordenarComListaTotalmenteDesordenadaUtilizandoTipoOrdenacaoDescendente()throws Exception{
+ ListaSaints lista = new ListaSaints();
+    Constelacao cisne = new Constelacao("Cisne");
+    Armadura deCisne = new Armadura(cisne,Categoria.BRONZE);
+    Constelacao fenix = new Constelacao("Fenix");
+    Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
+    Constelacao lagarto = new Constelacao("Lagarto");
+    Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
+    BronzeSaint ikki = new BronzeSaint("Ikki", deFenix);
+    BronzeSaint hyoga = new BronzeSaint("Hyoga", deCisne);
+    BronzeSaint misty = new BronzeSaint("Misty", deLagarto);
+    lista.adicionaSaint(ikki);
+    lista.adicionaSaint(hyoga);
+    lista.adicionaSaint(misty);
+    ikki.perderVida(10);
+    hyoga.perderVida(20);
+    misty.perderVida(30);
+    lista.ordenar(TipoOrdenacao.DESCENDENTE);
+    ArrayList<Saint> resultado = lista.todos();
+    assertEquals(misty,resultado.get(2));
+    assertEquals(hyoga,resultado.get(1));
+    assertEquals(ikki,resultado.get(0));
+}
 }
 
