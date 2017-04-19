@@ -14,12 +14,14 @@ public class ListaSaints{
     public void remover(Saint saint){
         listaDeSaints.remove(saint);
     }
-    /*  
-    public Saint buscarPorNome(String string)throws Exception{
-        if (listaDeSaints.getIndexOf(saint.getNome()) ==-1){
-        throw new Exception ("Saint não encontrado na lista.");
+      
+    public Saint buscarPorNome(String string){
+        for(int x = 0; x<listaDeSaints.size();x++){
+        Saint test = listaDeSaints.get(x);
+        if (test.getNome().equals(string)) {
+            return test;   
         }
-        return;
     }
-    */
+     return null;   
+    }
 }   
