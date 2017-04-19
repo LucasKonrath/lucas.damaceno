@@ -8,7 +8,7 @@ public class ListaSaints{
     public Saint getIndice(int indice){
         return listaDeSaints.get(indice);
     } 
-    public ArrayList todos(){
+    public ArrayList<Saint> todos(){
         return listaDeSaints;
     }
     public void remover(Saint saint){

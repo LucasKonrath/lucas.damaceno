@@ -14,11 +14,11 @@ public class Constelacao{
       
     
         public String getNomeConstelacao(){
-        return this.nome;
+            return this.nome;
         }
        
         public ArrayList<Golpe> getGolpes(){
-        return this.meusGolpes;
+            return this.meusGolpes;
         }
       
          
