@@ -32,4 +32,12 @@ public class ListaSaints{
         }
         return listaDaCategoria;
     } 
+    public ArrayList<Saint> buscarPorStatus(Status status){
+        ArrayList<Saint> listaPeloStatus = new ArrayList<>();
+        for (int x = 0; x<listaDeSaints.size();x++){
+            Saint test = listaDeSaints.get(x);
+            if(test.getStatus().equals(status)) listaPeloStatus.add(test);
+        }
+        return listaPeloStatus;
+    } 
 }   
