@@ -112,6 +112,12 @@ public class ListaSaints{
          } while (posicoesSendoTrocadas);   
         }
         }
+     public ArrayList<Saint> unir (ArrayList<Saint> arrayRecebido){
+         ArrayList<Saint> nova = new ArrayList<>();
+         nova = this.todos();
+         nova.addAll(arrayRecebido);
+         return nova;
+        }
  }
     /*
     public void separarPorVidaCrescente(){
