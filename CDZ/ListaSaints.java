@@ -5,7 +5,7 @@ public class ListaSaints{
     public void adicionaSaint(Saint saint){
         listaDeSaints.add(saint);
     }
-    public Saint getIndteice(int indice){
+    public Saint getIndice(int indice){
         return listaDeSaints.get(indice);
     } 
     public ArrayList todos(){
