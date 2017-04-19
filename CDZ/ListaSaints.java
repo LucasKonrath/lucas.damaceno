@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class ListaSaints{
     ArrayList <Saint> listaDeSaints = new ArrayList<>();
@@ -63,7 +63,9 @@ public class ListaSaints{
             }
         }
         return saint;
-    }
-    
-    
+    }	
+   	public void separarPorVidaCrescente(){
+		Collections.sort(listaDeSaints);
+	}
+	
 }   
