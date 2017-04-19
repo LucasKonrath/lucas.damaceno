@@ -40,4 +40,18 @@ public class ListaSaints{
         }
         return listaPeloStatus;
     } 
+    public Saint getSaintMaiorVida(){
+        double vida = 0.0;
+        Saint saint=null;
+        for (int x = 0; x<listaDeSaints.size();x++){
+            Saint test = listaDeSaints.get(x);
+            if (test.getVida()>vida){
+                saint = test;
+                vida=test.getVida();
+            }
+        }
+        return saint;
+    }
+    
+    
 }   
