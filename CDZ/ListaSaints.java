@@ -117,7 +117,19 @@ public class ListaSaints{
          nova = this.todos();
          nova.addAll(arrayRecebido);
          return nova;
+     }
+     public ArrayList<Saint> diff (ArrayList<Saint> arrayRecebido){
+        ArrayList<Saint> listaDosDiferentes = new ArrayList<>();
+        boolean nenhumIgual;
+        for(int i = 0; i<this.listaDeSaints.size()-1;i++){
+             nenhumIgual=true;
+            for(int j=0; j<arrayRecebido.size()-1;j++){
+                if (listaDeSaints.get(i).equals(arrayRecebido.get(j))) nenhumIgual = false;
+            }
+            if(nenhumIgual) listaDosDiferentes.add(listaDeSaints.get(i));
         }
+        return listaDosDiferentes;
+     }
  }
     /*
     public void separarPorVidaCrescente(){
