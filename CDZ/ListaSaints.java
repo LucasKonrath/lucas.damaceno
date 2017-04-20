@@ -130,6 +130,14 @@ public class ListaSaints{
         }
         return listaDosDiferentes;
      }
+     public ArrayList<String> getCSV(){
+         ArrayList<String> valores = new ArrayList<>();
+        for(int x = 0; x<this.listaDeSaints.size(); x++){
+        Saint saint = this.listaDeSaints.get(x);
+        valores.add( saint.getNome() + "," + saint.getVida() + "," + saint.getNomeConstelacao() + "," + saint.getStatus() + "," +  saint.getGenero()+ "," + saint.getArmaduraVestida() ); 
+        }
+        return valores;
+     }
  }
     /*
     public void separarPorVidaCrescente(){
