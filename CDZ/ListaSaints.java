@@ -78,26 +78,28 @@ public class ListaSaints{
     public void ordenar() {
         this.ordenar(TipoOrdenacao.ASCENDENTE);
     }
-
+    /*Codigo antigo, usando ifs.
+     * 
+     * if(comparacaoAscendente == false) {
+                         precisaTrocar = atual.getVida() < proximo.getVida();
+                        }
+                    else{
+                         precisaTrocar = atual.getVida() > proximo.getVida();
+                    } 
+     * 
+     * 
+     */
     public void ordenar(TipoOrdenacao tipo){
         boolean posicoesSendoTrocadas;
-        boolean comparacaoAscendente = false;
-        boolean precisaTrocar;
-        if(tipo == TipoOrdenacao.ASCENDENTE)  comparacaoAscendente = true;
-        else if (tipo == TipoOrdenacao.DESCENDENTE){
-                comparacaoAscendente = false;
-            }
+        boolean comparacaoAscendente=true;
+        if(tipo == TipoOrdenacao.DESCENDENTE) comparacaoAscendente = false;
             do {
                 posicoesSendoTrocadas = false;
                 for (int i = 0; i < this.listaDeSaints.size() - 1; i++) {
                     Saint atual = this.listaDeSaints.get(i);
                     Saint proximo = this.listaDeSaints.get(i + 1);
-                    if(comparacaoAscendente == false) {
-                         precisaTrocar = atual.getVida() < proximo.getVida();
-                        }
-                    else{
-                         precisaTrocar = atual.getVida() > proximo.getVida();
-                    }
+                    
+                    boolean precisaTrocar = comparacaoAscendente ? atual.getVida() > proximo.getVida() : atual.getVida() < proximo.getVida();
                     if (precisaTrocar) {
                         this.listaDeSaints.set(i, proximo);
                         this.listaDeSaints.set(i + 1, atual);
@@ -135,23 +137,14 @@ public class ListaSaints{
     }
 
     public String getCSV(){
-        StringBuilder csv = new StringBuilder();
+        StringBuilder csv = new StringBuilder(512);
+        String prefix = "";
         for(int x = 0; x<this.listaDeSaints.size();x++){
             Saint saint = this.listaDeSaints.get(x);
-            csv.append(saint.getNome())
-            .append(",")
-            .append(saint.getVida())
-            .append(",").
-            append(saint.getNomeConstelacao())
-            .append(",")
-            .append(saint.getArmadura().getCategoria())
-            .append(",")
-            .append(saint.getStatus())
-            .append(",")
-            .append(saint.getGenero())
-            .append(",")
-            .append(saint.getArmaduraVestida())
-            .append(System.getProperty("line.separator"));
+            String csvDoSaint = saint.getCSV();
+            csv.append(prefix);
+            prefix = (System.getProperty("line.separator"));
+            csv.append(csvDoSaint);
         }
         /*
         ArrayList<String> valores = new ArrayList<>();
