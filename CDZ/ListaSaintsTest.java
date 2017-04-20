@@ -186,7 +186,43 @@ public class ListaSaintsTest{
         assertEquals(hyoga,resultado.get(1));
         assertEquals(ikki,resultado.get(2));
     }
-
+    @Test
+    public void garantirFuncionamentoDoMetodoUnirLista()throws Exception{
+    Constelacao cisne = new Constelacao("Cisne");
+        Armadura deCisne = new Armadura(cisne, Categoria.BRONZE);
+        BronzeSaint shun = new BronzeSaint("Shun", deCisne);
+        BronzeSaint shiryu = new BronzeSaint("Shiryu", deCisne);
+        BronzeSaint ikki = new BronzeSaint("Ikki", deCisne);
+        BronzeSaint misty = new BronzeSaint("Misty", deCisne);
+        BronzeSaint hyoga = new BronzeSaint("Hyoga", deCisne);
+        BronzeSaint jabu = new BronzeSaint("Jabu", deCisne);
+        ListaSaints lista1 = new ListaSaints();
+        ListaSaints lista2 = new ListaSaints();
+        lista1.adicionaSaint(shun);
+        lista1.adicionaSaint(shiryu);
+        lista1.adicionaSaint(ikki);
+        lista1.adicionaSaint(misty);
+        lista1.adicionaSaint(hyoga);
+        lista1.adicionaSaint(jabu);
+        lista1.adicionaSaint(hyoga);
+        lista1.adicionaSaint(jabu);
+        lista2.adicionaSaint(misty);
+        lista2.adicionaSaint (hyoga);
+        lista2.adicionaSaint(ikki);
+        ListaSaints listaResultado = lista1.unir(lista2);
+        ArrayList<Saint> resultado = listaResultado.todos();
+        assertEquals(shun, resultado.get(0));
+        assertEquals(shiryu, resultado.get(1));
+        assertEquals(ikki, resultado.get(2));
+        assertEquals(misty, resultado.get(3));
+        assertEquals(hyoga, resultado.get(4));
+        assertEquals(jabu, resultado.get(5));
+        assertEquals(hyoga, resultado.get(6));
+        assertEquals(jabu, resultado.get(7));
+        assertEquals(misty, resultado.get(8));
+        assertEquals(hyoga, resultado.get(9));
+        assertEquals(ikki, resultado.get(10));
+    }
     @Test 
     public void ordenarComListaTotalmenteDesordenadaUtilizandoTipoOrdenacaoDescendente()throws Exception{
         ListaSaints lista = new ListaSaints();
@@ -230,13 +266,17 @@ public class ListaSaintsTest{
         lista1.adicionaSaint(misty);
         lista1.adicionaSaint(hyoga);
         lista1.adicionaSaint(jabu);
+        lista1.adicionaSaint(hyoga);
+        lista1.adicionaSaint(jabu);
         lista2.adicionaSaint(misty);
         lista2.adicionaSaint (hyoga);
         lista2.adicionaSaint(ikki);
-        ArrayList<Saint> resultado = lista1.diff(lista2.todos());
+        ListaSaints listaResultado = lista1.diff(lista2);
+        ArrayList<Saint> resultado = listaResultado.todos();
         assertEquals(shun, resultado.get(0));
         assertEquals(shiryu, resultado.get(1));
         assertEquals(jabu, resultado.get(2));
+        assertEquals(jabu, resultado.get(3));
     }
 }
 

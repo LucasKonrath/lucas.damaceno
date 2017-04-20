@@ -112,21 +112,27 @@ public class ListaSaints{
          } while (posicoesSendoTrocadas);   
         }
         }
-     public ArrayList<Saint> unir (ArrayList<Saint> arrayRecebido){
+     public ListaSaints unir (ListaSaints listaRecebida){
          ArrayList<Saint> nova = new ArrayList<>();
+		 ArrayList<Saint> arrayRecebido = listaRecebida.todos();
          nova = this.todos();
          nova.addAll(arrayRecebido);
-         return nova;
+		ListaSaints listaNova = new ListaSaints();
+		 for(int x=0;x<nova.size();x++){
+		listaNova.adicionaSaint(nova.get(x));
+		}
+         return listaNova;
      }
-     public ArrayList<Saint> diff (ArrayList<Saint> arrayRecebido){
-        ArrayList<Saint> listaDosDiferentes = new ArrayList<>();
+     public ListaSaints diff (ListaSaints listaRecebida){
+        ListaSaints listaDosDiferentes = new ListaSaints();
+		ArrayList<Saint> arrayRecebido = listaRecebida.todos();
         boolean nenhumIgual;
         for(int i = 0; i<this.listaDeSaints.size();i++){
              nenhumIgual=true;
             for(int j=0; j<arrayRecebido.size();j++){
                 if (listaDeSaints.get(i).equals(arrayRecebido.get(j))) nenhumIgual = false;
             }
-            if(nenhumIgual) listaDosDiferentes.add(listaDeSaints.get(i));
+            if(nenhumIgual) listaDosDiferentes.adicionaSaint(listaDeSaints.get(i));
         }
         return listaDosDiferentes;
      }
