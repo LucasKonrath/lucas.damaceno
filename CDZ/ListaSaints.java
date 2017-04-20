@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.*;
 
-public class ListaSaints{
+public final class ListaSaints{
     ArrayList <Saint> listaDeSaints = new ArrayList<>();
     public void adicionaSaint(Saint saint){
         listaDeSaints.add(saint);
