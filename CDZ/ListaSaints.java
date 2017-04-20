@@ -121,9 +121,9 @@ public class ListaSaints{
      public ArrayList<Saint> diff (ArrayList<Saint> arrayRecebido){
         ArrayList<Saint> listaDosDiferentes = new ArrayList<>();
         boolean nenhumIgual;
-        for(int i = 0; i<this.listaDeSaints.size()-1;i++){
+        for(int i = 0; i<this.listaDeSaints.size();i++){
              nenhumIgual=true;
-            for(int j=0; j<arrayRecebido.size()-1;j++){
+            for(int j=0; j<arrayRecebido.size();j++){
                 if (listaDeSaints.get(i).equals(arrayRecebido.get(j))) nenhumIgual = false;
             }
             if(nenhumIgual) listaDosDiferentes.add(listaDeSaints.get(i));
