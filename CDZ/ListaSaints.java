@@ -130,13 +130,21 @@ public class ListaSaints{
         }
         return listaDosDiferentes;
      }
-     public ArrayList<String> getCSV(){
+     public String getCSV(){
+         StringBuilder csv = new StringBuilder();
+         for(int x = 0; x<this.listaDeSaints.size();x++){
+            Saint saint = this.listaDeSaints.get(x);
+            csv.append(saint.getNome()).append(",").append(saint.getVida()).append(",").append(saint.getNomeConstelacao()).append(",").append(saint.getStatus()).append(",").append(saint.getGenero()).append(",").append(saint.getArmaduraVestida()).append(System.getProperty("line.separator"));
+            }
+         /*
          ArrayList<String> valores = new ArrayList<>();
         for(int x = 0; x<this.listaDeSaints.size(); x++){
         Saint saint = this.listaDeSaints.get(x);
-        valores.add( saint.getNome() + "," + saint.getVida() + "," + saint.getNomeConstelacao() + "," + saint.getStatus() + "," +  saint.getGenero()+ "," + saint.getArmaduraVestida() ); 
+        valores.add( saint.getNome() + "," + saint.getVida() + "," + saint.getNomeConstelacao() + "," + saint.getStatus() + "," +  saint.getGenero()+ "," + saint.getArmaduraVestida() +"\n" ); 
         }
-        return valores;
+        return valores.toString();
+        */
+       return csv.toString();
      }
  }
     /*
