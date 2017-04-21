@@ -10,6 +10,8 @@ public abstract class Saint /* implements Comparable<Saint> */ {
     protected double vida = 100.0;
     protected int qtdSentidosDespertados;
     protected Categoria categoria=Categoria.BRONZE;
+    private ArrayList<Movimento> movimentos = new ArrayList<>();
+    private int acumuladorProximoMovimento=0;
 // Construtor da classe Saint
     public Saint(String nome, String constelacao) throws Exception{
             this.armadura = new Armadura(new Constelacao(constelacao), this.categoria);
@@ -105,6 +107,16 @@ public abstract class Saint /* implements Comparable<Saint> */ {
         .append(",")
         .append(this.getArmaduraVestida());
         return csv.toString();
+    }
+    public void adicionarMovimento(Movimento movimento){
+    
+        this.movimentos.add(movimento);
+    }
+    public Movimento getProximoMovimento()throws Exception{
+        if(movimentos.get(0) == null) throw new Exception("Array não-populado"); 
+            int posicao = acumuladorProximoMovimento % movimentos.size();
+            this.acumuladorProximoMovimento++;
+            return movimentos.get(posicao);
     }
     /*
     @Override
