@@ -146,20 +146,8 @@ public class SaintTest{
     GoldSaint shun = new GoldSaint("Shun", "Libra");
     assertEquals(shun.getQtdSentidosDespertados(),7);
     }
-    @Test
-    public void SaintFaleceAoFicarComMenosDe1DeVida() throws Exception{
-        GoldSaint shun = new GoldSaint("Shun", "Touro");
-        SilverSaint ikki = new SilverSaint("Ikki","Fênix");
-        Batalha batalhaAteAMorte = new Batalha(shun,ikki);
-        for(int x = 0; x<10;x++){
-        batalhaAteAMorte.iniciar();
-        }
-        assertEquals(ikki.getVida(),0.0,0.0001);
-        assertEquals(ikki.getStatus(),Status.MORTO);
-        batalhaAteAMorte.iniciar();
-        assertEquals(ikki.getVida(),0.0,0.0001);
-        assertEquals(ikki.getStatus(),Status.MORTO);
-    }
+    
+   
     @Test(expected = InvalidParameterException.class)
     public void garantirQueDanoNegativoThrowsException() throws Exception{
     SilverSaint ikki = new SilverSaint("Ikki", "Fênix");
