@@ -22,22 +22,22 @@ public class GoldSaintTest
     Constelacao capricornio = new Constelacao("Capricórnio");
     Constelacao aquario = new Constelacao("Aquário");
     Constelacao peixes = new Constelacao("Peixes");
-    GoldSaint mu = new GoldSaint("Mu",new Armadura(aries, Categoria.OURO));
-    GoldSaint aldebaran = new GoldSaint("Aldebaran",new Armadura(touro, Categoria.OURO));
-    GoldSaint saga = new GoldSaint("Saga",new Armadura(gemeos, Categoria.OURO));
-    GoldSaint mascaraDaMorte = new GoldSaint("Máscara da Morte",new Armadura(cancer, Categoria.OURO));
-    GoldSaint aioria = new GoldSaint("Aioria",new Armadura(leao, Categoria.OURO));
-    GoldSaint shaka = new GoldSaint("Shaka",new Armadura(virgem, Categoria.OURO));
-    GoldSaint dohko = new GoldSaint("Dohko",new Armadura(libra, Categoria.OURO));
-    GoldSaint milo = new GoldSaint("Milo",new Armadura(escorpiao, Categoria.OURO));
-    GoldSaint aioros = new GoldSaint("Aioros",new Armadura(sagitario, Categoria.OURO));
-    GoldSaint shura = new GoldSaint("Shura",new Armadura(capricornio, Categoria.OURO));
-    GoldSaint camus = new GoldSaint("Camus",new Armadura(aquario, Categoria.OURO));
-    GoldSaint afrodite = new GoldSaint("Afrodite",new Armadura(peixes, Categoria.OURO));
+    GoldSaint mu = new GoldSaint("Mu","Áries");
+    GoldSaint aldebaran = new GoldSaint("Aldebaran","Touro");
+    GoldSaint saga = new GoldSaint("Saga","Gêmeos");
+    GoldSaint mascaraDaMorte = new GoldSaint("Máscara da Morte","Câncer");
+    GoldSaint aioria = new GoldSaint("Aioria","Leão");
+    GoldSaint shaka = new GoldSaint("Shaka","Virgem");
+    GoldSaint dohko = new GoldSaint("Dohko","Libra");
+    GoldSaint milo = new GoldSaint("Milo","Escorpião");
+    GoldSaint aioros = new GoldSaint("Aioros","Sagitário");
+    GoldSaint shura = new GoldSaint("Shura","Capricórnio");
+    GoldSaint camus = new GoldSaint("Camus","Aquário");
+    GoldSaint afrodite = new GoldSaint("Afrodite","Peixes");
     }
     @Test ( expected = Exception.class)
     public void garantirQueCavaleiroDeOuroComSignoErradoDispareException()throws Exception{
     Constelacao aries = new Constelacao("Jarbas");
-    GoldSaint mu = new GoldSaint("Mu",new Armadura(aries, Categoria.OURO));
+    GoldSaint mu = new GoldSaint("Mu","Jarbas");
     }
 }

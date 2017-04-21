@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.stream.*;
 
-public final class ListaSaints{
+public class ListaSaints{
     ArrayList <Saint> listaDeSaints = new ArrayList<>();
     public void adicionaSaint(Saint saint){
         listaDeSaints.add(saint);
@@ -76,20 +76,11 @@ public final class ListaSaints{
     }   
 
     public void ordenar() {
+
         this.ordenar(TipoOrdenacao.ASCENDENTE);
     }
-    /*Codigo antigo, usando ifs.
-     * 
-     * if(comparacaoAscendente == false) {
-                         precisaTrocar = atual.getVida() < proximo.getVida();
-                        }
-                    else{
-                         precisaTrocar = atual.getVida() > proximo.getVida();
-                    } 
-     * 
-     * 
-     */
-    public void ordenar(TipoOrdenacao tipo){
+
+     public void ordenar(TipoOrdenacao tipo){
         boolean posicoesSendoTrocadas;
         boolean comparacaoAscendente=true;
         if(tipo == TipoOrdenacao.DESCENDENTE) comparacaoAscendente = false;
@@ -108,7 +99,6 @@ public final class ListaSaints{
                 }
             } while (posicoesSendoTrocadas);   
         }
-    
 
     public ListaSaints unir (ListaSaints listaRecebida){
         ArrayList<Saint> nova = new ArrayList<>();
@@ -118,6 +108,7 @@ public final class ListaSaints{
         ListaSaints listaNova = new ListaSaints();
         for(int x=0;x<nova.size();x++){
             listaNova.adicionaSaint(nova.get(x));
+
         }
         return listaNova;
     }
@@ -134,9 +125,9 @@ public final class ListaSaints{
             if(nenhumIgual) listaDosDiferentes.adicionaSaint(listaDeSaints.get(i));
         }
         return listaDosDiferentes;
-    }
 
-    public String getCSV(){
+     }
+     public String getCSV(){
         StringBuilder csv = new StringBuilder(512);
         String prefix = "";
         for(int x = 0; x<this.listaDeSaints.size();x++){
@@ -145,7 +136,10 @@ public final class ListaSaints{
             csv.append(prefix);
             prefix = (System.getProperty("line.separator"));
             csv.append(csvDoSaint);
-        }
+
+    }
+
+    
         /*
         ArrayList<String> valores = new ArrayList<>();
         for(int x = 0; x<this.listaDeSaints.size(); x++){
@@ -155,6 +149,14 @@ public final class ListaSaints{
         return valores.toString();
          */
         return csv.toString();
+
+    }
+ }
+    /*
+    public void separarPorVidaCrescente(){
+        Collections.sort(listaDeSaints);
+=======
+>>>>>>> f95a3ac... fix(ListaSaints):adicionada categoria da armadura à string CSV.
     }
 }
 /*
