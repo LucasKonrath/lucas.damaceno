@@ -76,29 +76,28 @@ public class ListaSaints{
     }   
 
     public void ordenar() {
-
         this.ordenar(TipoOrdenacao.ASCENDENTE);
     }
 
-     public void ordenar(TipoOrdenacao tipo){
+    public void ordenar(TipoOrdenacao tipo){
         boolean posicoesSendoTrocadas;
         boolean comparacaoAscendente=true;
         if(tipo == TipoOrdenacao.DESCENDENTE) comparacaoAscendente = false;
-            do {
-                posicoesSendoTrocadas = false;
-                for (int i = 0; i < this.listaDeSaints.size() - 1; i++) {
-                    Saint atual = this.listaDeSaints.get(i);
-                    Saint proximo = this.listaDeSaints.get(i + 1);
-                    
-                    boolean precisaTrocar = comparacaoAscendente ? atual.getVida() > proximo.getVida() : atual.getVida() < proximo.getVida();
-                    if (precisaTrocar) {
-                        this.listaDeSaints.set(i, proximo);
-                        this.listaDeSaints.set(i + 1, atual);
-                        posicoesSendoTrocadas = true;
-                    }
+        do {
+            posicoesSendoTrocadas = false;
+            for (int i = 0; i < this.listaDeSaints.size() - 1; i++) {
+                Saint atual = this.listaDeSaints.get(i);
+                Saint proximo = this.listaDeSaints.get(i + 1);
+
+                boolean precisaTrocar = comparacaoAscendente ? atual.getVida() > proximo.getVida() : atual.getVida() < proximo.getVida();
+                if (precisaTrocar) {
+                    this.listaDeSaints.set(i, proximo);
+                    this.listaDeSaints.set(i + 1, atual);
+                    posicoesSendoTrocadas = true;
                 }
-            } while (posicoesSendoTrocadas);   
-        }
+            }
+        } while (posicoesSendoTrocadas);   
+    }
 
     public ListaSaints unir (ListaSaints listaRecebida){
         ArrayList<Saint> nova = new ArrayList<>();
@@ -126,8 +125,9 @@ public class ListaSaints{
         }
         return listaDosDiferentes;
 
-     }
-     public String getCSV(){
+    }
+
+    public String getCSV(){
         StringBuilder csv = new StringBuilder(512);
         String prefix = "";
         for(int x = 0; x<this.listaDeSaints.size();x++){
@@ -136,28 +136,16 @@ public class ListaSaints{
             csv.append(prefix);
             prefix = (System.getProperty("line.separator"));
             csv.append(csvDoSaint);
-
-    }
-
-    
-        /*
-        ArrayList<String> valores = new ArrayList<>();
-        for(int x = 0; x<this.listaDeSaints.size(); x++){
-        Saint saint = this.listaDeSaints.get(x);
-        valores.add( saint.getNome() + "," + saint.getVida() + "," + saint.getNomeConstelacao() + "," + saint.getStatus() + "," +  saint.getGenero()+ "," + saint.getArmaduraVestida() +"\n" ); 
         }
-        return valores.toString();
-         */
         return csv.toString();
-
     }
- }
-    /*
-    public void separarPorVidaCrescente(){
-        Collections.sort(listaDeSaints);
+}
+/*
+public void separarPorVidaCrescente(){
+Collections.sort(listaDeSaints);
 =======
 >>>>>>> f95a3ac... fix(ListaSaints):adicionada categoria da armadura à string CSV.
-    }
+}
 }
 /*
 public void separarPorVidaCrescente(){

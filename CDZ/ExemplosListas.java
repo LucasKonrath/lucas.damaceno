@@ -1,4 +1,4 @@
- import java.util.ArrayList;
+import java.util.ArrayList;
 public class ExemplosListas{
 
     public void rodar(){
@@ -8,12 +8,11 @@ public class ExemplosListas{
         for (int i = 0; i<nomes.size();i++){
             System.out.println(nomes.get(i));
         }
-    
-    
+
     
         System.out.println("Iterator");
         for(String nome : nomes){
-        System.out.println(nome);
+            System.out.println(nome);
         }
     }
 }
