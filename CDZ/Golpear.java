@@ -9,9 +9,9 @@ public class Golpear implements Movimento{
     public void executar()throws Exception{
         int danoDoGolpe = golpeador.getProximoGolpe().getFatorDanoDoGolpe();
         if (golpeador.getArmaduraVestida() == true) {
-            danoDoGolpe = danoDoGolpe * (1 + golpeador.getCategoriaArmadura());
+            danoDoGolpe  *= (1 + golpeador.getCategoriaArmadura());
         }
-        golpeado.perderVida(danoDoGolpe);
+        this.golpeado.perderVida(danoDoGolpe);
     }
 
 }

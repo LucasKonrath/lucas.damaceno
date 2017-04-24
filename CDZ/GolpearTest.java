@@ -12,7 +12,7 @@ public class GolpearTest{
         Saint aiolia = new BronzeSaint("Aiolia","Leão");
         Golpe doGanso = new Golpe("Do Ganso", 20);
         aiolia.aprenderGolpe(doGanso);
-        Golpear test = new Golpear(aiolia,hyoga);
+        Movimento test = new Golpear(aiolia,hyoga);
         test.executar();
         assertEquals(hyoga.getVida(), 80.0, 0.00001);
     }
@@ -23,7 +23,7 @@ public class GolpearTest{
         Saint aiolia = new SilverSaint("Aiolia","Leão");
         Golpe doGanso = new Golpe("Do Ganso", 20);
         aiolia.aprenderGolpe(doGanso);
-        Golpear test = new Golpear(aiolia,hyoga);
+        Movimento test = new Golpear(aiolia,hyoga);
         test.executar();
         assertEquals(hyoga.getVida(), 80.0, 0.00001);
     }
@@ -34,7 +34,7 @@ public class GolpearTest{
         Saint aiolia = new GoldSaint("Aiolia","Leão");
         Golpe doGanso = new Golpe("Do Ganso", 20);
         aiolia.aprenderGolpe(doGanso);
-        Golpear test = new Golpear(aiolia,hyoga);
+        Movimento test = new Golpear(aiolia,hyoga);
         test.executar();
         assertEquals(hyoga.getVida(), 80.0, 0.00001);
     }
@@ -58,7 +58,7 @@ public class GolpearTest{
         Golpe doGanso = new Golpe("Do Ganso", 20);
         aiolia.aprenderGolpe(doGanso);
         aiolia.vestirArmadura();
-        Golpear test = new Golpear(aiolia,hyoga);
+        Movimento test = new Golpear(aiolia,hyoga);
         test.executar();
         assertEquals(hyoga.getVida(), 40.0, 0.00001);
     }
@@ -70,7 +70,7 @@ public class GolpearTest{
         Golpe doGanso = new Golpe("Do Ganso", 20);
         aiolia.aprenderGolpe(doGanso);
         aiolia.vestirArmadura();
-        Golpear test = new Golpear(aiolia,hyoga);
+        Movimento test = new Golpear(aiolia,hyoga);
         test.executar();
         assertEquals(hyoga.getVida(), 20.0, 0.00001);
     }
@@ -79,7 +79,7 @@ public class GolpearTest{
     public void GolpearComSaintsSemGolpes() throws Exception{
         Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         Saint aiolia = new BronzeSaint("Aiolia","Leão");
-        Golpear test = new Golpear(aiolia,hyoga);
+        Movimento test = new Golpear(aiolia,hyoga);
         test.executar();
     }
 

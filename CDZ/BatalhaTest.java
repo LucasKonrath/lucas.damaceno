@@ -5,6 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BatalhaTest{
+    @Test (expected = Exception.class)
+    public void GarantirQueBatalhaSemMovimentosThrowException()throws Exception{
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Saint aiolia = new GoldSaint("Aiolia","Leão");
+        Batalha batalha = new Batalha(hyoga,aiolia);
+        batalha.iniciar();
+    }
 
     @Test (expected = Exception.class)
     public void GarantirQueBatalhaSemMovimentosDeDanoThrowException()throws Exception{
