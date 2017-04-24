@@ -9,11 +9,11 @@ public abstract class Saint {
     protected Status status=Status.VIVO;
     protected double vida = 100.0;
     protected int qtdSentidosDespertados;
-    protected Categoria categoria=Categoria.BRONZE;
+    protected Categoria categoria;
     protected ArrayList<Movimento> movimentos = new ArrayList<>();
     private int acumuladorProximoMovimento=0;
     // Construtor da classe Saint
-    public Saint(String nome, String constelacao) throws Exception{
+    protected Saint(String nome, String constelacao) throws Exception{
         this.armadura = new Armadura(new Constelacao(constelacao), this.categoria);
         this.nome=nome;
     }     

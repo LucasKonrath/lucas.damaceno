@@ -132,10 +132,21 @@ public class ListaSaintsTest{
         assertEquals(todos2,bronze2);
     }
 
-    @Test public void buscaPorCategoriaComListaVaziaRetornaNull(){
+    @Test
+    public void buscaPorCategoriaComListaVaziaRetornaNull(){
         ListaSaints lista = new ListaSaints();
         assertEquals(lista.buscarPorCategoria(Categoria.BRONZE), new ArrayList<Saint>());
     }
+    @Test 
+    public void buscaPorStatusComListaVaziaRetornaNull()throws Exception{
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
+        Saint misty = new SilverSaint("Misty","Lagarto");
+        ArrayList<Saint> jabu = lista.buscarPorStatus(Status.VIVO);
+        assertEquals(0,jabu.size());
+    }
+    
 
     @Test 
     public void ordenarComListaTotalmenteDesordenada()throws Exception{
