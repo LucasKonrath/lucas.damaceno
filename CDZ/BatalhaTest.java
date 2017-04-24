@@ -39,9 +39,11 @@ public class BatalhaTest{
         hyoga.adicionarMovimento(hyogaVesteArmadura);
         Batalha batalha = new Batalha(hyoga,aiolia);
         batalha.iniciar();
+        assertEquals(100.0,aiolia.getVida(),0.01);
         assertEquals(Status.MORTO, hyoga.getStatus());
         assertTrue(hyoga.getArmaduraVestida());
         assertTrue(aiolia.getArmaduraVestida());
     }
+    
 
 }

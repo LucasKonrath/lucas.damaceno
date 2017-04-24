@@ -12,11 +12,17 @@ public abstract class Saint {
     protected Categoria categoria;
     protected ArrayList<Movimento> movimentos = new ArrayList<>();
     private int acumuladorProximoMovimento=0;
+    private static int qtdSaints = 0;
     // Construtor da classe Saint
     protected Saint(String nome, String constelacao) throws Exception{
         this.armadura = new Armadura(new Constelacao(constelacao), this.categoria);
         this.nome=nome;
+        Saint.qtdSaints++;
     }     
+
+    public static int getQtdSaints(){
+        return Saint.qtdSaints;
+    }
 
     public String getNome(){
         return this.nome;
@@ -128,22 +134,15 @@ public abstract class Saint {
         this.acumuladorProximoMovimento++;
         return movimentos.get(posicao);
     }
-    
+
     public int getTamanhoDaListaDeMovimentos(){
         return this.movimentos.size();
     }
-    /*
-    @Override
-    public int compareTo(Saint saint) {
-    double outraVida = saint.getVida();
-
-    if (saint.getVida() == outraVida)
-    return 0;
-    else if (saint.getVida() > outraVida)
-    return 1;
-    else
-    return -1;
+    //Agendando execuç~ão do golpe no Saint passado por paramêtro
+    //Golpe so sera executado, de fato, na batalha.
+    public void golpear(Saint golpeado)throws Exception{
+        this.adicionarMovimento(new Golpear(this, golpeado));
     }
-     */
+
 
 }
