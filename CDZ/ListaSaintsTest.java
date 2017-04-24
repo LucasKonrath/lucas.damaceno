@@ -55,7 +55,7 @@ public class ListaSaintsTest{
         Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
         Constelacao lagarto = new Constelacao("Lagarto");
         Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
-          BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
         BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
         BronzeSaint misty = new BronzeSaint("Misty","Lagarto");
         lista.adicionaSaint(ikki);
@@ -73,7 +73,7 @@ public class ListaSaintsTest{
         Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
         Constelacao lagarto = new Constelacao("Lagarto");
         Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
-         BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
         BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
         BronzeSaint misty = new BronzeSaint("Misty","Lagarto");
         lista.adicionaSaint(ikki);
@@ -92,7 +92,7 @@ public class ListaSaintsTest{
         Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
         Constelacao lagarto = new Constelacao("Lagarto");
         Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
-          BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
         BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
         BronzeSaint misty = new BronzeSaint("Misty","Lagarto");
         lista.adicionaSaint(ikki);
@@ -116,7 +116,7 @@ public class ListaSaintsTest{
         Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
         Constelacao lagarto = new Constelacao("Lagarto");
         Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
-          BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
         BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
         Saint misty = new SilverSaint("Misty","Lagarto");
         lista.adicionaSaint(ikki);
@@ -146,7 +146,7 @@ public class ListaSaintsTest{
         Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
         Constelacao lagarto = new Constelacao("Lagarto");
         Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
-          BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
         BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
         BronzeSaint misty = new BronzeSaint("Misty","Lagarto");
         lista.adicionaSaint(ikki);
@@ -171,7 +171,7 @@ public class ListaSaintsTest{
         Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
         Constelacao lagarto = new Constelacao("Lagarto");
         Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
-         BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
         BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
         BronzeSaint misty = new BronzeSaint("Misty","Lagarto");
         lista.adicionaSaint(ikki);
@@ -186,9 +186,10 @@ public class ListaSaintsTest{
         assertEquals(hyoga,resultado.get(1));
         assertEquals(ikki,resultado.get(2));
     }
+
     @Test
     public void garantirFuncionamentoDoMetodoUnirLista()throws Exception{
-    Constelacao cisne = new Constelacao("Cisne");
+        Constelacao cisne = new Constelacao("Cisne");
         Armadura deCisne = new Armadura(cisne, Categoria.BRONZE);
         BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
         BronzeSaint shiryu = new BronzeSaint("Shiryu", "Dragão");
@@ -223,6 +224,7 @@ public class ListaSaintsTest{
         assertEquals(hyoga, resultado.get(9));
         assertEquals(ikki, resultado.get(10));
     }
+
     @Test 
     public void ordenarComListaTotalmenteDesordenadaUtilizandoTipoOrdenacaoDescendente()throws Exception{
         ListaSaints lista = new ListaSaints();
@@ -232,7 +234,7 @@ public class ListaSaintsTest{
         Armadura deFenix = new Armadura(cisne,Categoria.BRONZE);
         Constelacao lagarto = new Constelacao("Lagarto");
         Armadura deLagarto = new Armadura(lagarto, Categoria.PRATA);
-          BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
         BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
         BronzeSaint misty = new BronzeSaint("Misty","Lagarto");
         lista.adicionaSaint(ikki);

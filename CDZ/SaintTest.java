@@ -10,7 +10,6 @@ public class SaintTest{
     /* AAA 
     1. Arrange - Montagem dos dados de teste.
     */
-        Armadura pegaso = new Armadura (new Constelacao("Pegaso"),Categoria.BRONZE);
         Saint seiya = new BronzeSaint("Seiya", "Pegaso");
     /*
     2. Act - Invocar a ação a ser testada.
@@ -20,7 +19,7 @@ public class SaintTest{
    /*
     3. Assert - Verificação dos resultados do teste.
     */ 
-        assertEquals(true, resultado);
+        assertTrue(resultado);
     }
     @Test 
     public void garantirQueMetodoDespirArmaduraFuncione() throws Exception{

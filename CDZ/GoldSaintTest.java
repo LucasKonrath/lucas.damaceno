@@ -37,7 +37,6 @@ public class GoldSaintTest
     }
     @Test ( expected = Exception.class)
     public void garantirQueCavaleiroDeOuroComSignoErradoDispareException()throws Exception{
-    Constelacao aries = new Constelacao("Jarbas");
     GoldSaint mu = new GoldSaint("Mu","Jarbas");
     }
 }

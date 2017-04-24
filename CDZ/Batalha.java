@@ -8,10 +8,12 @@ public class Batalha{
     }
 
     public  void iniciar() throws Exception{ 
-        final double dano = 10.0;
+        int contador=0;
         Movimento movimento;
         Saint primeiroAAtacar = this.saint2;
         Saint segundoAAtacar = this.saint1;
+        double vidaDoPrimeiro = saint1.getVida();
+        double vidaDoSegundo = saint2.getVida();
         if(saint1.getCategoriaArmadura() >= saint2.getCategoriaArmadura()) {
             primeiroAAtacar = this.saint1;
             segundoAAtacar = this.saint2;
@@ -22,6 +24,12 @@ public class Batalha{
             if (segundoAAtacar.getStatus() != Status.MORTO){
                 movimento = segundoAAtacar.getProximoMovimento();
                 movimento.executar();
+            }
+            contador++;
+            if(contador >= saint1.getTamanhoDaListaDeMovimentos() && contador >= + saint2.getTamanhoDaListaDeMovimentos()){
+                if( vidaDoPrimeiro == saint1.getVida() && vidaDoSegundo == saint2.getVida()){
+                    throw new Exception ("Nenhum dos Saints tem metodos causadores de dano. Batalha encerrada.");
+                }
             }
         }
     }
