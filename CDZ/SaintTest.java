@@ -7,11 +7,21 @@ import java.security.InvalidParameterException;
 public class SaintTest{
     @Test
     public void testarFuncaoEstaticaDeSaints()throws Exception{
-    int quantidade = Saint.getQtdSaints();
-    Saint seiya = new BronzeSaint("Seiya", "Pegaso");
-    Saint ikki = new BronzeSaint("Ikki","Fenix");
-    Saint shyriu = new BronzeSaint("Shyriu","Dragao");
-    assertEquals(quantidade+3, Saint.getQtdSaints());
+        int quantidade = Saint.getQtdSaints();
+        Saint seiya = new BronzeSaint("Seiya", "Pegaso");
+        Saint ikki = new BronzeSaint("Ikki","Fenix");
+        Saint shyriu = new BronzeSaint("Shyriu","Dragao");
+        assertEquals(quantidade+3, Saint.getQtdSaints());
+    }
+    @Test
+    public void testarIdDosSaints() throws Exception{
+        int quantidade = Saint.getQtdSaints();
+        Saint seiya = new BronzeSaint("Seiya", "Pegaso");
+        Saint ikki = new BronzeSaint("Ikki","Fenix");
+        Saint shyriu = new BronzeSaint("Shyriu","Dragao");
+        assertEquals(quantidade+1,seiya.getSaintId());
+        assertEquals(quantidade+2,ikki.getSaintId());
+        assertEquals(quantidade+3,shyriu.getSaintId());
     }
     @Test
     public void vestirArmaduraDeixaArmaduraVestida() throws Exception{
@@ -180,6 +190,5 @@ public class SaintTest{
         Saint ikki = new SilverSaint("Ikki", "Fênix");
         ikki.getProximoMovimento();
     }
-    
-    
+
 }

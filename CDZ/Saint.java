@@ -13,11 +13,13 @@ public abstract class Saint {
     protected ArrayList<Movimento> movimentos = new ArrayList<>();
     private int acumuladorProximoMovimento=0;
     private static int qtdSaints = 0;
+    protected int id=0;
     // Construtor da classe Saint
     protected Saint(String nome, String constelacao) throws Exception{
         this.armadura = new Armadura(new Constelacao(constelacao), this.categoria);
         this.nome=nome;
         Saint.qtdSaints++;
+        this.id = Saint.qtdSaints;
     }     
 
     public static int getQtdSaints(){
@@ -144,5 +146,8 @@ public abstract class Saint {
         this.adicionarMovimento(new Golpear(this, golpeado));
     }
 
+    public int getSaintId(){
+        return this.id;
+    }
 
 }
