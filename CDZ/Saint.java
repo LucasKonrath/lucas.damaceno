@@ -150,4 +150,11 @@ public abstract class Saint {
         return this.id;
     }
 
+    public boolean equals (Object object) {
+        Saint saint = (Saint)object;
+        if (saint.getNome().equals(this.nome) && saint.getNomeConstelacao().equals(this.getNomeConstelacao()))  return true;
+
+        return false;
+    }
+
 }

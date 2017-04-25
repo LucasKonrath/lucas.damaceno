@@ -26,24 +26,65 @@ public class BatalhaTest{
     }
 
     @Test 
-    public void GarantirQueBatalhaSeComporteComoOPrevisto() throws Exception{
+    public void BatalhaSaint1MaiorQueSaint2() throws Exception{
         Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         Saint aiolia = new GoldSaint("Aiolia","Leão");
         Golpe doGanso = new Golpe("Do Ganso", 20);
         aiolia.aprenderGolpe(doGanso);
+        hyoga.aprenderGolpe(new Golpe("Po De Diamante",30));
         Movimento aioliaAtacaHyoga = new Golpear(aiolia,hyoga);
         Movimento aioliaVesteArmadura = new VestirArmadura(aiolia);
         aiolia.adicionarMovimento(aioliaVesteArmadura);
         aiolia.adicionarMovimento(aioliaAtacaHyoga);
         Movimento hyogaVesteArmadura = new VestirArmadura(hyoga);
         hyoga.adicionarMovimento(hyogaVesteArmadura);
+        hyoga.adicionarMovimento(new Golpear(hyoga,aiolia));
         Batalha batalha = new Batalha(hyoga,aiolia);
         batalha.iniciar();
-        assertEquals(100.0,aiolia.getVida(),0.01);
+        assertEquals(40.0,aiolia.getVida(),0.01);
         assertEquals(Status.MORTO, hyoga.getStatus());
         assertTrue(hyoga.getArmaduraVestida());
         assertTrue(aiolia.getArmaduraVestida());
     }
-    
+
+    @Test 
+    public void BatalhaSaint2MaiorQueSaint1() throws Exception{
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Saint aiolia = new GoldSaint("Aiolia","Leão");
+        Golpe doGanso = new Golpe("Do Ganso", 20);
+        aiolia.aprenderGolpe(doGanso);
+        hyoga.aprenderGolpe(new Golpe("Po De Diamante",30));
+        Movimento aioliaAtacaHyoga = new Golpear(aiolia,hyoga);
+        Movimento aioliaVesteArmadura = new VestirArmadura(aiolia);
+        aiolia.adicionarMovimento(aioliaVesteArmadura);
+        aiolia.adicionarMovimento(aioliaAtacaHyoga);
+        Movimento hyogaVesteArmadura = new VestirArmadura(hyoga);
+        hyoga.adicionarMovimento(hyogaVesteArmadura);
+        hyoga.adicionarMovimento(new Golpear(hyoga,aiolia));
+        Batalha batalha = new Batalha(aiolia,hyoga);
+        batalha.iniciar();
+        assertEquals(40.0,aiolia.getVida(),0.01);
+        assertEquals(Status.MORTO, hyoga.getStatus());
+        assertTrue(hyoga.getArmaduraVestida());
+        assertTrue(aiolia.getArmaduraVestida());
+    }
+
+    @Test 
+    public void BatalhaSaint1IgualSaint2() throws Exception{
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Saint aiolia = new BronzeSaint("Aiolia","Leão");
+        Golpe doGanso = new Golpe("Do Ganso", 20);
+        aiolia.aprenderGolpe(doGanso);
+        hyoga.aprenderGolpe(doGanso);
+        Movimento aioliaAtacaHyoga = new Golpear(aiolia,hyoga);
+        aiolia.adicionarMovimento(aioliaAtacaHyoga);
+        hyoga.adicionarMovimento(new Golpear(hyoga,aiolia));
+        Batalha batalha = new Batalha(aiolia,hyoga);
+        batalha.iniciar();
+        assertEquals(20.0,aiolia.getVida(),0.01);
+        assertEquals(Status.MORTO, hyoga.getStatus());
+        assertFalse(hyoga.getArmaduraVestida());
+        assertFalse(aiolia.getArmaduraVestida());
+    }
 
 }

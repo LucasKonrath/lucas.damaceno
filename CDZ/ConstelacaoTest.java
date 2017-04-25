@@ -1,5 +1,4 @@
 
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -12,6 +11,7 @@ public class ConstelacaoTest
         Constelacao cisne = new Constelacao("Cisne");
         assertEquals("Cisne", cisne.getNomeConstelacao());
     }
+
     @Test 
     public void garantirQueGetGolpesRetorneOsValoresCertos(){
         Constelacao cisne = new Constelacao("Cisne");
@@ -25,14 +25,15 @@ public class ConstelacaoTest
         assertEquals(golpesRecebidos.get(0), doGanso);
         assertEquals(golpesRecebidos.get(1), daGarca);
         assertEquals(golpesRecebidos.get(2), jutsuProibido);
-        
+
     }
+
     @Test (expected = Exception.class)
     public void garantirFuncionamentoDoThrowExceptionDoMetodoGetProximoGolpe()throws Exception{
         Constelacao cisne = new Constelacao("Cisne");
         cisne.getProximoGolpe();
     }
-    
+
     @Test 
     public void garantirFuncionamentoDoMetodoGetProximoGolpe()throws Exception{
         Constelacao cisne = new Constelacao("Cisne");
@@ -47,5 +48,5 @@ public class ConstelacaoTest
         assertEquals(cisne.getProximoGolpe(),doLindomar);
         assertEquals(cisne.getProximoGolpe(),doGanso);
     }
-    
+
 }

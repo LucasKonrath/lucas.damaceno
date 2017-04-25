@@ -63,7 +63,7 @@ public class ListaSaints{
     }
 
     public Saint getSaintMenorVida(){
-        double vida = 100.0;
+        double vida = 100.1;
         Saint saint=null;
         for (int x = 0; x<listaDeSaints.size();x++){
             Saint test = listaDeSaints.get(x);

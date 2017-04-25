@@ -137,16 +137,133 @@ public class ListaSaintsTest{
         ListaSaints lista = new ListaSaints();
         assertEquals(lista.buscarPorCategoria(Categoria.BRONZE), new ArrayList<Saint>());
     }
+
+    @Test
+    public void buscaPorCategoriaInexistente()throws Exception{
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        lista.adicionaSaint(june);
+        assertEquals(lista.buscarPorCategoria(Categoria.PRATA), new ArrayList<Saint>());
+    }
+
     @Test 
     public void buscaPorStatusComListaVaziaRetornaNull()throws Exception{
+        ListaSaints lista = new ListaSaints();
+        ArrayList<Saint> jabu = lista.buscarPorStatus(Status.VIVO);
+        assertEquals(0,jabu.size());
+    }
+
+    @Test 
+    public void buscarPorStatusInexistente()throws Exception{
         ListaSaints lista = new ListaSaints();
         BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
         BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
         Saint misty = new SilverSaint("Misty","Lagarto");
-        ArrayList<Saint> jabu = lista.buscarPorStatus(Status.VIVO);
+        lista.adicionaSaint(misty);
+        lista.adicionaSaint(hyoga);
+        lista.adicionaSaint(ikki);
+        ArrayList<Saint> jabu = lista.buscarPorStatus(Status.DESACORDADO);
         assertEquals(0,jabu.size());
     }
-    
+
+    @Test 
+    public void buscarPorStatusExistente()throws Exception{
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint ikki = new BronzeSaint("Ikki", "Fênix");
+        BronzeSaint hyoga = new BronzeSaint("Hyoga","Cisne");
+        Saint misty = new SilverSaint("Misty","Lagarto");
+        lista.adicionaSaint(misty);
+        lista.adicionaSaint(hyoga);
+        lista.adicionaSaint(ikki);
+        misty.perderVida(99.2);
+        ikki.perderVida(99.2);
+        ArrayList<Saint> jabu = lista.buscarPorStatus(Status.MORTO);
+        assertEquals(2,jabu.size());
+        assertEquals(misty,jabu.get(0));
+        assertEquals(ikki,jabu.get(1));
+    }
+
+    @Test
+    public void getSaintMaiorVidaComListaVazia()throws Exception{
+        ListaSaints lista = new ListaSaints();
+        Saint nulo = lista.getSaintMaiorVida();
+        assertNull(nulo);
+    }
+
+    @Test
+    public void getSaintMaiorVidaComApenasUm() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        lista.adicionaSaint(june);
+        assertEquals(june, lista.getSaintMaiorVida());
+    }
+
+    @Test
+    public void getSaintMaiorVidaComApenasTres() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        Saint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+        lista.adicionaSaint(shun);
+        lista.adicionaSaint(misty);
+        lista.adicionaSaint(june);
+        shun.perderVida(10);
+        june.perderVida(20);
+        assertEquals(misty, lista.getSaintMaiorVida());
+    }
+
+    @Test
+    public void getSaintMenorVidaComListaVazia()throws Exception{
+        ListaSaints lista = new ListaSaints();
+        Saint nulo = lista.getSaintMenorVida();
+        assertNull(nulo);
+    }
+
+    @Test
+    public void getSaintMenorVidaComApenasUm() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        lista.adicionaSaint(june);
+        assertEquals(june, lista.getSaintMenorVida());
+    }
+
+    @Test
+    public void ordenarComListaVazia() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        listaSaints.ordenar();
+        ArrayList<Saint> resultado = listaSaints.todos();
+        assertEquals(new ArrayList<Saint>(), resultado);
+    }
+
+    @Test
+    public void ordenarComListaDeValoresIguais() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        Saint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+        listaSaints.adicionaSaint(shun);
+        listaSaints.adicionaSaint(misty);
+        listaSaints.adicionaSaint(june);
+        listaSaints.ordenar();
+        ArrayList<Saint> resultado = listaSaints.todos();
+        assertEquals(shun, resultado.get(0));
+        assertEquals(misty, resultado.get(1));
+        assertEquals(june, resultado.get(2));
+    }
+
+    @Test
+    public void getSaintMenorVidaComApenasTres() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        Saint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+        lista.adicionaSaint(shun);
+        lista.adicionaSaint(misty);
+        lista.adicionaSaint(june);
+        shun.perderVida(10);
+        june.perderVida(20);
+        assertEquals(june, lista.getSaintMenorVida());
+    }
 
     @Test 
     public void ordenarComListaTotalmenteDesordenada()throws Exception{
@@ -291,5 +408,39 @@ public class ListaSaintsTest{
         assertEquals(jabu, resultado.get(2));
         assertEquals(jabu, resultado.get(3));
     }
+    
+    @Test
+    public void getCSVComListaVazia() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        assertEquals("", lista.getCSV());
+    }
+    
+     @Test
+    public void getCSVComApenasUmSaint() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        june.setGenero(Genero.FEMININO);
+        june.perderVida(15.5);
+        lista.adicionaSaint(june);
+        String esperado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
+        assertEquals(esperado, lista.getCSV());
+    }
+    
+    @Test
+    public void getCSVComApenasDoisSaints() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        BronzeSaint june = new BronzeSaint("June", "");
+        june.setGenero(Genero.FEMININO);
+        june.perderVida(15.5);
+        lista.adicionaSaint(june);
+        Saint dohko = new GoldSaint("Dohko", "Libra");
+        dohko.perderVida(90);
+        dohko.vestirArmadura();
+        lista.adicionaSaint(dohko);
+        String esperado = "June,84.5,,BRONZE,VIVO,FEMININO,false"+System.getProperty("line.separator")+"Dohko,10.0,Libra,OURO,VIVO,NAO_INFORMADO,true";
+        assertEquals(esperado, lista.getCSV());
+    }
+    
+    
 }
 
