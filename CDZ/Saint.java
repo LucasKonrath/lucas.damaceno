@@ -20,7 +20,12 @@ public abstract class Saint {
         this.nome=nome;
         Saint.qtdSaints++;
         this.id = Saint.qtdSaints;
-    }     
+    }
+    
+    protected void finalize() throws Throwable{
+        Saint.qtdSaints--;
+      
+    }
 
     public static int getQtdSaints(){
         return Saint.qtdSaints;

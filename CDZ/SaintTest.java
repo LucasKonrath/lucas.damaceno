@@ -5,24 +5,33 @@ import org.junit.Test;
 import java.security.InvalidParameterException;
 
 public class SaintTest{
+    
+    @After
+    public void tearDown(){
+            System.gc();
+    }
+    
+    
     @Test
     public void testarFuncaoEstaticaDeSaints()throws Exception{
         int quantidade = Saint.getQtdSaints();
         Saint seiya = new BronzeSaint("Seiya", "Pegaso");
         Saint ikki = new BronzeSaint("Ikki","Fenix");
         Saint shyriu = new BronzeSaint("Shyriu","Dragao");
-        assertEquals(quantidade+3, Saint.getQtdSaints());
+        assertEquals(3, Saint.getQtdSaints());
     }
+
     @Test
     public void testarIdDosSaints() throws Exception{
         int quantidade = Saint.getQtdSaints();
         Saint seiya = new BronzeSaint("Seiya", "Pegaso");
         Saint ikki = new BronzeSaint("Ikki","Fenix");
         Saint shyriu = new BronzeSaint("Shyriu","Dragao");
-        assertEquals(quantidade+1,seiya.getSaintId());
-        assertEquals(quantidade+2,ikki.getSaintId());
-        assertEquals(quantidade+3,shyriu.getSaintId());
+        assertEquals(1,seiya.getSaintId());
+        assertEquals(2,ikki.getSaintId());
+        assertEquals(3,shyriu.getSaintId());
     }
+
     @Test
     public void vestirArmaduraDeixaArmaduraVestida() throws Exception{
         /* AAA 
