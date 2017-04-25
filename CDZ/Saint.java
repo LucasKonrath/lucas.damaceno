@@ -3,6 +3,7 @@ import java.util.*;
 // Classe Saint (Cavaleirxs que entregam justiça cósmica.)
 public abstract class Saint {
     public String nome;
+    private int id;
     protected Armadura armadura;
     protected boolean armaduraVestida;
     protected Genero genero=Genero.NAO_INFORMADO;
@@ -12,23 +13,25 @@ public abstract class Saint {
     protected Categoria categoria;
     protected ArrayList<Movimento> movimentos = new ArrayList<>();
     private int acumuladorProximoMovimento=0;
-    private static int qtdSaints = 0;
-    protected int id=0;
+    private static int qtdSaints = 0, acumuladorQtdSaints=0;
     // Construtor da classe Saint
     protected Saint(String nome, String constelacao) throws Exception{
         this.armadura = new Armadura(new Constelacao(constelacao), this.categoria);
         this.nome=nome;
         Saint.qtdSaints++;
-        this.id = Saint.qtdSaints;
+        Saint.acumuladorQtdSaints++;
+        this.id = Saint.getAcumuladorQtdSaints();
     }
     
     protected void finalize() throws Throwable{
-        Saint.qtdSaints--;
-      
+        Saint.qtdSaints--;    
     }
 
     public static int getQtdSaints(){
         return Saint.qtdSaints;
+    }
+    public static int getAcumuladorQtdSaints(){
+        return Saint.acumuladorQtdSaints;
     }
 
     public String getNome(){

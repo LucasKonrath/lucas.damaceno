@@ -23,13 +23,13 @@ public class SaintTest{
 
     @Test
     public void testarIdDosSaints() throws Exception{
-        int quantidade = Saint.getQtdSaints();
+        int quantidade = Saint.getAcumuladorQtdSaints();
         Saint seiya = new BronzeSaint("Seiya", "Pegaso");
         Saint ikki = new BronzeSaint("Ikki","Fenix");
         Saint shyriu = new BronzeSaint("Shyriu","Dragao");
-        assertEquals(1,seiya.getSaintId());
-        assertEquals(2,ikki.getSaintId());
-        assertEquals(3,shyriu.getSaintId());
+        assertEquals(quantidade + 1,seiya.getSaintId());
+        assertEquals(quantidade + 2,ikki.getSaintId());
+        assertEquals(quantidade + 3,shyriu.getSaintId());
     }
 
     @Test
