@@ -8,12 +8,18 @@ public class Golpear implements Movimento{
 
     public void executar()throws Exception{
         int danoDoGolpe = golpeador.getProximoGolpe().getFatorDanoDoGolpe();
-        if (golpeador.getArmaduraVestida() == true) {
-            danoDoGolpe  *= (1 + golpeador.getCategoriaArmadura());
+        if(golpeado.vaiBloquearProximoAtaque == false){
+            if (golpeador.getArmaduraVestida() == true) {
+                danoDoGolpe  *= (1 + golpeador.getCategoriaArmadura());
+            }
+            this.golpeado.perderVida(danoDoGolpe);
         }
-        this.golpeado.perderVida(danoDoGolpe);
+        else{ 
+            this.golpeador.perderVida(golpeador.getVida() * 0.25);
+            golpeado.vaiBloquearProximoAtaque = false;
+        }
     }
-    
+
     public boolean equals(Object outro){
         Golpear outroGolpear =(Golpear)outro;
         return this.golpeador.equals(outroGolpear.golpeador) && this.golpeado.equals(outroGolpear.golpeado);

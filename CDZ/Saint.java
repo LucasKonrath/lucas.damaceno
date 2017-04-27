@@ -14,6 +14,7 @@ public abstract class Saint {
     protected ArrayList<Movimento> movimentos = new ArrayList<>();
     private int acumuladorProximoMovimento=0;
     private static int qtdSaints = 0, acumuladorQtdSaints=0;
+    protected boolean vaiBloquearProximoAtaque;
     // Construtor da classe Saint
     protected Saint(String nome, String constelacao) throws Exception{
         this.armadura = new Armadura(new Constelacao(constelacao), this.categoria);
