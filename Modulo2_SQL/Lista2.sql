@@ -1,8 +1,10 @@
-
+UPDATE EMPREGADO 
+SET COMISSAO=0
+WHERE COMISSAO IS NULL;
 -- Ex 1. Selecionar empregados em ordem de admissão.
 select IDEmpregado AS ID, NomeEmpregado as NOME FROM Empregado ORDER BY DataAdmissao ASC;
 --Ex.2  Selecionar empregados que não recebem comissão em ordem de admissão.
-select * FROM Empregado WHERE Comissao IS NULL  ORDER BY DataAdmissao ASC;
+select * FROM Empregado WHERE Comissao=0  ORDER BY DataAdmissao ASC;
 -- Ex. 3 
 /*
 Cálculo
@@ -15,6 +17,7 @@ Salario Anual
 Comissão Anual
 Renda Anual
 */
+
 SELECT IDEmpregado as ID, NomeEmpregado as Nome, (salario*13) as [Salario Anual],(comissao*12) as [Comissao Anual],(salario*13 + comissao*12) as [Renda Anual]
 FROM EMPREGADO 
 -- EX 4
