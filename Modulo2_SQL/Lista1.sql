@@ -28,31 +28,35 @@ Preço.
 */
 
 CREATE TABLE infoProdutos (
-	CodigoId int,
-	nomeCurto varchar(5),
-	nomeDescritivo varchar(25),
-	dataDaCriacao date,
-	localNoEstoque varchar(20),
-	 quantidade  INTEGER,
-	 preco FLOAT(2),
+	CodigoId int identity not null,
+	nomeCurto varchar(25) not null,
+	nomeDescritivo varchar(60) not null,
+	dataDaCriacao date not null,
+	localNoEstoque varchar(20) not null,
+	 quantidade  INTEGER not null,
+	 preco FLOAT(2) not null,
 );
 
 
-ALTER TABLE infoProdutos add constraint UK_CODIGOPRODUTO unique (CodigoId);
+ALTER TABLE infoProdutos add constraint PK_CODIGOPRODUTO PRIMARY KEY (CodigoId);
 
 
-ALTER TABLE infoProdutos
-ALTER column nomeDescritivo varchar(60)
-ALTER TABLE infoProdutos
-ALTER column nomeCurto varchar(35)
+
+ALTER TABLE INFOPRODUTOS
+ALTER COLUMN quantidade decimal(7,3) not null;
+ALTER TABLE INFOPRODUTOS
+ALTER COLUMN preco decimal(9,2) not null;
 /*Exercício 4
 
 Inserindo registros
 
 Crie dois registros nessa tabela nova (produto).*/
 INSERT INTO INFOPRODUTOS 
-VALUES(255, 'Trafo Sulton', 'Transformador 100MA 60HZ 16V SULTON', '01/10/1996', 'ILHA 2B', 44, 322.50)
+VALUES( 'Trafo Sulton', 'Transformador 100MA 60HZ 16V SULTON', '01/10/1996', 'ILHA 2B', 44, 322.50)
 INSERT INTO INFOPRODUTOS 
-VALUES(232, 'PIC', 'MICROPROCESSADOR 16 BITS 16F690', '27/04/2017', 'ILHA 5A', 0, 16.25)
+VALUES( 'PIC', 'MICROPROCESSADOR 16 BITS 16F690', '27/04/2017', 'ILHA 5A', 0, 16.25)
 SELECT * FROM INFOPRODUTOS;
 SELECT * FROM CIDADEAUX;
+INSERT INTO INFOPRODUTOS
+VALUES('CLS100', 'central de alarme cls100', getdate(),'ILHA 4C',22.5,32.17)
+
