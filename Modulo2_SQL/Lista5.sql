@@ -23,8 +23,6 @@ FROM Departamento
 INNER JOIN Empregado ON Departamento.IDDepartamento = Empregado.IDDepartamento
 WHERE Empregado.Salario = (Select MAX(Salario) from Empregado where IDDepartamento IS NOT NULL)
 
-SELECT * FROM EMPREGADO
-WHERE SALARIO = (Select MAX(Salario) from Empregado WHERE IDDepartamento IS NOT NULL)
 
 /*
 
@@ -80,7 +78,8 @@ WHERE Nome IN (SELECT Nome as [Nome Da Cidade] FROM CIDADE
 GROUP BY Nome
 having COUNT(1) >= 2) AND IDCidade in 
 (SELECT MAX(IDCidade) FROM CIDADE GROUP BY NOME HAVING NOME = CIDADE.NOME)
-
-SELECT * FROM CIDADE ORDER BY NOME DESC;
 COMMIT
+
+
+
 
