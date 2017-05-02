@@ -9,7 +9,7 @@ Múltiplos acessos
 Liste o nome do empregado, o nome do gerente e o departamento de cada um.
 */
 
-SELECT Empregado.NomeEmpregado, g.NomeEmpregado as NomeGerente, Empregado.IDDepartamento  
+SELECT Empregado.NomeEmpregado, g.NomeEmpregado as NomeGerente, Empregado.IDDepartamento as [Departamento do Empregado], G.IDDepartamento as [Departamento Do Gerente]  
 FROM EMPREGADO 
 INNER JOIN Empregado g ON Empregado.IDGerente = g.IDEmpregado
 
