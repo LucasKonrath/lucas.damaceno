@@ -59,17 +59,18 @@ MG	2008
 
 */
 
-SELECT top 1 Cidade.UF as UF, Count(1) as TotalClientes
+Select * from(SELECT top 1 Cidade.UF as UF, Count(1) as TotalClientes
 FROM Cliente
 INNER JOIN CIDADE ON Cliente.IDCidade = Cidade.IDCidade
 Group by UF
-Order by Count(1) ASC
-
+Order by Count(1) ASC) as TabAsc
+union
+Select * from(
 SELECT TOP 1 Cidade.UF as UF, Count(1) as TotalClientes
 FROM Cliente
 INNER JOIN CIDADE ON Cliente.IDCidade = Cidade.IDCidade
 Group by UF
-ORDER BY Count(1) DESC
+ORDER BY Count(1) DESC) as TabDesc
 
 
 
