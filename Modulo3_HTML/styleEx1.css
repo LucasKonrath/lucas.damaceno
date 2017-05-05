@@ -1,6 +1,9 @@
 body{
+    background-image:url("fundo.png");
     background-size:100%;
 }
+
+
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 
@@ -49,18 +52,19 @@ small{
     color:yellow;
 }
 img{
+    display:block;
+    margin:auto;
     margin-left:40%;
     margin-top: 60pt;
     margin-bottom:40pt;
-    border:3px solid red;
-    outline-color:yellow;
-    outline-style:outset;
-    outline-width:5px;
+    border:7px solid yellow;
+    border-radius:8px;
+    
 }
 
 .quote{
     text-align: center;
-    margin-top:85pt;
+    margin-top:125pt;
     font-size:18pt;
     font-family: IMPACT;
     color:red;
@@ -70,7 +74,7 @@ img{
     border:4px solid yellow;
      outline-color:red;
     outline-style:outset;
-    outline-width:5px;
+    outline-width:15px;
 }
 .quote>strong{
     letter-spacing:-2px;
