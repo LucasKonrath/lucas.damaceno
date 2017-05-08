@@ -17,6 +17,7 @@ public class ExercitoQueAtacaEmOrdemHierarquica implements ExercitoDeSaints{
            Saint test = this.lista.get(x); 
            if(test.getCategoriaArmadura() == 1 ){
                 this.listaOrdenada.add(test);
+                
            }
             
         }
@@ -24,6 +25,7 @@ public class ExercitoQueAtacaEmOrdemHierarquica implements ExercitoDeSaints{
            Saint test = this.lista.get(x); 
            if(test.getCategoriaArmadura() == 2 ){
                 this.listaOrdenada.add(test);
+               
            }
             
         }
@@ -31,6 +33,7 @@ public class ExercitoQueAtacaEmOrdemHierarquica implements ExercitoDeSaints{
            Saint test = this.lista.get(x); 
            if(test.getCategoriaArmadura() == 3 ){
                 this.listaOrdenada.add(test);
+              
            }
             
         }
