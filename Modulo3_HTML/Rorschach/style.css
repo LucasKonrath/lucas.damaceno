@@ -5,7 +5,8 @@ body{
     background-attachment: fixed;
     background-size:cover;
     font-family:"Brush Script MT",cursive;
-    opacity:0.7;
+    opacity:0;
+    transition: opacity 10s;
     background-color: black;
 }
 p{
@@ -23,5 +24,22 @@ h1{
     text-shadow:3px 2px #F9F90E;
     
 }
+.fade{
+   opacity: 0;
+   transition: opacity 4s ease-in-out;
+   }
+.fade2{
+   opacity: 0;
+   transition: opacity 8s ease-in-out;
+   }
 
+
+   h1:hover + .fade + .fade2, h1:hover + .fade{
+       
+       opacity: 1.0;
+      
+    }
+
+   
+    
 
