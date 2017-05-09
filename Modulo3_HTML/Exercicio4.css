@@ -1,0 +1,33 @@
+.silvio{
+    position:absolute;
+   transform:translate(25%,25%);
+}
+.titulo{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    height:60px;
+    font-size:40PT;
+    padding-top:0px;
+    padding-bottom:0px;
+    color:white;
+    background-color:rgba(127,255,212,0.6);
+}
+.paragrafo{
+    display:none;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:120px;
+    font-size:14PT;
+    padding-top:0px;
+    color:white;
+    background-color:rgba(127,255,212,0.6);
+}
+.titulo:hover + .paragrafo{
+    display:inline-block;
+}
+.titulo:hover{
+    bottom:120px;
+}
+
