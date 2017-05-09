@@ -72,6 +72,7 @@ body{
     clear:both;
 }
 .subtitulo-noticia{
+    padding-left:15px;
     color:#bbb;   
 }
 .time{
