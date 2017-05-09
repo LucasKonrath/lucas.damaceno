@@ -1,0 +1,48 @@
+.wrapper{
+    position:relative;
+}
+.img-fundo{
+    position:relative;
+    background-image:url(bison.jpg);
+    width:100%;
+    height:500px;
+    background-position: center;
+ +  background-size: cover;
+}
+*{
+    margin
+}
+body{
+    margin:0;
+}
+*{
+    box-sizing:border-box;
+}
+.container{
+    position:relative;
+    top:-111px;
+    width:50%;
+    transform:translateX(50%);
+}
+.title{
+    text-transform:capitalize;
+    color:antiquewhite;
+    background-color:darkslategray;
+    font-size:30pt;
+    padding:30px 10px;
+}
+.texto-menu-imagem{
+    position:relative;
+    transform:translateX(50%);
+    top:-170px;
+    word-spacing:30px;
+    background: rgba(105, 105, 105, 0.6);
+    width:640px;
+    padding:40px;
+    border-radius:25px;
+}
+.link-imagem{
+    text-decoration:none;
+    color:red;
+    font-size:20pt;
+}
