@@ -7,11 +7,16 @@ public class GuerraEntreExercitos{
     }
     public void iniciar() throws Exception{
         for(int x = 0;  x<atacante.getListaOrdenada().size();x++){
-            Batalha epica = new Batalha(atacante.getListaOrdenada().get(x), defensor.getListaOrdenada().get(x));
+            Saint queAtaca = atacante.getListaOrdenada().get(x);
+            Saint queDefende = defensor.getListaOrdenada().get(x);
+            queAtaca.adicionarMovimento(new Golpear(queAtaca,queDefende));
+            queDefende.adicionarMovimento(new Golpear(queDefende,queAtaca));
+            Batalha epica = new Batalha(queAtaca, queDefende);
             epica.iniciar();
         }
-            defensor.getListaOrdenada().clear();
-            atacante.getListaOrdenada().clear();
+        atacante.limparLista();
+        defensor.limparLista();
+           
     }
     
 

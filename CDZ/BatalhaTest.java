@@ -87,4 +87,60 @@ public class BatalhaTest{
         assertFalse(aiolia.getArmaduraVestida());
     }
 
+    @ Test
+    public void GuerraEntreSaints1() throws Exception{
+
+        Saint def1 = new BronzeSaint("Hyoga", "Cisne");
+        Saint def2 = new BronzeSaint("Aiolia","Leão");
+        Saint def3 = new SilverSaint("Misty", "Lagarto");
+        Saint def4 = new SilverSaint("Batata", "Selvagem");
+        Saint def5 = new GoldSaint("Aiolia","Leão");
+        Saint def6 = new GoldSaint("Mu","Áries");
+        Golpe doGanso = new Golpe("Do Ganso", 20);
+        def1.aprenderGolpe(doGanso);
+        def2.aprenderGolpe(doGanso);
+        def3.aprenderGolpe(doGanso);
+        def4.aprenderGolpe(doGanso);
+        def5.aprenderGolpe(doGanso);
+        def6.aprenderGolpe(doGanso);
+        
+        Saint atk1 = new BronzeSaint("Hyoga", "Cisne");
+        Saint atk2 = new BronzeSaint("Aiolia","Leão");
+        Saint atk3 = new SilverSaint("Misty", "Lagarto");
+        Saint atk4 = new SilverSaint("Batata", "Selvagem");
+        Saint atk5 = new GoldSaint("Aiolia","Leão");
+        Saint atk6 = new GoldSaint("Mu","Áries");
+        atk1.aprenderGolpe(doGanso);
+        atk2.aprenderGolpe(doGanso);
+        atk3.aprenderGolpe(doGanso);
+        atk4.aprenderGolpe(doGanso);
+        atk5.aprenderGolpe(doGanso);
+        atk6.aprenderGolpe(doGanso);
+        
+        ExercitoDeSaints defensor = new ExercitoQueAtacaEmOrdemHierarquica();
+        ExercitoDeSaints atacante = new ExercitoQueAtacaEmOrdemAlternada();
+        
+        defensor.alistar(def1);
+        defensor.alistar(def2);
+        defensor.alistar(def3);
+        defensor.alistar(def4);
+        defensor.alistar(def5);
+        defensor.alistar(def6);
+        
+        atacante.alistar(atk1);
+        atacante.alistar(atk2);
+        atacante.alistar(atk3);
+        atacante.alistar(atk4);
+        atacante.alistar(atk5);
+        atacante.alistar(atk6);
+        GuerraEntreExercitos guerraEpica = new GuerraEntreExercitos(defensor, atacante);
+        guerraEpica.iniciar();
+    }
+    
+    
+    
+    
+    
+    
+    
 }

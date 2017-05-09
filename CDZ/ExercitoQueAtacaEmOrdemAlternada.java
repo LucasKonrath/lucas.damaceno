@@ -9,12 +9,12 @@ public class ExercitoQueAtacaEmOrdemAlternada extends ListaSaints implements Exe
 
     public void ordenar(){
         Saint test;
-         ArrayList<Saint> bronze = new ArrayList<>();
-         ArrayList<Saint> silver = new ArrayList<>();
-         ArrayList<Saint> gold = new ArrayList<>();
+        ArrayList<Saint> bronze = new ArrayList<>();
+        ArrayList<Saint> silver = new ArrayList<>();
+        ArrayList<Saint> gold = new ArrayList<>();
         this.listaOrdenada.clear();
         for(int x=0; x<this.lista.size();x++){
-            
+
             test = this.lista.get(x);
             switch (test.getCategoriaArmadura()){
 
@@ -27,20 +27,27 @@ public class ExercitoQueAtacaEmOrdemAlternada extends ListaSaints implements Exe
                 case 3:
                 gold.add(test);
                 break;
+                default:
+                break;
 
-                
             }
-
         }
-        int proximaAPegar=1;
-        int tamanho = lista.size();
+        int tamanho = bronze.size();
+        int tamanho2 = silver.size();
+        int tamanho3 = gold.size();
         for (int x=0; x<bronze.size();x++){
             this.listaOrdenada.add(bronze.get(x));
-            this.listaOrdenada.add(silver.get(x));
-            this.listaOrdenada.add(gold.get(x));
+            if(silver.size() > 0 && x<silver.size()) this.listaOrdenada.add(silver.get(x));
+            if(gold.size()>0 && x<gold.size()) this.listaOrdenada.add(gold.get(x));
         }
+       
     }
+
     public ArrayList<Saint> getListaOrdenada(){
-    return this.listaOrdenada;
+        return this.listaOrdenada;
+    }
+
+    public void limparLista(){
+        this.lista.clear();
     }
 }

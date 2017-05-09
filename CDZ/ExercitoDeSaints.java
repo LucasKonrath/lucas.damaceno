@@ -3,4 +3,5 @@ public interface ExercitoDeSaints
 {
     public void alistar(Saint saint);
     public ArrayList<Saint> getListaOrdenada();
+    public void limparLista();
 }
