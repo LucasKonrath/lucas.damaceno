@@ -8,7 +8,7 @@
 }
 .titulo{
     position:absolute;
-    bottom:120px;
+    bottom:100px;
     width:100%;
     font-size:40PT;
     padding-top:0px;
@@ -23,6 +23,7 @@
     width:100%;
     font-size:10PT;
     padding-top:0px;
+    padding-bottom:0px;
     color:white;
     background-color:rgba(127,255,212,0.6);
 }
@@ -37,6 +38,10 @@
     width:100%;
 }
 .paragrafo{
+    margin-top:0 px;
     display:hidden;
     font-size:0;
+}
+h1{
+    margin-bottom:0px;
 }
