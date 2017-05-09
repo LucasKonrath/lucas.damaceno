@@ -40,5 +40,8 @@ public class ExercitoQueAtacaEmOrdemHierarquica implements ExercitoDeSaints{
        
 
     }
+    public ArrayList<Saint> getListaOrdenada(){
+    return this.listaOrdenada;
+    }
 }
 

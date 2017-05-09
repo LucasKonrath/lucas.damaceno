@@ -34,16 +34,13 @@ public class ExercitoQueAtacaEmOrdemAlternada extends ListaSaints implements Exe
         }
         int proximaAPegar=1;
         int tamanho = lista.size();
-        /*while(listaOrdenada.size() < tamanho){
-        for(int index=0; index<lista.size();index++){
-        test = this.lista.get(index);
-        if(test.getCategoriaArmadura() == proximaAPegar){
-        listaOrdenada.add(test);
+        for (int x=0; x<bronze.size();x++){
+            this.listaOrdenada.add(bronze.get(x));
+            this.listaOrdenada.add(silver.get(x));
+            this.listaOrdenada.add(gold.get(x));
         }
-        proximaAPegar++;
-        if(proximaAPegar == 4) proximaAPegar=1;
-        }
-        }
-         */
+    }
+    public ArrayList<Saint> getListaOrdenada(){
+    return this.listaOrdenada;
     }
 }
