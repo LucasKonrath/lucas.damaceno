@@ -1,0 +1,29 @@
+input[type="checkbox"]:checked + label{
+    font-size:20pt;
+    text-decoration:line-through;
+    color:antiquewhite;
+}
+label{
+    font-size:20pt;
+}
+input[type="checkbox"]{
+    
+    display:none;
+    
+}
+input[type="checkbox"]+label:before{
+    content:" ";
+    width:10px;
+    height:10px;
+    border:1px solid red;
+    float:left;
+    margin-right:10px;
+    position:relative;
+    top:9px;
+}
+input[type="checkbox"]:checked+label:before{
+    border-color:green;
+    transform:rotate(45deg);
+    width:5px;
+    
+}
