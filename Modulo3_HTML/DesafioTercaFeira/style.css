@@ -73,21 +73,12 @@ p,h1,h2{
     font-size:11pt;
     margin:5px;
 }
-.batata{
-    top:0;
-    transform:translateX(0%);
-    height:420px;
-    float:left;
-    background-image:url(eu.jpg);
-    background-size:cover;
-}
-.batata2{
-    height:420px;
-    top:0;
-    transform:translateX(0%);
-    width:50%;
-    float:left;
-}
+
 .infos-pessoais{
     background-color:gainsboro;
+}
+#minhafoto{
+    height:40%;
+    width:40%;
+    margin-right:12px;
 }
