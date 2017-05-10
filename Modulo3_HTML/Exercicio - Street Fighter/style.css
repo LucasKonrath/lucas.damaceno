@@ -1,0 +1,97 @@
+body{
+    margin:0;
+    background-image: url(https://assets.vg247.it/current//2016/02/street-fighter-5-guida-mosse-trucchi.jpg);
+    background-size:100% 810px;
+    background-repeat:no-repeat;
+    font-family:"Open Sans", sans-serif;
+}
+.wrapper{
+    position:relative;
+}
+
+
+*{
+    box-sizing:border-box;
+}
+.wrapper{
+    position:relative;
+ ;
+}
+.container{
+    background-color:gainsboro;
+    position:relative;
+    top:310px;
+    width:50%;
+    transform:translateX(50%);
+    padding-bottom:30px;
+}
+.menu-links{
+    margin-top:40px;
+}
+.title{
+    text-transform:capitalize;
+    color:#C9CECF;
+    font-weight:bold;
+    background-color:#686868;
+    font-size:20pt;
+    width:100%;
+    position:relative;
+    padding: 30px 0px 30px 30px;
+   
+}
+.texto-menu-imagem{
+    position:relative;
+    background: rgba(107, 107, 107, 0.78);
+    word-spacing:37px;
+    width:35%;
+    transform:translate(96%, 230%);
+    border-radius:10px;
+    top:100px;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:30px;
+    border: 1px solid white;
+}
+.link-imagem{
+    text-decoration:none;
+    color:white;
+    font-size:12pt;
+    font-weight:bold;
+}
+#link-imagem-2{
+    word-spacing:5px;
+}
+p,h1,h2{
+    margin-left:20px;
+}
+ li{
+    margin-left:40px;
+}
+.imagem-texto{
+   position:relative;
+   float:left;
+    clear:both;
+    height:550px;
+    width:318.94px;
+}
+#texto-imagem{
+    font-size:11pt;
+    margin:3px;
+}
+
+.infos-pessoais{
+    background-color:gainsboro;
+}
+#minhafoto{
+    height:40%;
+    width:40%;
+    margin-right:12px;
+}
+
+hr{
+    width:95%;
+}
+.hrsumario{
+    width:100%;
+    transform:translateX(-3.0%);
+}
