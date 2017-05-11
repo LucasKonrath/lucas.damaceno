@@ -5,9 +5,18 @@
 .menu-item{
     padding:40px;
 }
-#batata{
+nav-principal{
     background-color:black;
 }
 #itembranco{
     background-color:white;
+}
+#imagem-fundo{
+    background-image:url(liquid-logo.png);
+    background-size:50%;
+    opacity:0.3;
+    
+    background-position:center;
+    background-repeat:no-repeat;
+    height:120vh;
 }
