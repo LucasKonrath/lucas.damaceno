@@ -4,8 +4,12 @@ body{
 .fora{
     width:300px;
     height:300px;
-    background-color:yellow;
+    background-color:cyan;
     position:relative;
+    border-radius:50% 0 0 0;
+}
+#fora-direita{
+    border-radius:0 50% 0 0;
 }
 .dentro{
     background-color:black;
@@ -14,6 +18,7 @@ body{
     position:relative;
     top:75px;
     left:75px;
+    border-radius:50%;
     }
 .mais-dentro{
     width:75px;
@@ -23,6 +28,7 @@ body{
     bottom:0px;
     background-color:green;
     position:relative;
+    border-radius:50%;
 }
 .olhos{
     position:relative;
@@ -43,13 +49,14 @@ span{
     top:300px;
     width:600px;
     height:300px;
-    background-color:yellow;
+    background-color:cyan;
 }
 .boca{
     top:100px;
     left:100px;
     position:absolute;
-    background-color:red;
+    background-color:darkcyan;
+    border:1px solid black;
     width:400px;
     height:100px;
 }

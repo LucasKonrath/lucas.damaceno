@@ -1,0 +1,13 @@
+#logo-navbar{
+    position:relative;
+    top:-16px;
+}
+.menu-item{
+    padding:40px;
+}
+#batata{
+    background-color:black;
+}
+#itembranco{
+    background-color:white;
+}
