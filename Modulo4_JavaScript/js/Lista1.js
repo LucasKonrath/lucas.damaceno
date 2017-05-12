@@ -116,7 +116,6 @@ function somar(a){
 
 /*
 
-
 Fibona
 
 Faça uma função fiboSum que calcule a soma da sequência de Fibonacci para n números informados. Exemplo de chamada:
