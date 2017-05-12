@@ -159,7 +159,17 @@ queroCafe(3.14, [ 5.16, 2.12, 1.15, 3.11, 17.5 ]);
 
 
 
-
+function queroCafe(mascada, precos){
+    var precosAbaixo = new Array();
+    for(number of precos){
+        if (mascada >= number){
+            precosAbaixo.push(number);
+        }
+        
+    }
+    precosAbaixo.sort(function(a, b){return a-b});
+    return precosAbaixo.toString();
+}
 
 
 
