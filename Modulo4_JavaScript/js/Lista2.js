@@ -147,7 +147,7 @@ function queroGenero(genero){
             }
         }
     }
-  return arrayTitulos; 
+    return arrayTitulos; 
 }
 
 /*
@@ -188,30 +188,75 @@ function creditosIlluminatis(serie){
     var ArrayElencoInvertido = new Array();
     var ArrayDiretores = new Array();
     var ArrayDiretoresInvertido = new Array();
-        for(diretores of serie.diretor){
-            ArrayDiretores.push(diretores);
-        }
-        for(membrosElenco of serie.elenco){
-            ArrayElenco.push(membrosElenco);
-        }
-        function inverter(arrayAInverter,arrayAArmazenar){
-            arrayAArmazenar = [];
+    for(diretores of serie.diretor){
+        ArrayDiretores.push(diretores);
+    }
+    for(membrosElenco of serie.elenco){
+        ArrayElenco.push(membrosElenco);
+    }
+    function inverter(arrayAInverter,arrayAArmazenar){
+        arrayAArmazenar = [];
         for(let i = 0; i < arrayAInverter.length;i++){
             var sobrenome = arrayAInverter[i].split(" ")[1];
             var primeiroNome = arrayAInverter[i].split(" ")[0];
             arrayAArmazenar.push(sobrenome + " " + primeiroNome);
         }
-            return arrayAArmazenar;
-        }
-        console.log("Diretores da série : ");
-         console.log((inverter(inverter(ArrayDiretores, ArrayDiretoresInvertido).sort(), ArrayDiretores)).join("\n") );
-         console.log("Elenco da série : ");
-         console.log((inverter(inverter(ArrayElenco, ArrayElencoInvertido).sort(), ArrayElenco)).join("\n") );
-        
+        return arrayAArmazenar;
+    }
+    console.log("Diretores da série : ");
+    console.log((inverter(inverter(ArrayDiretores, ArrayDiretoresInvertido).sort(), ArrayDiretores)).join("\n") );
+    console.log("Elenco da série : ");
+    console.log((inverter(inverter(ArrayElenco, ArrayElencoInvertido).sort(), ArrayElenco)).join("\n") );
+
 }
 
 
+/*
 
+        Serie Illuminati
+
+Escondemos um pequeno easter egg neste exercicio!
+
+Para que ele seja descoberto, será necessário algumas informações;
+
+Quando abreviamos um nome colocamos a primeira letra do nome seguida de um ponto final Exemplo:
+
+Bernardo Bosak Rezende -> Bernardo B. Rezende
+Augusto Schiller Wartchow -> Augusto S. Wartchow
+Essa é a informação básica; Construa uma função que identificará aquela série que tem TODOS do elenco com nomes abreviados.
+
+Dica: Contrua uma função separada para identificar se aquela string tem a abreviação;
+
+Show de bola, estamos quase lá!
+
+Uma vez achada a serie, vamos modificar um pouquinho a implementação. Coloque todas as palavras abreviadas (de preferência sem os pontos finais) em uma string que será retornada ao final do método.
+
+Forme uma hashtag com a palavra! #PALAVRA
+
+
+*/
+
+
+function qualSerieEIlluminati(){
+    for(serie of series){
+        var stringASerRetornada;
+        var qtdComNomeAbreviado=0;
+        for(membro of serie.elenco){
+            if(membro.includes(".")) {
+                qtdComNomeAbreviado++;
+                if(qtdComNomeAbreviado === serie.elenco.length) {
+                    stringASerRetornada = "";
+                    for(membroElenco of serie.elenco){
+                        stringASerRetornada += membroElenco.split(" ")[1];
+                        stringASerRetornada = stringASerRetornada.split('.').join('');
+                    }
+                }
+            }
+        }
+        
+    }
+    return stringASerRetornada;
+}
 
 
 
