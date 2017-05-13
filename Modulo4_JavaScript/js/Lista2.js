@@ -245,7 +245,7 @@ function qualSerieEIlluminati(){
             if(membro.includes(".")) {
                 qtdComNomeAbreviado++;
                 if(qtdComNomeAbreviado === serie.elenco.length) {
-                    stringASerRetornada = "";
+                    stringASerRetornada = "#";
                     for(membroElenco of serie.elenco){
                         stringASerRetornada += membroElenco.split(" ")[1];
                         stringASerRetornada = stringASerRetornada.split('.').join('');
