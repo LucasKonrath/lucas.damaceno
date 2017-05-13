@@ -27,7 +27,6 @@ function seriesInvalidas(seriesRecebidas){
             var valorJaRetornado = false;
             if(valor === null || typeof valor === "undefined") {
                 seriesInvalidas.push(series);
-                console.log(valor + "palmito");
                 valorJaRetornado=true;
             }
         }
@@ -124,8 +123,8 @@ function mascadaEmSerie(serie){
     var valorTotal = 0;
     var numeroDiretores = serie.diretor.length;
     var tamanhoElenco = serie.elenco.length;
-    if(numeroDiretores) valorTotal += (numeroDiretores * 100.000);
-    if(tamanhoElenco) valorTotal += (tamanhoElenco * 40.000);
+    if(numeroDiretores) valorTotal += (numeroDiretores * 100000);
+    if(tamanhoElenco) valorTotal += (tamanhoElenco * 40000);
     return valorTotal;
 }
 
