@@ -166,6 +166,56 @@ function queroTitulo(tituloRecebido){
 }
 
 
+/*
+
+
+Exercicio 7
+
+Creditos
+
+Ao final de um episódio, temos os créditos do episódio. Para isso vamos implementar uma função, chamada de creditosIlluminatis Recebendo uma serie como parâmetro e imprima os créditos a partir dela. Deverá ser impresso, o Titulo da serie, os Diretores, avisando com um título que é o bloco deles; Em seguida vem o elenco, também com um título de Elenco;
+
+Tranquilo né? Easy! MAS, tem o seguinte: Os créditos são sempre ordenados alfabéticamente, mas pelo ULTIMO NOME!! Faça os ajustes necessários para que isso seja possível
+
+Consulte as interwebsss para ajudar
+
+
+*/
+
+function creditosIlluminatis(serie){
+    console.log("Título da serie: " +  serie.titulo );
+    var ArrayElenco = new Array();
+    var ArrayElencoInvertido = new Array();
+    var ArrayDiretores = new Array();
+    var ArrayDiretoresInvertido = new Array();
+        for(diretores of serie.diretor){
+            ArrayDiretores.push(diretores);
+        }
+        for(membrosElenco of serie.elenco){
+            ArrayElenco.push(membrosElenco);
+        }
+        function inverter(arrayAInverter,arrayAArmazenar){
+            arrayAArmazenar = [];
+        for(let i = 0; i < arrayAInverter.length;i++){
+            var sobrenome = arrayAInverter[i].split(" ")[1];
+            var primeiroNome = arrayAInverter[i].split(" ")[0];
+            arrayAArmazenar.push(sobrenome + " " + primeiroNome);
+        }
+            return arrayAArmazenar;
+        }
+        console.log("Diretores da série : ");
+         console.log((inverter(inverter(ArrayDiretores, ArrayDiretoresInvertido).sort(), ArrayDiretores)).join("\n") );
+         console.log("Elenco da série : ");
+         console.log((inverter(inverter(ArrayElenco, ArrayElencoInvertido).sort(), ArrayElenco)).join("\n") );
+        
+}
+
+
+
+
+
+
+
 
 
 //
