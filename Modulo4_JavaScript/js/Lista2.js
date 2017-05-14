@@ -183,34 +183,22 @@ Consulte as interwebsss para ajudar
 
 function creditosIlluminatis(serie){
     console.log("Título da serie: " +  serie.titulo );
-    var ArrayElenco = [];
-    var ArrayElencoInvertido = [];
-    var ArrayDiretores = [];
-    var ArrayDiretoresInvertido = [];
-    for(diretores of serie.diretor){
-        ArrayDiretores.push(diretores);
-    }
-    for(membrosElenco of serie.elenco){
-        ArrayElenco.push(membrosElenco);
-    }
-    function inverter(arrayAInverter,arrayAArmazenar){
-        arrayAArmazenar = [];
+    function inverter(arrayAInverter){
+        arrayInvertido = [];
         for(let i = 0; i < arrayAInverter.length;i++){
             var sobrenome = arrayAInverter[i].split(" ")[1];
             var primeiroNome = arrayAInverter[i].split(" ")[0];
-            arrayAArmazenar.push(sobrenome + " " + primeiroNome);
+            arrayInvertido.push(sobrenome + " " + primeiroNome);
         }
-        return arrayAArmazenar;
+        return arrayInvertido;
     }
-    function ordenarEImprimir(ArrayOriginal, ArrayInvertido){
-    	console.log((inverter(inverter(ArrayOriginal, ArrayInvertido).sort(), ArrayElenco)).join("\n") );
+    function ordenarEImprimir(ArrayOriginal){
+    	console.log((inverter(inverter(ArrayOriginal).sort()).join("\n"))) ;
     }
     console.log("Diretores da série : ");
-    ordenarEImprimir(ArrayDiretores, ArrayDiretoresInvertido);
+    ordenarEImprimir(serie.diretor);
     console.log("Elenco da série : ");
-    ordenarEImprimir(ArrayElenco, ArrayElencoInvertido);
-    
-
+    ordenarEImprimir(serie.elenco);
 }
 
 
