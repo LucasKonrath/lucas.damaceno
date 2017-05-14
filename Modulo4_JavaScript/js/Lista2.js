@@ -94,7 +94,7 @@ function procurarPorNome(series,nome){
     var temNome = false;
     for(serie of series){
         for(nomes of serie.elenco){
-            if(nome === nomes){ 
+            if(nomes.includes(nome)) { 
                 temNome = true; 
                 break;
             }
