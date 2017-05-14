@@ -183,10 +183,10 @@ Consulte as interwebsss para ajudar
 
 function creditosIlluminatis(serie){
     console.log("Título da serie: " +  serie.titulo );
-    var ArrayElenco = new Array();
-    var ArrayElencoInvertido = new Array();
-    var ArrayDiretores = new Array();
-    var ArrayDiretoresInvertido = new Array();
+    var ArrayElenco = [];
+    var ArrayElencoInvertido = [];
+    var ArrayDiretores = [];
+    var ArrayDiretoresInvertido = [];
     for(diretores of serie.diretor){
         ArrayDiretores.push(diretores);
     }
@@ -202,10 +202,14 @@ function creditosIlluminatis(serie){
         }
         return arrayAArmazenar;
     }
+    function ordenarEImprimir(ArrayOriginal, ArrayInvertido){
+    	console.log((inverter(inverter(ArrayOriginal, ArrayInvertido).sort(), ArrayElenco)).join("\n") );
+    }
     console.log("Diretores da série : ");
-    console.log((inverter(inverter(ArrayDiretores, ArrayDiretoresInvertido).sort(), ArrayDiretores)).join("\n") );
+    ordenarEImprimir(ArrayDiretores, ArrayDiretoresInvertido);
     console.log("Elenco da série : ");
-    console.log((inverter(inverter(ArrayElenco, ArrayElencoInvertido).sort(), ArrayElenco)).join("\n") );
+    ordenarEImprimir(ArrayElenco, ArrayElencoInvertido);
+    
 
 }
 
@@ -234,25 +238,31 @@ Forme uma hashtag com a palavra! #PALAVRA
 
 
 */
+/*
+function temPonto(element){
 
+	return element.contains(".");
+
+}
+
+series.elenco.every(temponto);
+
+*/
+function temPonto(element){
+
+	return element.includes(".");
+
+}
 
 function qualSerieEIlluminati(){
-    for(serie of series){
-        var stringASerRetornada;
-        var qtdComNomeAbreviado=0;
-        for(membro of serie.elenco){
-            if(membro.includes(".")) {
-                qtdComNomeAbreviado++;
-                if(qtdComNomeAbreviado === serie.elenco.length) {
-                    stringASerRetornada = "#";
-                    for(membroElenco of serie.elenco){
+	    var stringASerRetornada = "#";
+    for(let i = 0; i<series.length;i++){
+        if (series[i].elenco.every(temPonto) === true) {
+        	 for(membroElenco of series[i].elenco){
                         stringASerRetornada += membroElenco.split(" ")[1];
                         stringASerRetornada = stringASerRetornada.split('.').join('');
                     }
-                }
-            }
-        }
-        
+        } 
     }
     return stringASerRetornada;
 }
