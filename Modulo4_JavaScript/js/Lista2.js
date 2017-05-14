@@ -121,10 +121,8 @@ Uma serie tem seu elenco e diretor(es), mas para ela acontecer, eles devem ser p
 
 function mascadaEmSerie(serie){
     var valorTotal = 0;
-    var numeroDiretores = serie.diretor.length;
-    var tamanhoElenco = serie.elenco.length;
-    if(numeroDiretores) valorTotal += (numeroDiretores * 100000);
-    if(tamanhoElenco) valorTotal += (tamanhoElenco * 40000);
+    if(serie.diretor.length) valorTotal += (serie.diretor.length * 100000);
+    if(serie.elenco.length) valorTotal += (serie.elenco.length * 40000);
     return valorTotal;
 }
 
@@ -157,7 +155,7 @@ B - Sei exatamente o que quero assistir! Escreva uma função chamada queroTitul
 */
 
 function queroTitulo(tituloRecebido){
-    var arrayTitulos = new Array();
+    var arrayTitulos = [];
     for(serie of series){
         if((serie.titulo.toLowerCase()).includes(tituloRecebido.toLowerCase())) arrayTitulos.push(serie.titulo);
     }
