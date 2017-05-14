@@ -17,7 +17,7 @@ Possuir algum campo que seja undefined ou nullo.
 */
 
 function seriesInvalidas(seriesRecebidas){
-    var seriesInvalidas = new Array();
+    var seriesInvalidas = [];
     var dataAtual = new Date();
     var anoAtual = dataAtual.getFullYear();
     for(var series of seriesRecebidas){
@@ -32,7 +32,7 @@ function seriesInvalidas(seriesRecebidas){
         }
         if(series.anoEstreia > anoAtual && valorJaRetornado===false) seriesInvalidas.push(series);
     }
-    var titulos = new Array();
+    var titulos = [];
     for(series of seriesInvalidas){
         titulos.push(series.titulo);
     }
@@ -49,7 +49,7 @@ Nesse exercício deverá ser implementada uma função chamada filtrarSeriesPorA
 */
 
 function filtrarSeriesPorAno(series, ano){
-    var seriesMaisNovas = new Array();
+    var seriesMaisNovas = [];
     for(serie of series){
         if(serie.anoEstreia >= ano) seriesMaisNovas.push(serie);
     }
@@ -72,12 +72,11 @@ Exemplo:
 */
 
 function mediaDeEpisodios(series){
-    var numeroSeries = series.length;
     var totalEpisodios = 0;
     for(let serie of series){
         if(typeof serie.numeroEpisodios !== "undefined") totalEpisodios += serie.numeroEpisodios;
     }
-    return totalEpisodios / numeroSeries;
+    return totalEpisodios / series.length;
 }
 
 
@@ -94,19 +93,14 @@ Crie uma função chamada procurarPorNome(series, nome) que recebe um array de s
 function procurarPorNome(series,nome){
     var temNome = false;
     for(serie of series){
-
         for(nomes of serie.elenco){
-
             if(nome === nomes){ 
                 temNome = true; 
                 break;
             }
-
         }
-
     }
     return temNome;
-
 }
 
 /*
@@ -139,7 +133,7 @@ function queroGenero(genero){
     var arrayTitulos = new Array();
     for(serie of series){
         for(generos of serie.genero){
-            if(genero == generos){
+            if(genero.toLowerCase() === generos.toLowerCase()) {
                 arrayTitulos.push(serie.titulo);
             }
         }
