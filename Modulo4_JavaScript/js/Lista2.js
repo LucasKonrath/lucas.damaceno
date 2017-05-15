@@ -56,6 +56,12 @@ function filtrarSeriesPorAno(series, ano){
     return seriesMaisNovas;
 }
 
+//Modificação feita na aula de 15/05.
+function filtrarSeriesPorAnoV2(series,ano){
+
+    return series.filter(s => s.anoEstreia >= ano);
+}
+
 
 
 
@@ -77,6 +83,12 @@ function mediaDeEpisodios(series){
         if(typeof serie.numeroEpisodios !== "undefined") totalEpisodios += serie.numeroEpisodios;
     }
     return totalEpisodios / series.length;
+}
+
+function mediaDeEpisodiosV2(series){
+    
+    return series.map(series => series.numeroEpisodios).reduce((a,b) => a+b) / series.length;
+
 }
 
 
