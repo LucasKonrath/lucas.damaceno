@@ -85,9 +85,12 @@ function mediaDeEpisodios(series){
     return totalEpisodios / series.length;
 }
 
+// Código feito na aula do dia 15/05.
 function mediaDeEpisodiosV2(series){
     
-    return series.map(series => series.numeroEpisodios).reduce((a,b) => a+b) / series.length;
+    return series
+        .map(series => series.numeroEpisodios)
+        .reduce((a,b) => a+b,0) / series.length;
 
 }
 
@@ -115,6 +118,10 @@ function procurarPorNome(series,nome){
     return temNome;
 }
 
+// Exercício refeito na aula do dia 15/05.
+    function procurarPorNomeV2(series,nome){
+        return series.some(s => s.elenco.some(e => e.includes(nome)));  
+    }
 /*
 
 Exercicio 5
