@@ -1,3 +1,7 @@
+String.prototype.temAbreviacao = function(){
+    return this.match(/ [A-Z][.]/ ) !== null;
+}
+
 /*
 
 Exercício 1
@@ -139,6 +143,7 @@ function mascadaEmSerie(serie){
     return valorTotal;
 }
 
+// console.table(series.sort((s1,s2) => mascadaEmSerie(s2) - mascadaEmSerie(s1)));
 /*
 Exercicio 6
 
@@ -158,6 +163,12 @@ function queroGenero(genero){
         }
     }
     return arrayTitulos; 
+}
+
+function queroGeneroV2(genero){
+    
+   return  series.filter( s=> s.genero.includes(genero));
+    
 }
 
 /*
@@ -213,6 +224,8 @@ function creditosIlluminatis(serie){
 }
 
 
+
+
 /*
 
         Serie Illuminati
@@ -265,6 +278,10 @@ function qualSerieEIlluminati(){
     }
     return stringASerRetornada;
 }
+
+
+
+
 
 
 
