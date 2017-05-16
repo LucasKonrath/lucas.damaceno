@@ -20,28 +20,18 @@ Possuir algum campo que seja undefined ou nullo.
 
 */
 
-function seriesInvalidas(seriesRecebidas){
-    var seriesInvalidas = [];
-    var dataAtual = new Date();
-    var anoAtual = dataAtual.getFullYear();
-    for(var series of seriesRecebidas){
-        var valores = Object.values(series);
+function seriesInvalidas(series){
 
-        for(let valor of valores){
-            var valorJaRetornado = false;
-            if(valor === null || typeof valor === "undefined") {
-                seriesInvalidas.push(series);
-                valorJaRetornado=true;
-            }
-        }
-        if(series.anoEstreia > anoAtual && valorJaRetornado===false) seriesInvalidas.push(series);
-    }
-    var titulos = [];
-    for(series of seriesInvalidas){
-        titulos.push(series.titulo);
-    }
-    return "Séries Inválidas:" + titulos.join(" - ");
+let invalidas = series.filter( serie => {
+
+    let algumCampoInvalido = Object.values(serie).some(v => v === null || typeof v === 'undefined');
+    let estreiaInvalida = serie.anoEstreia > new Date().getFullYear();
+    return estreiaInvalida || algumCampoInvalido;
+
+});
+    return "Séries Inválidas: " + invalidas.map( p => p.titulo).join(" - ");
 }
+
 
 
 
@@ -153,19 +143,9 @@ A - Não sei o que quero assitir, mas quero ver CAOS! Escreva uma função chama
 
 */
 
-function queroGenero(genero){
-    var arrayTitulos = new Array();
-    for(serie of series){
-        for(generos of serie.genero){
-            if(genero.toLowerCase() === generos.toLowerCase()) {
-                arrayTitulos.push(serie.titulo);
-            }
-        }
-    }
-    return arrayTitulos; 
-}
 
-function queroGeneroV2(genero){
+
+function queroGenero(genero){
     
    return  series.filter( s=> s.genero.includes(genero));
     
@@ -177,13 +157,18 @@ B - Sei exatamente o que quero assistir! Escreva uma função chamada queroTitul
 
 
 */
-
+/*
 function queroTitulo(tituloRecebido){
     var arrayTitulos = [];
     for(serie of series){
         if((serie.titulo.toLowerCase()).includes(tituloRecebido.toLowerCase())) arrayTitulos.push(serie.titulo);
     }
     return arrayTitulos;
+}
+*/
+function queroTitulo(titulo){
+
+   return  series.filter( s=> s.titulo.includes(titulo)).map(s => s.titulo);   
 }
 
 

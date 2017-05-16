@@ -101,3 +101,8 @@ function queroGenero(genero){
    return  series.filter( s=> s.genero.includes(genero));	
 }
 
+function queroTitulo(titulo){
+
+   return  series.filter( s=> s.titulo.includes(titulo));	
+}
+
