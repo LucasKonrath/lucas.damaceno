@@ -11,3 +11,4 @@ numeroCasas =  numeroCasas || 2;
 }
  return Math.round(this * Math.pow(10,numeroCasas))/Math.pow(10,numeroCasas);
 }
+

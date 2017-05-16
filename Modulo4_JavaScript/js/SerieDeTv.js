@@ -24,33 +24,37 @@ public SerieDeTv(String nome, int anoEstreia){
 }
 */
 
-function SerieDeTV(nome, anoEstreia){
-
-this.nome = nome || 'NI';
-this.anoEstreia = anoEstreia;
-
-}
-
-SerieDeTV.prototype.imprimirNome = function(){
-
-    console.log(this.nome);
-
-}
 
 
 // Syntactic sugar
 
-    class SerieDeTv2{
+    class SerieDeTv{
         constructor(nome,AnoEstreia){
             this.nome = nome || 'NI';
             this.anoEstreia = AnoEstreia;
         }
         
-        imprimirNome(){
+        // ATRIBUTOS
+        // EX: BrBa.nomeSerie outputs "BREAKING BAD"
+        get nomeSerie(){
 
-            console.log(this.nome.toUpperCase())
+           return this.nome.toUpperCase();
         }
-
+        
+        // ATRIBUTOS
+        // EX: BrBa.nomeSerie = "A quimica do mal" muda o valor de BrBa.nome
+        set nomeSerie(valor){
+            
+            this.nome = valor;
+            
+        }
+        static verificarClassificacaoIndicativa(){
+            
+            return "13 anos.";
+            
+        }
+        
+        
     }
 
 
