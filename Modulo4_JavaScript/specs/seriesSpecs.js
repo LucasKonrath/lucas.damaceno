@@ -88,3 +88,10 @@ describe("Testando palavraIlluminati() e palavraIlluminatiComContador()", functi
         expect("#NUNESILLUMINATI").toBe(qualSerieEIlluminati());
     });
 });
+
+describe("Testando função proposta 16/05 (devolver numero com x casas decimais.)", function() {
+    it("Teste para 16.8732 com 2 casas decimais, depois com 4", function() {
+        expect(16.87).toBe(converterDecimal(16.8732));
+        expect(16.8732).toBe(converterDecimal(16.8732,4));
+    });
+});
