@@ -67,8 +67,8 @@ musica.onended = function(){
 }
 
 function mudarCorProgress(divRecebida, stat){
-    if(stat <= 20) divRecebida.style.backgroundColor = 'gray';
-    else if(stat <50) divRecebida.style.backgroundColor = 'yellow';
+    if(stat <=20) divRecebida.style.backgroundColor = 'black';
+    else if(stat <50) divRecebida.style.backgroundColor = 'gray';
     else if (stat <80) divRecebida.style.backgroundColor = 'green';
     else if (stat <100) divRecebida.style.backgroundColor = 'blue';
     else divRecebida.style.backgroundColor = 'gold';
