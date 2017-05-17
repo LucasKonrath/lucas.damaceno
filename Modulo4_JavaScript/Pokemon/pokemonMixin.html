@@ -1,0 +1,50 @@
+<html>
+    
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="pokemonStyle.css">
+        <audio src="essePokemon.mp3"id="audioPokemon"></audio>
+        <script type="text/javascript" src="farbtastic/farbtastic.js"></script>
+        
+
+<link rel="stylesheet" href="farbtastic/farbtastic.css" type="text/css" />
+    </head>
+    
+    <body>
+        <div class="container-fluid">
+        <div class="row">
+            <img src="" alt="" id="img-pokemon">
+            <img src="" alt="" id="img-pokemon2">
+             <img src="" alt="" id="img-pokemon3">
+        </div>
+        <div class="row moveDown">
+                <div class="col-md-6 col-md-offset-3">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="inputIDPokemon"> Escolha a cor do Pokemon.</label>
+                            <input type="text" id="color" name="color" value="#123456" />
+                            <button type="button" class="btn btn-success" id="botaoEnvioCor">CATCH'EM</button> 
+                        </div>  
+                        <div id="colorpicker"></div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+          <script src="js/pokeMixin.js"></script>
+          <script type="text/javascript">
+
+  $(document).ready(function() {
+
+    $('#colorpicker').farbtastic('#color');
+
+  });
+
+</script>
+          <audio src="essePokemon.mp3"id="audioPokemon"></audio>
+    </body>
+    
+    
+    
+</html>
