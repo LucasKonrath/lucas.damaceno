@@ -1,18 +1,21 @@
 var value = 0;
+var img1loaded = false;
+var img2loaded=false;
+var img3loaded=false;
 var campoCor = document.getElementById('color');
 var musica = document.getElementById("audioPokemon"); 
-var imgPokemon = document.getElementById('img-pokemon');
+var imgPokemon = document.getElementById('img-pokemon1');
 var imgPokemon2 = document.getElementById('img-pokemon2');
 var imgPokemon3 = document.getElementById('img-pokemon3');
 var botao = document.getElementById('botaoEnvioCor');
-var divPokemon = document.getElementById('divPokemon');
+var divPokemon = document.getElementById('pokeMixinDiv');
 botao.onclick = function(){
     
     var valores = hexToRgb(campoCor.value);
     console.log(valores.r);
     console.log(valores.g);
     console.log(valores.b);
-    
+    divPokemon.style.backgroundColor=campoCor.value;
     
     
     
@@ -27,6 +30,7 @@ botao.onclick = function(){
     imgPokemon.src = j.sprites.front_default;
     imgPokemon.style.filter="brightness(0%)";  
     musica.play();
+    this.img1loaded=true;
     var thisInterval = setInterval(function changebrightness() {
         console.log(this.value);
         this.value += 4.7;
@@ -34,9 +38,9 @@ botao.onclick = function(){
         else {clearInterval(thisInterval);
              }
     },500);
-});}
+});}   
     
-    {fetch('https://pokeapi.co/api/v2/pokemon/'+valores.g+'/').then(function(response) { 
+{fetch('https://pokeapi.co/api/v2/pokemon/'+valores.g+'/').then(function(response) { 
     // Convert to JSON
     return response.json();
 }).then(function(j) {
@@ -45,7 +49,8 @@ botao.onclick = function(){
     objJSON = j; 
     this.value=0;
     imgPokemon2.src = j.sprites.front_default;
-    imgPokemon3.style.filter="brightness(0%)";  
+    imgPokemon2.style.filter="brightness(0%)";
+    this.img2loaded=true;
     var thisInterval = setInterval(function changebrightness() {
         console.log(this.value);
         this.value += 4.7;
@@ -65,6 +70,7 @@ botao.onclick = function(){
     this.value=0;
     imgPokemon3.src = j.sprites.front_default;
     imgPokemon3.style.filter="brightness(0%)";  
+        this.img3loaded=true;
     var thisInterval = setInterval(function changebrightness() {
         console.log(this.value);
         this.value += 4.7;
@@ -73,7 +79,7 @@ botao.onclick = function(){
              }
     },500);
 });}
-
+ divPokemon.style.visibility="visible";
 //fim do Onclick
 }
     
