@@ -7,12 +7,10 @@
         <script src="controller.js"></script>
     </head>
     <body>
-       <h1> Oi {{nomeCampo}}</h1>
-       
         <div ng-controller="Exemplo1">
-        <input type="text" ng-model="nomeCampo">
-        <label> Nome:{{nomeCampo}} </label>
-         </div>
+        <input type="text" ng-model="pikachu.nome">
+        <h1 ng-model="pikachu"> Oi {{nomeCampo}} {{pikachu.nome}} do tipo {{pikachu.tipo}}</h1>
+        </div>
         
     </body>
 </html>
