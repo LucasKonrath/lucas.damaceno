@@ -7,7 +7,17 @@
         <script src="controller.js"></script>
     </head>
     <body>
-        <div ng-controller="Exemplo1">
+      
+          <div ng-controller="Exemplo2">
+            <input type="text" ng-model="filtro ">
+             <ul>
+              <li ng-repeat="pokemon in pokemons | filter:{nome: filtro}">
+                  Nome: {{pokemon.nome}} # Tipo: {{pokemon.tipo | uppercase}}
+              </li>
+          </ul>
+      
+      
+       <!--- <div ng-controller="Exemplo1">
         <input type="text" ng-model="pikachu.nome">
         
         <h1 ng-model="pikachu"> Oi {{nomeCampo}} {{pikachu.nome}} do tipo {{pikachu.tipo}}</h1>
@@ -18,7 +28,7 @@
       <option value="Água">Água</option>
       <option value="Elétrico">Elétrico</option>
     </select><br>
-        </div>
+        </div> --->
         
     </body>
 </html>

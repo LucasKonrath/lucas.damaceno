@@ -6,3 +6,9 @@ modulo.controller('Exemplo1', function($scope){
    // $rootScope.nomeCampo = 'Default';
     
 })
+
+modulo.controller('Exemplo2', function($scope){
+    $scope.pokemons = [{nome:'pikachu', tipo:'eletrico'},{nome:'charmillion', tipo:'fogo'},{nome:'pikachu', tipo:'agua'}];
+   // $rootScope.nomeCampo = 'Default';
+    
+})
