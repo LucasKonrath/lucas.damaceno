@@ -9,7 +9,7 @@ function converter(){
 var stringData=$scope.data;
 var splitData = stringData.split('/');
 var dataConvertida = new Date(splitData[2], splitData[1]-1, splitData[0]);
-dataConvertida = dataConvertida.toLocaleDateString("en-US");
+$scope.dataConvertida = dataConvertida.toLocaleDateString("en-US");
 $scope.dataConvertida = $filter('date')(dataConvertida,'shortDate');
 };
 
