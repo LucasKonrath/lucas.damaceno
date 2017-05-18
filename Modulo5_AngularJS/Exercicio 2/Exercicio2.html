@@ -9,14 +9,28 @@
         <script src="controller.js"></script>
     </head>
     <body>
-    
-       <div ng-controller="Ex2">
+       <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
+      </a>
+      <p class="navbar-text">Exercício 2 Em Angular</p>
+    </div>
+  </div>
+</nav>
+    <div class="container-fluid">
+      
+       <div class="col-md-12 col-md-offset-4" ng-controller="Ex2">
+       <div class="row">
         <label for="campoData"> Data </label>
         <input name="campoData" type="text" ng-model="data">
         <h1> Data: {{ data }}</h1>
         <button ng-click="converter()"> Converter </button>
         <h1> Data Convertida para En-Us: {{ dataConvertida}}</h1>
-        </div>
         
+        </div>
+        </div>
+    </div>
     </body>
 </html>
