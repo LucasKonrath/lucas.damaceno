@@ -8,7 +8,7 @@ modulo.controller('Exemplo1', function($scope){
 })
 
 modulo.controller('Exemplo2', function($scope){
-    $scope.pokemons = [{nome:'pikachu', tipo:'eletrico'},{nome:'charmillion', tipo:'fogo'},{nome:'pikachu', tipo:'agua'}];
+    $scope.pokemons = [{nome:'Pikachu', tipo:'eletrico'},{nome:'Charmillion', tipo:'fogo'},{nome:'Blastoise', tipo:'agua'},{nome:'Clefairy', tipo:'Psiquico'},{nome:'Psiduck', tipo:'Psiquico'},{nome:'Hitmonlee', tipo:'Lutador'},{nome:'Hitmonchan', tipo:'Lutador'},{nome:'Berg', tipo:'Reporter'},{nome:'Daniel', tipo:'Paladino'},{nome:'Galo', tipo:'Cego'},{nome:'Moltres', tipo:'Lendario'}];
    // $rootScope.nomeCampo = 'Default';
     
 })
