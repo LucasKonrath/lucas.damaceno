@@ -5,8 +5,8 @@ var modulo = angular.module('Exemplo3',[]);
 modulo.filter('mascada',function(){
 
               return function(nome){
-
-            return nome.toLowerCase().replace('nunes', '$$$$nunes$$$$');
+                
+            return nome.replace(/([n])([u])([n])([e])([s])/gi,'$' + nome + '$');
         }});
 
 
