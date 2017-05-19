@@ -52,10 +52,17 @@ modulo.controller('Lista', function($scope,$filter){
     jaDeuAula:$scope.inserirJaDeuAula || false,
     aulaMinistrada:$scope.inserirAulaDada}
       $scope.instrutor = instrutor;
-        
+        // let copiaDoInstrutor = angular.copy(instrutor);
+        // $scope.novoInstrutor = {};
     if($scope.meuForm.$invalid) { console.log('Form Invalido') ;return ( 'Form Invalido.');}
     instrutores.push(instrutor);
     console.log($scope.instrutores);
+        $scope.nomeInserir = undefined;
+        $scope.sobrenomeInserir = undefined;
+        $scope.idadeInserir = undefined;
+        $scope.emailInserir = undefined;
+        $scope.inserirJaDeuAula = undefined;
+        $scope.inserirAulaDada = undefined;
         
 }})
 
