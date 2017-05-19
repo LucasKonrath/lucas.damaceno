@@ -1,0 +1,22 @@
+#brandAngular{
+
+    height:30px;
+}
+body{
+    
+    background-image:url(http://images.all-free-download.com/images/graphiclarge/wood_background_of_highdefinition_picture_169846.jpg);
+    
+}
+#listaPokemons{
+    color:#585151;
+}
+.input-lg{
+    width:100%;
+}
+
+#divsBrancas{
+    background:#fff;
+}
+#tabelaInstrutores{
+    table-layout:fixed;
+}
