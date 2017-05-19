@@ -3,10 +3,11 @@ var modulo = angular.module('ListaExercicios',[]);
 
 
 modulo.filter('mascada',function(){
-
-              return function(nome){
                 
-            return nome.replace(/([n])([u])([n])([e])([s])/gi,'$' + nome + '$');
+              return function(nome){
+              var retorno = nome.replace(/([n])([u])([n])([e])([s])/gi,'$' + nome + '$');
+                  if(retorno.length > nome.length) $scope.isNunes = 'eONunes';
+            return retorno;
         }});
 
 modulo.filter('filtrarAula',function(){
@@ -22,6 +23,7 @@ function padNumDigitos(numero, digitos) {
 
 
 modulo.controller('Lista', function($scope,$filter){
+    
     
     
     let instrutores = [{
@@ -70,5 +72,6 @@ var aulasEInstrutores = [];
     
     $scope.aulasEInstrutores = aulasEInstrutores;
     $scope.instrutores = instrutores;
+    
 })
 
