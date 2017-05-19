@@ -1,0 +1,54 @@
+#brandAngular{
+
+    height:30px;
+}
+body{
+    
+    background-image:url(http://images.all-free-download.com/images/graphiclarge/wood_background_of_highdefinition_picture_169846.jpg);
+    
+}
+#branco{
+    background-color:#fff;
+}
+#listaPokemons{
+    color:#585151;
+}
+.input-lg{
+    width:100%;
+}
+
+#divsBrancas{
+    background:#fff;
+}
+#tabelaInstrutores{
+    width:100%;
+}
+.demo-card-image.mdl-card {
+  width: 256px;
+  height: 256px;
+  margin:auto;
+    margin-top:4%;
+  background: url('https://s-media-cache-ak0.pinimg.com/736x/74/62/55/7462550dee1d0481d9a6d7e2adc6e55a.jpg') center / cover;
+}
+.demo-card-image__filename {
+  color: #00581b;
+  font-size: 14px;
+  font-weight: 500;
+}
+.demo-card-image > .mdl-card__actions {
+  height: 52px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.97);
+}
+
+
+
+.demo-list-two {
+  width: 300px;
+  margin-left:30%;
+}
+.eONunes{
+    font-size:30pt;
+    color:green;
+
+}
