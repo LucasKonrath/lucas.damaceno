@@ -6,7 +6,7 @@ modulo.filter('mascada',function(){
                 
               return function(nome){
               var retorno = nome.replace(/([n])([u])([n])([e])([s])/gi,'$' + nome + '$');
-                  if(retorno.length > nome.length) $scope.isNunes = 'eONunes';
+                 
             return retorno;
         }});
 
