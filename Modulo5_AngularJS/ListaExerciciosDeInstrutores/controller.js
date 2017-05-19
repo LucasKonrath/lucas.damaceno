@@ -24,6 +24,12 @@ function padNumDigitos(numero, digitos) {
 
 modulo.controller('Lista', function($scope,$filter){
     
+    $scope.queClasseE= function(nome){
+        var retorno = nome.replace(/([n])([u])([n])([e])([s])/gi,'$' + nome + '$');
+        console.log(retorno.length);
+        console.log(nome.length);
+        if(retorno.length > nome.length) return "eONunes";
+    }
     
     
     let instrutores = [{

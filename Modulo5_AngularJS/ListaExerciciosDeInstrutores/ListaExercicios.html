@@ -36,7 +36,7 @@
                     </div>
 
                     <ul class="demo-list-two mdl-list">
-                        <li class="mdl-list__item mdl-list__item--two-line" ng-repeat="instrutor in instrutores">
+                        <li class="mdl-list__item mdl-list__item--two-line" ng-repeat="instrutor in instrutores" ng-class='queClasseE(instrutor.nome)'>
                             <span class="mdl-list__item-primary-content">
                             <i class="material-icons mdl-list__item-avatar">person</i>
                             <span ng-class="isNunes">{{instrutor.nome | mascada}} </span>
@@ -59,8 +59,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="aulas in aulasEInstrutores | orderBy:'numero'">
-                                <td  class="mdl-data-table__cell--non-numeric"> {{aulas.nome}} </td> <td  class="mdl-data-table__cell--non-numeric"> {{aulas.instrutor}}</td>
+                            <tr ng-repeat="aulas in aulasEInstrutores | orderBy:'numero'" ng-class='queClasseE(aulas.instrutor)'>
+                                <td  class="mdl-data-table__cell--non-numeric"> {{aulas.nome}} </td> <td  class="mdl-data-table__cell--non-numeric"> {{aulas.instrutor | mascada}}</td>
                             <tr>
                         </tbody>
                     </table>
@@ -79,8 +79,8 @@
                             </tr>
                         </thead>
 
-                        <tr ng-repeat="aulas in aulasEInstrutores | orderBy:'numero'">
-                            <td class="mdl-data-table__cell--non-numeric"> {{aulas | filtrarAula}} </td> <td class="mdl-data-table__cell--non-numeric"> {{aulas.instrutor}}</td>
+                        <tr ng-repeat="aulas in aulasEInstrutores | orderBy:'numero'" ng-class='queClasseE(aulas.instrutor)'>
+                            <td class="mdl-data-table__cell--non-numeric"> {{aulas | filtrarAula}} </td> <td class="mdl-data-table__cell--non-numeric"> {{aulas.instrutor | mascada}}</td>
                         <tr>
                     </table>
 
