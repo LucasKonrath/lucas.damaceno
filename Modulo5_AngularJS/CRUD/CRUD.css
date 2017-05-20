@@ -1,0 +1,34 @@
+#brandAngular{
+
+    height:30px;
+}
+body{
+    
+    background-image:url(http://images.all-free-download.com/images/graphiclarge/wood_background_of_highdefinition_picture_169846.jpg);
+    
+}
+
+.input-lg{
+    width:100%;
+}
+
+
+.container{
+    margin:auto;
+    
+}
+#branco{
+height:100%;
+        background: #F8F8F8;
+   
+}
+.mdl-textfield__input{
+    color:#817b7b;
+    background:rgb(215, 215, 221);
+}
+label{
+     color:#817b7b;
+}
+#selecionarVarios{
+   height:40px;
+}
