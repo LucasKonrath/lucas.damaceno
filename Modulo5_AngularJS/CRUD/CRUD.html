@@ -23,77 +23,107 @@
             </div>
         </nav>
         <div class="container-fluid" ng-controller="controllerCRUD" id="branco">
-            
-                <form novalidate name="inserirAula">
 
-                     <label for="inputAulaAInserir"> Nome da Aula que deseja inserir.</label>
-                    <span> <input class="mdl-textfield__input" type="text" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
-                    <hr>
-                    <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                        <thead>
-                            <th>ID</th><th>Nome</th>
-                        </thead>
-                        <tr ng-repeat="aula in aulas | orderBy:'nome' ">
-                            <td class="mdl-data-table__cell--non-numeric">{{aula.id}}</td>  <td class="mdl-data-table__cell--non-numeric">{{aula.nome}}</td>
-                        </tr>
-                    </table>
-              
-                    <hr>
-                    <button type="submit" ng-click="insereAula()"> Adicionar.</button>
-                    <button type="reset"> Reset.</button>
-                </form>
+            <form novalidate name="inserirAula">
+
+                <label for="inputAulaAInserir"> Nome da Aula que deseja inserir.</label>
+                <span> <input class="mdl-textfield__input" type="text" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
+                <label><input  type="checkbox" ng-model="aulaUtilizada"> Esta Sendo utilizada? </label> <br>
                 <hr>
-                <form novalidate name="modificarAula">
-                  <label for="inputNomeAula"> Nome novo que deseja dar para aula existente.</label>
-                  <span> <input class="mdl-textfield__input" type="text" name="inputNomeAula" ng-model="novoNome"> </span>
-                   <label for="inputNomeAula"> Selecione a aula que deseja alterar o nome.</label>
-                    <select name="selecionaAula" ng-model="selecionarAula" ng-options="aula.nome for aula in aulas  track by aula.nome">
-             
-                    </select>
-                    <button type="submit" ng-click="modificaAula()"> Modificar nome da aula.</button>
-                    <button type="submit" ng-click="excluiAula()"> Deletar Esta Aula.</button>
-                </form>
-                
                 <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-                        <thead>
-                           <th> Foto </th> <th>ID</th><th>Nome</th> <th>Idade</th> <th>Email</th> <th>Dando Aula?</th><th>Aulas</th> 
-                        </thead>
-                        <tr ng-repeat="instrutor in instrutores | orderBy:'nome' ">
-                            <td class="mdl-data-table__cell--non-numeric"> <img src="{{instrutor.urlFoto}}" width="50px" height="50px" alt=""></td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.id}}</td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.nome}} {{instrutor.sobrenome}}</td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.idade}}</td>  <td class="mdl-data-table__cell--non-numeric">{{instrutor.email}}</td><td class="mdl-data-table__cell--non-numeric">{{instrutor.dandoAula}}</td>  <td class="mdl-data-table__cell--non-numeric">
-                               <p ng-repeat="aula in instrutor.aula">{{getAulaByID(aula).nome}}</p>
-                            </td>
-                        </tr>
-                    </table>
-           <form novalidate name="adicionarInstrutor">
-               <label for="inputInstrutorNome"> Digitar o nome do Instrutor que deseja adicionar.</label>
-               <input class="mdl-textfield__input" type="text" name="inputInstrutorNome" ng-model="nomeInstrutorAInserir">
-               <label for="inputInstrutorSobrenome"> Digitar o sobrenome do Instrutor que deseja adicionar.</label>
-               <input class="mdl-textfield__input" type="text" name="inputInstrutorSobrenome" ng-model="sobrenomeInstrutorAInserir">
-               <label for="inputInstrutorIdade"> Digitar a Idade do Instrutor que deseja adicionar.</label>
-               <input class="mdl-textfield__input" type="number" name="inputInstrutorIdade" ng-model="idadeInstrutorAInserir">
-               <label for="inputInstrutorEmail"> Digitar o email do Instrutor que deseja adicionar.</label>
-               <input class="mdl-textfield__input" type="email" name="inputInstrutorEmail" ng-model="emailInstrutorAInserir">
-               <label><input  type="checkbox" name="inputInstrutorDandoAula" ng-model="dandoAulalInstrutorAInserir"> Instrutor esta dando aula? </label> <br>
-               <label for="inputInstrutorUrlFoto"> Insira a URL da foto de perfil do instrutor.</label>
-               <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfoto" ng-model="fotoInstrutorAInserir">
-               <label for="selecionaAulaInstrutor"> Selecione as aulas do Instrutor. Selecione mais de uma segurando CTRL e clicando.</label>
-               <select id="selecionarVarios"multiple name="selecionaAulaInstrutor" ng-model="selecionarAulaInstrutor" ng-options="aula.nome for aula in aulas  track by aula.nome">
-             
-               </select>
-               <button type="submit" ng-click="insereInstrutor()"> Adicionar novo instrutor.</button>
-           </form>
-           
-           <form novalidate name="formExcluirInstrutor">
-               <label for="selectInstrutorExcluir"> Selecione qual instrutor deseja excluir. </label>
-                   
-                   <select name="selectQualInstrutorExcluir" ng-model="instrutorAExcluir" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
-                       
-                   </select>
-                        <button type="submit" ng-click="excluiInstrutor()"> Excluir instrutor.</button>
-                         
-           </form>
-           
-           
+                    <thead>
+                        <th>ID</th><th>Nome</th> <th>Aula sendo utilizada?</th>
+                    </thead>
+                    <tr ng-repeat="aula in aulas | orderBy:'nome' ">
+                        <td class="mdl-data-table__cell--non-numeric">{{aula.id}}</td>  <td class="mdl-data-table__cell--non-numeric">{{aula.nome}}</td> <td class="mdl-data-table__cell--non-numeric"> {{aula.estaSendoUtilizada}}</td>
+                    </tr>
+                </table>
+
+                <hr>
+                <button type="submit" ng-click="insereAula()"> Adicionar.</button>
+                <button type="reset"> Reset.</button>
+            </form>
+            <hr>
+            <form novalidate name="modificarAula">
+                <label for="inputNomeAula"> Selecione a aula que deseja modificar.</label>
+                <select name="selecionaAula" ng-model="selecionarAula" ng-options="aula.nome for aula in aulas  track by aula.nome">
+
+                </select>
+                <label for="inputNomeAula"> Nome novo que deseja dar para aula existente.</label>
+                <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputNomeAula" ng-model="novoNome"> </span>
+                <label><input  type="checkbox" ng-model="modificarAulaUtilizada"> Esta Sendo utilizada? </label> <br>
+                <button type="submit" ng-click="modificaAula()"> Modificar nome da aula.</button>
+                <button type="submit" ng-click="excluiAula()"> Deletar Esta Aula.</button>
+
+            </form>
+
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <thead>
+                    <th> Foto </th> <th>ID</th><th>Nome</th> <th>Idade</th> <th>Email</th> <th>Dando Aula?</th><th>Aulas</th> 
+                </thead>
+                <tr ng-repeat="instrutor in instrutores | orderBy:'nome' ">
+                    <td class="mdl-data-table__cell--non-numeric"> <img src="{{instrutor.urlFoto}}" width="50px" height="50px" alt=""></td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.id}}</td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.nome}} {{instrutor.sobrenome}}</td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.idade}}</td>  <td class="mdl-data-table__cell--non-numeric">{{instrutor.email}}</td><td class="mdl-data-table__cell--non-numeric">{{instrutor.dandoAula}}</td>  <td class="mdl-data-table__cell--non-numeric">
+                    <p ng-repeat="aula in instrutor.aula">{{getAulaByID(aula).nome}}</p>
+                    </td>
+                </tr>
+            </table>
+            <form novalidate name="adicionarInstrutor">
+                <label for="inputInstrutorNome"> Digitar o nome do Instrutor que deseja adicionar.</label>
+                <input class="mdl-textfield__input" type="text" name="inputInstrutorNome"  required minlength="3" maxlength="20" ng-model="nomeInstrutorAInserir">
+                <label for="inputInstrutorSobrenome"> Digitar o sobrenome do Instrutor que deseja adicionar.</label>
+                <input class="mdl-textfield__input" type="text" maxlength="30" name="inputInstrutorSobrenome" ng-model="sobrenomeInstrutorAInserir">
+                <label for="inputInstrutorIdade"> Digitar a Idade do Instrutor que deseja adicionar.</label>
+                <input class="mdl-textfield__input" type="number" name="inputInstrutorIdade" required max="90" ng-model="idadeInstrutorAInserir">
+                <label for="inputInstrutorEmail"> Digitar o email do Instrutor que deseja adicionar.</label>
+                <input class="mdl-textfield__input" type="email" required name="inputInstrutorEmail" ng-model="emailInstrutorAInserir">
+                <label><input  type="checkbox" name="inputInstrutorDandoAula" ng-model="dandoAulalInstrutorAInserir"> Instrutor esta dando aula? </label> <br>
+                <label for="inputInstrutorUrlFoto"> Insira a URL da foto de perfil do instrutor.</label>
+                <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfoto" ng-model="fotoInstrutorAInserir">
+                <label for="selecionaAulaInstrutor"> Selecione as aulas do Instrutor. Selecione mais de uma segurando CTRL e clicando.</label>
+                <select id="selecionarVarios"multiple name="selecionaAulaInstrutor" ng-model="selecionarAulaInstrutor" ng-options="aula.nome for aula in aulas  track by aula.nome">
+
+                </select>
+                <button type="submit" ng-click="insereInstrutor()"> Adicionar novo instrutor.</button>
+            </form>
+
+            <form novalidate name="formExcluirInstrutor">
+                <label for="selectInstrutorExcluir"> Selecione qual instrutor deseja excluir. </label>
+
+                <select name="selectQualInstrutorExcluir" ng-model="instrutorAExcluir" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
+
+                </select>
+                <button type="submit" ng-click="excluiInstrutor()"> Excluir instrutor.</button>
+
+            </form>
+
+
+            <form novalidate name="modificarInstrutor">
+
+                <label for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
+
+                <select name="selectQualInstrutorModificar" ng-value="instrutorModificarSelecionado" ng-change="povoarMudancas()" ng-model="instrutorAModificar" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
+
+                </select>
+
+
+                <label for="inputInstrutorNomeTrocar"> Nome</label>
+                <input class="mdl-textfield__input" type="text" name="inputInstrutorNomeTrocar" required minlength="3" maxlength="20" ng-model="nomeInstrutorTrocar">
+                <label for="inputInstrutorSobrenomeTrocar"> Sobrenome</label>
+                <input class="mdl-textfield__input" type="text" name="inputInstrutorSobrenomeTrocar" maxlength="30" ng-model="sobrenomeInstrutorTrocar">
+                <label for="inputInstrutorIdadeTrocar">Idade.</label>
+                <input class="mdl-textfield__input" type="number" required max="90" name="inputInstrutorIdadeTrocar" ng-model="idadeInstrutorTrocar">
+                <label for="inputInstrutorEmailTrocar"> Email.</label>
+                <input class="mdl-textfield__input" type="email"  required name="inputInstrutorEmailTrocar" ng-model="emailInstrutorTrocar">
+                <label><input  type="checkbox" name="inputInstrutorDandoAulaTrocar" ng-model="dandoAulaInstrutorTrocar"> Dando aula? </label> <br>
+                <label for="inputInstrutorUrlFotoTrocar"> Foto de perfil do instrutor.</label>
+                <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfotoTrocar" ng-model="fotoInstrutorTrocar">
+                <label for="selecionaAulaInstrutorTrocar"> Aulas do Instrutor.</label>
+                <select id="selecionarVarios"multiple name="selecionaAulaInstrutorTrocar" ng-model="selecionarAulaATrocar" ng-options="aula.nome for aula in aulas  track by aula.nome">
+
+                </select>
+                <button type="submit" ng-click="modificaInstrutor()">Modificar instrutor.</button>
+            </form>
+
         </div>
 
 
