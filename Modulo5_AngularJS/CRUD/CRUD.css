@@ -31,4 +31,10 @@ label{
 }
 #selecionarVarios{
    height:40px;
+    width:200px;
+}
+
+
+.escondido{
+    display:none;
 }

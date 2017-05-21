@@ -179,6 +179,7 @@ modulo.controller('controllerCRUD', function($scope,$filter){
     $scope.povoarMudancas = function(){
         if(typeof $scope.instrutorAModificar.id !== 'undefined'){
             let instrutorPovoar = getInstrutorByID($scope.instrutorAModificar.id);
+            $scope.ImagemInstrutorTrocar = instrutorPovoar.urlFoto;
             $scope.nomeInstrutorTrocar  = instrutorPovoar.nome;
             $scope.sobrenomeInstrutorTrocar = instrutorPovoar.sobrenome;
             $scope.idadeInstrutorTrocar = instrutorPovoar.idade;
@@ -188,6 +189,8 @@ modulo.controller('controllerCRUD', function($scope,$filter){
         }
 
     }
+    
+    
 
 
 
