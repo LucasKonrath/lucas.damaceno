@@ -18,10 +18,9 @@ modulo.controller('controllerCRUD', function($scope,$filter){
         aula: [1, 4],                     // Opcional (array)
         urlFoto: 'https://s-media-cache-ak0.pinimg.com/736x/ea/3d/cf/ea3dcff8ed8e8939d98c96b81f747623.jpg'  // Opcional (porém tem uma default de livre escolha)
     }
+    
     let instrutores = [instrutor];
     $scope.instrutores = instrutores;
-
-
 
     let aulas = [];
     console.log(aulas);
@@ -54,19 +53,19 @@ modulo.controller('controllerCRUD', function($scope,$filter){
                 imageUrl: "thumbsDOWN.gif",
                 confirmButtonText: "Ok."
             }); 
-                                                                                          return;}
-        }
-        let aulaAAdd = {id:ID,nome:$scope.aulaAInserir, estaSendoUtilizada: $scope.aulaUtilizada || false};
-        ID++;
-        $scope.aulas.push(aulaAAdd);
-        swal({
+              return;}
+          }
+          let aulaAAdd = {id:ID,nome:$scope.aulaAInserir, estaSendoUtilizada: $scope.aulaUtilizada || false};
+          ID++;
+          $scope.aulas.push(aulaAAdd);
+          swal({
             title: "Feito!",
             text: "Aula cadastrada com sucesso.",
             imageUrl: "thumbsUP.gif",
             confirmButtonText: "Ok."
         });
-    }
-    $scope.modificaAula = function(){
+      }
+      $scope.modificaAula = function(){
         if($scope.modificarAula.$invalid) {
 
             swal({
@@ -92,214 +91,238 @@ modulo.controller('controllerCRUD', function($scope,$filter){
                 imageUrl: "thumbsDOWN.gif",
                 confirmButtonText: "Ok."
             }); return;}}
-            if ($scope.aulas[i].id === $scope.selecionarAula.id) {
-                indiceAPovoar = i;
-                povoar = true;
+                if ($scope.aulas[i].id === $scope.selecionarAula.id) {
+                    indiceAPovoar = i;
+                    povoar = true;
+                }
             }
-        }
-        if(povoar === true) {
-            $scope.aulas[indiceAPovoar].nome = $scope.novoNome;
-            $scope.aulas[indiceAPovoar].estaSendoUtilizada = ($scope.modificarAulaUtilizada || false);
-            swal({
-                title: "Feito!",
-                text: "Aula modificada com sucesso.",
-                imageUrl: "thumbsUP.gif",
-                confirmButtonText: "Ok."
-            });
-        }
-
-
-    }
-
-    $scope.excluiAula = function(){
-        console.log($scope.selecionarAula);
-        if($scope.selecionarAula.estaSendoUtilizada===true) {swal({
-            title: "Ó ceus!",
-            text: "Não é possivel excluir esta aula. Ela está sendo utilizada.",
-            imageUrl: "thumbsDOWN.gif"
-        });
-                                                             return;}
-        for (var i=0; i < $scope.aulas.length; i++) {
-            if ($scope.aulas[i].id === $scope.selecionarAula.id) {
-                $scope.aulas.splice([i],1);
+            if(povoar === true) {
+                $scope.aulas[indiceAPovoar].nome = $scope.novoNome;
+                $scope.aulas[indiceAPovoar].estaSendoUtilizada = ($scope.modificarAulaUtilizada || false);
                 swal({
                     title: "Feito!",
-                    text: "Aula excluida com sucesso.",
+                    text: "Aula modificada com sucesso.",
                     imageUrl: "thumbsUP.gif",
+                    confirmButtonText: "Ok."
+                });
+                    $scope.selecionarAula = aulas[0].nome;
+            }
+
+
+        }
+
+        $scope.excluiAula = function(){
+            console.log($scope.selecionarAula);
+            if($scope.selecionarAula.estaSendoUtilizada===true) {swal({
+                title: "Ó ceus!",
+                text: "Não é possivel excluir esta aula. Ela está sendo utilizada.",
+                imageUrl: "thumbsDOWN.gif"
+            });
+               return;}
+               for (var i=0; i < $scope.aulas.length; i++) {
+                if ($scope.aulas[i].id === $scope.selecionarAula.id) {
+                    $scope.aulas.splice([i],1);
+                    swal({
+                        title: "Feito!",
+                        text: "Aula excluida com sucesso.",
+                        imageUrl: "thumbsUP.gif",
+                        confirmButtonText: "Ok."
+                    });
+                    $scope.selecionarAula = aulas[0].nome;
+                    return;
+                }
+            }
+
+        }
+
+        $scope.insereInstrutor = function(){
+            IDInstrutor++;
+
+            if($scope.adicionarInstrutor.inputInstrutorEmail.$invalid){
+                swal({
+                    title: "Ó ceus!",
+                    text: "Email Inválido Digitado.",
+                    imageUrl: "thumbsDOWN.gif",
                     confirmButtonText: "Ok."
                 });
                 return;
             }
-        }
 
-    }
-
-    $scope.insereInstrutor = function(){
-        IDInstrutor++;
-
-        if($scope.adicionarInstrutor.inputInstrutorEmail.$invalid){
-            swal({
-                title: "Ó ceus!",
-                text: "Email Inválido Digitado.",
-                imageUrl: "thumbsDOWN.gif",
-                confirmButtonText: "Ok."
-            });
-            return;
-        }
-
-        if($scope.adicionarInstrutor.$valid === true){
-            let aulasAdicionarInstrutor = [];
-            if(typeof $scope.selecionarAulaInstrutor !== 'undefined'){
-                for(aula of $scope.selecionarAulaInstrutor){ 
-                    aulasAdicionarInstrutor.push(aula.id);
+            if($scope.adicionarInstrutor.$valid === true){
+                let aulasAdicionarInstrutor = [];
+                if(typeof $scope.selecionarAulaInstrutor !== 'undefined'){
+                    for(aula of $scope.selecionarAulaInstrutor){ 
+                        aulasAdicionarInstrutor.push(aula.id);
+                    }
                 }
+
+
+
+
+
+                $scope.fotoInstrutorAInserir = $scope.fotoInstrutorAInserir || 'https://s-media-cache-ak0.pinimg.com/736x/ea/3d/cf/ea3dcff8ed8e8939d98c96b81f747623.jpg';
+                let instrutorAdicionar = {
+                    id:IDInstrutor,
+                    nome:$scope.nomeInstrutorAInserir,
+                    sobrenome:$scope.sobrenomeInstrutorAInserir,
+                    email:$scope.emailInstrutorAInserir,
+                    idade:$scope.idadeInstrutorAInserir,
+                    dandoAula:$scope.dandoAulalInstrutorAInserir,
+                    urlFoto:$scope.fotoInstrutorAInserir,
+                    aula:aulasAdicionarInstrutor
+                }
+                console.log($scope.selecionarAulaInstrutor);
+                console.log(instrutorAdicionar);
+                if(!existeInstrutorComNome(instrutorAdicionar.nome) && !existeInstrutorComEmail(instrutorAdicionar.email))
+                {
+                    $scope.instrutores.push(instrutorAdicionar);
+                    swal({
+                        title: "Feito!",
+                        text: "Instrutor adicionado com sucesso.",
+                        imageUrl: "thumbsUP.gif",
+                        confirmButtonText: "Ok."
+                    });
+                }
+                return;
             }
-
-
-
-
-
-            $scope.fotoInstrutorAInserir = $scope.fotoInstrutorAInserir || 'https://s-media-cache-ak0.pinimg.com/736x/ea/3d/cf/ea3dcff8ed8e8939d98c96b81f747623.jpg';
-            let instrutorAdicionar = {id:IDInstrutor,nome:$scope.nomeInstrutorAInserir,sobrenome:$scope.sobrenomeInstrutorAInserir,
-                                      email:$scope.emailInstrutorAInserir,idade:$scope.idadeInstrutorAInserir,
-                                      dandoAula:$scope.dandoAulalInstrutorAInserir,urlFoto:$scope.fotoInstrutorAInserir,aula:aulasAdicionarInstrutor}
-            console.log($scope.selecionarAulaInstrutor);
-            console.log(instrutorAdicionar);
-            if(!existeInstrutorComNome(instrutorAdicionar.nome) && !existeInstrutorComEmail(instrutorAdicionar.email))
-            {
-                $scope.instrutores.push(instrutorAdicionar);
-                swal({
-                    title: "Feito!",
-                    text: "Instrutor adicionado com sucesso.",
-                    imageUrl: "thumbsUP.gif",
-                    confirmButtonText: "Ok."
-                });
-            }
-            return;
-        }
-        swal({
-            title: "Ó ceus!",
-            text: "Há campos  preenchidos incorretamente.",
-            imageUrl: "thumbsDOWN.gif",
-            confirmButtonText: "Ok."
-        });
-    }
-
-    $scope.modificaInstrutor = function(){
-        let aulasAdicionarInstrutor = [];
-        let instrutorPovoar = getInstrutorByID($scope.instrutorAModificar.id);
-        let mesmoNome = $scope.instrutorAModificar.nome ===  instrutorPovoar.nome;
-        let mesmoEmail = $scope.instrutorAModificar.email ===  instrutorPovoar.email;
-        if(typeof $scope.emailInstrutorTrocar === 'undefined'){
             swal({
                 title: "Ó ceus!",
-                text: "Email Inválido Digitado.",
+                text: "Há campos  preenchidos incorretamente.",
                 imageUrl: "thumbsDOWN.gif",
                 confirmButtonText: "Ok."
             });
-            return;
-        }
-        if(typeof ($scope.selecionarAulaATrocar) !== 'undefined')
-        {for(aula of $scope.selecionarAulaATrocar){ 
-            aulasAdicionarInstrutor.push(aula.id);
-        }}
-        $scope.fotoInstrutorTrocar = $scope.fotoInstrutorTrocar|| 'https://s-media-cache-ak0.pinimg.com/736x/ea/3d/cf/ea3dcff8ed8e8939d98c96b81f747623.jpg';
-        let instrutorModificar = {id:$scope.instrutorAModificar.id,nome:$scope.nomeInstrutorTrocar,sobrenome:$scope.sobrenomeInstrutorTrocar,
-                                  email:$scope.emailInstrutorTrocar,idade:$scope.idadeInstrutorTrocar,
-                                  dandoAula:$scope.dandoAulaInstrutorTrocar || false,urlFoto:$scope.fotoInstrutorTrocar,aula:aulasAdicionarInstrutor}
-        console.log($scope.selecionarAulaATrocar);
-        console.log(instrutorModificar);
-        if((!existeInstrutorComNome($scope.nomeInstrutorTrocar,mesmoNome) || mesmoNome) && (!existeInstrutorComEmail($scope.emailInstrutorTrocar,mesmoEmail) || mesmoEmail))
-        {
-            $scope.instrutores.splice(instrutores.indexOf(getInstrutorByID($scope.instrutorAModificar.id)),1);
-            $scope.instrutores.push(instrutorModificar);
-            swal({
-                title: "Feito!",
-                text: "Instrutor modificado com sucesso.",
-                imageUrl: "thumbsUP.gif",
-                confirmButtonText: "Ok."
-            });
         }
 
-
-    }
-
-    function existeInstrutorComNome(instrutorTestar, comparacao){
-        let comparar = comparacao || false;
-        for(instrutorTestado of instrutores){
-            if(instrutorTestado.nome === instrutorTestar) { if(comparar === false){swal({
-                title: "Ó ceus!",
-                text: "Não é possivel cadastrar este instrutor. Já há um  com o mesmo nome.",
-                imageUrl: "thumbsDOWN.gif",
-                confirmButtonText: "Ok."
-            });} return true;}
-        }
-
-        return false;
-    }
-
-
-    $scope.excluiInstrutor = function(){
-        let instrutorExcluir = getInstrutorByID($scope.instrutorAModificar.id)
-        if(instrutorExcluir.dandoAula===true) {
-            {
+        $scope.modificaInstrutor = function(){
+            let aulasAdicionarInstrutor = [];
+            let instrutorPovoar = getInstrutorByID($scope.instrutorAModificar.id);
+            let mesmoNome = $scope.instrutorAModificar.nome ===  instrutorPovoar.nome;
+            let mesmoEmail = $scope.instrutorAModificar.email ===  instrutorPovoar.email;
+            if(typeof $scope.emailInstrutorTrocar === 'undefined'){
                 swal({
                     title: "Ó ceus!",
-                    text: "Não é possivel excluir este instrutor. Está dando aula.",
+                    text: "Email Inválido Digitado.",
                     imageUrl: "thumbsDOWN.gif",
                     confirmButtonText: "Ok."
                 });
-            } return;
-        }
-    
-        
-        
-        for (var i=0; i < $scope.instrutores.length; i++) {
-            if ($scope.instrutores[i].id === $scope.instrutorAModificar.id) {
-                $scope.instrutores.splice([i],1);
-                instrutorPovoar = {};
-                $scope.povoarMudancas();
-               
+                return;
             }
-        }
-        swal({
+            if(typeof ($scope.selecionarAulaATrocar) !== 'undefined')
+            {
+                for(aula of $scope.selecionarAulaATrocar){ 
+                    aulasAdicionarInstrutor.push(aula.id);
+                }
+            }
+            $scope.fotoInstrutorTrocar = $scope.fotoInstrutorTrocar|| 'https://s-media-cache-ak0.pinimg.com/736x/ea/3d/cf/ea3dcff8ed8e8939d98c96b81f747623.jpg';
+            let instrutorModificar = {
+                id:$scope.instrutorAModificar.id,
+                nome:$scope.nomeInstrutorTrocar,
+                sobrenome:$scope.sobrenomeInstrutorTrocar,
+                email:$scope.emailInstrutorTrocar,
+                idade:$scope.idadeInstrutorTrocar,
+                dandoAula:$scope.dandoAulaInstrutorTrocar || false,
+                urlFoto:$scope.fotoInstrutorTrocar,
+                aula:aulasAdicionarInstrutor
+            }
+            console.log($scope.selecionarAulaATrocar);
+            console.log(instrutorModificar);
+            if((!existeInstrutorComNome($scope.nomeInstrutorTrocar,mesmoNome) || mesmoNome) && (!existeInstrutorComEmail($scope.emailInstrutorTrocar,mesmoEmail) || mesmoEmail))
+            {
+                $scope.instrutores.splice(instrutores.indexOf(getInstrutorByID($scope.instrutorAModificar.id)),1);
+                $scope.instrutores.push(instrutorModificar);
+                swal({
                     title: "Feito!",
-                    text: "Instrutor excluido com sucesso.",
+                    text: "Instrutor modificado com sucesso.",
                     imageUrl: "thumbsUP.gif",
                     confirmButtonText: "Ok."
-                });    
-    }
+                });
+            }
 
-    $scope.povoarMudancas = function(vazio){
-        if($scope.instrutorAModificar !== null && typeof $scope.instrutorAModificar.id !== 'undefined'){
-            let instrutorPovoar = getInstrutorByID($scope.instrutorAModificar.id) || '';
-            $scope.ImagemInstrutorTrocar = instrutorPovoar.urlFoto || '';
-            $scope.nomeInstrutorTrocar  = instrutorPovoar.nome || '';
-            $scope.sobrenomeInstrutorTrocar = instrutorPovoar.sobrenome || '';
-            $scope.idadeInstrutorTrocar = instrutorPovoar.idade || '';
-            $scope.emailInstrutorTrocar = instrutorPovoar.email || '';
-            $scope.dandoAulaInstrutorTrocar = instrutorPovoar.dandoAula || '';
-            $scope.fotoInstrutorTrocar = instrutorPovoar.urlFoto || '';
+
         }
 
-    }
+        function existeInstrutorComNome(instrutorTestar, comparacao){
+            let comparar = comparacao || false;
+            for(instrutorTestado of instrutores){
+                if(instrutorTestado.nome === instrutorTestar) { 
+                    if(comparar === false){
+                        swal({
+                            title: "Ó ceus!",
+                            text: "Não é possivel cadastrar este instrutor. Já há um  com o mesmo nome.",
+                            imageUrl: "thumbsDOWN.gif",
+                            confirmButtonText: "Ok."
+                        });
+                    } 
+                    return true;
+                }
+            }
 
-    $scope.temInstrutorComEmail = existeInstrutorComEmail;
+            return false;
+        }
 
-    var existeInstrutorComEmail = function (emailTestar,comparacao){
-        let comparar = comparacao || false;
-        for(instrutorTestado of instrutores){
-            if(instrutorTestado.email.toLowerCase() === emailTestar.toLowerCase()) { if(comparar === false) {swal(
+
+        $scope.excluiInstrutor = function(){
+            let instrutorExcluir = getInstrutorByID($scope.instrutorAModificar.id)
+            if(instrutorExcluir.dandoAula===true) {
                 {
-                    title: "Erro!",
-                    text: "E-Mail digitado já está cadastrado.",
-                    type: "error",
-                    confirmButtonText: "Ok."
-                });} 
-                                                                                    return true;}
+                    swal({
+                        title: "Ó ceus!",
+                        text: "Não é possivel excluir este instrutor. Está dando aula.",
+                        imageUrl: "thumbsDOWN.gif",
+                        confirmButtonText: "Ok."
+                    });
+                } return;
+            }
+
+
+
+            for (var i=0; i < $scope.instrutores.length; i++) {
+                if ($scope.instrutores[i].id === $scope.instrutorAModificar.id) {
+
+                    $scope.instrutores.splice([i],1);
+                    instrutorPovoar = {};
+                    $scope.povoarMudancas();
+
+                }
+            }
+            swal({
+                title: "Feito!",
+                text: "Instrutor excluido com sucesso.",
+                imageUrl: "thumbsUP.gif",
+                confirmButtonText: "Ok."
+            });    
         }
 
-        return false;
-    }
-    })
+        $scope.povoarMudancas = function(vazio){
+            if($scope.instrutorAModificar !== null && typeof $scope.instrutorAModificar.id !== 'undefined'){
+                let instrutorPovoar = getInstrutorByID($scope.instrutorAModificar.id) || '';
+                $scope.ImagemInstrutorTrocar = instrutorPovoar.urlFoto || '';
+                $scope.nomeInstrutorTrocar  = instrutorPovoar.nome || '';
+                $scope.sobrenomeInstrutorTrocar = instrutorPovoar.sobrenome || '';
+                $scope.idadeInstrutorTrocar = instrutorPovoar.idade || '';
+                $scope.emailInstrutorTrocar = instrutorPovoar.email || '';
+                $scope.dandoAulaInstrutorTrocar = instrutorPovoar.dandoAula || '';
+                $scope.fotoInstrutorTrocar = instrutorPovoar.urlFoto || '';
+            }
+
+        }
+
+        $scope.temInstrutorComEmail = existeInstrutorComEmail;
+
+        var existeInstrutorComEmail = function (emailTestar,comparacao){
+            let comparar = comparacao || false;
+            for(instrutorTestado of instrutores){
+                if(instrutorTestado.email.toLowerCase() === emailTestar.toLowerCase()) { if(comparar === false) {swal(
+                    {
+                        title: "Erro!",
+                        text: "E-Mail digitado já está cadastrado.",
+                        type: "error",
+                        confirmButtonText: "Ok."
+                    });} 
+                    return true;}
+                }
+
+                return false;
+            }
+        })
 

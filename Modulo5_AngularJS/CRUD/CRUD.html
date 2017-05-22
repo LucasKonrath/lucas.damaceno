@@ -1,144 +1,144 @@
 <!DOCTYPE HTML>
 <html  ng-app="SistemaCRUD">
-    <head>
-        <meta charset="utf-8">
-        <title> Exemplo</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-        <link rel="stylesheet" href="CRUD.css">
-        <script src="sweetalert/dist/sweetalert.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="sweetalert/dist/sweetalert.css">
-        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script src="controller.js"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
-                    </a>
-                    <p class="navbar-text">CRUD (AngularJS)</p>
-                    <button type="button" class="btn btn-primary btn-lg active" ng-click="toggleAulas = false; toggleADDInstrutores = true; toggleModInstrutores=true" ng-init="toggleAulas = false,toggleADDInstrutores = true,toggleModInstrutores=true"> Adicionar e Modificar Aulas.</button>
-                    <button type="submit" class="btn btn-primary btn-lg active" ng-click="toggleAulas = true; toggleADDInstrutores = false; toggleModInstrutores=true" ng-init="toggleADDInstrutores = true"> Adicionar Instrutores.</button>
-                    <button type="submit" class="btn btn-primary btn-lg active" ng-click="toggleAulas = true; toggleADDInstrutores = true; toggleModInstrutores=false" ng-init="toggleModInstrutores = true"> Modificar Instrutores.</button>
-                </div>
+<head>
+    <meta charset="utf-8">
+    <title> Exemplo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="CRUD.css">
+    <script src="sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="sweetalert/dist/sweetalert.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
+                </a>
+                <p class="navbar-text">CRUD (AngularJS)</p>
+                <button type="button" class="btn btn-primary btn-lg active" ng-click="toggleAulas = false; toggleADDInstrutores = true; toggleModInstrutores=true" ng-init="toggleAulas = false,toggleADDInstrutores = true,toggleModInstrutores=true"> Adicionar e Modificar Aulas.</button>
+                <button type="submit" class="btn btn-primary btn-lg active" ng-click="toggleAulas = true; toggleADDInstrutores = false; toggleModInstrutores=true" ng-init="toggleADDInstrutores = true"> Adicionar Instrutores.</button>
+                <button type="submit" class="btn btn-primary btn-lg active" ng-click="toggleAulas = true; toggleADDInstrutores = true; toggleModInstrutores=false" ng-init="toggleModInstrutores = true"> Modificar Instrutores.</button>
             </div>
-        </nav>
-        <div class="container-fluid" ng-controller="controllerCRUD" id="branco">
-
-            <form novalidate name="inserirAula" class="formCRUD" ng-class="{'escondido' : toggleAulas }">
-
-                <label for="inputAulaAInserir"> Nome da Aula que deseja inserir.</label>
-                <span> <input class="mdl-textfield__input" type="text" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
-                <label><input  type="checkbox" ng-model="aulaUtilizada"> Esta Sendo utilizada? </label> <br>
-           
-
-                <button type="submit" class="btn btn-success" ng-click="insereAula()"> Adicionar.</button>
-                <button type="reset" class="btn btn-primary"> Reset.</button>
-                <hr>
-            </form>
-
-            <table ng-class="{'escondido' : toggleAulas }" class="table table-bordered">
-                <thead>
-                    <th>ID</th><th>Nome</th> <th>Aula sendo utilizada?</th>
-                </thead>
-                <tr ng-repeat="aula in aulas | orderBy:'nome' ">
-                    <td>{{aula.id}}</td>  <td>{{aula.nome}}</td> <td> {{aula.estaSendoUtilizada ? 'Sim' : 'Nao'}}</td>
-                </tr>
-            </table>
-
-            <form novalidate class="formCRUD" ng-class="{'escondido' : toggleAulas }" name="modificarAula">
-               <hr>
-                <label for="inputNomeAula"> Selecione a aula que deseja modificar.</label>
-                <select name="selecionaAula" ng-model="selecionarAula" ng-options="aula.nome for aula in aulas  track by aula.nome">
-
-                </select>
-                <hr><label for="inputNomeAula"> Nome novo que deseja dar para aula existente.</label>
-                <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputNomeAula" ng-model="novoNome"> </span>
-                <label><input  type="checkbox" ng-model="modificarAulaUtilizada"> Esta Sendo utilizada? </label> <br>
-                <button type="submit" class="btn btn-primary" ng-click="modificaAula()"> Modificar nome da aula.</button>
-                <button type="submit" class="btn btn-danger" ng-click="excluiAula()"> Deletar Esta Aula.</button>
-                <br> <br>
-
-            </form>
-
-            <table  ng-class="{'escondido' : toggleADDInstrutores }" class="escondido  mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-               <br><br>
-                <thead>
-                    <th> Foto </th> <th>ID</th><th>Nome</th> <th>Idade</th> <th>Email</th> <th>Dando Aula?</th><th>Aulas</th> 
-                </thead>
-                <tr ng-repeat="instrutor in instrutores | orderBy:'nome' ">
-                    <td class="mdl-data-table__cell--non-numeric"> <img src="{{instrutor.urlFoto}}" width="50px" height="50px" alt=""></td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.id}}</td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.nome}} {{instrutor.sobrenome}}</td> <td class="mdl-data-table__cell--non-numeric">{{instrutor.idade}}</td>  <td class="mdl-data-table__cell--non-numeric">{{instrutor.email}}</td><td class="mdl-data-table__cell--non-numeric">{{instrutor.dandoAula ? 'Sim' : 'Não'}}</td>  <td class="mdl-data-table__cell--non-numeric">
-                    <p ng-repeat="aula in instrutor.aula">{{getAulaByID(aula).nome}}</p>
-                    </td>
-                </tr>
-            </table>
-            <form novalidate class="formCRUD" ng-class="{'escondido' : toggleADDInstrutores }" name="adicionarInstrutor">
-               <hr>
-                <label for="inputInstrutorNome"> Nome do Instrutor que deseja adicionar (3 a 20 letras).</label>
-                <input class="mdl-textfield__input" type="text" name="inputInstrutorNome"  placeholder="Campo obrigatório. 3 a 20 letras." required minlength="3" maxlength="20" ng-model="nomeInstrutorAInserir">
-                <label for="inputInstrutorSobrenome"> Sobrenome do Instrutor.</label>
-                <input class="mdl-textfield__input" type="text" maxlength="30" name="inputInstrutorSobrenome" ng-model="sobrenomeInstrutorAInserir">
-                <label for="inputInstrutorIdade"> Idade do Instrutor (máxima: 90)</label>
-                <input class="mdl-textfield__input" placeholder="Campo obrigatório. Idade máxima é 90." type="number" name="inputInstrutorIdade" required max="90" ng-model="idadeInstrutorAInserir">
-                <label for="inputInstrutorEmail"> Email do Instrutor.</label>
-                <input class="mdl-textfield__input"  placeholder="Campo obrigatório." id="campoEmail" type="email" required name="inputInstrutorEmail" ng-model="emailInstrutorAInserir">
-                <label><input  type="checkbox" name="inputInstrutorDandoAula" ng-model="dandoAulalInstrutorAInserir"> Instrutor esta dando aula? </label> <br>
-                <label for="inputInstrutorUrlFoto"> Insira a URL da foto de perfil do instrutor.</label>
-                <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfoto" ng-model="fotoInstrutorAInserir">
-                <label for="selecionaAulaInstrutor"> Selecione as aulas do Instrutor. Selecione mais de uma segurando CTRL e clicando.</label>
-                <br>
-                <select id="selecionarVarios"multiple name="selecionaAulaInstrutor" ng-model="selecionarAulaInstrutor" ng-options="aula.nome for aula in aulas  track by aula.nome">
-
-                </select>
-                <br>
-                <button type="submit" class="btn btn-success" ng-click="insereInstrutor()"> Adicionar novo instrutor.</button>
-                <br><br><br>
-            </form>
-
-            
-
-
-            <form novalidate class="formCRUD" id="blocoModificarInstrutor"  ng-class="{'escondido' : toggleModInstrutores }" name="modificarInstrutor">
-
-                <label for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
-
-                <select name="selectQualInstrutorModificar" ng-value="instrutorModificarSelecionado" ng-change="povoarMudancas()" ng-model="instrutorAModificar" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
-
-                </select>
-
-                <br>
-                
-                <img src="{{ImagemInstrutorTrocar}}" width="320px" height="220px" alt="">
-                <br>
-                <label for="inputInstrutorNomeTrocar"> Nome (obrigatório, 3 a 20 letras).</label>
-                <input class="mdl-textfield__input" type="text" name="inputInstrutorNomeTrocar" required minlength="3" maxlength="20" ng-model="nomeInstrutorTrocar">
-                <label for="inputInstrutorSobrenomeTrocar"> Sobrenome </label>
-                <input class="mdl-textfield__input" type="text" name="inputInstrutorSobrenomeTrocar" maxlength="30" ng-model="sobrenomeInstrutorTrocar">
-                <label for="inputInstrutorIdadeTrocar">Idade(obrigatório, maximo 90 anos.).</label>
-                <input class="mdl-textfield__input" type="number" required max="90" name="inputInstrutorIdadeTrocar" ng-model="idadeInstrutorTrocar">
-                <label for="inputInstrutorEmailTrocar"> Email(obrigatório, deve ser único).</label>
-                <input class="mdl-textfield__input" type="email" id="campoEmail" required name="inputInstrutorEmailTrocar" ng-model="emailInstrutorTrocar">
-                <label><input  type="checkbox" name="inputInstrutorDandoAulaTrocar" ng-model="dandoAulaInstrutorTrocar"> Dando aula? </label> <br>
-                <label for="inputInstrutorUrlFotoTrocar"> Foto de perfil do instrutor.</label>
-                
-                <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfotoTrocar" ng-model="fotoInstrutorTrocar">
-                <br>
-                <label for="selecionaAulaInstrutorTrocar"> Aulas do Instrutor.</label><br>
-                <select id="selecionarVarios"multiple name="selecionaAulaInstrutorTrocar" ng-model="selecionarAulaATrocar" ng-options="aula.nome for aula in aulas  track by aula.nome">
-
-                </select>
-                <br>
-                <button type="submit" class="btn btn-info" ng-click="modificaInstrutor()">Modificar instrutor.</button>
-                 <button type="submit" class="btn btn-danger" ng-click="excluiInstrutor()"> Excluir instrutor.</button>
-                <br><br>
-            </form>
-
         </div>
-        
-        
-    </body>
+    </nav>
+    <div class="container-fluid" ng-controller="controllerCRUD" id="branco">
+
+        <form novalidate name="inserirAula" class="formCRUD" ng-class="{'escondido' : toggleAulas }">
+
+            <label for="inputAulaAInserir"> Nome da Aula que deseja inserir.</label>
+            <span> <input class="mdl-textfield__input" type="text" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
+            <label><input  type="checkbox" ng-model="aulaUtilizada"> Esta Sendo utilizada? </label> <br>
+
+
+            <button type="submit" class="btn btn-success" ng-click="insereAula()"> Adicionar.</button>
+            <button type="reset" class="btn btn-primary"> Reset.</button>
+            <hr>
+        </form>
+
+        <table ng-class="{'escondido' : toggleAulas }" class="table table-bordered">
+            <thead>
+                <th>ID</th><th>Nome</th> <th>Aula sendo utilizada?</th>
+            </thead>
+            <tr ng-repeat="aula in aulas | orderBy:'nome' ">
+                <td>{{aula.id}}</td>  <td>{{aula.nome}}</td> <td> {{aula.estaSendoUtilizada ? 'Sim' : 'Nao'}}</td>
+            </tr>
+        </table>
+
+        <form novalidate class="formCRUD" ng-class="{'escondido' : toggleAulas }" name="modificarAula">
+         <hr>
+         <label for="inputNomeAula"> Selecione a aula que deseja modificar.</label>
+         <select name="selecionaAula" ng-model="selecionarAula" ng-options="aula.nome for aula in aulas  track by aula.nome">
+         </select>
+         <hr><label for="inputNomeAula"> Nome novo que deseja dar para aula existente.</label>
+         <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputNomeAula" ng-model="novoNome"> </span>
+         <label><input  type="checkbox" ng-model="modificarAulaUtilizada"> Esta Sendo utilizada? </label> <br>
+         <button type="submit" class="btn btn-primary" ng-click="modificaAula()"> Modificar nome da aula.</button>
+         <button type="submit" class="btn btn-danger" ng-click="excluiAula()"> Deletar Esta Aula.</button>
+         <br> <br>
+
+     </form>
+
+     <table  ng-class="{'escondido' : toggleADDInstrutores }" class="escondido  table table-bordered">
+         <br><br>
+         <thead>
+            <th> Foto </th> <th>ID</th><th>Nome</th> <th>Idade</th> <th>Email</th> <th>Dando Aula?</th><th>Aulas</th> 
+        </thead>
+        <tr ng-repeat="instrutor in instrutores | orderBy:'nome' ">
+            <td > <img src="{{instrutor.urlFoto}}" width="50px" height="50px" alt=""></td> <td>{{instrutor.id}}</td> <td>{{instrutor.nome}} {{instrutor.sobrenome}}</td> <td>{{instrutor.idade}}</td>  <td>{{instrutor.email}}</td><td>{{instrutor.dandoAula ? 'Sim' : 'Não'}}
+            </td>  <td>
+            <p ng-repeat="aula in instrutor.aula">{{getAulaByID(aula).nome}}</p>
+            </td>
+    </tr>
+</table>
+<form novalidate class="formCRUD" ng-class="{'escondido' : toggleADDInstrutores }" name="adicionarInstrutor">
+ <hr>
+ <label for="inputInstrutorNome"> Nome do Instrutor que deseja adicionar (3 a 20 letras).</label>
+ <input class="mdl-textfield__input" type="text" name="inputInstrutorNome"  placeholder="Campo obrigatório. 3 a 20 letras." required minlength="3" maxlength="20" ng-model="nomeInstrutorAInserir">
+ <label for="inputInstrutorSobrenome"> Sobrenome do Instrutor.</label>
+ <input class="mdl-textfield__input" type="text" maxlength="30" name="inputInstrutorSobrenome" ng-model="sobrenomeInstrutorAInserir">
+ <label for="inputInstrutorIdade"> Idade do Instrutor (máxima: 90)</label>
+ <input class="mdl-textfield__input" placeholder="Campo obrigatório. Idade máxima é 90." type="number" name="inputInstrutorIdade" required max="90" ng-model="idadeInstrutorAInserir">
+ <label for="inputInstrutorEmail"> Email do Instrutor.</label>
+ <input class="mdl-textfield__input"  placeholder="Campo obrigatório." id="campoEmail" type="email" required name="inputInstrutorEmail" ng-model="emailInstrutorAInserir">
+ <label><input  type="checkbox" name="inputInstrutorDandoAula" ng-model="dandoAulalInstrutorAInserir"> Instrutor esta dando aula? </label> <br>
+ <label for="inputInstrutorUrlFoto"> Insira a URL da foto de perfil do instrutor.</label>
+ <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfoto" ng-model="fotoInstrutorAInserir">
+ <label for="selecionaAulaInstrutor"> Selecione as aulas do Instrutor. Selecione mais de uma segurando CTRL e clicando.</label>
+ <br>
+ <select id="selecionarVarios"multiple name="selecionaAulaInstrutor" ng-model="selecionarAulaInstrutor" ng-options="aula.nome for aula in aulas  track by aula.nome">
+
+ </select>
+ <br>
+ <button type="submit" class="btn btn-success" ng-click="insereInstrutor()"> Adicionar novo instrutor.</button>
+ <br><br><br>
+</form>
+
+
+
+
+<form novalidate class="formCRUD" id="blocoModificarInstrutor"  ng-class="{'escondido' : toggleModInstrutores }" name="modificarInstrutor">
+
+    <label for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
+
+    <select name="selectQualInstrutorModificar" ng-value="instrutorModificarSelecionado" ng-change="povoarMudancas()" ng-model="instrutorAModificar" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
+
+    </select>
+
+    <br>
+
+    <img src="{{ImagemInstrutorTrocar}}" width="320px" height="220px" alt="">
+    <br>
+    <label for="inputInstrutorNomeTrocar"> Nome (obrigatório, 3 a 20 letras).</label>
+    <input class="mdl-textfield__input" type="text" name="inputInstrutorNomeTrocar" required minlength="3" maxlength="20" ng-model="nomeInstrutorTrocar">
+    <label for="inputInstrutorSobrenomeTrocar"> Sobrenome </label>
+    <input class="mdl-textfield__input" type="text" name="inputInstrutorSobrenomeTrocar" maxlength="30" ng-model="sobrenomeInstrutorTrocar">
+    <label for="inputInstrutorIdadeTrocar">Idade(obrigatório, maximo 90 anos.).</label>
+    <input class="mdl-textfield__input" type="number" required max="90" name="inputInstrutorIdadeTrocar" ng-model="idadeInstrutorTrocar">
+    <label for="inputInstrutorEmailTrocar"> Email(obrigatório, deve ser único).</label>
+    <input class="mdl-textfield__input" type="email" id="campoEmail" required name="inputInstrutorEmailTrocar" ng-model="emailInstrutorTrocar">
+    <label><input  type="checkbox" name="inputInstrutorDandoAulaTrocar" ng-model="dandoAulaInstrutorTrocar"> Dando aula? </label> <br>
+    <label for="inputInstrutorUrlFotoTrocar"> Foto de perfil do instrutor.</label>
+
+    <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfotoTrocar" ng-model="fotoInstrutorTrocar">
+    <br>
+    <label for="selecionaAulaInstrutorTrocar"> Aulas do Instrutor.</label><br>
+    <select id="selecionarVarios"multiple name="selecionaAulaInstrutorTrocar" ng-model="selecionarAulaATrocar" ng-options="aula.nome for aula in aulas  track by aula.nome">
+
+    </select>
+    <br>
+    <button type="submit" class="btn btn-info" ng-click="modificaInstrutor()">Modificar instrutor.</button>
+    <button type="submit" class="btn btn-danger" ng-click="excluiInstrutor()"> Excluir instrutor.</button>
+    <br><br>
+</form>
+
+</div>
+
+
+</body>
 </html>
