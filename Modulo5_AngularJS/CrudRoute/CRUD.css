@@ -1,0 +1,88 @@
+::-webkit-input-placeholder { /* Chrome */
+  color: rgba(212, 27, 27, 0.8);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(212, 27, 27, 0.8);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(212, 27, 27, 0.8);
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: rgba(212, 27, 27, 0.8);
+  opacity: 1;
+}
+
+
+#brandAngular{
+
+  height:30px;
+  
+}
+button{
+    margin-top:4px;
+}
+body{
+
+  background-color:#F8F8F8;
+
+}
+
+.input-lg{
+  width:100%;
+}
+
+
+.container{
+  margin:auto;
+
+}
+#branco{
+  height:100%;
+  background: #F8F8F8;
+
+}
+.mdl-textfield__input{
+  color:#817b7b;
+  background:rgb(215, 215, 221);
+}
+label{
+ color:#817b7b;
+}
+#selecionarVarios{
+ height:40px;
+ width:200px;
+}
+
+table {
+  table-layout: auto;
+  width:80%;
+}
+
+.escondido{
+  display:none;
+}
+
+.formCRUD input.ng-invalid.ng-touched {
+  background-color: #FA787E;
+}
+
+.formCRUD input.ng-valid.ng-touched {
+  background-color: #78FA89;
+}
+
+.inputInvalido{
+  background-color:rgba(255, 0, 0, 0.25);
+}
+#campoEmail{
+
+  background-color:#D7D7DD;
+}
+.imagemInstrutorMod,#selectInstrutorMod,#labelSelectInstrutorMod{
+    margin-left:30%;
+}
+#selectInstrutorMod{
+
+    width:320px;
+    
+}

@@ -1,0 +1,34 @@
+<form novalidate class="formCRUD" id="blocoModificarInstrutor"  ng-class="{'escondido' : toggleModInstrutores }" name="modificarInstrutor">
+
+    <label id="labelSelectInstrutorMod" for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
+
+    <select id="selectInstrutorMod" name="selectQualInstrutorModificar" ng-value="instrutorModificarSelecionado" ng-change="povoarMudancas()" ng-model="instrutorAModificar" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
+
+    </select>
+
+    <br>
+
+    <img src="{{ImagemInstrutorTrocar}}" width="320px" height="220px" class="imagemInstrutorMod" alt="">
+    <br>
+    <label for="inputInstrutorNomeTrocar"> Nome (obrigatório, 3 a 20 letras).</label>
+    <input class="mdl-textfield__input" type="text" name="inputInstrutorNomeTrocar" required minlength="3" maxlength="20" ng-model="nomeInstrutorTrocar">
+    <label for="inputInstrutorSobrenomeTrocar"> Sobrenome </label>
+    <input class="mdl-textfield__input" type="text" name="inputInstrutorSobrenomeTrocar" maxlength="30" ng-model="sobrenomeInstrutorTrocar">
+    <label for="inputInstrutorIdadeTrocar">Idade(obrigatório, maximo 90 anos.).</label>
+    <input class="mdl-textfield__input" type="number" required max="90" name="inputInstrutorIdadeTrocar" ng-model="idadeInstrutorTrocar">
+    <label for="inputInstrutorEmailTrocar"> Email(obrigatório, deve ser único).</label>
+    <input class="mdl-textfield__input" type="email" id="campoEmail" required name="inputInstrutorEmailTrocar" ng-model="emailInstrutorTrocar">
+    <label><input  type="checkbox" name="inputInstrutorDandoAulaTrocar" ng-model="dandoAulaInstrutorTrocar"> Dando aula? </label> <br>
+    <label for="inputInstrutorUrlFotoTrocar"> Foto de perfil do instrutor.</label>
+
+    <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfotoTrocar" ng-model="fotoInstrutorTrocar">
+    <br>
+    <label for="selecionaAulaInstrutorTrocar"> Aulas do Instrutor.</label><br>
+    <select id="selecionarVarios"multiple name="selecionaAulaInstrutorTrocar" ng-model="selecionarAulaATrocar" ng-options="aula.nome for aula in aulas  track by aula.nome">
+
+    </select>
+    <br>
+    <button type="submit" class="btn btn-info" ng-click="modificaInstrutor()">Modificar instrutor.</button>
+    <button type="submit" class="btn btn-danger" ng-click="excluiInstrutor()"> Excluir instrutor.</button>
+    <br><br>
+</form>
