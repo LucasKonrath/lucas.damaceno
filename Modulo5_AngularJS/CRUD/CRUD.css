@@ -1,3 +1,19 @@
+::-webkit-input-placeholder { /* Chrome */
+  color: rgba(212, 27, 27, 0.8);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(212, 27, 27, 0.8);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(212, 27, 27, 0.8);
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: rgba(212, 27, 27, 0.8);
+  opacity: 1;
+}
+
+
 #brandAngular{
 
     height:30px;
@@ -34,7 +50,27 @@ label{
     width:200px;
 }
 
+table {
+    table-layout: auto;
+    width:80%;
+}
 
 .escondido{
     display:none;
+}
+
+.formCRUD input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  .formCRUD input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+
+.inputInvalido{
+    background-color:rgba(255, 0, 0, 0.25);
+}
+#campoEmail{
+    
+    background-color:#D7D7DD;
 }
