@@ -53,12 +53,12 @@
         <form novalidate class="formCRUD" ng-class="{'escondido' : toggleAulas }" name="modificarAula">
          <hr>
          <label for="inputNomeAula"> Selecione a aula que deseja modificar.</label>
-         <select name="selecionaAula" ng-model="selecionarAula" ng-options="aula.nome for aula in aulas  track by aula.nome">
+         <select name="selecionaAula" ng-change="povoarAulaMod()" ng-model="selecionarAula" ng-options="aula.nome for aula in aulas  track by aula.nome">
          </select>
          <hr><label for="inputNomeAula"> Nome novo que deseja dar para aula existente.</label>
          <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputNomeAula" ng-model="novoNome"> </span>
          <label><input  type="checkbox" ng-model="modificarAulaUtilizada"> Esta Sendo utilizada? </label> <br>
-         <button type="submit" class="btn btn-primary" ng-click="modificaAula()"> Modificar nome da aula.</button>
+         <button type="submit" class="btn btn-primary" ng-click="modificaAula()"> Modificar aula.</button>
          <button type="submit" class="btn btn-danger" ng-click="excluiAula()"> Deletar Esta Aula.</button>
          <br> <br>
 
@@ -104,15 +104,15 @@
 
 <form novalidate class="formCRUD" id="blocoModificarInstrutor"  ng-class="{'escondido' : toggleModInstrutores }" name="modificarInstrutor">
 
-    <label for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
+    <label id="labelSelectInstrutorMod" for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
 
-    <select name="selectQualInstrutorModificar" ng-value="instrutorModificarSelecionado" ng-change="povoarMudancas()" ng-model="instrutorAModificar" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
+    <select id="selectInstrutorMod" name="selectQualInstrutorModificar" ng-value="instrutorModificarSelecionado" ng-change="povoarMudancas()" ng-model="instrutorAModificar" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
 
     </select>
 
     <br>
 
-    <img src="{{ImagemInstrutorTrocar}}" width="320px" height="220px" alt="">
+    <img src="{{ImagemInstrutorTrocar}}" width="320px" height="220px" class="imagemInstrutorMod" alt="">
     <br>
     <label for="inputInstrutorNomeTrocar"> Nome (obrigatório, 3 a 20 letras).</label>
     <input class="mdl-textfield__input" type="text" name="inputInstrutorNomeTrocar" required minlength="3" maxlength="20" ng-model="nomeInstrutorTrocar">

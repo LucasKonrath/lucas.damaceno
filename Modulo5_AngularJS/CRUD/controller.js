@@ -14,15 +14,16 @@ modulo.controller('controllerCRUD', function($scope,$filter){
         sobrenome: 'Damaceno',           // Opcional (length = max 30)
         idade: 20,                        // Obrigatório (max 90)
         email: 'lucas.damaceno@cwi.com.br',        // Obrigatório (type=email)
-        dandoAula: false,                  // true ou false
-        aula: [1, 4],                     // Opcional (array)
-        urlFoto: 'https://s-media-cache-ak0.pinimg.com/736x/ea/3d/cf/ea3dcff8ed8e8939d98c96b81f747623.jpg'  // Opcional (porém tem uma default de livre escolha)
+        dandoAula: true,                  // true ou false
+        aula: [-10],                     // Opcional (array)
+        urlFoto: 'http://sou.gohorseprocess.com.br/wp-content/uploads/2017/05/horse21.png'  // Opcional (porém tem uma default de livre escolha)
     }
     
     let instrutores = [instrutor];
     $scope.instrutores = instrutores;
-
+    let aulainicial= {nome:'Extreme Go Horse', id:-10,estaSendoUtilizada:true};
     let aulas = [];
+    aulas.push(aulainicial);
     console.log(aulas);
     $scope.aulas = aulas;
 
@@ -136,7 +137,7 @@ modulo.controller('controllerCRUD', function($scope,$filter){
         }
 
         $scope.insereInstrutor = function(){
-            IDInstrutor++;
+          
 
             if($scope.adicionarInstrutor.inputInstrutorEmail.$invalid){
                 swal({
@@ -160,7 +161,7 @@ modulo.controller('controllerCRUD', function($scope,$filter){
 
 
 
-                $scope.fotoInstrutorAInserir = $scope.fotoInstrutorAInserir || 'https://s-media-cache-ak0.pinimg.com/736x/ea/3d/cf/ea3dcff8ed8e8939d98c96b81f747623.jpg';
+                $scope.fotoInstrutorAInserir = $scope.fotoInstrutorAInserir || 'http://sou.gohorseprocess.com.br/wp-content/uploads/2017/05/horse21.png';
                 let instrutorAdicionar = {
                     id:IDInstrutor,
                     nome:$scope.nomeInstrutorAInserir,
@@ -174,7 +175,8 @@ modulo.controller('controllerCRUD', function($scope,$filter){
                 console.log($scope.selecionarAulaInstrutor);
                 console.log(instrutorAdicionar);
                 if(!existeInstrutorComNome(instrutorAdicionar.nome) && !existeInstrutorComEmail(instrutorAdicionar.email))
-                {
+                {   IDInstrutor++;
+                    instrutorAdicionar.id=IDInstrutor;
                     $scope.instrutores.push(instrutorAdicionar);
                     swal({
                         title: "Feito!",
@@ -213,7 +215,7 @@ modulo.controller('controllerCRUD', function($scope,$filter){
                     aulasAdicionarInstrutor.push(aula.id);
                 }
             }
-            $scope.fotoInstrutorTrocar = $scope.fotoInstrutorTrocar|| 'https://s-media-cache-ak0.pinimg.com/736x/ea/3d/cf/ea3dcff8ed8e8939d98c96b81f747623.jpg';
+            $scope.fotoInstrutorTrocar = $scope.fotoInstrutorTrocar|| 'http://sou.gohorseprocess.com.br/wp-content/uploads/2017/05/horse21.png';
             let instrutorModificar = {
                 id:$scope.instrutorAModificar.id,
                 nome:$scope.nomeInstrutorTrocar,
@@ -305,6 +307,12 @@ modulo.controller('controllerCRUD', function($scope,$filter){
                 $scope.fotoInstrutorTrocar = instrutorPovoar.urlFoto || '';
             }
 
+        }
+        
+        $scope.povoarAulaMod = function(){
+            let aulaPovoar = $scope.getAulaByID($scope.selecionarAula.id);
+            $scope.novoNome = aulaPovoar.nome;
+            $scope.modificarAulaUtilizada = aulaPovoar.estaSendoUtilizada;
         }
 
         $scope.temInstrutorComEmail = existeInstrutorComEmail;

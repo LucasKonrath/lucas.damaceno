@@ -19,9 +19,12 @@
   height:30px;
   
 }
+button{
+    margin-top:4px;
+}
 body{
 
-  background-image:url(http://images.all-free-download.com/images/graphiclarge/wood_background_of_highdefinition_picture_169846.jpg);
+  background-color:#F8F8F8;
 
 }
 
@@ -74,4 +77,12 @@ table {
 #campoEmail{
 
   background-color:#D7D7DD;
+}
+.imagemInstrutorMod,#selectInstrutorMod,#labelSelectInstrutorMod{
+    margin-left:30%;
+}
+#selectInstrutorMod{
+
+    width:320px;
+    
 }
