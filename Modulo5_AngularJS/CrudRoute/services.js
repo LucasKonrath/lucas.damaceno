@@ -17,12 +17,18 @@ app.factory('aulaService', function ($http) {
     let objetoAulaCriar = {nome:aula};
     return $http.post(urlBase + '/aula', objetoAulaCriar);
   };
+    
+function deletar(aula){
+    
+    return $http.delete(urlBase+'/aula' + '/' + aula.id);
+}    
      
 
   return {
     list: getTodasAsAulas,
     findById: getAulaPorId,
     update: atualizar,
-    create: criar
+    create: criar,
+      delete: deletar
   };
 });

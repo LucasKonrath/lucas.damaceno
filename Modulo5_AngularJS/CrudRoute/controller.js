@@ -50,11 +50,37 @@ app.controller('adicionarAulasController', function ($scope, $routeParams, aulaS
     
     
     $scope.povoarAulaMod = function(){
-        if(typeof $scope.selecionarAula !== 'undefined'){
-            let aulaPovoar = $scope.getAulaByID($scope.selecionarAula.id);
+        if(typeof $scope.selecionarAula !== 'undefined' && $scope.selecionarAula !== null){
+            let aulaPovoar = $scope.getAulaByID($scope.selecionarAula.id) || '';
             $scope.novoNome = aulaPovoar.nome;
             $scope.modificarAulaUtilizada = aulaPovoar.estaSendoUtilizada;
         }
+    }
+    
+    $scope.modificaAula = modificaAula;
+        
+        
+        function modificaAula(){
+        var aulaAAtualizar = $scope.getAulaByID($scope.selecionarAula.id);
+        aulaAAtualizar = aulaAAtualizar.id;
+        console.log(aulaAAtualizar);
+        var aulaNova = {id:aulaAAtualizar,nome:$scope.novoNome};
+        console.log(aulaNova);
+        aulaService.update(aulaNova).then(function(response){
+            
+            $scope.listarAulas();
+            
+        });
+    }
+    
+    $scope.excluiAula = excluiAula;
+    function excluiAula(){
+        
+        aulaService.delete($scope.getAulaByID($scope.selecionarAula.id)).then(function(response){
+             swal("Feito!", "Aula Deletada Com Sucesso!", "success");
+            $scope.listarAulas();
+        });
+        
     }
     
     $scope.getAulaByID = function(ID){
