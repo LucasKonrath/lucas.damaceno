@@ -1,7 +1,7 @@
      <div>
       <h1>Aula: {{aula}}</h1>
       
-       <form novalidate name="inserirAula">
+       <form novalidate name="inserirAula" ng-init="listarAulas()">
         
             <label for="inputAulaAInserir"> Nome da Aula que deseja inserir.</label>
             <span> <input class="mdl-textfield__input" type="text" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>

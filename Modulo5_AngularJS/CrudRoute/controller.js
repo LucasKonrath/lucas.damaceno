@@ -23,33 +23,37 @@ app.config(function ($routeProvider) {
 
 
 app.controller('adicionarAulasController', function ($scope, $routeParams, aulaService) {
-
     $scope.insereAula = function(aula){
         let inserir = true;
-      aulaService.list().then(function (response){
-           var aulas = response.data;
-          console.log(aulas);
-          for(aulaTestar of aulas){
-            if (aulaTestar.nome.toLowerCase() === aula.toLowerCase()) inserir = false;
-            swal({
-                title: "Error!",
-                text: "Nome ja cadastrado!",
-                type: "error",
-                confirmButtonText: "Cool"
-            });
-        }
-        if(inserir) {
-            aulaService.create(aula);
-             $scope.listarAulas;       
-        }
+        aulaService.list().then(function (response){
+            var aulas = response.data;
+            console.log(aulas);
+            for(aulaTestar of aulas){
+                if (aulaTestar.nome.toLowerCase() === aula.toLowerCase()) inserir = false;
+                swal({
+                    title: "Error!",
+                    text: "Nome ja cadastrado!",
+                    type: "error",
+                    confirmButtonText: "Cool"
+                });
+            }
+            if(inserir) {
+                aulaService.create(aula).then(function (response) {
+
+                    swal("Feito!", "Aula Inserida Com Sucesso!", "success");
+                    $scope.listarAulas();
+                });
+            }
         });
-        
+
     }
-    $scope.listarAulas = aulaService.list().then(function(response){
-        
-        $scope.listaDeAulas = response.data; 
-        
-    });
+    $scope.listarAulas = listarAulas; 
+    function listarAulas (){
+        aulaService.list().then(function(response){
+
+            $scope.listaDeAulas = response.data; 
+
+        });}
 
     $scope.findById = findById;
 
@@ -58,8 +62,6 @@ app.controller('adicionarAulasController', function ($scope, $routeParams, aulaS
             $scope.aula = response.data;
         });
     };
-
-
 });
 
 app.controller('PokemonController', function ($scope, $http) {
