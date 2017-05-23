@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html  ng-app="SistemaCRUD">
+<html  ng-app="app">
 <head>
     <meta charset="utf-8">
     <title> Exemplo</title>
@@ -13,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="sweetalert/dist/sweetalert.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="controller.js"></script>
+    <script src="services.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -22,27 +23,24 @@
                     <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
                 </a>
                 <p class="navbar-text">CRUD (AngularJS)</p>
-                <button type="button" class="btn btn-primary  active" ng-click="toggleAulas = false; toggleADDInstrutores = true; toggleModInstrutores=true" ng-init="toggleAulas = false,toggleADDInstrutores = true,toggleModInstrutores=true"> Adicionar e Modificar Aulas.</button>
-                <button type="submit" class="btn btn-primary  active" ng-click="toggleAulas = true; toggleADDInstrutores = false; toggleModInstrutores=true" ng-init="toggleADDInstrutores = true"> Adicionar/Visualizar Instrutores.</button>
-                <button type="submit" class="btn btn-primary  active" ng-click="toggleAulas = true; toggleADDInstrutores = true; toggleModInstrutores=false" ng-init="toggleModInstrutores = true"> Modificar Instrutores.</button>
+                <form action="#!/addAulas"><button type="submit" href="#!/addAulas" class="btn btn-primary  active"> Adicionar e Modificar Aulas.</button></form>
+                <form action="#!/addInstrutores"><button type="submit" class="btn btn-primary  active"> Adicionar/Visualizar Instrutores.</button></form>
+                <form action="#!/modInstrutores"> <button type="submit" class="btn btn-primary  active"> Modificar Instrutores.</button></form>
             </div>
         </div>
     </nav>
-    <div class="container-fluid" ng-controller="PrincipalController" id="branco">
+    <div class="container-fluid" id="branco">
        
        <a href="#!/addAulas">Add aulas</a>
     <a href="#!/addInstrutores">Add instrutores</a>
        <a href="#!/modInstrutores">Mod instrutores</a>
+        
+        
+        
         <ng-view></ng-view>
        
  
-     
-
-
-
-
-
-
+    
     </div>
 
 

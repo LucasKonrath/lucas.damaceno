@@ -1,11 +1,14 @@
- <form novalidate name="inserirAula" class="formCRUD" ng-class="{'escondido' : toggleAulas }">
-        <ng-view> </ng-view>
+     <div>
+      <h1>Aula: {{aula}}</h1>
+      
+       <form novalidate name="inserirAula">
+        
             <label for="inputAulaAInserir"> Nome da Aula que deseja inserir.</label>
             <span> <input class="mdl-textfield__input" type="text" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
             <label><input  type="checkbox" ng-model="aulaUtilizada"> Esta Sendo utilizada? </label> <br>
 
 
-            <button type="submit" class="btn btn-success" ng-click="insereAula()"> Adicionar.</button>
+            <button type="submit" class="btn btn-success" ng-click="insereAula(aulaAInserir)"> Adicionar.</button>
             <button type="reset" class="btn btn-primary"> Reset.</button>
             <hr>
         </form>
@@ -21,6 +24,8 @@
 
         <form novalidate class="formCRUD" ng-class="{'escondido' : toggleAulas }" name="modificarAula">
          <hr>
+         
+       
          <label for="inputNomeAula"> Selecione a aula que deseja modificar.</label>
          <select name="selecionaAula" ng-change="povoarAulaMod()" ng-model="selecionarAula" ng-options="aula.nome for aula in aulas  track by aula.nome">
          </select>
@@ -30,5 +35,6 @@
          <button type="submit" class="btn btn-primary" ng-click="modificaAula()"> Modificar aula.</button>
          <button type="submit" class="btn btn-danger" ng-click="excluiAula()"> Deletar Esta Aula.</button>
          <br> <br>
-
+        
      </form>
+</div>
