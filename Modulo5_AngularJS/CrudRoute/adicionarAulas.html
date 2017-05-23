@@ -1,14 +1,13 @@
-     <div>
-      <h1>Aula: {{aula}}</h1>
+     
       
        <form novalidate name="inserirAula" ng-init="listarAulas()">
         
-            <label for="inputAulaAInserir"> Nome da Aula que deseja inserir.</label>
-            <span> <input class="mdl-textfield__input" type="text" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
+            <label for="inputAulaAInserir"> Nome da Aula que deseja inserir (no minimo 3 letras).</label>
+            <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
             <label><input  type="checkbox" ng-model="aulaUtilizada"> Esta Sendo utilizada? </label> <br>
 
 
-            <button type="submit" class="btn btn-success" ng-click="insereAula(aulaAInserir)"> Adicionar.</button>
+            <button type="submit" ng-disabled="inserirAula.$invalid || inserirAula.$pending" class="btn btn-success" ng-click="insereAula(aulaAInserir)"> Adicionar.</button>
             <button type="reset" class="btn btn-primary"> Reset.</button>
             <hr>
         </form>
@@ -27,14 +26,16 @@
          
        
          <label for="inputNomeAula"> Selecione a aula que deseja modificar.</label>
+         <div class="form-group">
          <select name="selecionaAula"  ng-change="povoarAulaMod()" ng-model="selecionarAula" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
          </select>
-         <hr><label for="inputNomeAula"> Nome novo que deseja dar para aula existente.</label>
+         </div>
+         
+         <hr><label for="inputNomeAula"> Nome novo que deseja dar para aula existente (no minimo 3 letras).</label>
          <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputNomeAula" ng-model="novoNome"> </span>
          <label><input  type="checkbox" ng-model="modificarAulaUtilizada"> Esta Sendo utilizada? </label> <br>
-         <button type="submit" class="btn btn-primary" ng-click="modificaAula()"> Modificar aula.</button>
+         <button type="submit" ng-disabled="modificarAula.$invalid || modificarAula.$pending" class="btn btn-primary" ng-click="modificaAula()"> Modificar aula.</button>
          <button type="submit" class="btn btn-danger" ng-click="excluiAula()"> Deletar Esta Aula.</button>
          <br> <br>
         
-     </form>
-</div>
+     </form >

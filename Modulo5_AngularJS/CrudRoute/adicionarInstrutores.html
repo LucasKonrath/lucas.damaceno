@@ -1,4 +1,4 @@
-    
+
         <table ng-init="listarInstrutores()" class="table table-bordered">
          <br><br>
          <thead>
@@ -26,10 +26,12 @@
  <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfoto" ng-model="fotoInstrutorAInserir">
  <label for="selecionaAulaInstrutor"> Selecione as aulas do Instrutor. Selecione mais de uma segurando CTRL e clicando.</label>
  <br>
+ <div class="form-group">
  <select id="selecionarVarios"multiple name="selecionaAulaInstrutor" ng-init="listarAulas()" ng-model="selecionarAulaInstrutor" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
 
  </select>
+ </div>
+ <button type="submit" class="btn btn-success" ng-disabled="adicionarInstrutor.$invalid || adicionarInstrutor.$pending" ng-click="insereInstrutor()"> Adicionar novo instrutor.</button>
  <br>
- <button type="submit" class="btn btn-success" ng-click="insereInstrutor()"> Adicionar novo instrutor.</button>
  <br><br><br>
 </form>

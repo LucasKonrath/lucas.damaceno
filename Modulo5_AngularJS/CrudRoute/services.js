@@ -57,9 +57,9 @@ app.factory('instrutorService', function ($http) {
     return $http.post(urlBase + '/instrutor', objetoInstrutorCriar);
   };
     
-function deletar(aula){
+function deletar(instrutor){
     
-    return $http.delete(urlBase+'/instrutor' + '/' + aula.id);
+    return $http.delete(urlBase+'/instrutor' + '/' + instrutor.id);
 }    
      
 

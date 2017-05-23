@@ -1,4 +1,7 @@
-<form novalidate class="formCRUD" id="blocoModificarInstrutor" ng-init="listarInstrutores()" name="modificarInstrutor">
+
+    <h1>Modificar instrutores:</h1>
+
+    <form novalidate class="formCRUD" id="blocoModificarInstrutor" ng-init="listarInstrutores()" name="modificarInstrutor">
 
     <label id="labelSelectInstrutorMod" for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
 
@@ -23,12 +26,14 @@
 
     <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfotoTrocar" ng-model="fotoInstrutorTrocar">
     <br>
+    <div class="form-group">
     <label for="selecionaAulaInstrutorTrocar"> Aulas do Instrutor.</label><br>
-    <select id="selecionarVarios"multiple name="selecionaAulaInstrutorTrocar" ng-model="selecionarAulaATrocar" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
+    <select id="selecionarVarios" multiple name="selecionaAulaInstrutorTrocar" ng-model="selecionarAulaATrocar" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
 
     </select>
+    </div>
     <br>
-    <button type="submit" class="btn btn-info" ng-click="modificaInstrutor()">Modificar instrutor.</button>
+    <button type="submit" ng-disabled="modificarInstrutor.$invalid || modificarInstrutor.$pending" class="btn btn-info" ng-click="modificaInstrutor()">Modificar instrutor.</button>
     <button type="submit" class="btn btn-danger" ng-click="excluiInstrutor()"> Excluir instrutor.</button>
     <br><br>
 </form>
