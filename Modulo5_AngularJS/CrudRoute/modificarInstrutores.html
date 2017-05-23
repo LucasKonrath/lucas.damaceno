@@ -1,4 +1,4 @@
-<form novalidate class="formCRUD" id="blocoModificarInstrutor"  ng-class="{'escondido' : toggleModInstrutores }" name="modificarInstrutor">
+<form novalidate class="formCRUD" id="blocoModificarInstrutor" ng-init="listarAulas()" ng-class="{'escondido' : toggleModInstrutores }" name="modificarInstrutor">
 
     <label id="labelSelectInstrutorMod" for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
 
@@ -24,7 +24,7 @@
     <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfotoTrocar" ng-model="fotoInstrutorTrocar">
     <br>
     <label for="selecionaAulaInstrutorTrocar"> Aulas do Instrutor.</label><br>
-    <select id="selecionarVarios"multiple name="selecionaAulaInstrutorTrocar" ng-model="selecionarAulaATrocar" ng-options="aula.nome for aula in aulas  track by aula.nome">
+    <select id="selecionarVarios"multiple name="selecionaAulaInstrutorTrocar" ng-model="selecionarAulaATrocar" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
 
     </select>
     <br>

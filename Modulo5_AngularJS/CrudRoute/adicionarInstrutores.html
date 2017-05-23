@@ -1,16 +1,17 @@
-<table   class="table table-bordered">
+    
+        <table ng-init="listarInstrutores()" class="table table-bordered">
          <br><br>
          <thead>
             <th> Foto </th> <th>ID</th><th>Nome</th> <th>Idade</th> <th>Email</th> <th>Dando Aula?</th><th>Aulas</th> 
         </thead>
-        <tr ng-repeat="instrutor in instrutores | orderBy:'nome' ">
+        <tr ng-repeat="instrutor in listaDeInstrutores | orderBy:'nome' ">
             <td > <img src="{{instrutor.urlFoto}}" width="50px" height="50px" alt=""></td> <td>{{instrutor.id}}</td> <td>{{instrutor.nome}} {{instrutor.sobrenome}}</td> <td>{{instrutor.idade}}</td>  <td>{{instrutor.email}}</td><td>{{instrutor.dandoAula ? 'Sim' : 'Não'}}
             </td>  <td>
             <p ng-repeat="aula in instrutor.aula">{{getAulaByID(aula).nome}}</p>
             </td>
     </tr>
 </table>
-<form novalidate class="formCRUD" ng-class="{'escondido' : toggleADDInstrutores }" name="adicionarInstrutor">
+<form novalidate class="formCRUD"    name="adicionarInstrutor">
  <hr>
  <label for="inputInstrutorNome"> Nome do Instrutor que deseja adicionar (3 a 20 letras).</label>
  <input class="mdl-textfield__input" type="text" name="inputInstrutorNome"  placeholder="Campo obrigatório. 3 a 20 letras." required minlength="3" maxlength="20" ng-model="nomeInstrutorAInserir">
@@ -25,7 +26,7 @@
  <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfoto" ng-model="fotoInstrutorAInserir">
  <label for="selecionaAulaInstrutor"> Selecione as aulas do Instrutor. Selecione mais de uma segurando CTRL e clicando.</label>
  <br>
- <select id="selecionarVarios"multiple name="selecionaAulaInstrutor" ng-model="selecionarAulaInstrutor" ng-options="aula.nome for aula in aulas  track by aula.nome">
+ <select id="selecionarVarios"multiple name="selecionaAulaInstrutor" ng-init="listarAulas()" ng-model="selecionarAulaInstrutor" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
 
  </select>
  <br>

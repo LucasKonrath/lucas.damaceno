@@ -7,7 +7,7 @@ app.config(function ($routeProvider) {
         templateUrl: 'adicionarAulas.html'
     })
         .when('/addInstrutores', {
-        controller: 'adicionarInstrutores',
+        controller: 'adicionarInstrutoresController',
         templateUrl: 'adicionarInstrutores.html'
     })
         .when('/modInstrutores', {
@@ -117,4 +117,48 @@ app.controller('PokemonController', function ($scope, $http) {
     });
 });
 
+
+app.controller('adicionarInstrutoresController', function($scope,$http,$routeParams, instrutorService, aulaService){
+    
+    $scope.listarInstrutores = listarInstrutores;
+        function listarInstrutores(){
+            instrutorService.list().then(function(response){
+                $scope.listaDeInstrutores = response.data;
+            });
+        }
+    $scope.insereInstrutor = insereInstrutor;
+        function insereInstrutor(){
+            let instrutor = {
+                nome:$scope.nomeInstrutorAInserir,
+                sobrenome:$scope.sobrenomeInstrutorAInserir,
+                idade:$scope.idadeInstrutorAInserir,
+                email:$scope.emailInstrutorAInserir,
+                dandoAula:$scope.dandoAulalInstrutorAInserir,
+                urlFoto: $scope.fotoInstrutorAInserir || "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg",
+                aula:$scope.selecionarAulaInstrutor
+                
+            }
+            instrutorService.create(instrutor).then(function(response){
+                swal("Feito!", "Instrutor adicionado com sucesso!", "success");
+                $scope.listarInstrutores();
+            });
+            
+        }
+    $scope.listarAulas = listarAulas; 
+    function listarAulas (){
+        aulaService.list().then(function(response){
+
+            $scope.listaDeAulas = response.data; 
+
+        });}
+    
+    $scope.getAulaByID = function(ID){
+
+        for(aula of $scope.listaDeAulas){
+            if(aula.id === ID) return aula;
+        }
+        return;
+    }
+    
+});
 
