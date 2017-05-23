@@ -16,26 +16,12 @@
       "id": 4,
       "nome": "Banco de Dados I"
     },
-    {
-      "nome": "BatataScript",
-      "id": 6
-    },
-    {
-      "nome": "BalaLaika",
-      "id": 7
-    },
-    {
-      "id": 8,
-      "nome": "Euclidio Lindomar Da Silva Sauro"
-    },
+   
     {
       "nome": "BatataScript",
       "id": 9
     },
-    {
-      "nome": "batta",
-      "id": 10
-    },
+    
     {
       "nome": "BatataScriptu",
       "id": 11
@@ -44,30 +30,14 @@
       "nome": "Borracha",
       "id": 13
     },
-    {
-      "id": 14,
-      "nome": "Anao Vei"
-    },
-    {
-      "nome": "battassssssss",
-      "id": 16
-    },
-    {
-      "id": 17,
-      "nome": "Bob Esponja"
-    },
-    {
-      "nome": "Jubirogo",
-      "id": 18
-    },
+    
+
+    
     {
       "nome": "Conceitos Jedi I",
       "id": 19
-    },
-    {
-      "id": 20,
-      "nome": "Anao Velho Af"
     }
+    
   ],
   "instrutor": [
     {
