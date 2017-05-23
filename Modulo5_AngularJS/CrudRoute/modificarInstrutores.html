@@ -1,8 +1,8 @@
-<form novalidate class="formCRUD" id="blocoModificarInstrutor" ng-init="listarAulas()" ng-class="{'escondido' : toggleModInstrutores }" name="modificarInstrutor">
+<form novalidate class="formCRUD" id="blocoModificarInstrutor" ng-init="listarInstrutores()" name="modificarInstrutor">
 
     <label id="labelSelectInstrutorMod" for="selectInstrutorModificar"> Selecione qual instrutor deseja modificar. </label>
 
-    <select id="selectInstrutorMod" name="selectQualInstrutorModificar" ng-value="instrutorModificarSelecionado" ng-change="povoarMudancas()" ng-model="instrutorAModificar" ng-options="instrutor.nome for instrutor in instrutores  track by instrutor.nome">
+    <select id="selectInstrutorMod" name="selectQualInstrutorModificar" ng-value="instrutorModificarSelecionado" ng-change="povoarMudancas()" ng-model="instrutorAModificar" ng-options="instrutor.nome for instrutor in listaDeInstrutores  track by instrutor.nome">
 
     </select>
 

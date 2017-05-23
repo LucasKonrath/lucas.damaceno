@@ -11,7 +11,7 @@ app.config(function ($routeProvider) {
         templateUrl: 'adicionarInstrutores.html'
     })
         .when('/modInstrutores', {
-        controller: 'modificarInstrutores',
+        controller: 'modificarInstrutoresController',
         templateUrl: 'modificarInstrutores.html'
     }).when('/pokemon', {
         controller: 'PokemonController',
@@ -162,6 +162,55 @@ app.controller('adicionarInstrutoresController', function($scope,$http,$routePar
         }
         return;
     }
+    
+});
+
+
+
+app.controller('modificarInstrutoresController', function ($scope, $http, aulaService, instrutorService) {
+
+    
+     $scope.listarInstrutores = listarInstrutores;
+        function listarInstrutores(){
+            instrutorService.list().then(function(response){
+                $scope.listaDeInstrutores = response.data;
+            });
+        }
+    
+    
+    $scope.listarAulas = listarAulas; 
+    function listarAulas (){
+        aulaService.list().then(function(response){
+
+            $scope.listaDeAulas = response.data; 
+
+        });}
+    
+    
+    
+    $scope.povoarMudancas = povoarMudancas;
+    
+    function povoarMudancas(){
+        
+        var instrutor = {}  
+        instrutorService.findById($scope.instrutorAModificar.id).then(
+            function(response){
+                instrutor = response.data;
+                $scope.ImagemInstrutorTrocar = response.data.urlFoto;
+                   $scope.nomeInstrutorTrocar = response.data.nome;
+                    $scope.sobrenomeInstrutorTrocar = response.data.sobrenome;
+                    $scope.idadeInstrutorTrocar = response.data.idade;
+                    $scope.emailInstrutorTrocar = response.data.email;
+                    $scope.dandoAulaInstrutorTrocar = response.data.dandoAula;
+                $scope.fotoInstrutorTrocar = response.data.urlFoto;
+               listarAulas();
+            }
+        )
+     
+        
+    }
+    
+    
     
 });
 
