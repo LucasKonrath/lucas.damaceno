@@ -47,6 +47,24 @@ app.controller('adicionarAulasController', function ($scope, $routeParams, aulaS
         });
 
     }
+    
+    
+    $scope.povoarAulaMod = function(){
+        if(typeof $scope.selecionarAula !== 'undefined'){
+            let aulaPovoar = $scope.getAulaByID($scope.selecionarAula.id);
+            $scope.novoNome = aulaPovoar.nome;
+            $scope.modificarAulaUtilizada = aulaPovoar.estaSendoUtilizada;
+        }
+    }
+    
+    $scope.getAulaByID = function(ID){
+
+        for(aula of $scope.listaDeAulas){
+            if(aula.id === ID) return aula;
+        }
+        return;
+    }
+    
     $scope.listarAulas = listarAulas; 
     function listarAulas (){
         aulaService.list().then(function(response){

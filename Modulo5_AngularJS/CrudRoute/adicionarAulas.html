@@ -27,7 +27,7 @@
          
        
          <label for="inputNomeAula"> Selecione a aula que deseja modificar.</label>
-         <select name="selecionaAula" ng-change="povoarAulaMod()" ng-model="selecionarAula" ng-options="aula.nome for aula in aulas  track by aula.nome">
+         <select name="selecionaAula"  ng-change="povoarAulaMod()" ng-model="selecionarAula" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
          </select>
          <hr><label for="inputNomeAula"> Nome novo que deseja dar para aula existente.</label>
          <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputNomeAula" ng-model="novoNome"> </span>
