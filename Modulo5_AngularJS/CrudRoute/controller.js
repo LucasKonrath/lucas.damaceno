@@ -38,10 +38,18 @@ app.controller('adicionarAulasController', function ($scope, $routeParams, aulaS
                 confirmButtonText: "Cool"
             });
         }
-        if(inserir) aulaService.create(aula);
+        if(inserir) {
+            aulaService.create(aula);
+             $scope.listarAulas;       
+        }
         });
         
     }
+    $scope.listarAulas = aulaService.list().then(function(response){
+        
+        $scope.listaDeAulas = response.data; 
+        
+    });
 
     $scope.findById = findById;
 

@@ -15,10 +15,10 @@
 
         <table ng-class="{'escondido' : toggleAulas }" class="table table-bordered">
             <thead>
-                <th>ID</th><th>Nome</th> <th>Aula sendo utilizada?</th>
+                <th>ID</th><th>Nome</th> 
             </thead>
-            <tr ng-repeat="aula in aulas | orderBy:'nome' ">
-                <td>{{aula.id}}</td>  <td>{{aula.nome}}</td> <td> {{aula.estaSendoUtilizada ? 'Sim' : 'Nao'}}</td>
+            <tr ng-repeat="aula in listaDeAulas | orderBy:'nome' ">
+                <td>{{aula.id}}</td>  <td>{{aula.nome}}</td> 
             </tr>
         </table>
 

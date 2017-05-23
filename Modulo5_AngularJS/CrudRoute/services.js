@@ -16,7 +16,8 @@ app.factory('aulaService', function ($http) {
   function criar(aula) {
     let objetoAulaCriar = {nome:aula};
     var envio = $http.post(urlBase + '/aula', objetoAulaCriar).then(function (response) {
-    swal("Feito!", "Aula Inserida Com Sucesso!", "success")
+    swal("Feito!", "Aula Inserida Com Sucesso!", "success");
+    
   });
      
   };
