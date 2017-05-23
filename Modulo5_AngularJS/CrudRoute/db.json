@@ -84,104 +84,18 @@
       "urlFoto": "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg"
     },
     {
-      "nome": {
-        "id": 17,
-        "nome": "Borrrrrrrrrrrrrrrrrrrrrrrracho"
-      },
+      "nome": "Bebe",
+      "sobrenome": "Rezende",
+      "idade": 23,
+      "email": "jabiraca@jubirogo",
+      "aula": [
+        1,
+        2,
+        7,
+        8
+      ],
+      "urlFoto": "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg",
       "id": 1
-    },
-    {
-      "nome": {
-        "id": 17,
-        "nome": "Borrrrrrrrrrrrrrrrrrrrrrrracho"
-      },
-      "id": 2
-    },
-    {
-      "nome": "Julius",
-      "sobrenome": "Maximus",
-      "idade": 22,
-      "email": "instru@thor.com",
-      "dandoAula": false,
-      "aula": [
-        0
-      ],
-      "urlFoto": "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg",
-      "id": 3
-    },
-    {
-      "nome": "Julius",
-      "sobrenome": "Maximus",
-      "idade": 22,
-      "email": "instru@thor.com",
-      "dandoAula": false,
-      "aula": [
-        0
-      ],
-      "urlFoto": "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg",
-      "id": 4
-    },
-    {
-      "nome": "Cesar",
-      "sobrenome": "Galileo",
-      "idade": 23,
-      "email": "cesar@zesar.com",
-      "dandoAula": true,
-      "aula": [
-        {
-          "id": 1,
-          "nome": "HTML e CSS"
-        },
-        {
-          "id": 2,
-          "nome": "Javascript"
-        },
-        {
-          "id": 4,
-          "nome": "Banco de Dados I"
-        },
-        {
-          "nome": "BatataScript",
-          "id": 9
-        },
-        {
-          "nome": "BatataScript",
-          "id": 9
-        }
-      ],
-      "urlFoto": "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg",
-      "id": 5
-    },
-    {
-      "nome": "aaaaaaaaaaaaaaaaa",
-      "sobrenome": "222222222222222",
-      "idade": 23,
-      "email": "lucas.damaceno@cwi.com.br",
-      "dandoAula": true,
-      "aula": [
-        {
-          "id": 1,
-          "nome": "HTML e CSS"
-        },
-        {
-          "id": 2,
-          "nome": "Javascript"
-        },
-        {
-          "id": 4,
-          "nome": "Banco de Dados I"
-        },
-        {
-          "nome": "BatataScript",
-          "id": 9
-        },
-        {
-          "nome": "BatataScript",
-          "id": 9
-        }
-      ],
-      "urlFoto": "22",
-      "id": 6
     }
   ]
 }

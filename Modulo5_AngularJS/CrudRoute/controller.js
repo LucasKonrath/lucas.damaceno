@@ -135,9 +135,12 @@ app.controller('adicionarInstrutoresController', function($scope,$http,$routePar
                 email:$scope.emailInstrutorAInserir,
                 dandoAula:$scope.dandoAulalInstrutorAInserir,
                 urlFoto: $scope.fotoInstrutorAInserir || "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg",
-                aula:$scope.selecionarAulaInstrutor
-                
             }
+            let idAulasInstrutor = [];
+            for(aulas of $scope.selecionarAulaInstrutor){
+                idAulasInstrutor.push(aulas.id);
+            }
+            instrutor.aula = idAulasInstrutor;
             instrutorService.create(instrutor).then(function(response){
                 swal("Feito!", "Instrutor adicionado com sucesso!", "success");
                 $scope.listarInstrutores();
@@ -153,7 +156,7 @@ app.controller('adicionarInstrutoresController', function($scope,$http,$routePar
         });}
     
     $scope.getAulaByID = function(ID){
-
+        if (typeof $scope.listaDeAulas === 'undefined') return; 
         for(aula of $scope.listaDeAulas){
             if(aula.id === ID) return aula;
         }
