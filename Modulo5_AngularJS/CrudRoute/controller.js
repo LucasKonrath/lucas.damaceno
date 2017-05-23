@@ -210,6 +210,22 @@ app.controller('modificarInstrutoresController', function ($scope, $http, aulaSe
         
     }
     
+    $scope.modificaInstrutor = modificaInstrutor();
+    
+    function modificaInstrutor(){
+        let instrutorCriar = {nome:$scope.nomeInstrutorTrocar,
+                             sobrenome:$scope.sobrenomeInstrutorTrocar,
+                              urlFoto:$scope.fotoInstrutorTrocar,
+                              idade:$scope.idadeInstrutorTrocar,
+                              email:$scope.emailInstrutorTrocar,
+                              dandoAula:$scope.dandoAulaInstrutorTrocar,
+                              id:$scope.instrutorAModificar.id
+                             }
+        instrutorService.update(instrutorCriar);
+        
+        
+    }
+    
     
     
 });
