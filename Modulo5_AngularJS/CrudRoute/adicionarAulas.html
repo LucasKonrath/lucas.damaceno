@@ -4,15 +4,12 @@
         
             <label for="inputAulaAInserir"> Nome da Aula que deseja inserir (no minimo 3 letras).</label>
             <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
-            <label><input  type="checkbox" ng-model="aulaUtilizada"> Esta Sendo utilizada? </label> <br>
-
-
             <button type="submit" ng-disabled="inserirAula.$invalid || inserirAula.$pending" class="btn btn-success" ng-click="insereAula(aulaAInserir)"> Adicionar.</button>
             <button type="reset" class="btn btn-primary"> Reset.</button>
             <hr>
         </form>
 
-        <table ng-class="{'escondido' : toggleAulas }" class="table table-bordered">
+        <table  class="table table-bordered">
             <thead>
                 <th>ID</th><th>Nome</th> 
             </thead>
@@ -21,7 +18,7 @@
             </tr>
         </table>
 
-        <form novalidate class="formCRUD" ng-class="{'escondido' : toggleAulas }" name="modificarAula">
+        <form novalidate class="formCRUD"  name="modificarAula">
          <hr>
          
        
@@ -33,7 +30,6 @@
          
          <hr><label for="inputNomeAula"> Nome novo que deseja dar para aula existente (no minimo 3 letras).</label>
          <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputNomeAula" ng-model="novoNome"> </span>
-         <label><input  type="checkbox" ng-model="modificarAulaUtilizada"> Esta Sendo utilizada? </label> <br>
          <button type="submit" ng-disabled="modificarAula.$invalid || modificarAula.$pending" class="btn btn-primary" ng-click="modificaAula()"> Modificar aula.</button>
          <button type="submit" class="btn btn-danger" ng-click="excluiAula()"> Deletar Esta Aula.</button>
          <br> <br>

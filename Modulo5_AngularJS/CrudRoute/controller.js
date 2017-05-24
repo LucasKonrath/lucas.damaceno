@@ -97,7 +97,7 @@ app.controller('adicionarAulasController', function ($scope, $routeParams, aulaS
         aulaService.list().then(function(response){
 
             $scope.listaDeAulas = response.data; 
-
+            $scope.listaDeAulas.splice(0,1);
         });}
 
     $scope.findById = findById;
@@ -137,9 +137,15 @@ app.controller('adicionarInstrutoresController', function($scope,$http,$routePar
             dandoAula:$scope.dandoAulalInstrutorAInserir,
             urlFoto: $scope.fotoInstrutorAInserir || "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg",
         }
+        
         let idAulasInstrutor = [];
-        for(aulas of $scope.selecionarAulaInstrutor){
+        if(typeof $scope.selecionarAulaInstrutor === "undefined"){
+            idAulasInstrutor.push(0);
+        }
+        else{
+            for(aulas of $scope.selecionarAulaInstrutor){
             idAulasInstrutor.push(aulas.id);
+        }
         }
         instrutor.aula = idAulasInstrutor;
         instrutorService.create(instrutor).then(function(response){
@@ -152,7 +158,8 @@ app.controller('adicionarInstrutoresController', function($scope,$http,$routePar
     function listarAulas (){
         aulaService.list().then(function(response){
 
-            $scope.listaDeAulas = response.data; 
+            $scope.listaDeAulas = response.data;
+            $scope.listaDeAulas.splice(0,1);
 
         });}
 
@@ -183,7 +190,8 @@ app.controller('modificarInstrutoresController', function ($scope, $http, aulaSe
     function listarAulas (){
         aulaService.list().then(function(response){
 
-            $scope.listaDeAulas = response.data; 
+            $scope.listaDeAulas = response.data;
+            $scope.listaDeAulas.splice(0,1);
 
         });}
 
@@ -216,10 +224,15 @@ app.controller('modificarInstrutoresController', function ($scope, $http, aulaSe
     function modificaInstrutor(){
         console.log($scope.instrutorAModificar);
         console.log($scope.selecionarAulaATrocar);
-        let idsAulas = [0];
-
-        for(aula of $scope.selecionarAulaATrocar){
-            idsAulas.push(aula.id);
+        let idsAulas = [];
+        if(typeof $scope.selecionarAulaATrocar === "undefined"){
+            let nenhumaAula = {id:0, nome:'Nenhuma'};
+            idsAulas.push(nenhumaAula.id);
+        }
+        else{
+            for(aula of $scope.selecionarAulaATrocar){
+                idsAulas.push(aula.id);
+            }
         }
         let instrutorCriar = {
             aula:idsAulas,
@@ -245,18 +258,18 @@ app.controller('modificarInstrutoresController', function ($scope, $http, aulaSe
     function excluiInstrutor(){
 
         instrutorService.delete($scope.instrutorAModificar).then(function(response){
-                $scope.listarInstrutores();
-                $scope.listarAulas;
-                swal("Feito!", "Instrutor deletado Com Sucesso!", "success");
-                $scope.ImagemInstrutorTrocar = '';
-                $scope.instrutorAModificar = '';
-                $scope.nomeInstrutorTrocar= ''
-                $scope.sobrenomeInstrutorTrocar= ''
-                $scope.fotoInstrutorTrocar= ''
-                $scope.idadeInstrutorTrocar= ''
-                $scope.emailInstrutorTrocar= ''
-                $scope.dandoAulaInstrutorTrocar= ''
-                $scope.instrutorAModificar.id = ''
+            $scope.listarInstrutores();
+            $scope.listarAulas;
+            swal("Feito!", "Instrutor deletado Com Sucesso!", "success");
+            $scope.ImagemInstrutorTrocar = '';
+            $scope.instrutorAModificar = '';
+            $scope.nomeInstrutorTrocar= ''
+            $scope.sobrenomeInstrutorTrocar= ''
+            $scope.fotoInstrutorTrocar= ''
+            $scope.idadeInstrutorTrocar= ''
+            $scope.emailInstrutorTrocar= ''
+            $scope.dandoAulaInstrutorTrocar= ''
+            $scope.instrutorAModificar.id = ''
 
         });
 
