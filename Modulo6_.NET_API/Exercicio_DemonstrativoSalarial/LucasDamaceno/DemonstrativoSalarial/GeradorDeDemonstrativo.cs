@@ -33,8 +33,8 @@ namespace DemonstrativoSalarial
         public Desconto CalcularInss(double proventos)
         {
             double aliquota;
-            if (proventos < 1000) aliquota = 8.0;
-            else if (proventos < 1500) aliquota = 9.0;
+            if (proventos <= 1000) aliquota = 8.0;
+            else if (proventos <= 1500) aliquota = 9.0;
             else aliquota = 10.0;
             return new Desconto(aliquota, proventos);
         }

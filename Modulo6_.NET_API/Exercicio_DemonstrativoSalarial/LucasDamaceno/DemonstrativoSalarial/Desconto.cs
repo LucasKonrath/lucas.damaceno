@@ -16,7 +16,7 @@ namespace DemonstrativoSalarial
         public double calcular()
         {
 
-            return Valor * (Aliquota / 100);
+            return Math.Truncate(Valor *(Aliquota/100) * 100) / 100; 
 
         }
         public double descontoInss;
