@@ -1,4 +1,5 @@
 ﻿using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,22 +29,27 @@ namespace DemonstrativoSalarial
             Inss = inss;
             Irrf = irrf;
             TotalDescontos = totalDescontos;
-            TotalLiquido = totalLiquido;
+            TotalLiquido = totalLiquido ;
             Fgts = fgts;
+        }
+
+        public string ValorComoString(double value, int decimalPlaces)
+        {
+            return value.ToString($"F{decimalPlaces}");
         }
 
         public void imprimirDemo()
         {
-
-            Console.WriteLine($"Salário base:{ SalarioBase}");
-            Console.WriteLine($"Horas Extras: {HorasExtras.calcular()}");
-            Console.WriteLine($"Horas Descontadas: {HorasDescontadas.calcular()}");
-            Console.WriteLine($"Total Proventos: {TotalProventos}");
-            Console.WriteLine($"Desconto INSS: {Inss.calcular()}");
-            Console.WriteLine($"Desconto IRRF: {Irrf.calcular()}");
-            Console.WriteLine($"Total de Descontos: {TotalDescontos}");
-            Console.WriteLine($"Total Líquido: { TotalLiquido}");
-            Console.WriteLine($"Total FGTS: {Fgts.calcular()}");
+       
+            Console.WriteLine($"Salário base:{ValorComoString(SalarioBase,2)}");
+            Console.WriteLine($"Horas Extras: {ValorComoString(HorasExtras.calcular(),2)}");
+            Console.WriteLine($"Horas Descontadas: {ValorComoString(HorasDescontadas.calcular(),2)}");
+            Console.WriteLine($"Total Proventos: {ValorComoString(TotalProventos,2)}");
+            Console.WriteLine($"Desconto INSS: {ValorComoString(Inss.calcular(),2)}");
+            Console.WriteLine($"Desconto IRRF: {ValorComoString(Irrf.calcular(),2)}");
+            Console.WriteLine($"Total de Descontos: {ValorComoString(TotalDescontos,2)}");
+            Console.WriteLine($"Total Líquido: {ValorComoString(TotalLiquido,2)}");
+            Console.WriteLine($"Total FGTS: {ValorComoString(Fgts.calcular(),2)}");
 
         }
 
