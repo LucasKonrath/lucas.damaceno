@@ -85,27 +85,25 @@ namespace Repositorio
 
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-            var listaFuncs = from funcionario in Funcionarios
-                             where funcionario.Cargo.Equals(cargo)
-                             select funcionario;
-            return listaFuncs.ToList();
+
+            return Funcionarios.
+                   Where(func => func.Cargo.Equals(cargo)).ToList();
+
+            
         }
 
         public IList<Funcionario> OrdenadosPorCargo()
         {
-            var listaFuncs = from funcionario in Funcionarios
-                             orderby funcionario.Cargo.Titulo, funcionario.Nome
-                             select funcionario;
-            return listaFuncs.ToList();
-                             
+            return Funcionarios.
+                   OrderBy(func => func.Cargo.Titulo).
+                   ThenBy(func => func.Nome).ToList();
+                                  
         }
 
         public IList<Funcionario> BuscarPorNome(string nome)
         {
-            var listaFuncs = from funcionario in Funcionarios
-                             where funcionario.Nome.Contains(nome)
-                             select funcionario;
-            return listaFuncs.ToList();
+            return Funcionarios.
+                   Where(func => func.Nome.Contains(nome)).ToList();
         }        
 
         public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turnos)
@@ -113,28 +111,28 @@ namespace Repositorio
 
             if (turnos.Length == 0)
             {
-                var listaFuncs = from funcionario in Funcionarios
-                                 select funcionario;
-                return listaFuncs.ToList();
+                return Funcionarios.
+                       Select(func => func).ToList();
+               
 
             }
             else
             {
-                var listaFuncs = from funcionario in Funcionarios
-                                 where turnos.Contains(funcionario.TurnoTrabalho)
-                                 select funcionario;
-                return listaFuncs.ToList();
+                return Funcionarios.
+                        Where(funcionario => turnos.Contains(funcionario.TurnoTrabalho)).
+                        ToList();
+               
             }         
         }        
 
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
         {
-             var listaFuncs = from funcionario in Funcionarios
-                              where (CalcularIdade(funcionario.DataNascimento) < idade + 5) 
-                              && 
-                              (CalcularIdade(funcionario.DataNascimento)  > idade - 5)
-                              select funcionario;
-            return listaFuncs.ToList();
+
+            return Funcionarios.
+                    Where(func => CalcularIdade(func.DataNascimento) < idade + 5 && 
+                    CalcularIdade(func.DataNascimento) > idade - 5).
+                    ToList();
+             
         }
 
         private int CalcularIdade(DateTime dataNascimento)
@@ -144,30 +142,29 @@ namespace Repositorio
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            double mediaSalario;
-            if (turno == null) {
-                mediaSalario =
-                    (from funcionario in Funcionarios
-                     select funcionario.Cargo.Salario)
-                     .Average();
-                return mediaSalario;
-            }
             
+            if (turno == null) {
+               return Funcionarios.
+                      Select(func => func.Cargo.Salario).
+                      Average();
+            }
+            else
+            {
+                return Funcionarios.
+                       Where(func => func.TurnoTrabalho.Equals(turno)).
+                       Select(funcionario => funcionario.Cargo.Salario).
+                       Average();
+                       
 
-             mediaSalario =
-                 (from funcionario in Funcionarios
-                  where funcionario.TurnoTrabalho == turno 
-                  select funcionario.Cargo.Salario)
-                 .Average();
-            return mediaSalario;
+            }
+      
         }
 
         public IList<Funcionario> AniversariantesDoMes()
         {
-            var listaFuncs = from funcionario in Funcionarios
-                             where funcionario.DataNascimento.Month == DateTime.Today.Month
-                             select funcionario;
-            return listaFuncs.ToList();
+            return Funcionarios.
+                   Where(func => func.DataNascimento.Month == DateTime.Today.Month).
+                   ToList();
         }
 
         public class ObjetoDinamico
@@ -179,12 +176,10 @@ namespace Repositorio
         }
 
         public IList<dynamic> BuscaRapida()
-        {   
-            var listaFuncs = (from funcionario in Funcionarios
-            select new ObjetoDinamico{ NomeFuncionario = funcionario.Nome, TituloCargo = funcionario.Cargo.Titulo }).ToList();
-            var result = ((IEnumerable<dynamic>)listaFuncs).Cast<dynamic>().ToList();
-            return result;
-
+        {
+            return Funcionarios.
+                   Select(func => new { NomeFuncionario = func.Nome, TituloCargo = func.Cargo.Titulo }).ToArray();
+          
         }
         public IList<dynamic> QuantidadeFuncionariosPorTurno()
         {
