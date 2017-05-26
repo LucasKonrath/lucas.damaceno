@@ -35,7 +35,7 @@ namespace ExemploWebApi.Controllers
 
         public IHttpActionResult Post(Heroi heroi)
         {
-            if (heroi.Id >= IDRef) 
+            if (heroi != null) 
             {
                 heroi.Id = IDRef;
                 herois.Add(heroi);
