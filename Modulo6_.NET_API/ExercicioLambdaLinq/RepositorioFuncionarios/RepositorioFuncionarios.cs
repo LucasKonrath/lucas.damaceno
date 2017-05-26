@@ -170,11 +170,22 @@ namespace Repositorio
             return listaFuncs.ToList();
         }
 
-        public IList<dynamic> BuscaRapida()
+        public class ObjetoDinamico
         {
-            throw new NotImplementedException();
+
+            public string NomeFuncionario { get; set; }
+            public string TituloCargo { get; set; }
+
         }
 
+        public IList<dynamic> BuscaRapida()
+        {   
+            var listaFuncs = (from funcionario in Funcionarios
+            select new ObjetoDinamico{ NomeFuncionario = funcionario.Nome, TituloCargo = funcionario.Cargo.Titulo }).ToList();
+            var result = ((IEnumerable<dynamic>)listaFuncs).Cast<dynamic>().ToList();
+            return result;
+
+        }
         public IList<dynamic> QuantidadeFuncionariosPorTurno()
         {
             throw new NotImplementedException();
