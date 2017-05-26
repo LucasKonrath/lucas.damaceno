@@ -188,12 +188,41 @@ namespace Repositorio
         }
         public IList<dynamic> QuantidadeFuncionariosPorTurno()
         {
-            throw new NotImplementedException();
+
+            return Funcionarios.
+                    GroupBy(func => func.TurnoTrabalho)
+                    .Select(func => new
+                    {
+                        Turno = func.First().TurnoTrabalho,
+                        Quantidade = func.Count()
+                    }).ToArray();
+
+                    
         }
 
         public dynamic FuncionarioMaisComplexo()
         {
-            throw new NotImplementedException();
+            var vogais = new Regex("[AaEeIiOoUu]");
+
+            var funcionarioComplexo =
+            Funcionarios.
+            Where(func => func.TurnoTrabalho != TurnoTrabalho.Tarde && func.Cargo.Titulo != "Desenvolvedor Júnior").
+            OrderByDescending(func => vogais.Replace(func.Nome, "").Length)
+            .First();
+
+            var stringOriginal = $"${funcionarioComplexo.Cargo.Salario}{0.00}";
+            var stringNova = stringOriginal.Replace(',', '.');
+            return new
+            {
+
+
+                Nome = funcionarioComplexo.Nome,
+                DataNascimento = funcionarioComplexo.DataNascimento.ToString("dd/MM/yyyy"),
+                SalarioRS = $"R$ {funcionarioComplexo.Cargo.Salario}{0.00}",
+                SalarioUS = stringNova,
+                QuantidadeMesmoCargo = BuscarPorCargo(funcionarioComplexo.Cargo).Count()
+
+            };
         }
     }
 }
