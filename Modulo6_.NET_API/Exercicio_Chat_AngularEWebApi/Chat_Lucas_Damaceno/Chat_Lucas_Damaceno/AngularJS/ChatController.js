@@ -7,7 +7,11 @@ modulo.controller('ChatController', function ($scope, chatService) {
     $scope.enviarUser = enviarUser;
     usuarioCadastrado = localStorage.getItem("nomeUser") !== null;
     $scope.usuarioCadastrado = usuarioCadastrado;
-    setInterval(function(){ obterMensagens(); }, 3000);
+    setInterval(function(){ 
+        
+                            obterMensagens(true); 
+                          
+                          }, 1000);
     
     function enviarUser() {
         
@@ -17,12 +21,17 @@ modulo.controller('ChatController', function ($scope, chatService) {
     }
     
     
-    function obterMensagens() {
+    function obterMensagens(birlar) {
         chatService
         .obterMensagens()
         .then(response => {
             console.log(response);
+            var scopeAntigo = $scope.mensagens.length;
             $scope.mensagens = response.data;
+            if($scope.mensagens.length !== scopeAntigo && birlar == true){
+                var birl = document.getElementById('birl');
+                birl.play();
+            }
         })
     }
 
@@ -30,7 +39,8 @@ modulo.controller('ChatController', function ($scope, chatService) {
         chatService
         .enviarMensagem(localStorage.getItem("nomeUser"), localStorage.getItem("fotoUser"), $scope.textoMensagem)
         .then(mensagens => {
-            obterMensagens();
+            $scope.textoMensagem=" ";
+            obterMensagens(false);
         })
     }
 });

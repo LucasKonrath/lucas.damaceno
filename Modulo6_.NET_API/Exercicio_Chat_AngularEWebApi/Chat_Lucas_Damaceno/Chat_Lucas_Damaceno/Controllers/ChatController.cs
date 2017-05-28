@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Web.Http;
 
 namespace Chat_Lucas_Damaceno.Controllers
@@ -29,9 +30,10 @@ namespace Chat_Lucas_Damaceno.Controllers
             }
             else
             {
-
-                    mensagens.Add(mensagem);
-                    mensagem.Id = contador++;
+                mensagem.CorpoMensagem = Regex.Replace(mensagem.CorpoMensagem, "nunes", "$$$$$$$$$$$", RegexOptions.IgnoreCase);
+                mensagem.Id = contador++;
+                mensagens.Add(mensagem);
+                    
               
 
                 return Ok(mensagem);
