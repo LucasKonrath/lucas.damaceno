@@ -206,3 +206,12 @@ body {
 .message_template {
   display: none;
 }
+
+#btnChat{
+    width: 140px;
+    text-align:center;
+}
+.esconder{
+    display:none;
+    
+}

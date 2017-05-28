@@ -23,15 +23,27 @@
 
 
             <button ng-click="obterMensagens()"> AAAAAAAAAA </button>
-            <button ng-click="enviarMensagem()"> Enviar msg</button>
+
 
         </nav>
 
+        <form class="form-inline" ng-class="{'esconder': usuarioCadastrado}">
+            <div class="form-group">
+                <label> Insira o nome do user.</label>
+                <input class="form-control" type="text" ng-model="nomeUser">
+            </div>
+            <div class="form-group">
+                <label > Insira a URL da foto do usuário.</label>
+                <input class="form-control" type="text" ng-model="imagemUser">
+            </div>
+
+            <button class="btn-sm btn-success" ng-click="enviarUser()" type="submit"> Enviar infos</button>             
+        </form>
 
 
-      
 
-        <div class="chat_window">
+
+        <div ng-class="{'esconder': !usuarioCadastrado}" class="chat_window">
             <div class="top_menu">
                 <div class="buttons">
                     <div class="button close">
@@ -45,19 +57,19 @@
                     </div></div><div class="title">VaporChat</div>
             </div>
             <ul  class="messages">
-                 <li ng-repeat="mensagem in mensagens"> 
-                 
-                 <span class="message-text">{{mensagem.CorpoMensagem}} </span> 
-                 <img id="imagem-chat" src={{mensagem.FotoUrlUsuario}} alt="">
-                 <label> {{mensagem.NomeUsuario}}</label>
-                 </li>   
+                <li ng-repeat="mensagem in mensagens"> 
+
+                    <span class="message-text">{{mensagem.CorpoMensagem}} </span> 
+                    <img id="imagem-chat" src={{mensagem.FotoUrlUsuario}} alt="">
+                    <label> {{mensagem.NomeUsuario}}</label>
+                </li>   
             </ul>
             <div class="bottom_wrapper clearfix">
                 <div class="message_input_wrapper">
-                    <input class="message_input" placeholder="Type your message here..." />
+                    <input ng-model="textoMensagem" class="message_input" placeholder="Type your message here..." />
                 </div>
                 <div class="send_message">
-                    <div class="icon"></div><div class="text">Send</div>
+                    <div class="icon"></div><div class="text"> <button class="btn-link btn-lg" id="btnChat" ng-click="enviarMensagem()">Send</button></div>
                 </div></div></div><div class="message_template">
         <li class="message"><div class="avatar"></div><div class="text_wrapper"><div class="text"></div></div></li></div>
 
