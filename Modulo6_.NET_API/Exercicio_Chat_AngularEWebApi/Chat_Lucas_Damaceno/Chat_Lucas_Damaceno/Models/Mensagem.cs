@@ -12,7 +12,8 @@ namespace Chat_Lucas_Damaceno.Models
 
         public string FotoUrlUsuario { get; set; }
 
+        public DateTime DataMensagem { get; set; }
         public string CorpoMensagem { get; set; }
-
+     
     }
 }

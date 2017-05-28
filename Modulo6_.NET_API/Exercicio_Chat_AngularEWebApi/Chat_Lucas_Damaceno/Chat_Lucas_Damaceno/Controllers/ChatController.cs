@@ -12,14 +12,14 @@ namespace Chat_Lucas_Damaceno.Controllers
 {
     public class ChatController : ApiController
     {
-        Mensagem mensagemTeste = new Mensagem { Id = 2, CorpoMensagem = "bATATA", NomeUsuario = "Ronaldonho Gaucho", FotoUrlUsuario = "http://media.onsugar.com/files/ons1/259/2598730/11_2009/d08b87411e75c516_Ronaldinho.xlarge.jpg" };
+
+        private static object objetoLock = new object();
         public static List<Mensagem> mensagens = new List<Mensagem>();
         
         private static int contador = 1;
         public IEnumerable<Mensagem> Get()
-        {
-          
-            return mensagens;
+        { 
+            return mensagens.OrderBy(mensagem => mensagem.DataMensagem);
         }
 
         public IHttpActionResult Post(Mensagem mensagem)
@@ -30,10 +30,12 @@ namespace Chat_Lucas_Damaceno.Controllers
             }
             else
             {
+                lock (objetoLock) {
+                mensagem.DataMensagem = DateTime.Now;
                 mensagem.CorpoMensagem = Regex.Replace(mensagem.CorpoMensagem, "nunes", "$$$$$$$$$$$", RegexOptions.IgnoreCase);
                 mensagem.Id = contador++;
                 mensagens.Add(mensagem);
-                    
+                }
               
 
                 return Ok(mensagem);
