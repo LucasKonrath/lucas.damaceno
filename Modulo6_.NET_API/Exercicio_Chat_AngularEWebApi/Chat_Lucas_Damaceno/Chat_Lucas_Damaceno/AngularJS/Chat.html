@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html  ng-app="chatApp">
+    <head>
+        <meta charset="utf-8">
+        <title> Exemplo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="Chat.css">
+    </head>
+    <body ng-controller="ChatController">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
+                    </a>
+                    <p class="navbar-text">Chat (AngularJS + .Net Web Api)</p>
+
+                </div>
+            </div>
+
+
+
+            <button ng-click="obterMensagens()"> AAAAAAAAAA </button>
+            <button ng-click="enviarMensagem()"> Enviar msg</button>
+
+        </nav>
+
+
+
+      
+
+        <div class="chat_window">
+            <div class="top_menu">
+                <div class="buttons">
+                    <div class="button close">
+
+                    </div>
+                    <div class="button minimize">
+
+                    </div>
+                    <div class="button maximize">
+
+                    </div></div><div class="title">VaporChat</div>
+            </div>
+            <ul  class="messages">
+                 <li ng-repeat="mensagem in mensagens"> 
+                 
+                 <span class="message-text">{{mensagem.CorpoMensagem}} </span> 
+                 <img id="imagem-chat" src={{mensagem.FotoUrlUsuario}} alt="">
+                 <label> {{mensagem.NomeUsuario}}</label>
+                 </li>   
+            </ul>
+            <div class="bottom_wrapper clearfix">
+                <div class="message_input_wrapper">
+                    <input class="message_input" placeholder="Type your message here..." />
+                </div>
+                <div class="send_message">
+                    <div class="icon"></div><div class="text">Send</div>
+                </div></div></div><div class="message_template">
+        <li class="message"><div class="avatar"></div><div class="text_wrapper"><div class="text"></div></div></li></div>
+
+
+
+        <script src="ChatController.js"></script>
+        <script src="ChatService.js"></script>
+    </body>
+</html>
