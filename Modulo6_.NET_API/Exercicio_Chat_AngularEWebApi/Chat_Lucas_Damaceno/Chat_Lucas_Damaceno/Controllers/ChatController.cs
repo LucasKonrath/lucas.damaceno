@@ -19,7 +19,9 @@ namespace Chat_Lucas_Damaceno.Controllers
         private static int contador = 1;
         public IEnumerable<Mensagem> Get()
         { 
-            return mensagens.OrderBy(mensagem => mensagem.DataMensagem);
+            return mensagens.
+                OrderBy(mensagem => mensagem.DataMensagem)
+                .Where(mensagem => mensagem.Id > contador - 30);
         }
 
         public IHttpActionResult Post(Mensagem mensagem)

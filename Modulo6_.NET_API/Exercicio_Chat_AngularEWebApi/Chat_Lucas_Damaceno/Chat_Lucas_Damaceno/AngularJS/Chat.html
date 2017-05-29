@@ -2,7 +2,8 @@
 <html  ng-app="chatApp">
     <head>
         <meta charset="utf-8">
-        <title> Exemplo</title>
+        <title> Chat Dos Monstros</title>
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -45,16 +46,7 @@
 
         <div ng-class="{'esconder': !usuarioCadastrado}" class="chat_window">
             <div class="top_menu">
-                <div class="buttons">
-                    <div class="button close">
-
-                    </div>
-                    <div class="button minimize">
-
-                    </div>
-                    <div class="button maximize">
-
-                    </div></div><div class="title">Chat Dos Monstros</div>
+                <div class="title">Chat Dos Monstros</div>
             </div>
             <ul class="messages" id="listaDeMensagens">
                 <li ng-repeat="mensagem in mensagens" class="message right appeared">
@@ -75,10 +67,12 @@
 
             <div class="bottom_wrapper clearfix">
                 <div class="message_input_wrapper">
-                    <input ng-model="textoMensagem" class="message_input" placeholder="Type your message here..." />
+                   <form ng-submit="enviarMensagem()">
+                    <input ng-model="textoMensagem" class="message_input" placeholder="Digite sua mensagem, Monstrão..." />
+                    </form>
                 </div>
                 <div class="send_message">
-                    <div class="icon"></div><div class="text"> <button class="btn-link btn-lg" id="btnChat" ng-click="enviarMensagem()">BIRL!</button></div>
+                    <button class="btn-link btn-lg" id="btnChat" ng-click="enviarMensagem()">BIRL!</button>
                 </div></div></div><div class="message_template">
         <li class="message"><div class="avatar"></div><div class="text_wrapper"><div class="text"></div></div></li></div>
 
@@ -88,3 +82,6 @@
         <script src="ChatService.js"></script>
     </body>
 </html>
+
+
+

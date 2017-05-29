@@ -25,7 +25,6 @@ modulo.controller('ChatController', function ($scope, chatService) {
         chatService
         .obterMensagens()
         .then(response => {
-            console.log(response);
             var scopeAntigo = $scope.mensagens.length;
             $scope.mensagens = response.data;
             if($scope.mensagens.length !== scopeAntigo && birlar == true){
