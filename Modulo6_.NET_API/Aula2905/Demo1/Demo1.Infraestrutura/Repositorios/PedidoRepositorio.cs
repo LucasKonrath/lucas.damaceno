@@ -77,6 +77,7 @@ namespace Demo1.Infraestrutura.Repositorios
                         comando.Parameters.AddWithValue("@quantidade", item.Quantidade);
                         comando.ExecuteNonQuery();
                         comando.Parameters.Clear();
+
                         comando.CommandText = "SELECT @@IDENTITY";
                         var resultado = (decimal)comando.ExecuteScalar();
                         item.Id = (int)resultado;
@@ -144,7 +145,6 @@ namespace Demo1.Infraestrutura.Repositorios
                         pedido.Itens = new List<ItemPedido>();
                         pedido.Id = (int)dataReader["ID"];
                         pedido.NomeCliente = (string)dataReader["NomeCliente"];
-
                         int IdPedidoNovo = (int)dataReader["ID"];
                         int IdProduto = (int)dataReader["ProdutoId"];
                         int QuantidadeProduto = (int)dataReader["Quantidade"];
