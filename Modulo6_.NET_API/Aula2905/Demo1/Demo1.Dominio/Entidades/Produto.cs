@@ -13,6 +13,9 @@ namespace Demo1.Dominio.Entidades
         public decimal Preco { get; set; }
         public int  Estoque { get; set; }
 
+
+        
+
         public bool Validar(out List<string> mensagens) {
 
             mensagens = new List<String>();
