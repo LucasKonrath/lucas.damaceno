@@ -123,15 +123,17 @@ namespace Demo1.Infraestrutura.Repositorios
 
         public Pedido Obter(int id)
         {
-            Pedido pedido = new Pedido();
+            
             using (var conexao = new SqlConnection(stringConexao))
             {
+                Pedido pedido = new Pedido();
+                pedido.Itens = new List<ItemPedido>();
                 conexao.Open();
                 using (var comando = conexao.CreateCommand())
                 {
 
                     comando.CommandText = 
-                        @"SELECT Pedido.ID, Pedido.NomeCliente, ItemPedido.ProdutoId, ItemPedido.Quantidade
+                        @"SELECT Pedido.ID as ID, Pedido.NomeCliente as NomeCliente, ItemPedido.ProdutoId as ProdutoId, ItemPedido.Quantidade as Quantidade
                         FROM Pedido
                         INNER JOIN ItemPedido ON Pedido.ID = ItemPedido.PedidoId
                          WHERE Pedido.ID = @id";
@@ -143,18 +145,20 @@ namespace Demo1.Infraestrutura.Repositorios
                     {
                         pedido.Id = (int)dataReader["ID"];
                         pedido.NomeCliente = (string)dataReader["NomeCliente"];
-                        pedido.Itens.Add(new ItemPedido()
-                        {
-                            Id = (int)dataReader["ID"],
-                            ProdutoId = (int)dataReader["ProdutoId"],
-                            Quantidade = (int)dataReader["Quantidade"]
-                        });
+
+                        int IdPedidoNovo = (int)dataReader["ID"];
+                        int IdProduto = (int)dataReader["ProdutoId"];
+                        int QuantidadeProduto = (int)dataReader["Quantidade"];
+                        ItemPedido novoItem = new ItemPedido(IdPedidoNovo, IdProduto, QuantidadeProduto);
+                        pedido.Itens.Add(novoItem);
+                        
 
                     }
+                    return pedido;
                 }
                 
             }
-            return pedido;
+           
         }
 
 
