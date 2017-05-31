@@ -52,11 +52,17 @@
     <Compile Include="Contexto.cs" />
     <Compile Include="Entidades\Autor.cs" />
     <Compile Include="Entidades\Livro.cs" />
+    <Compile Include="Entidades\Revisor.cs" />
     <Compile Include="Mappings\AutorMap.cs" />
     <Compile Include="Mappings\LivroMap.cs" />
+    <Compile Include="Mappings\RevisorMap.cs" />
     <Compile Include="Migrations\201705301938464_CriacaoDoBanco.cs" />
     <Compile Include="Migrations\201705301938464_CriacaoDoBanco.Designer.cs">
       <DependentUpon>201705301938464_CriacaoDoBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705310234211_CriacaoRevisores.cs" />
+    <Compile Include="Migrations\201705310234211_CriacaoRevisores.Designer.cs">
+      <DependentUpon>201705310234211_CriacaoRevisores.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +75,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705301938464_CriacaoDoBanco.resx">
       <DependentUpon>201705301938464_CriacaoDoBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705310234211_CriacaoRevisores.resx">
+      <DependentUpon>201705310234211_CriacaoRevisores.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
