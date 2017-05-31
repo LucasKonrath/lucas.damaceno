@@ -7,10 +7,13 @@ class Program
 {
     static void Main(string[] args)
     {
-        var autor1 = new Autor() { Nome = "Tolkien" };
-        var autor2 = new Autor() { Nome = "Machado de Assis" };
-        var revisor1 = new Revisor() { Nome = "Borgo" };
-        var revisor2 = new Revisor() { Nome = "Alborghetti" };
+        Console.BackgroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Clear();
+        var autor1 = new Autor() { Nome = "Stephen King" };
+        var autor2 = new Autor() { Nome = "George R.R Martin" };
+        var revisor1 = new Revisor() { Nome = "Woody Allen" };
+        var revisor2 = new Revisor() { Nome = "Carol do Galo Frito" };
         using (var contexto = new Contexto())
         {
             //Inclusão
@@ -22,17 +25,18 @@ class Program
 
             var livro = new Livro()
             {
-                Autor = autor1,
-                Titulo = "O senhor dos anéis",
-                Descricao = "Um livro bem legal",
-                Genero = "Aventura",
+                Autor = autor2,
+                Titulo = "ADO .Net",
+                Descricao = " TERROR INDESCRITIVEL ",
+                Genero = "Terror",
                 DataPublicacao = DateTime.Now,
-                Revisor = revisor1,
+                Revisor = revisor2,
                 DataRevisao = DateTime.Now
             };
 
             contexto.Livros.Add(livro);
             contexto.SaveChanges();
         }
+        Console.ReadLine();
     }
 }

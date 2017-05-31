@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201705310234211_CriacaoRevisores.Designer.cs">
       <DependentUpon>201705310234211_CriacaoRevisores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705311840099_AdicionarCapa.cs" />
+    <Compile Include="Migrations\201705311840099_AdicionarCapa.Designer.cs">
+      <DependentUpon>201705311840099_AdicionarCapa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutorRepositorio.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705310234211_CriacaoRevisores.resx">
       <DependentUpon>201705310234211_CriacaoRevisores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311840099_AdicionarCapa.resx">
+      <DependentUpon>201705311840099_AdicionarCapa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

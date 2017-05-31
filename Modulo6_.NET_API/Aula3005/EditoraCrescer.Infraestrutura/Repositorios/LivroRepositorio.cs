@@ -7,21 +7,28 @@ using System.Threading.Tasks;
 
 namespace EditoraCrescer.Infraestrutura.Repositorios
 {
-    public class LivroRepositorio
+    public class LivroRepositorio : IDisposable
     {
 
-        private Contexto contexto = new Contexto();
+        private Contexto contexto;
 
         public LivroRepositorio()
         {
 
-
+            contexto = new Contexto();
 
         }
 
         public List<Livro> Obter()
         {
             return contexto.Livros.ToList();
+        }
+
+        public List<Livro> ObterPorGenero(string genero)
+        {
+            return contexto.Livros.
+                Where(x => x.Genero.ToLower() 
+                == genero.ToLower()).ToList();
         }
 
         public void Criar(Livro livro)
@@ -31,6 +38,15 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
+        public void Modificar(Livro livro)
+        {
+
+            Livro livroAModificar = contexto.Livros.Where(x => x.Isbn == livro.Isbn).FirstOrDefault();
+            livroAModificar = livro;
+            contexto.SaveChanges();
+        }
+
+
         public void Deletar(int id)
         {
             Livro livroRemover = contexto.Livros.FirstOrDefault(x => x.Isbn == id);
@@ -39,5 +55,19 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         }
 
+        public object Obter(int id)
+        {
+            Livro livroObtido = contexto.Livros.FirstOrDefault(x => x.Isbn == id);
+            return livroObtido;
+        }
+
+        public void Dispose()
+        {
+            contexto.Dispose();
+
+        }
+
+       
     }
 }
+                
