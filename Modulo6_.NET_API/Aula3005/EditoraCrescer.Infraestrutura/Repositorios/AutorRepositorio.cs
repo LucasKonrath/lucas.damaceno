@@ -31,6 +31,15 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
+        public void Modificar(int id, Autor autorModificado)
+        {
+
+            Autor autorOriginal = contexto.Autores.Where(x => x.Id == id).FirstOrDefault();
+            autorModificado.Id = id;
+            contexto.Entry(autorOriginal).CurrentValues.SetValues(autorModificado);
+            contexto.SaveChanges();
+        }
+
         public void Deletar(int id)
         {
             Autor autorRemover = contexto.Autores.FirstOrDefault(x => x.Id == id);

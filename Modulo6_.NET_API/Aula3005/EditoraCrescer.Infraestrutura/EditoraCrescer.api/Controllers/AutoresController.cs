@@ -10,17 +10,20 @@ using System.Web.Http;
 
 namespace EditoraCrescer.api.Controllers
 {
+    [RoutePrefix("api/Autores")]
     public class AutoresController : ApiController
     {
         private Contexto contexto = new Contexto();
 
         private AutorRepositorio repositorio = new AutorRepositorio();
-        public IHttpActionResult Get()  
+        [HttpGet]
+        public IHttpActionResult ObterAutores()  
         {
             var autores = repositorio.Obter();
 
             return Ok(autores);
         }
+        [HttpPost]
 
         public IHttpActionResult Post(Autor autor)
         {
@@ -29,6 +32,15 @@ namespace EditoraCrescer.api.Controllers
             return Ok(autor);
         }
 
+        [Route("{id:int}")]
+        [HttpPut]
+        public IHttpActionResult Update(int id, Autor autor)
+        {
+            repositorio.Modificar(id, autor);
+            return Ok();
+        }
+
+        [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
             repositorio.Deletar(id);
