@@ -20,9 +20,9 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         }
 
-        public List<Livro> Obter()
+        public List<object> Obter()
         {
-            return contexto.Livros.ToList();
+            return contexto.Livros.Select( x=> new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero  }).ToList<object>();
         }
 
         public List<Livro> ObterPorGenero(string genero)
