@@ -25,13 +25,14 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             return contexto.Livros.Select( x=> new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero  }).ToList<object>();
         }
 
-        public List<Livro> ObterPorGenero(string genero)
+        public dynamic ObterPorGenero(string genero)
         {
             return contexto.Livros.
-                Where(x => x.Genero.ToLower() 
+                Select(x => new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero })
+                .Where(x => x.Genero.ToLower()
                 == genero.ToLower()).ToList();
         }
-
+            
         public void Criar(Livro livro)
         {
 
