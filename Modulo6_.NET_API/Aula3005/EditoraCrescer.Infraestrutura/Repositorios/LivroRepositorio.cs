@@ -1,6 +1,7 @@
 ﻿using EditoraCrescer.Infraestrutura.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,8 +42,8 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
         public void Modificar(Livro livro)
         {
 
-            Livro livroAModificar = contexto.Livros.Where(x => x.Isbn == livro.Isbn).FirstOrDefault();
-            livroAModificar = livro;
+            Livro livroOriginal = contexto.Livros.Where(x => x.Isbn == livro.Isbn).FirstOrDefault();
+            contexto.Entry(livroOriginal).CurrentValues.SetValues(livro);
             contexto.SaveChanges();
         }
 
@@ -55,7 +56,7 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         }
 
-        public object Obter(int id)
+        public Livro Obter(int id)
         {
             Livro livroObtido = contexto.Livros.FirstOrDefault(x => x.Isbn == id);
             return livroObtido;
