@@ -62,11 +62,11 @@ namespace EditoraCrescer.api.Controllers
             return Ok();
         }
 
-
+        [Route("{id:int}")]
         [HttpPut]
-        public IHttpActionResult ModificarLivro(Livro livro) {
+        public IHttpActionResult ModificarLivro(int id, Livro livro) {
 
-            repositorio.Modificar(livro);
+            repositorio.Modificar(id,livro);
 
           return Ok(livro);
         }

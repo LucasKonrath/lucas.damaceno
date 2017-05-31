@@ -39,10 +39,10 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
-        public void Modificar(Livro livro)
+        public void Modificar(int isbn, Livro livro)
         {
 
-            Livro livroOriginal = contexto.Livros.Where(x => x.Isbn == livro.Isbn).FirstOrDefault();
+            Livro livroOriginal = contexto.Livros.Where(x => x.Isbn == isbn).FirstOrDefault();
             contexto.Entry(livroOriginal).CurrentValues.SetValues(livro);
             contexto.SaveChanges();
         }
