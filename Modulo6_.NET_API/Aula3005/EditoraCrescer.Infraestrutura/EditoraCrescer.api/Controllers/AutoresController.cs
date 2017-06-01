@@ -17,55 +17,63 @@ namespace EditoraCrescer.api.Controllers
 
         private AutorRepositorio repositorio = new AutorRepositorio();
         [HttpGet]
-        public IHttpActionResult ObterAutores()
+        public HttpResponseMessage ObterAutores()
         {
             var autores = repositorio.Obter();
 
-            return Ok(autores);
+            return   Request.CreateResponse(HttpStatusCode.OK, new { data = autores});
         }
 
         [Route("{id:int}")]
         [HttpGet]
-        public IHttpActionResult ObterAutoresPorId(int id)
+        public HttpResponseMessage ObterAutoresPorId(int id)
         {
             var autores = repositorio.Obter(id);
 
-            return Ok(autores);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = autores });
         }
 
 
         [Route("{id:int}/Livros")]
         [HttpGet]
-        public IHttpActionResult ObterLivrosAutores(int id)
+        public HttpResponseMessage ObterLivrosAutores(int id)
         {
             var livros = repositorio.ObterLivrosDoAutor(id);
 
-            return Ok(livros);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livros });
         }
 
         [HttpPost]
 
-        public IHttpActionResult Post(Autor autor)
+        public HttpResponseMessage Post(Autor autor)
         {
 
             repositorio.Criar(autor);
-            return Ok(autor);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = autor });
         }
 
         [Route("{id:int}")]
         [HttpPut]
-        public IHttpActionResult Update(int id, Autor autor)
+        public HttpResponseMessage Update(int id, Autor autor)
         {
-            repositorio.Modificar(id, autor);
-            return Ok();
+            Autor autorNovo = repositorio.Modificar(id, autor);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = autorNovo });
         }
 
         [Route("{id:int}")]
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
             repositorio.Deletar(id);
-            return Ok();
+            return Request.CreateResponse(HttpStatusCode.OK);
+
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+                repositorio.Dispose();
+            base.Dispose(disposing);
         }
 
     }

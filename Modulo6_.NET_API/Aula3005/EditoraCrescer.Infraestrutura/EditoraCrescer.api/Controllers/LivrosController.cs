@@ -18,49 +18,49 @@ namespace EditoraCrescer.api.Controllers
         private LivroRepositorio repositorio = new LivroRepositorio();
 
         [HttpGet]
-        public IHttpActionResult ObterLivros()
+        public HttpResponseMessage ObterLivros()
         {
             var livros = repositorio.Obter();
-            
-            return Ok(livros);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livros });
+       
         }
 
         [Route("{isbn:int}")]
         [HttpGet]
-        public IHttpActionResult ObterLivroPorId(int isbn)
+        public HttpResponseMessage ObterLivroPorId(int isbn)
         {
             var livro = repositorio.Obter(isbn);
 
-            return Ok(livro);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
         }
 
 
         [Route("{genero}")]
         [HttpGet]
-        public IHttpActionResult ObterLivroPorGenero(string genero)
+        public HttpResponseMessage ObterLivroPorGenero(string genero)
         {
             var livros = repositorio.ObterPorGenero(genero);
-
-            return Ok(livros);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livros });
+  
         }
 
         [Route("Lancamentos")]
         [HttpGet]
-        public IHttpActionResult ObterLancamentosDeLivros()
+        public HttpResponseMessage ObterLancamentosDeLivros()
         {
             var dataAtual = DateTime.Today;
             var livros = repositorio.ObterLancamentos(dataAtual);
-
-            return Ok(livros);  
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livros});
+          
         }
 
         [HttpPost]
-        public IHttpActionResult Post(Livro livro)
+        public HttpResponseMessage Post(Livro livro)
         {
 
             repositorio.Criar(livro);
-       
-            return Ok(livro);
+
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
         }
 
         [Route("{id:int}")]
@@ -74,11 +74,11 @@ namespace EditoraCrescer.api.Controllers
 
         [Route("{id:int}")]
         [HttpPut]
-        public IHttpActionResult ModificarLivro(int id, Livro livro) {
+        public HttpResponseMessage ModificarLivro(int id, Livro livro) {
 
             repositorio.Modificar(id,livro);
 
-          return Ok(livro);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
         }
 
 

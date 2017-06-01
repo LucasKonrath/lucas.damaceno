@@ -19,38 +19,37 @@ namespace EditoraCrescer.api.Controllers
             
 
         [HttpGet]
-        public IHttpActionResult Get()
+        public HttpResponseMessage Get()
         {
             var revisores = repositorio.Obter();
-
-            return Ok(revisores);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = revisores });
+    
         }
 
         [Route("{id:int}")]
         [HttpGet]
-        public IHttpActionResult ObterPorId( int id)
+        public HttpResponseMessage ObterPorId( int id)
         {
-            var revisores = repositorio.Obter(id);
-
-            return Ok(revisores);
+            var revisor = repositorio.Obter(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = revisor });
         }
 
 
         [HttpPost]
-        public IHttpActionResult Post(Revisor revisor)
+        public HttpResponseMessage Post(Revisor revisor)
         {   
 
             repositorio.Criar(revisor);
-            return Ok(revisor);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = revisor });
         }
 
         [Route("{id:int}")]
         [HttpPut]
-        public IHttpActionResult AlterarRevisor(int id, Revisor revisor)
+        public HttpResponseMessage AlterarRevisor(int id, Revisor revisor)
         {
 
             repositorio.Modificar(id, revisor);
-            return Ok(revisor);  
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = revisor });
         }
 
 
@@ -60,6 +59,13 @@ namespace EditoraCrescer.api.Controllers
         {
             repositorio.Deletar(id);
             return Ok();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+                repositorio.Dispose();
+            base.Dispose(disposing);
         }
 
     }
