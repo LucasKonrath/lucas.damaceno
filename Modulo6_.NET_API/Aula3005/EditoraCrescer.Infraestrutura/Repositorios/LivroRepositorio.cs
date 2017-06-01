@@ -32,7 +32,21 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
                 .Where(x => x.Genero.ToLower()
                 == genero.ToLower()).ToList();
         }
-            
+
+        public dynamic ObterLancamentos(DateTime data)
+        {
+            DateTime dataAComparar = data.AddDays(-7);
+
+            return contexto.Livros
+                .Where(x =>
+                    x.DataPublicacao > dataAComparar
+                ).Select
+                (x => new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero })
+                .ToList();
+        }
+
+
+
         public void Criar(Livro livro)
         {
 

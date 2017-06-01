@@ -44,6 +44,16 @@ namespace EditoraCrescer.api.Controllers
             return Ok(livros);
         }
 
+        [Route("Lancamentos")]
+        [HttpGet]
+        public IHttpActionResult ObterLancamentosDeLivros()
+        {
+            var dataAtual = DateTime.Today;
+            var livros = repositorio.ObterLancamentos(dataAtual);
+
+            return Ok(livros);  
+        }
+
         [HttpPost]
         public IHttpActionResult Post(Livro livro)
         {
