@@ -1,0 +1,25 @@
+#brandAngular{
+    
+    height:20px;
+    width:30px;
+    
+}
+
+#imagemLivro{
+    
+    height:20vh;
+    width:20%x;
+    
+}
+#divLivros{
+    text-align:center;
+    background-color:rgba(167, 175, 169, 0.72);
+    
+}
+
+#controlePages{
+    
+    position:relative;
+    top:-300px;
+    
+}

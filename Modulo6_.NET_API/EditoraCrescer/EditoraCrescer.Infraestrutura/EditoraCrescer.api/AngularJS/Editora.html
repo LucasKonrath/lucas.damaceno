@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html  ng-app="editoraApp">
+    <head>
+        <meta charset="utf-8">
+        <title> Editora Editar Edições</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="Editora.css">
+          <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    </head>
+    <body ng-controller="EditoraController" ng-init="carregarLivros()">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                      <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
+                    </a>
+                    <a class="navbar-brand" href="">             
+                        <img src="http://blog.appliedis.com/wp-content/uploads/2013/03/ASP-NET-logo.png" id="brandAngular" alt="ASP .Net">
+                    </a>
+                    <p class="navbar-text">Editora Crescer</p>
+                </div>
+            </div>
+        </nav>
+
+      
+      
+       
+              
+          
+           <div id="divLivros" class="container">
+                     <h1>Lançamentos</h1>
+                    <div  ng-repeat="livro in lancamentos"  class="col-md-3">
+                   
+                      <h1> {{livro.Titulo}}  </h1>  
+                      
+                      <img src={{livro.Capa}} id="imagemLivro" alt="">  
+                      <h2>{{livro.NomeAutor}}</h2>
+                      <h4>{{livro.Genero}}</h4> 
+                     
+                     </div>
+          
+               
+           </div>
+           
+           <ul id="controlePages" class="pager">
+      <li class="previous"><a href="#">Previous</a></li>
+      <li class="next"><a href="#">Next</a></li>
+            </ul>
+            
+                <div id="divLivros" class="container">
+                     <h1>LIVROS</h1>
+                    <div  ng-repeat="livro in livros"  class="col-md-3">
+                   
+                      <h1> {{livro.Titulo}}  </h1>  
+                      
+                      <img src={{livro.Capa}} id="imagemLivro" alt="">  
+                      <h2>{{livro.NomeAutor}}</h2>
+                      <h4>{{livro.Genero}}</h4> 
+                     
+                     </div>
+          
+               
+                   </div>
+            
+            
+              <button ng-click="proximaPagina()"> PEGAR PROXIMOS LIVROS </button>
+       
+     
+        <script src="EditoraController.js"></script>
+        <script src="EditoraService.js"></script>
+    </body>
+</html>
+
+
+
