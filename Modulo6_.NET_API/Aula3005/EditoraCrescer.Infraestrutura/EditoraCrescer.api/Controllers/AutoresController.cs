@@ -26,11 +26,11 @@ namespace EditoraCrescer.api.Controllers
 
         [Route("{id:int}")]
         [HttpGet]
-        public HttpResponseMessage ObterAutoresPorId(int id)
+        public HttpResponseMessage ObterAutorPorId(int id)
         {
-            var autores = repositorio.Obter(id);
-
-            return Request.CreateResponse(HttpStatusCode.OK, new { data = autores });
+            var autor = repositorio.Obter(id);
+            if (autor == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { error = "Autor com a ID informada não foi encontrado." });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = autor });
         }
 
 

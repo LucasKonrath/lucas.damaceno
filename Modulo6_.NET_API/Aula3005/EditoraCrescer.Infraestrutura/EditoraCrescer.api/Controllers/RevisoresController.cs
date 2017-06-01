@@ -31,6 +31,7 @@ namespace EditoraCrescer.api.Controllers
         public HttpResponseMessage ObterPorId( int id)
         {
             var revisor = repositorio.Obter(id);
+            if (revisor == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { error = "Revisor com a ID informada não foi encontrado." });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = revisor });
         }
 
@@ -38,7 +39,6 @@ namespace EditoraCrescer.api.Controllers
         [HttpPost]
         public HttpResponseMessage Post(Revisor revisor)
         {   
-
             repositorio.Criar(revisor);
             return Request.CreateResponse(HttpStatusCode.OK, new { data = revisor });
         }
