@@ -18,12 +18,24 @@ namespace Demo1.WebApi.Controllers
         {
 
             var mensagens = new List<string>();
-            //if (!produto.Validar(out mensagens)) return BadRequest(string.Join("", mensagens.ToArray()));
+            if (!pedido.Validar(out mensagens)) return BadRequest(string.Join("", mensagens.ToArray()));
 
             _pedidoRepositorio.Criar(pedido);
 
             return Ok(pedido);
 
+        }
+
+        public IHttpActionResult Put(Pedido pedido)
+        {
+            var mensagens = new List<string>();
+
+            if (!pedido.Validar(out mensagens))
+                return BadRequest(string.Join(".", mensagens.ToArray()));
+
+            _pedidoRepositorio.Alterar(pedido);
+
+            return Ok(pedido);
         }
 
 
