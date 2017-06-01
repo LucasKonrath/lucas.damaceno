@@ -21,6 +21,7 @@ namespace EditoraCrescer.api.Controllers
         public HttpResponseMessage ObterLivros()
         {
             var livros = repositorio.Obter();
+           
             return Request.CreateResponse(HttpStatusCode.OK, new { data = livros });
        
         }
@@ -30,7 +31,7 @@ namespace EditoraCrescer.api.Controllers
         public HttpResponseMessage ObterLivroPorId(int isbn)
         {
             var livro = repositorio.Obter(isbn);
-
+            if (livro == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { error = "Livro com a ID informada não foi encontrado." });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
         }
 
@@ -40,8 +41,9 @@ namespace EditoraCrescer.api.Controllers
         public HttpResponseMessage ObterLivroPorGenero(string genero)
         {
             var livros = repositorio.ObterPorGenero(genero);
-            return Request.CreateResponse(HttpStatusCode.OK, new { data = livros });
-  
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livros});
+         
+
         }
 
         [Route("Lancamentos")]
