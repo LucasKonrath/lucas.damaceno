@@ -24,6 +24,7 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             return contexto.Revisores.ToList();
         }
 
+
         public Revisor Obter(int id)
         {
             return contexto.Revisores.Where(x => x.Id == id).FirstOrDefault();
@@ -36,6 +37,14 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
+        public void Modificar(int id, Revisor revisorModificado)
+        {
+
+            Revisor revisorOriginal = contexto.Revisores.Where(x => x.Id == id).FirstOrDefault();
+            revisorModificado.Id = id;
+            contexto.Entry(revisorOriginal).CurrentValues.SetValues(revisorModificado);
+            contexto.SaveChanges();
+        }
         public void Deletar(int id)
         {
             Revisor revisorRemover = contexto.Revisores.FirstOrDefault(x => x.Id == id);

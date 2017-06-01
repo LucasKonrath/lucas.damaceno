@@ -44,8 +44,17 @@ namespace EditoraCrescer.api.Controllers
             return Ok(revisor);
         }
 
-       
+        [Route("{id:int}")]
+        [HttpPut]
+        public IHttpActionResult AlterarRevisor(int id, Revisor revisor)
+        {
 
+            repositorio.Modificar(id, revisor);
+            return Ok(revisor);  
+        }
+
+
+        [Route("{id:int}")]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
