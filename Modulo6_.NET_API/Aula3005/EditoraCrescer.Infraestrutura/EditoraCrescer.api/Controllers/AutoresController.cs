@@ -29,7 +29,7 @@ namespace EditoraCrescer.api.Controllers
         public HttpResponseMessage ObterAutorPorId(int id)
         {
             var autor = repositorio.Obter(id);
-            if (autor == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { error = "Autor com a ID informada não foi encontrado." });
+            if (autor == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Autor com a ID informada não foi encontrado." } });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = autor });
         }
 
@@ -47,7 +47,8 @@ namespace EditoraCrescer.api.Controllers
 
         public HttpResponseMessage Post(Autor autor)
         {
-
+            if(autor.Id != 0)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Para criar um novo autor, não defina o seu ID." } });
             repositorio.Criar(autor);
             return Request.CreateResponse(HttpStatusCode.OK, new { data = autor });
         }
@@ -56,6 +57,10 @@ namespace EditoraCrescer.api.Controllers
         [HttpPut]
         public HttpResponseMessage Update(int id, Autor autor)
         {
+            if(autor.Id != id)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "ID informado e ID do Autor informado não conferem." } });
+            if(!repositorio.AutorValido(id))
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens =  new string[] { "Autor que você está tentando modificar não existe." } });
             Autor autorNovo = repositorio.Modificar(id, autor);
             return Request.CreateResponse(HttpStatusCode.OK, new { data = autorNovo });
         }
@@ -64,6 +69,8 @@ namespace EditoraCrescer.api.Controllers
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
+            if (!repositorio.AutorValido(id))
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Não existe autor com o ID informado." } });
             repositorio.Deletar(id);
             return Request.CreateResponse(HttpStatusCode.OK);
 

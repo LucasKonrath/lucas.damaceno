@@ -31,7 +31,8 @@ namespace EditoraCrescer.api.Controllers
         public HttpResponseMessage ObterLivroPorId(int isbn)
         {
             var livro = repositorio.Obter(isbn);
-            if (livro == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { error = "Livro com a ID informada não foi encontrado." });
+            if (livro == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Livro com a ID informada não foi encontrado." } });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
         }
 
@@ -59,27 +60,33 @@ namespace EditoraCrescer.api.Controllers
         [HttpPost]
         public HttpResponseMessage Post(Livro livro)
         {
-
+            if(livro.Isbn != 0)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Por favor não informe a ID de um livro que deseja criar, isso será feito automaticamente." } });
             repositorio.Criar(livro);
-
             return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
         }
 
         [Route("{id:int}")]
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            if(!repositorio.LivroValido(id))
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Livro que deseja deletar não está cadastrado." } });
             repositorio.Deletar(id);
-
-            return Ok();
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [Route("{id:int}")]
         [HttpPut]
         public HttpResponseMessage ModificarLivro(int id, Livro livro) {
 
-            repositorio.Modificar(id,livro);
 
+
+            if(id != livro.Isbn)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Isbns do Livro e do caminho não conferem." } });
+            if(!repositorio.LivroValido(id))
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Livro de Isbn especificado não existe." } });
+            repositorio.Modificar(id,livro);
             return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
         }
 

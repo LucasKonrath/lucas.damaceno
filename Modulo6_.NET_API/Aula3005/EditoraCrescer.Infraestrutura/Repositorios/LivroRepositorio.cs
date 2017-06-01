@@ -19,6 +19,10 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             contexto = new Contexto();
 
         }
+        public bool LivroValido(int isbn)
+        {
+            return contexto.Livros.Where(x => x.Isbn == isbn).Count() > 0;
+        }
 
         public List<object> Obter()
         {

@@ -19,6 +19,11 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         }
 
+        public bool RevisorValido(int id)
+        {
+            return contexto.Revisores.Where(x => x.Id == id).Count() > 0;
+        }
+
         public List<Revisor> Obter()
         {
             return contexto.Revisores.ToList();

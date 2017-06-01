@@ -19,6 +19,11 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         }
 
+        public bool AutorValido(int id)
+        {
+            return contexto.Autores.Where(x => x.Id == id).Count() > 0;
+        }
+
         public List<Autor> Obter()
         {
             return contexto.Autores.ToList();
