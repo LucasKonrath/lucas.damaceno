@@ -7,7 +7,7 @@ modulo.controller('EditoraController', function ($scope, editoraService) {
     $scope.obterLivros = obterLivros;
     $scope.proximaPagina = proximaPagina;
     $scope.obterLancamentos = obterLancamentos;
-    
+    $scope.mostrarModal = false;
     
     function proximaPagina(){
     
