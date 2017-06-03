@@ -1,0 +1,18 @@
+
+
+
+<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <!-- Any other Bulma elements you want -->
+        <div class="field">
+            <img src={{livro.Capa}} alt={{livro.Nome}}>
+            <h3>Título: {{livro.Titulo}}</h3>
+            <h3>Autor: {{livro.Autor}}</h3>
+            <h5>Gênero: {{livro.Genero}}</h5>
+            <p>Descirção: {{livro.Descricao}}</p>
+            <h5>Data de publicação: {{livro.DataPublicacao}}</h5>
+        </div>
+    </div>
+    <a href="#!/editora"><button  ng-click="testar()" class="modal-close"></button></a>
+</div>

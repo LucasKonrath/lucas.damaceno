@@ -1,7 +1,6 @@
-var modulo = angular.module('editoraApp', ['ui.bootstrap']);
 
-modulo.controller('EditoraController', function ($scope, editoraService) {
-
+modulo.controller('EditoraController', function ($scope, editoraService, $routeParams, $location) {
+    carregarLivros();
     $scope.myInterval = 3000;
     $scope.carregarLivros = carregarLivros;
     $scope.obterLivros = obterLivros;
@@ -12,8 +11,7 @@ modulo.controller('EditoraController', function ($scope, editoraService) {
     $scope.proximaPagina = proximaPagina;
     $scope.paginaAnterior = paginaAnterior;
     $scope.obterLivrosMenu = obterLivrosMenu;
-    
-    
+ 
     function proximaPagina(){
 
         $scope.controlePaginas += 1;
