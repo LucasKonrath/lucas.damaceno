@@ -52,10 +52,14 @@
     <Compile Include="Contexto.cs" />
     <Compile Include="Entidades\Autor.cs" />
     <Compile Include="Entidades\Livro.cs" />
+    <Compile Include="Entidades\Permissao.cs" />
     <Compile Include="Entidades\Revisor.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Mappings\AutorMap.cs" />
     <Compile Include="Mappings\LivroMap.cs" />
+    <Compile Include="Mappings\PermissaoMap.cs" />
     <Compile Include="Mappings\RevisorMap.cs" />
+    <Compile Include="Mappings\UsuarioMap.cs" />
     <Compile Include="Migrations\201705301938464_CriacaoDoBanco.cs" />
     <Compile Include="Migrations\201705301938464_CriacaoDoBanco.Designer.cs">
       <DependentUpon>201705301938464_CriacaoDoBanco.cs</DependentUpon>
@@ -68,11 +72,20 @@
     <Compile Include="Migrations\201705311840099_AdicionarCapa.Designer.cs">
       <DependentUpon>201705311840099_AdicionarCapa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706031958263_AdicionarUsuarios.cs" />
+    <Compile Include="Migrations\201706031958263_AdicionarUsuarios.Designer.cs">
+      <DependentUpon>201706031958263_AdicionarUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706032010464_AdicionarPermissoes.cs" />
+    <Compile Include="Migrations\201706032010464_AdicionarPermissoes.Designer.cs">
+      <DependentUpon>201706032010464_AdicionarPermissoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutorRepositorio.cs" />
     <Compile Include="Repositorios\LivroRepositorio.cs" />
     <Compile Include="Repositorios\RevisorRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -87,6 +100,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705311840099_AdicionarCapa.resx">
       <DependentUpon>201705311840099_AdicionarCapa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706031958263_AdicionarUsuarios.resx">
+      <DependentUpon>201706031958263_AdicionarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706032010464_AdicionarPermissoes.resx">
+      <DependentUpon>201706032010464_AdicionarPermissoes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
