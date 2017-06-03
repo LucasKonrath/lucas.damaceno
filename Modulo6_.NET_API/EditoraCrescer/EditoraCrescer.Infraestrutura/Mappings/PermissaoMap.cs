@@ -13,7 +13,7 @@ namespace EditoraCrescer.Infraestrutura.Mappings
         public PermissaoMap()
         {
 
-            ToTable("Permissoes");
+            ToTable("Permissao");
         }
 
 

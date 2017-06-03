@@ -7,14 +7,13 @@ namespace EditoraCrescer.Infraestrutura.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Adicionar
-        : IMigrationMetadata
+    public sealed partial class CorrigirPermissaoNoBanco : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AdicionarPermissoes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CorrigirPermissaoNoBanco));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706032010464_AdicionarPermissoes"; }
+            get { return "201706032158098_CorrigirPermissaoNoBanco"; }
         }
         
         string IMigrationMetadata.Source

@@ -22,7 +22,8 @@ namespace EditoraCrescer.Infraestrutura
 
         public DbSet<Revisor> Revisores  { get; set; }
 
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }    
+        public DbSet<Permissao> Permissao    { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

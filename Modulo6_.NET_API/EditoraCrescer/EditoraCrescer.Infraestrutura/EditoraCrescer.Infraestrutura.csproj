@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Contexto.cs" />
     <Compile Include="Entidades\Autor.cs" />
+    <Compile Include="Entidades\EntidadeBasica.cs" />
     <Compile Include="Entidades\Livro.cs" />
     <Compile Include="Entidades\Permissao.cs" />
     <Compile Include="Entidades\Revisor.cs" />
@@ -80,6 +81,10 @@
     <Compile Include="Migrations\201706032010464_AdicionarPermissoes.Designer.cs">
       <DependentUpon>201706032010464_AdicionarPermissoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706032158098_CorrigirPermissaoNoBanco.cs" />
+    <Compile Include="Migrations\201706032158098_CorrigirPermissaoNoBanco.Designer.cs">
+      <DependentUpon>201706032158098_CorrigirPermissaoNoBanco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutorRepositorio.cs" />
@@ -106,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706032010464_AdicionarPermissoes.resx">
       <DependentUpon>201706032010464_AdicionarPermissoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706032158098_CorrigirPermissaoNoBanco.resx">
+      <DependentUpon>201706032158098_CorrigirPermissaoNoBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
