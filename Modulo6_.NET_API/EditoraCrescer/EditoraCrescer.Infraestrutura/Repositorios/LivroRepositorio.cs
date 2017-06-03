@@ -29,6 +29,20 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             return contexto.Livros.Select( x=> new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero  }).ToList<object>();
         }
 
+        public List<object> ObterComParametros(int pegar, int pular)
+        {
+            return contexto.
+                Livros.
+                Select(x => new { Isbn = x.Isbn,
+                    Titulo = x.Titulo,
+                    Capa = x.Capa, NomeAutor = x.Autor.Nome,
+                    Genero = x.Genero })
+                    .OrderBy(x => x.Isbn)
+                    .Skip(pular)
+                    .Take(pegar)
+                    .ToList<object>();
+        }
+
         public dynamic ObterPorGenero(string genero)
         {
             return contexto.Livros.

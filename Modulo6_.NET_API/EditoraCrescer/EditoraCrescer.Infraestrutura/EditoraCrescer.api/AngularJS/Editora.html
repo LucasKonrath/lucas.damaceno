@@ -36,21 +36,21 @@
             <div class="modal-content">
                 <!-- Any other Bulma elements you want -->
                 <div class="field">
-                   
-                        <form action="">
-                            <label class="label">Digite o seu Email</label>
-                            <p class="control has-icons-left has-icons-right">
-                                <input class="input" type="email" placeholder="Email">
-                                <span class="icon is-left">
-                                    <i class="fa fa-envelope"></i>
-                                </span>
-                                <span class="icon is-right">
-                                    <i class="fa fa-check"></i>
-                                </span>
-                            </p>
-                            <button type="submit" class="btn btn-success btn-md"> Cadastrar E-Mail</button>
-                        </form>
-                   
+
+                    <form action="">
+                        <label class="label">Digite o seu Email</label>
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="email" placeholder="Email">
+                            <span class="icon is-left">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span class="icon is-right">
+                                <i class="fa fa-check"></i>
+                            </span>
+                        </p>
+                        <button type="submit" class="btn btn-success btn-md"> Cadastrar E-Mail</button>
+                    </form>
+
                 </div>
             </div>
             <button ng-click="mostrarModal = !mostrarModal" class="modal-close"></button>
@@ -64,7 +64,7 @@
 
                 <slide ng-repeat="livro in lancamentos" active="slide.active">
                     <h1 id="textoTitulo">Lançamentos</h1>
-                    <a href="\livro\{{livro.Isbn}}"><img href="" id="imagem-livro" ng-src="{{livro.Capa}}"></a>
+                    <a href="#!\livro\{{livro.Isbn}}"><img href="" id="imagem-livro" ng-src="{{livro.Capa}}"></a>
                     <div class="carousel-caption">
 
                     </div>
@@ -80,10 +80,10 @@
         <br>
         <div class="columns is-multiline ">
             <div class="column is-4" ng-repeat="livro in livros">
-                <article  class="media">
+                <article class="media">
                     <figure class="media-left">
                         <p class="image is-64x64">
-                            <img src="{{livro.Capa}}">
+                            <a href="#!\livro\{{livro.Isbn}}"><img src="{{livro.Capa}}"> </a>
                         </p>
                     </figure>
                     <div class="media-content">
@@ -103,14 +103,51 @@
             </div>
         </div>
 
+
+        <div class="modal" ng-class="{'is-active' : mostrarModal}">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+                <!-- Any other Bulma elements you want -->
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">John Smith</p>
+                                <p class="subtitle is-6">@johnsmith</p>
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                            <a>#css</a> <a>#responsive</a>
+                            <br>
+                            <small>11:09 PM - 1 Jan 2016</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button ng-click="mostrarModal = !mostrarModal" class="modal-close"></button>
+        </div>
+
         <nav aria-label="...">
             <ul class="pagination pagination-lg justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                <li class="page-item">
+                    <a class="page-link" ng-click="paginaAnterior()">Anterior</a>
                 </li>
 
                 <li class="page-item">
-                    <a class="page-link" href="#">Próxima</a>
+                    <a class="page-link" ng-click="proximaPagina()">Próxima</a>
                 </li>
             </ul>
         </nav>

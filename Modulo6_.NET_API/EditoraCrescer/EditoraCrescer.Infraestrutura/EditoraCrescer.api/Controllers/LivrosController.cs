@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace EditoraCrescer.api.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Livros")]
     public class LivrosController : ApiController
     {
@@ -34,6 +36,16 @@ namespace EditoraCrescer.api.Controllers
             if (livro == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Livro com a ID informada não foi encontrado." } });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
+        }
+
+        [Route("{pular:int}/{pegar:int}")]
+        [HttpGet]
+        public HttpResponseMessage ObterLivrosComSkipETake(int pular, int pegar)
+        {
+            var livros = repositorio.ObterComParametros(pular, pegar);
+            if (livros == null)
+                return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Livro com a ID informada não foi encontrado." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livros });
         }
 
 
