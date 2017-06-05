@@ -6,12 +6,12 @@ modulo.controller('LoginController', function ($scope, authService, $routeParams
       .then(
         function (response) {
           console.log(response);
-          alert('Login com sucesso!');
+          swal("Feito!", "Login com sucesso!", "success");
 
         },
         function (response) {
           console.log(response);
-          alert('Erro no Login!');
+          swal("Eita!", "Usuário ou Senha inválidos!", "error");
         });
   };
 

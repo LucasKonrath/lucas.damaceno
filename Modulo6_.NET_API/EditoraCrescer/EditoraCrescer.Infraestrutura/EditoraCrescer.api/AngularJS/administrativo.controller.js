@@ -12,6 +12,7 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
         console.log(livro);
         editoraService.criarLivro(livro).then(response =>{
             obterLivrosCompletos();
+            swal("Feito!", "Livro adicionado com sucesso!", "success");
             console.log(response);
         });
 
@@ -21,6 +22,7 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
 
         editoraService.removerLivro(isbn).then(
             response => {
+                swal("Feito!", "Livro removido com sucesso!", "success");
                 obterLivrosCompletos(); 
                 console.log(response);
 
@@ -33,6 +35,7 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
         response =>
             {
                 obterLivrosCompletos();
+                swal("Feito!", "Livro  revisado com sucesso!", "success");
                 console.log(response);
             }
         )     
@@ -42,7 +45,8 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
     function publicarLivro(isbn){
         editoraService.publicarLivro(isbn).then(
         response =>
-            {
+            {   
+                swal("Feito!", "Livro publicado com sucesso!", "success");
                 $scope.obterLivrosCompletos();
             }
         )     

@@ -32,12 +32,20 @@
     <table ng-init="obterLivrosCompletos()" class="table table-bordered">
         <br><br>
         <thead>
-            <th> Capa </th> <th>Isbn</th><th>Título</th> <th>Genero</th>  <th>Autor</th> <th>Excluir Livro</th>
+            <th> Capa </th> <th>Isbn</th><th>Título</th> <th>Genero</th>  <th>Autor</th> <th>Modificar Livro</th> <th>Livro Revisado?</th> <th>Livro Publicado?</th>
         </thead>
         <tr ng-repeat="livro in livros | orderBy:'Isbn' ">
             <td > <img ng-src={{livro.Capa}} id="imagemTabela"alt=""></td> <td>{{livro.Isbn}}</td> <td>{{livro.Titulo}}</td><td>{{livro.Genero}}</td>  <td>{{livro.NomeAutor}}
             </td>  
-            <td><button class="btn btn-default" ng-click="remover(livro.Isbn)">Excluir</button><button ng-if="auth.possuiPermissao('Revisor') && livro.DataRevisao === null" class="btn btn-default" ng-click="revisarLivro(livro.Isbn)">Revisar</button> <button ng-if="auth.possuiPermissao('Publicador') && livro.DataPublicacao === null && livro.DataRevisao !== null" class="btn btn-default" ng-click="publicarLivro(livro.Isbn)">Publicar</button></td>
+           
+            <td>
+                {{livro.DataRevisao !== null ? 'Sim' : 'Não'}}
+            </td>
+            <td>
+                {{livro.DataPublicacao !== null ? 'Sim' : 'Não'}}
+                
+            </td>
+             <td><button class="btn btn-default" ng-click="remover(livro.Isbn)">Excluir</button><button ng-if="auth.possuiPermissao('Revisor') && livro.DataRevisao === null" class="btn btn-default" ng-click="revisarLivro(livro.Isbn)">Revisar</button> <button ng-if="auth.possuiPermissao('Publicador') && livro.DataPublicacao === null && livro.DataRevisao !== null" class="btn btn-default" ng-click="publicarLivro(livro.Isbn)">Publicar</button></td>
         </tr>
     </table>
 
