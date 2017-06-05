@@ -1,4 +1,5 @@
-﻿using EditoraCrescer.Infraestrutura;
+﻿using AutDemo.WebApi;
+using EditoraCrescer.Infraestrutura;
 using EditoraCrescer.Infraestrutura.Entidades;
 using EditoraCrescer.Infraestrutura.Repositorios;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -20,24 +22,16 @@ namespace EditoraCrescer.api.Controllers
         private UsuarioRepositorio repositorio = new UsuarioRepositorio();
 
 
+        [BasicAuthorization]
         [HttpGet]
-        public HttpResponseMessage ObterUsuarios()
+        public HttpResponseMessage Obter()
         {
-            var usuarios = repositorio.Listar();
-            return Request.CreateResponse(HttpStatusCode.OK, new { data = usuarios });
+            var usuario = repositorio.Obter(Thread.CurrentPrincipal.Identity.Name);
 
+            if (usuario == null)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagem="Usuario/Email não cadastrados."});
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = usuario.Nome, usuario.Permissoes, usuario.Email });
         }
-
-
-        [HttpGet]
-        public HttpResponseMessage ObterUsuarioPorEmail(string email)
-        {
-            var usuarios = repositorio.Obter(email);
-            return Request.CreateResponse(HttpStatusCode.OK, new { data = usuarios });
-
-        }
-
-
 
 
 

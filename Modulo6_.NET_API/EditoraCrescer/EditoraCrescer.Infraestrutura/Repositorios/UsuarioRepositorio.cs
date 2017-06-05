@@ -25,6 +25,11 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             return contexto.Usuarios.ToList();
         }
 
+        public Usuario ObterPorId(int id)
+        {
+            return contexto.Usuarios.Where(usuario => usuario.Id == id).FirstOrDefault();
+        }
+
         public Usuario Obter(string email)
         {
             return contexto.
