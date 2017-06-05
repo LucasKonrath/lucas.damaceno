@@ -22,8 +22,13 @@
     <br><br><br>
 </form>
 
+<a href="#!/login" ng-click="logout()"> Logout</a>
+<p>{{ mensagem.colaborador }}</p>
 
+<p ng-if="auth.possuiPermissao('Editor')">{{ mensagem.editor }}</p>
 
+<button ng-if="auth.possuiPermissao('Revisor')" class="btn btn-default" ng-click="revisar(livro)">Revisar</button>
+<button ng-if="auth.possuiPermissao('Administrador')" class="btn btn-default" ng-click="publicar(livro)">Publicar</button>
 
 
 
@@ -37,7 +42,7 @@
         <tr ng-repeat="livro in livros | orderBy:'Isbn' ">
             <td > <img ng-src={{livro.Capa}} id="imagemTabela"alt=""></td> <td>{{livro.Isbn}}</td> <td>{{livro.Titulo}}</td><td>{{livro.Genero}}</td>  <td>{{livro.NomeAutor}}
             </td>  
-             <td><button class="btn btn-default" ng-click="remover(livro)">Excluir</button></td>
+            <td><button class="btn btn-default" ng-click="remover(livro)">Excluir</button></td>
         </tr>
     </table>
 

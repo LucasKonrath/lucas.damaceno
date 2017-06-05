@@ -30,7 +30,7 @@ namespace EditoraCrescer.api.Controllers
 
             if (usuario == null)
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagem="Usuario/Email não cadastrados."});
-            return Request.CreateResponse(HttpStatusCode.OK, new { data = usuario.Nome, usuario.Permissoes, usuario.Email });
+            return Request.CreateResponse(HttpStatusCode.OK, new { dados = new { Nome = usuario.Nome, Permissoes = usuario.Permissoes, Email = usuario.Email} });
         }
 
 
