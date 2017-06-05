@@ -12,37 +12,37 @@ using System.Web.Http.Cors;
 namespace EditoraCrescer.api.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("api/usuario")]
+    [RoutePrefix("api/Usuario")]
     public class UsuarioController : ApiController
     {
         private Contexto contexto = new Contexto();
 
         private UsuarioRepositorio repositorio = new UsuarioRepositorio();
 
+
         [HttpGet]
         public HttpResponseMessage ObterUsuarios()
         {
-            var usuarios = repositorio.Obter();
-
+            var usuarios = repositorio.Listar();
             return Request.CreateResponse(HttpStatusCode.OK, new { data = usuarios });
 
         }
 
-        [Route("{id:int}")]
+
         [HttpGet]
-        public HttpResponseMessage ObterUsuarioPorId(int id)
+        public HttpResponseMessage ObterUsuarioPorEmail(string email)
         {
-            var usuario = repositorio.ObterUsuarioPorId(id);
-            if (usuario == null)
-                return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Usuario com a ID informada não foi encontrado." } });
-            return Request.CreateResponse(HttpStatusCode.OK, new { data = usuario });
+            var usuarios = repositorio.Obter(email);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = usuarios });
+
         }
 
-        
 
-        
 
-        
+
+
+
+
 
 
         protected override void Dispose(bool disposing)

@@ -9,33 +9,27 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 {
     public class UsuarioRepositorio : IDisposable
     {
-
-        private Contexto contexto = new Contexto();
+    
+                private Contexto contexto = new Contexto();
+       
 
         public UsuarioRepositorio()
         {
 
-
-
         }
 
-        public bool UsuarioValido(int id)
-        {
-            return contexto.Usuarios.Where(x => x.Id == id).Count() > 0;
-        }
+       
 
-      
-
-        public List<Usuario> Obter()
+        public IEnumerable<Usuario> Listar()
         {
             return contexto.Usuarios.ToList();
         }
-            
-        public Usuario ObterUsuarioPorId(int id)
-        {
-            return contexto.Usuarios.Where(usuario => usuario.Id == id).FirstOrDefault();
-        }
 
+        public Usuario Obter(string email)
+        {
+            return contexto.
+                Usuarios.Include("Permissoes").Where(x => x.Email.Equals(email)).FirstOrDefault();
+        }
 
 
         public void Dispose()
@@ -43,6 +37,5 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             contexto.Dispose();
 
         }
-
     }
 }

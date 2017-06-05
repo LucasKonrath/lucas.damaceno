@@ -3,7 +3,7 @@ modulo.config(function ($routeProvider) {
 
     $routeProvider
         .when('/login', {
-        controller: 'EditoraController',
+        controller: 'LoginController',
         templateUrl: 'Login.html',
         css: 'login.css'
     })
@@ -13,6 +13,9 @@ modulo.config(function ($routeProvider) {
     }).when('/livro/:idLivro', {
         controller: 'LivroDetalhadoController',
         templateUrl: 'detalheLivro.html'
+    }).when('/administrativo', {
+        controller: 'AdministrativoController',
+        templateUrl: 'administrativo.html'
     })
         .otherwise({redirectTo: 'index.html'});
 });
@@ -20,7 +23,7 @@ modulo.config(function ($routeProvider) {
 modulo.constant('authConfig', {
 
     // Obrigatória - URL da API que retorna o usuário
-    urlUsuario: 'http://localhost:63773/api/usuario',
+    urlUsuario: 'http://localhost:63773/api/Usuario',
 
     // Obrigatória - URL da aplicação que possui o formulário de login
     urlLogin: '/login',

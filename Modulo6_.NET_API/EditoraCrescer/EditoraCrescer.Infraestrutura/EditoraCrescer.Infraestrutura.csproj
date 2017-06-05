@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201706032158098_CorrigirPermissaoNoBanco.Designer.cs">
       <DependentUpon>201706032158098_CorrigirPermissaoNoBanco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706050233477_EditarLivroEAdicionarNotNulls.cs" />
+    <Compile Include="Migrations\201706050233477_EditarLivroEAdicionarNotNulls.Designer.cs">
+      <DependentUpon>201706050233477_EditarLivroEAdicionarNotNulls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutorRepositorio.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706032158098_CorrigirPermissaoNoBanco.resx">
       <DependentUpon>201706032158098_CorrigirPermissaoNoBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706050233477_EditarLivroEAdicionarNotNulls.resx">
+      <DependentUpon>201706050233477_EditarLivroEAdicionarNotNulls.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

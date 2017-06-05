@@ -1,0 +1,46 @@
+<form novalidate class="formCRUD"    name="adicionarLivro">
+    <hr>
+    <label for="inputTituloLivro"> Titulo </label>
+    <input type="text" name="inputTituloLivro"  placeholder="Titulo(obrigatorio). 3 a 20 letras." required minlength="3" maxlength="40" ng-model="livro.Titulo">
+
+    <label for="descricaoLivro"> Descricao </label>
+    <input type="textarea" name="descricaoLivro"  placeholder="Descricao(obrigatorio). 3 a 20 letras." required minlength="3" maxlength="40" ng-model="livro.Descricao">
+    <br>
+
+    <label for="inputGeneroLivro"> Genero </label>
+    <input type="text" name="inputGeneroLivro"  placeholder="Genero(obrigatorio). 3 a 20 letras." required minlength="3" maxlength="40" ng-model="livro.Genero">
+
+    <label for="inputCapaLivro"> Url da Capa </label>
+    <input type="text" name="inputCapaLivro"  placeholder="Capa(obrigatorio). 3 a 20 letras." required minlength="3" maxlength="40" ng-model="livro.Capa">
+
+    <label for="inputAutorLivro"> ID do Autor </label>
+    <input type="number" name="inputAutorLivro"  placeholder="ID Do autor(obrigatorio). 3 a 20 letras." ng-model="livro.IdAutor">
+
+
+    <button type="submit" class="btn btn-success" ng-disabled="adicionarLivro.$invalid || adicionarLivro.$pending" ng-click="insereLivro()"> Adicionar novo livro.</button>
+    <br>
+    <br><br><br>
+</form>
+
+
+
+
+
+
+<form novalidate name="modificarLivro">
+
+    <table ng-init="obterLivros()" class="table table-bordered">
+        <br><br>
+        <thead>
+            <th> Capa </th> <th>Isbn</th><th>Título</th> <th>Genero</th>  <th>Autor</th> <th>Excluir Livro</th>
+        </thead>
+        <tr ng-repeat="livro in livros | orderBy:'Isbn' ">
+            <td > <img ng-src={{livro.Capa}} id="imagemTabela"alt=""></td> <td>{{livro.Isbn}}</td> <td>{{livro.Titulo}}</td><td>{{livro.Genero}}</td>  <td>{{livro.NomeAutor}}
+            </td>  
+             <td><button class="btn btn-default" ng-click="remover(livro)">Excluir</button></td>
+        </tr>
+    </table>
+
+
+
+</form>

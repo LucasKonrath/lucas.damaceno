@@ -21,6 +21,10 @@
     width:500px;
     
 }
+#imagemTabela{
+     height:60px;
+    width:80px;
+}
 #divLivros{
     text-align:center;
     background-color:rgba(167, 175, 169, 0.72);
