@@ -114,7 +114,7 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         public Livro Obter(int id)
         {
-            Livro livroObtido = contexto.Livros.FirstOrDefault(x => x.Isbn == id);
+            Livro livroObtido = contexto.Livros.Include("Autor").FirstOrDefault(x => x.Isbn == id);
             return livroObtido;
         }
 

@@ -1,5 +1,5 @@
 
-modulo.controller('EditoraController', function ($scope, editoraService, $routeParams, $location) {
+modulo.controller('EditoraController', function ($scope, editoraService, $routeParams, $location, authService) {
     carregarLivros();
     $scope.myInterval = 3000;
     $scope.carregarLivros = carregarLivros;
@@ -11,11 +11,20 @@ modulo.controller('EditoraController', function ($scope, editoraService, $routeP
     $scope.proximaPagina = proximaPagina;
     $scope.paginaAnterior = paginaAnterior;
     $scope.obterLivrosMenu = obterLivrosMenu;
- 
+    $scope.auth = authService;
+    
+     $scope.logout = function (usuario) {
+
+        authService.logout(usuario);
+
+    };
+
+    
     function proximaPagina(){
 
         $scope.controlePaginas += 1;
         obterLivrosMenu(3, $scope.controlePaginas * 3);
+        
     }
 
     function paginaAnterior(){
@@ -49,6 +58,10 @@ modulo.controller('EditoraController', function ($scope, editoraService, $routeP
             .then(response => {
 
             $scope.livros = response.data.data; 
+            if($scope.livros.length === 0) {
+                paginaAnterior();
+                
+            }
             console.log($scope.livros);
 
         })

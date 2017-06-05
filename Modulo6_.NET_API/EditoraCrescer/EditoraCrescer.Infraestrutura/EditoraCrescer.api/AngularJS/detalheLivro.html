@@ -6,13 +6,31 @@
     <div class="modal-content">
         <!-- Any other Bulma elements you want -->
         <div class="field">
-            <img src={{livro.Capa}} alt={{livro.Nome}}>
-            <h3>Título: {{livro.Titulo}}</h3>
-            <h3>Autor: {{livro.Autor}}</h3>
-            <h5>Gênero: {{livro.Genero}}</h5>
-            <p>Descirção: {{livro.Descricao}}</p>
-            <h5>Data de publicação: {{livro.DataPublicacao}}</h5>
-        </div>
-    </div>
+           <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src={{livro.Capa}} alt="Image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                           
+                            <div class="media-content">
+                                <p class="title is-4">Título: {{livro.Titulo}}</p>
+                                <p class="subtitle is-6">Autor: {{livro.Autor.Nome}}</p>
+                                <p class="subtitle is-6">Gênero: {{livro.Genero}}</p>
+          
+                            </div>
+                        </div>
+
+                        <div class="content">
+                            {{livro.Descricao}} 
+                            <br>
+                            <small>Data de Publicação: {{(livro.DataPublicacao | date:'medium') || 'Não publicado'}} </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
     <a href="#!/editora"><button  ng-click="testar()" class="modal-close"></button></a>
 </div>

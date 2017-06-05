@@ -1,5 +1,6 @@
 <div class="container" ng-if="auth.isAutenticado()">
-<br><br><a href="#!/login" ng-click="logout()"> Logout</a>
+<br><br><a class="button is-light" href="#!/editora" ng-click="logout()"> Logout</a>
+<a class="button is-light" href="#!/editora" >Voltar para página inicial.</a>
 <form novalidate class="formCRUD"    name="adicionarLivro">
     <hr>
        <label for="inputTituloLivro"> Titulo </label>
@@ -18,7 +19,7 @@
     
     <input type="number" name="inputAutorLivro"  placeholder="ID Do autor(obrigatorio). 3 a 20 letras." ng-model="livro.IdAutor">
     <label for="inputAutorLivro"> ID do Autor </label>
-
+    <br>
     <button type="submit" class="btn btn-success" ng-disabled="adicionarLivro.$invalid || adicionarLivro.$pending" ng-click="insereLivro()"> Adicionar novo livro.</button>
     <br>
     <br><br><br>
