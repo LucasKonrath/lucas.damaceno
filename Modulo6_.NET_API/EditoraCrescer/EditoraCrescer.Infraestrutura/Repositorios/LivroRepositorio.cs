@@ -26,9 +26,14 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         public List<object> Obter()
         {
-            return contexto.Livros.Select( x=> new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero  }).ToList<object>();
+            return contexto.Livros.Where(x => x.DataPublicacao != null && x.DataRevisao != null).Select( x=> new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero  }).ToList<object>();
         }
 
+
+        public List<object> ObterLivrosCompletos()
+        {
+            return contexto.Livros.Select(x => new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero, DataRevisao = x.DataRevisao, DataPublicacao = x.DataPublicacao}).ToList<object>();
+        }
         public List<object> ObterComParametros(int pegar, int pular)
         {
             return contexto.

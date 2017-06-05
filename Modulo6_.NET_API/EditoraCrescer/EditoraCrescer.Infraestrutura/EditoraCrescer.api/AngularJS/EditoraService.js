@@ -8,7 +8,8 @@ modulo.factory("editoraService", function ($http) {
         removerLivro:removerLivro,
         criarLivro:criarLivro,
         revisarLivro: revisarLivro,
-        publicarLivro: publicarLivro
+        publicarLivro: publicarLivro,
+        obterLivrosCompletos: obterLivrosCompletos
         
     });
 
@@ -29,8 +30,14 @@ modulo.factory("editoraService", function ($http) {
     }
 
     function criarLivro(livro){
-
+        livro.Isbn = 0;
         return $http.post("http://localhost:63773/api/livros/", livro);
+
+    }
+    
+     function obterLivrosCompletos(){
+        
+        return $http.get("http://localhost:63773/api/Livros/Completos");
 
     }
 

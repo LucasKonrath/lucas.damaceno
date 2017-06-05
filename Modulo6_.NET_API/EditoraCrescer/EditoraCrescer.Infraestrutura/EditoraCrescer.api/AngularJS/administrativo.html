@@ -1,13 +1,15 @@
 <div class="container" ng-if="auth.isAutenticado()">
 <br><br><a class="button is-light" href="#!/editora" ng-click="logout()"> Logout</a>
 <a class="button is-light" href="#!/editora" >Voltar para página inicial.</a>
-<form novalidate class="formCRUD"    name="adicionarLivro">
+<a class="button is-light" ng-click="mostrarAddLivros = true; mostrarRevisarLivros = false" >Adicionar Livros</a>
+<a class="button is-light" ng-click="mostrarRevisarLivros = true; mostrarAddLivros = false" >Publicar/Revisar livros.</a>
+<form novalidate class="formCRUD" ng-if="mostrarAddLivros"   name="adicionarLivro">
     <hr>
        <label for="inputTituloLivro"> Titulo </label>
-    <input type="text" name="inputTituloLivro"  placeholder="Titulo(obrigatorio). 3 a 20 letras." required minlength="3" maxlength="40" ng-model="livro.Titulo">
+    <input type="text" name="inputTituloLivro"  placeholder="Titulo(obrigatorio). De 3 a 60 letras." required minlength="3" maxlength="60" ng-model="livro.Titulo">
   
        <label for="descricaoLivro"> Descricao </label><br>
-    <input type="textarea" height="400px" name="descricaoLivro"  placeholder="Descricao(obrigatorio). 3 a 20 letras." required minlength="3"ng-model="livro.Descricao">  <br>
+    <textarea class="textarea" ng-model="livro.Descricao" placeholder="Descrição do livro"></textarea>
    
     <br>
 
@@ -20,14 +22,14 @@
     <input type="number" name="inputAutorLivro"  placeholder="ID Do autor(obrigatorio). 3 a 20 letras." ng-model="livro.IdAutor">
     <label for="inputAutorLivro"> ID do Autor </label>
     <br>
-    <button type="submit" class="btn btn-success" ng-disabled="adicionarLivro.$invalid || adicionarLivro.$pending" ng-click="insereLivro()"> Adicionar novo livro.</button>
+    <button type="submit" class="btn btn-success" ng-disabled="adicionarLivro.$invalid || adicionarLivro.$pending" ng-click="insereLivro(livro)"> Adicionar novo livro.</button>
     <br>
     <br><br><br>
 </form>
 
-<form novalidate name="modificarLivro">
+<form novalidate ng-if="mostrarRevisarLivros" name="modificarLivro">
 
-    <table ng-init="obterLivros()" class="table table-bordered">
+    <table ng-init="obterLivrosCompletos()" class="table table-bordered">
         <br><br>
         <thead>
             <th> Capa </th> <th>Isbn</th><th>Título</th> <th>Genero</th>  <th>Autor</th> <th>Excluir Livro</th>
@@ -35,7 +37,7 @@
         <tr ng-repeat="livro in livros | orderBy:'Isbn' ">
             <td > <img ng-src={{livro.Capa}} id="imagemTabela"alt=""></td> <td>{{livro.Isbn}}</td> <td>{{livro.Titulo}}</td><td>{{livro.Genero}}</td>  <td>{{livro.NomeAutor}}
             </td>  
-            <td><button class="btn btn-default" ng-click="remover(livro.Isbn)">Excluir</button><button ng-if="auth.possuiPermissao('Revisor')" class="btn btn-default" ng-click="revisarLivro(livro.Isbn)">Revisar</button> <button ng-if="auth.possuiPermissao('Publicador')" class="btn btn-default" ng-click="publicarLivro(livro.Isbn)">Publicar</button></td>
+            <td><button class="btn btn-default" ng-click="remover(livro.Isbn)">Excluir</button><button ng-if="auth.possuiPermissao('Revisor') && livro.DataRevisao === null" class="btn btn-default" ng-click="revisarLivro(livro.Isbn)">Revisar</button> <button ng-if="auth.possuiPermissao('Publicador') && livro.DataPublicacao === null && livro.DataRevisao !== null" class="btn btn-default" ng-click="publicarLivro(livro.Isbn)">Publicar</button></td>
         </tr>
     </table>
 

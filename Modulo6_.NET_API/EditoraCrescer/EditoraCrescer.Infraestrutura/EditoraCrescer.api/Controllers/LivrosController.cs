@@ -28,6 +28,16 @@ namespace EditoraCrescer.api.Controllers
        
         }
 
+        [Route("Completos")]
+        [HttpGet]
+        public HttpResponseMessage ObterLivrosCompletos()
+        {
+            var livros = repositorio.ObterLivrosCompletos();
+
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = livros });
+
+        }
+
         [Route("{isbn:int}")]
         [HttpGet]
         public HttpResponseMessage ObterLivroPorId(int isbn)

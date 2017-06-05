@@ -1,18 +1,17 @@
 
 modulo.controller('AdministrativoController', function ($scope, editoraService,authService, $routeParams, $location) {
-    $scope.obterLivros = obterLivros;
+    $scope.obterLivrosCompletos = obterLivrosCompletos;
     $scope.insereLivro = insereLivro;
     $scope.auth = authService;
     $scope.remover = remover;
     $scope.revisarLivro = revisarLivro;
     $scope.publicarLivro = publicarLivro;
-    
+ 
     
     function insereLivro(livro){
-        $scope.livro.IDRevisor=21;
-        console.log($scope.livro);
-        editoraService.criarLivro($scope.livro).then(response =>{
-            obterLivros();
+        console.log(livro);
+        editoraService.criarLivro(livro).then(response =>{
+            obterLivrosCompletos();
             console.log(response);
         });
 
@@ -22,7 +21,7 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
 
         editoraService.removerLivro(isbn).then(
             response => {
-                obterLivros(); 
+                obterLivrosCompletos(); 
                 console.log(response);
 
             });
@@ -33,7 +32,7 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
         editoraService.revisarLivro(isbn).then(
         response =>
             {
-                obterLivros();
+                obterLivrosCompletos();
                 console.log(response);
             }
         )     
@@ -44,8 +43,7 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
         editoraService.publicarLivro(isbn).then(
         response =>
             {
-                obterLivros();
-                console.log(response);
+                $scope.obterLivrosCompletos();
             }
         )     
     }
@@ -57,9 +55,9 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
     };
 
 
-    function obterLivros() {
+    function obterLivrosCompletos() {
         editoraService
-            .obterLivros()
+            .obterLivrosCompletos()
             .then(response => {
 
             $scope.livros = response.data.data; 
