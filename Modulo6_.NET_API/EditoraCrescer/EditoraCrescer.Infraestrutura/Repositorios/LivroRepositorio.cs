@@ -81,6 +81,29 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
         }
 
 
+        public Livro Revisar(int isbn)
+        {
+            Livro livroOriginal = contexto.Livros.Where(x => x.Isbn == isbn).FirstOrDefault();
+            livroOriginal.DataRevisao = DateTime.Now;
+            contexto.SaveChanges();
+
+            return livroOriginal;
+        }
+
+        public Livro Publicar(int isbn)
+        {
+            Livro livroOriginal = contexto.Livros.Where(x => x.Isbn == isbn).FirstOrDefault();
+            if(livroOriginal.DataRevisao != null)
+                livroOriginal.DataPublicacao = DateTime.Now;
+            else
+            {
+                livroOriginal.DataPublicacao = null;
+            }
+            contexto.SaveChanges();
+            return livroOriginal;
+            // enviar e-mail aqui
+        }
+
         public void Deletar(int id)
         {
             Livro livroRemover = contexto.Livros.FirstOrDefault(x => x.Isbn == id);

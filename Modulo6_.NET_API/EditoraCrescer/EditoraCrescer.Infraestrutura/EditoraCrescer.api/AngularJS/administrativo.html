@@ -1,22 +1,23 @@
+<div class="container" ng-if="auth.isAutenticado()">
 <br><br><a href="#!/login" ng-click="logout()"> Logout</a>
 <form novalidate class="formCRUD"    name="adicionarLivro">
     <hr>
-    <label for="inputTituloLivro"> Titulo </label>
+       <label for="inputTituloLivro"> Titulo </label>
     <input type="text" name="inputTituloLivro"  placeholder="Titulo(obrigatorio). 3 a 20 letras." required minlength="3" maxlength="40" ng-model="livro.Titulo">
-
-    <label for="descricaoLivro"> Descricao </label>
-    <input type="textarea" name="descricaoLivro"  placeholder="Descricao(obrigatorio). 3 a 20 letras." required minlength="3" maxlength="40" ng-model="livro.Descricao">
+  
+       <label for="descricaoLivro"> Descricao </label><br>
+    <input type="textarea" height="400px" name="descricaoLivro"  placeholder="Descricao(obrigatorio). 3 a 20 letras." required minlength="3"ng-model="livro.Descricao">  <br>
+   
     <br>
 
-    <label for="inputGeneroLivro"> Genero </label>
+    
     <input type="text" name="inputGeneroLivro"  placeholder="Genero(obrigatorio). 3 a 20 letras." required minlength="3" maxlength="40" ng-model="livro.Genero">
-
-    <label for="inputCapaLivro"> Url da Capa </label>
+    <label for="inputGeneroLivro"> Genero </label>
     <input type="text" name="inputCapaLivro"  placeholder="Capa(obrigatorio). 3 a 20 letras." required minlength="3" ng-model="livro.Capa">
-
-    <label for="inputAutorLivro"> ID do Autor </label>
+     <label for="inputCapaLivro"> Url da Capa </label>
+    
     <input type="number" name="inputAutorLivro"  placeholder="ID Do autor(obrigatorio). 3 a 20 letras." ng-model="livro.IdAutor">
-
+    <label for="inputAutorLivro"> ID do Autor </label>
 
     <button type="submit" class="btn btn-success" ng-disabled="adicionarLivro.$invalid || adicionarLivro.$pending" ng-click="insereLivro()"> Adicionar novo livro.</button>
     <br>
@@ -33,10 +34,19 @@
         <tr ng-repeat="livro in livros | orderBy:'Isbn' ">
             <td > <img ng-src={{livro.Capa}} id="imagemTabela"alt=""></td> <td>{{livro.Isbn}}</td> <td>{{livro.Titulo}}</td><td>{{livro.Genero}}</td>  <td>{{livro.NomeAutor}}
             </td>  
-            <td><button class="btn btn-default" ng-click="remover(livro.Isbn)">Excluir</button><button ng-if="auth.possuiPermissao('Revisor')" class="btn btn-default" ng-click="revisar(livro.Isbn)">Revisar</button> <button ng-if="auth.possuiPermissao('Publicador')" class="btn btn-default" ng-click="publicar(livro)">Publicar</button></td>
+            <td><button class="btn btn-default" ng-click="remover(livro.Isbn)">Excluir</button><button ng-if="auth.possuiPermissao('Revisor')" class="btn btn-default" ng-click="revisarLivro(livro.Isbn)">Revisar</button> <button ng-if="auth.possuiPermissao('Publicador')" class="btn btn-default" ng-click="publicarLivro(livro.Isbn)">Publicar</button></td>
         </tr>
     </table>
 
 
 
 </form>
+</div>
+
+
+
+
+<div class="container" ng-if="!auth.isAutenticado()">
+
+        <H2>AREA RESTRITA</H2>
+</div>

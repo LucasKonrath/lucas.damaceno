@@ -102,6 +102,34 @@ namespace EditoraCrescer.api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { data = livro });
         }
 
+        [Route("revisar/{isbn:int}")]
+        [HttpPut]
+        public HttpResponseMessage RevisarLivro(int isbn)
+        {
+            
+           
+            if (!repositorio.LivroValido(isbn))
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Livro de Isbn especificado não existe." } });
+            repositorio.Revisar(isbn);
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = "Revisado com sucesso." });
+
+        }
+
+
+        [Route("publicar/{isbn:int}")]
+        [HttpPut]
+        public HttpResponseMessage PublicarLivro(int isbn)
+        {
+
+            var dataAtual = DateTime.Today.DayOfWeek;
+            if(dataAtual == DayOfWeek.Saturday || dataAtual == DayOfWeek.Sunday) return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = "Livros não podem ser publicados no fim de semana." });
+            if (!repositorio.LivroValido(isbn))
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Livro de Isbn especificado não existe." } });
+            var livro = repositorio.Publicar(isbn);
+            if(livro.DataPublicacao == null) return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens =  "Livro não revisado não pode ser publicado." });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = "Publicado com sucesso." });
+
+        }
 
         protected override void Dispose(bool disposing)
         {

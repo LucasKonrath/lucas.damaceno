@@ -4,7 +4,10 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
     $scope.insereLivro = insereLivro;
     $scope.auth = authService;
     $scope.remover = remover;
-    $scope.revisar = revisar;
+    $scope.revisarLivro = revisarLivro;
+    $scope.publicarLivro = publicarLivro;
+    
+    
     function insereLivro(livro){
         $scope.livro.IDRevisor=21;
         console.log($scope.livro);
@@ -25,13 +28,27 @@ modulo.controller('AdministrativoController', function ($scope, editoraService,a
             });
 
     }
+    
+    function revisarLivro(isbn){
+        editoraService.revisarLivro(isbn).then(
+        response =>
+            {
+                obterLivros();
+                console.log(response);
+            }
+        )     
+    }
 
-    $scope.mensagem = {
-        colaborador: 'Mensagem incrível para o usuário AUTENTICADO',
-        editor: 'Mensagem incrível para o usuário EDITOR',
-    };
-
-
+    
+    function publicarLivro(isbn){
+        editoraService.publicarLivro(isbn).then(
+        response =>
+            {
+                obterLivros();
+                console.log(response);
+            }
+        )     
+    }
 
     $scope.logout = function (usuario) {
 

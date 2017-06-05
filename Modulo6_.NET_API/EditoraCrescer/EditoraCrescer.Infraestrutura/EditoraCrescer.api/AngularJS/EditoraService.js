@@ -6,7 +6,9 @@ modulo.factory("editoraService", function ($http) {
         obterLivroPorID: obterLivroPorID,
         atualizarLivro:atualizarLivro,
         removerLivro:removerLivro,
-        criarLivro:criarLivro
+        criarLivro:criarLivro,
+        revisarLivro: revisarLivro,
+        publicarLivro: publicarLivro
         
     });
 
@@ -32,6 +34,16 @@ modulo.factory("editoraService", function ($http) {
 
     }
 
+    function revisarLivro(id){
+        return $http.put("http://localhost:63773/api/livros/revisar/" + id +"");
+        
+    }
+    
+    function publicarLivro(id){
+        return $http.put("http://localhost:63773/api/livros/publicar/" + id +"");
+        
+    }
+    
     function removerLivro(id){
 
         return $http.delete("http://localhost:63773/api/livros/" + id +"");
