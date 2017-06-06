@@ -11,5 +11,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Entidades
          public int Id { get; set; }
          public string Nome { get; set; }
          public decimal Custo { get; set; }
+
+        public int Estoque { get; set; }
      }
 }

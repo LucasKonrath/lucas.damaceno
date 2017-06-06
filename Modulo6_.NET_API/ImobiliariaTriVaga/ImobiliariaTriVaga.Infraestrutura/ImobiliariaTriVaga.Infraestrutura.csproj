@@ -53,14 +53,18 @@
     <Compile Include="Entidades\Adicional.cs" />
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\EntidadeBasica.cs" />
+    <Compile Include="Entidades\EstoqueImovel.cs" />
     <Compile Include="Entidades\Pacote.cs" />
     <Compile Include="Entidades\Pedido.cs" />
+    <Compile Include="Entidades\PedidoAdicional.cs" />
     <Compile Include="Entidades\Permissao.cs" />
     <Compile Include="Entidades\TipoImovel.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Mappings\AdicionalMap.cs" />
     <Compile Include="Mappings\ClienteMap.cs" />
+    <Compile Include="Mappings\EstoqueImovelMap.cs" />
     <Compile Include="Mappings\PacoteMap.cs" />
+    <Compile Include="Mappings\PedidoAdicionalMap.cs" />
     <Compile Include="Mappings\PedidoMap.cs" />
     <Compile Include="Mappings\PermissaoMap.cs" />
     <Compile Include="Mappings\TipoImovelMap.cs" />
@@ -68,6 +72,18 @@
     <Compile Include="Migrations\201706061415297_CriarBanco.cs" />
     <Compile Include="Migrations\201706061415297_CriarBanco.Designer.cs">
       <DependentUpon>201706061415297_CriarBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061833150_modificarAdicionais.cs" />
+    <Compile Include="Migrations\201706061833150_modificarAdicionais.Designer.cs">
+      <DependentUpon>201706061833150_modificarAdicionais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061856492_modificarTotalASerPago.cs" />
+    <Compile Include="Migrations\201706061856492_modificarTotalASerPago.Designer.cs">
+      <DependentUpon>201706061856492_modificarTotalASerPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061932330_modificarNullables.cs" />
+    <Compile Include="Migrations\201706061932330_modificarNullables.Designer.cs">
+      <DependentUpon>201706061932330_modificarNullables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +95,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706061415297_CriarBanco.resx">
       <DependentUpon>201706061415297_CriarBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061833150_modificarAdicionais.resx">
+      <DependentUpon>201706061833150_modificarAdicionais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061856492_modificarTotalASerPago.resx">
+      <DependentUpon>201706061856492_modificarTotalASerPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061932330_modificarNullables.resx">
+      <DependentUpon>201706061932330_modificarNullables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

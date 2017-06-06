@@ -27,11 +27,11 @@ namespace ImobiliariaTriVaga.Infraestrutura.Entidades
 
         public Pacote Pacote { get; set; }
 
-        public List<Adicional> Adicionais { get; set; }
+        public List<PedidoAdicional> Adicionais { get; set; }
         public DateTime? DataEntregaRealizada { get; set; }
 
-        public decimal TotalASerPago { get; set; }
+        public decimal? TotalASerPago { get; set; }
 
-        public decimal TotalPorDia { get; set; }
+        public decimal? TotalPorDia { get; set; }
     }
 }
