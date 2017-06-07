@@ -18,10 +18,25 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 
         }
 
+        public Cliente Obter(string CPF)
+        {
+            return contexto.Clientes.Where(cliente => cliente.Cpf.Equals(CPF)).FirstOrDefault();
+        }
+
+        public Cliente Criar(Cliente cliente)
+        {
+            if (Obter(cliente.Cpf) != null) return null;
+            contexto.Clientes.Add(cliente);
+            contexto.SaveChanges();
+            return cliente;
+        }
+
         public void Dispose()
         {
             contexto.Dispose();
 
         }
+
+       
     }
 }

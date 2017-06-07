@@ -25,7 +25,7 @@ namespace ImobiliariaTriVaga.api.Controllers
         [HttpGet]
         public HttpResponseMessage Obter()
         {
-            var usuario = repositorio.Obter("gerente@trivaga.com");
+            var usuario = repositorio.Obter(Thread.CurrentPrincipal.Identity.Name);
 
             if (usuario == null)
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagem = "Usuario/Email não cadastrados." });
