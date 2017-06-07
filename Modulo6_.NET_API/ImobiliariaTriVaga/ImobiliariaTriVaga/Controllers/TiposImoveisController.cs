@@ -28,6 +28,7 @@ namespace ImobiliariaTriVaga.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { data = tipoImovel });
         }
 
+        [Route("obterImoveis")]
         [HttpGet]
         public HttpResponseMessage ObterImoveis()
         {
@@ -35,6 +36,9 @@ namespace ImobiliariaTriVaga.Controllers
             if (tiposImoveis == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Tipo de imovel com a ID informada não foi encontrado." } });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = tiposImoveis });
         }
+
+
+      
 
 
     }
