@@ -32,6 +32,22 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 
         }
 
-       
+        internal Pedido AdicionarLista(Pedido pedido)
+        {
+            foreach(var adicional in pedido.Adicionais)
+            {
+                if (adicional.Quantidade > adicional.Adicional.Estoque)
+                    throw new Exception("Estoque ficaria menor do que 0");
+                adicional.Adicional.Estoque -= adicional.Quantidade;
+                //PedidoAdicional pedidoAdd = new PedidoAdicional();
+                //pedidoAdd.IdAdicional = adicional.Adicional.Id;
+                //pedidoAdd.IdPedido = pedido.Id;
+                //pedidoAdd.Quantidade = adicional.Quantidade;
+                //contexto.PedidoAdicional.Add(pedidoAdd);
+                //pedido.TotalASerPago += pedidoAdd.Adicional.Custo * adicional.Quantidade;
+            }
+            contexto.SaveChanges();
+            return pedido;
+        }
     }
 }

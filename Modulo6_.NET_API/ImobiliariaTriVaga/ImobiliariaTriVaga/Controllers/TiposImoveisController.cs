@@ -38,7 +38,26 @@ namespace ImobiliariaTriVaga.Controllers
         }
 
 
-      
+        [Route("obterTamanho/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage ObterTamanhoPorId(int id)
+        {
+            var tamanhoImovel = repositorio.ObterTamanhoPorId(id);
+            if (tamanhoImovel == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Tipo de imovel com a ID informada não foi encontrado." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = tamanhoImovel });
+        }
+
+        [Route("obterTamanhosDoImovel/{id:int}")]
+        [HttpGet]   
+        public HttpResponseMessage ObterTamanhosDoImovel(int id)
+        {
+            var tamanhosImovel = repositorio.ObterTamanhos(id);
+            if (tamanhosImovel == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Tipo de imovel com a ID informada não foi encontrado." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = tamanhosImovel });
+        }
+
+
+
 
 
     }

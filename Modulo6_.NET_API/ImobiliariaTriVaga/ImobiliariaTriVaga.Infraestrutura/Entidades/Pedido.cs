@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Entidades
 
         public Cliente Cliente { get; set; }
 
-        public DateTime DataVenda { get; set; }
+        public DateTime? DataVenda { get; set; }
 
         public DateTime DataEntregaPrevista { get; set; }
 
@@ -26,7 +27,6 @@ namespace ImobiliariaTriVaga.Infraestrutura.Entidades
         public int IdPacote { get; set; }
 
         public Pacote Pacote { get; set; }
-
         public List<PedidoAdicional> Adicionais { get; set; }
         public DateTime? DataEntregaRealizada { get; set; }
 

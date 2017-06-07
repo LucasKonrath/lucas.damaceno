@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 
 namespace ImobiliariaTriVaga.Infraestrutura.Entidades
 {
@@ -12,6 +15,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Entidades
 
         public int IdPedido { get; set; }
 
+        
         public Pedido Pedido { get; set; }  
 
         public int IdAdicional { get; set; }

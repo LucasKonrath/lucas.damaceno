@@ -56,6 +56,20 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 
         }
 
-      
+        public Pacote ObterTamanhoPorId(int id)
+        {
+            return contexto.Pacotes.Where(pacote => pacote.Id == id).FirstOrDefault();
+
+        }
+
+        public dynamic ObterTamanhos(int id)
+        {
+            return contexto
+                .EstoqueImovel
+                .Where(estoque => estoque.IdTipoImovel == id && estoque.Quantidade > 0)
+                .Select(estoque => new { Pacote = estoque.Pacote,
+                    Quantidade = estoque.Quantidade } )
+                .ToList();
+        }
     }
 }
