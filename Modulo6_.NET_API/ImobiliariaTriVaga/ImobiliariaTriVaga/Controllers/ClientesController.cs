@@ -30,6 +30,15 @@ namespace ImobiliariaTriVaga.Controllers
         }
 
 
+        [Route("obterPorId/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage ObterClientePorID(int id)
+        {
+            var cliente = repositorio.ObterPorId(id);
+            if (cliente == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Cliente com a ID informada não foi encontrado." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = cliente });
+        }
+
         [Route("criar")]
         [HttpPost]
         public HttpResponseMessage CriarCliente(Cliente cliente)
@@ -39,6 +48,14 @@ namespace ImobiliariaTriVaga.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { data = clienteCriado });
         }
 
+
+        [Route("deletar/{id:int}")]
+        [HttpDelete]
+        public HttpResponseMessage Deletar(int id)
+        {
+            repositorio.Excluir(id);
+            return Request.CreateResponse(HttpStatusCode.OK, new { mensagens = "Cliente Excluido com Sucesso." });
+        }
 
     }
 }

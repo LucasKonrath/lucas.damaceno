@@ -31,12 +31,24 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             return cliente;
         }
 
+        public void Excluir(int id)
+        {
+            var clienteRemover = ObterPorId(id);
+            contexto.Clientes.Remove(clienteRemover);
+            contexto.SaveChanges();
+        }
+
+        public Cliente ObterPorId(int id)
+        {
+            return contexto.Clientes.Where(x => x.Id == id).FirstOrDefault();
+        }
+
         public void Dispose()
         {
             contexto.Dispose();
 
         }
 
-       
+        
     }
 }
