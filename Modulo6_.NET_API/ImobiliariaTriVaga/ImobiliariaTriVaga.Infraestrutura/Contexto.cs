@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EditoraCrescer.Infraestrutura
+namespace ImobiliariaTriVaga.Infraestrutura
 {
     public class Contexto : DbContext
-
+            
     {
 
         public Contexto() : base("name=EFSP")

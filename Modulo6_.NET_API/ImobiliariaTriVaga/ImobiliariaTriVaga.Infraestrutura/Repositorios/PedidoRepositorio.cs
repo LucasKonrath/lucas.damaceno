@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EditoraCrescer.Infraestrutura.Repositorios
+namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 {
     public class PedidoRepositorio : IDisposable
     {
