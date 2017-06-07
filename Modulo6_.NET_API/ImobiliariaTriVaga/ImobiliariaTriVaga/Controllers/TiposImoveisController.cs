@@ -1,13 +1,41 @@
-﻿using System;
+﻿using ImobiliariaTriVaga.Infraestrutura;
+using ImobiliariaTriVaga.Infraestrutura.Repositorios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace ImobiliariaTriVaga.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("api/tipoImovel")]
+
     public class TiposImoveisController : ApiController
     {
+        private Contexto contexto = new Contexto();
+
+        private EstoqueImovelRepositorio repositorio = new EstoqueImovelRepositorio();
+
+        [Route("obterPorId/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage ObterTipoImovelPorID(int id)
+        {
+            var tipoImovel = repositorio.ObterTipoDeImovelPorId(id);
+            if (tipoImovel == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Tipo de imovel com a ID informada não foi encontrado." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = tipoImovel });
+        }
+
+        [HttpGet]
+        public HttpResponseMessage ObterImoveis()
+        {
+            var tiposImoveis = repositorio.ObterTiposDeImoveis();
+            if (tiposImoveis == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Tipo de imovel com a ID informada não foi encontrado." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = tiposImoveis });
+        }
+
+
     }
 }

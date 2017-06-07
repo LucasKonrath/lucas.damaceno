@@ -10,5 +10,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Entidades
     {
         public int Id { get; set; }
         public string NomeDoTipo { get; set; }
+
+        public decimal? Preco { get; set; }
     }
 }

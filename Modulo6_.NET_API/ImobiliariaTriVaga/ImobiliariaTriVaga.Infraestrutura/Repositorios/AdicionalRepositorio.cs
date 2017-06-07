@@ -18,10 +18,20 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 
         }
 
+        public Adicional ObterPorId(int id)
+        {
+            return contexto.Adicionais.Where(x => x.Id == id).FirstOrDefault();
+        }
+        public List<Adicional> ObterAdicionais()
+        {
+            return contexto.Adicionais.ToList();
+        }
         public void Dispose()
         {
             contexto.Dispose();
 
         }
+
+       
     }
 }

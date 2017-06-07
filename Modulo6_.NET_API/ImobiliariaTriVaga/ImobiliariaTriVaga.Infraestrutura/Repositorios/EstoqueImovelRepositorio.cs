@@ -18,10 +18,22 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 
         }
 
+        public TipoImovel ObterTipoDeImovelPorId(int id)
+        {
+            return contexto.TiposImoveis.Where(imovel => imovel.Id == id).FirstOrDefault();
+        }
+
+        public List<TipoImovel> ObterTiposDeImoveis()
+        {
+            return contexto.TiposImoveis.ToList();
+        }
+
         public void Dispose()
         {
             contexto.Dispose();
 
         }
+
+        
     }
 }
