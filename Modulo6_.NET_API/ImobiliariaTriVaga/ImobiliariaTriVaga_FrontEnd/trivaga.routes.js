@@ -1,4 +1,4 @@
-var modulo = angular.module('trivagaApp', ['ui.bootstrap', 'ngRoute', 'auth']);
+var modulo = angular.module('trivagaApp', ['ui.bootstrap', 'ngRoute', 'auth','ngStorage']);
 modulo.config(function ($routeProvider) {
 
     $routeProvider

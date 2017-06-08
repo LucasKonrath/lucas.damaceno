@@ -98,6 +98,10 @@
     <Compile Include="Migrations\201706071740092_dataVendaNaoObrigatoria.Designer.cs">
       <DependentUpon>201706071740092_dataVendaNaoObrigatoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706081230022_dataNascimentoNaoObrigatoria.cs" />
+    <Compile Include="Migrations\201706081230022_dataNascimentoNaoObrigatoria.Designer.cs">
+      <DependentUpon>201706081230022_dataNascimentoNaoObrigatoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AdicionalRepositorio.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706071740092_dataVendaNaoObrigatoria.resx">
       <DependentUpon>201706071740092_dataVendaNaoObrigatoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706081230022_dataNascimentoNaoObrigatoria.resx">
+      <DependentUpon>201706081230022_dataNascimentoNaoObrigatoria.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
