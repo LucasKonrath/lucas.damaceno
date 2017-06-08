@@ -46,8 +46,17 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 //contexto.PedidoAdicional.Add(pedidoAdd);
                 //pedido.TotalASerPago += pedidoAdd.Adicional.Custo * adicional.Quantidade;
             }
-            contexto.SaveChanges();
+        
             return pedido;
+        }
+
+        public void removerDoEstoque(int idAdicional, int quantidade)
+        {
+            var adicionalARemover = contexto.Adicionais.
+                Where(adicional => adicional.Id == idAdicional).FirstOrDefault();
+            if (adicionalARemover.Estoque <= 0) throw new Exception("Impossivel adicionar esse adicional, estoque ficaria menor que 0");
+            adicionalARemover.Estoque -= quantidade;
+            contexto.Entry(adicionalARemover).State = System.Data.Entity.EntityState.Modified;
         }
     }
 }

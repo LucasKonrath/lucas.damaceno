@@ -1,6 +1,7 @@
 ﻿using ImobiliariaTriVaga.Infraestrutura.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,20 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 })
                 .ToList();
         }
+
+        internal void descontarDoEstoque(int idTipoImovel, int idPacote)
+        {
+            var descontar = contexto.EstoqueImovel.Where(entrada => entrada.IdPacote == idPacote &&
+                                                        entrada.IdTipoImovel == idTipoImovel).FirstOrDefault();
+            if(descontar.Quantidade > 0) descontar.Quantidade -= 1;
+            else
+            {
+                throw new Exception("Impossível realizar operação, pois estoque ficaria menor que 0.");
+            }
+          
+        }
+
+      
 
         public void Dispose()
         {

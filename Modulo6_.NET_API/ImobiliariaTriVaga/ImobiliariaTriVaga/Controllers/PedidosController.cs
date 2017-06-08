@@ -22,6 +22,8 @@ namespace ImobiliariaTriVaga.Controllers
 
         private PedidoRepositorio repositorio = new PedidoRepositorio();
 
+        private AdicionalRepositorio adicionalRepositorio = new AdicionalRepositorio();
+
         [Route("obter/{id:int}")]
         [HttpGet]
         public HttpResponseMessage ObterPedido(int id)
@@ -42,7 +44,9 @@ namespace ImobiliariaTriVaga.Controllers
             {
                 adicionaisDoPedido.Add(adicional.IdAdicional);
                 quantidadeDoAdicional.Add(adicional.Quantidade);
+                adicionalRepositorio.removerDoEstoque(adicional.IdAdicional, adicional.Quantidade);
             }
+            contexto.SaveChanges();
             if (pedidoCriado == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Erro no cadastro." } });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = new { id = pedidoCriado.Id, IdCliente = pedidoCriado.IdCliente, IdTipoImovel = pedidoCriado.IdTipoImovel,
                 DataPrevista = pedidoCriado.DataEntregaPrevista, adicionais = new { adicionais = adicionaisDoPedido, quantidadeDoAdicional = quantidadeDoAdicional }  } });

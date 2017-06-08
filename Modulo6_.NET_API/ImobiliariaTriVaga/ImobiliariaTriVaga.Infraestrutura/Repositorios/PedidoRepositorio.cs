@@ -32,7 +32,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             pedido.TipoImovel = estoqueImovelRepositorio.ObterTipoDeImovelPorId(pedido.IdTipoImovel);
             pedido.Pacote = estoqueImovelRepositorio.ObterTamanhoPorId(pedido.IdPacote);
             pedido.TotalPorDia += (pedido.TipoImovel.Preco + pedido.Pacote.Custo);
-
+            estoqueImovelRepositorio.descontarDoEstoque(pedido.IdTipoImovel, pedido.IdPacote);
             contexto.Pedidos.Add(pedido);
             
             foreach (var itemAdicional in pedido.Adicionais)
