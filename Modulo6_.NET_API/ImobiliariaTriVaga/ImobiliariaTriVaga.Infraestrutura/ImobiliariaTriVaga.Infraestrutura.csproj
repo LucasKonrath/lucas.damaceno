@@ -102,6 +102,10 @@
     <Compile Include="Migrations\201706081230022_dataNascimentoNaoObrigatoria.Designer.cs">
       <DependentUpon>201706081230022_dataNascimentoNaoObrigatoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706082052501_CorrigindoMapeamento.cs" />
+    <Compile Include="Migrations\201706082052501_CorrigindoMapeamento.Designer.cs">
+      <DependentUpon>201706082052501_CorrigindoMapeamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AdicionalRepositorio.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706081230022_dataNascimentoNaoObrigatoria.resx">
       <DependentUpon>201706081230022_dataNascimentoNaoObrigatoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706082052501_CorrigindoMapeamento.resx">
+      <DependentUpon>201706082052501_CorrigindoMapeamento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -14,7 +14,6 @@ namespace ImobiliariaTriVaga.Controllers
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Pedidos")]
-
     public class PedidosController : ApiController
     {
 
@@ -23,6 +22,13 @@ namespace ImobiliariaTriVaga.Controllers
         private PedidoRepositorio repositorio = new PedidoRepositorio();
 
         private AdicionalRepositorio adicionalRepositorio = new AdicionalRepositorio();
+
+        //public PedidosController()
+        //{
+        //    var contexto = new Contexto();
+        //    repositorio = new PedidoRepositorio(contexto);
+        //    adicionalRepositorio = new AdicionalRepositorio(contexto);
+        //}
 
         [Route("obter/{id:int}")]
         [HttpGet]
@@ -37,14 +43,15 @@ namespace ImobiliariaTriVaga.Controllers
         [HttpPost]
         public HttpResponseMessage CriarPedido(Pedido pedido)
         {
-            var pedidoCriado = repositorio.Criar(pedido);
+            
+            var pedidoCriado = repositorio.Criar(pedido, contexto);
             List<int> adicionaisDoPedido = new List<int>();
             List<int> quantidadeDoAdicional = new List<int>();
             foreach( var adicional in pedidoCriado.Adicionais)
             {
                 adicionaisDoPedido.Add(adicional.IdAdicional);
                 quantidadeDoAdicional.Add(adicional.Quantidade);
-                adicionalRepositorio.removerDoEstoque(adicional.IdAdicional, adicional.Quantidade);
+                adicionalRepositorio.removerDoEstoque(adicional.IdAdicional, adicional.Quantidade, contexto);
             }
             contexto.SaveChanges();
             if (pedidoCriado == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Erro no cadastro." } });

@@ -24,13 +24,9 @@ namespace ImobiliariaTriVaga.Infraestrutura.Mappings
                .HasForeignKey(pedido => pedido.IdPacote);
 
 
-            HasMany(pedido => pedido.Adicionais).WithMany()
-                .Map(pedido =>
-                 {
-                pedido.MapLeftKey("IdPedido");
-                pedido.MapRightKey("IdAdicional");
-                pedido.ToTable("PedidoAdicional");
-                                });
+            HasMany(pedido => pedido.Adicionais)
+                .WithRequired(x => x.Pedido)
+                .HasForeignKey(pedido => pedido.IdPedido);
 
 
             HasRequired(x => x.Cliente)

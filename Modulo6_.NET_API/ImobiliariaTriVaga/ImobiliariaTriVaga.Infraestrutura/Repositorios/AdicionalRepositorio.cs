@@ -50,13 +50,13 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             return pedido;
         }
 
-        public void removerDoEstoque(int idAdicional, int quantidade)
+        public void removerDoEstoque(int idAdicional, int quantidade, Contexto contextoRecebido)
         {
-            var adicionalARemover = contexto.Adicionais.
+            var adicionalARemover = contextoRecebido.Adicionais.
                 Where(adicional => adicional.Id == idAdicional).FirstOrDefault();
             if (adicionalARemover.Estoque <= 0) throw new Exception("Impossivel adicionar esse adicional, estoque ficaria menor que 0");
             adicionalARemover.Estoque -= quantidade;
-            contexto.Entry(adicionalARemover).State = System.Data.Entity.EntityState.Modified;
+            contextoRecebido.Entry(adicionalARemover).State = System.Data.Entity.EntityState.Modified;
         }
     }
 }

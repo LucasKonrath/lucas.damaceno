@@ -25,21 +25,21 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 
         }
 
-        public Pedido Criar(Pedido pedido)
+        public Pedido Criar(Pedido pedido, Contexto contextoOriginal)
         {
             
             pedido.DataVenda = DateTime.Now;
             pedido.TipoImovel = estoqueImovelRepositorio.ObterTipoDeImovelPorId(pedido.IdTipoImovel);
             pedido.Pacote = estoqueImovelRepositorio.ObterTamanhoPorId(pedido.IdPacote);
             pedido.TotalPorDia += (pedido.TipoImovel.Preco + pedido.Pacote.Custo);
-            estoqueImovelRepositorio.descontarDoEstoque(pedido.IdTipoImovel, pedido.IdPacote);
-            contexto.Pedidos.Add(pedido);
+            estoqueImovelRepositorio.descontarDoEstoque(pedido.IdTipoImovel, pedido.IdPacote,contextoOriginal);
+            contextoOriginal.Pedidos.Add(pedido);
             
             foreach (var itemAdicional in pedido.Adicionais)
             {
                 itemAdicional.Pedido = pedido;
                 itemAdicional.Adicional = adicionalRepositorio.ObterPorId(itemAdicional.IdAdicional);
-                contexto.Entry(itemAdicional.Adicional).State = EntityState.Unchanged;
+                contextoOriginal.Entry(itemAdicional.Adicional).State = EntityState.Unchanged;
             }
 
             return adicionalRepositorio.AdicionarLista(pedido);

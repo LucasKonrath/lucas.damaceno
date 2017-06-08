@@ -51,9 +51,9 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 .ToList();
         }
 
-        internal void descontarDoEstoque(int idTipoImovel, int idPacote)
+        internal void descontarDoEstoque(int idTipoImovel, int idPacote, Contexto contextoRecebido)
         {
-            var descontar = contexto.EstoqueImovel.Where(entrada => entrada.IdPacote == idPacote &&
+            var descontar = contextoRecebido.EstoqueImovel.Where(entrada => entrada.IdPacote == idPacote &&
                                                         entrada.IdTipoImovel == idTipoImovel).FirstOrDefault();
             if(descontar.Quantidade > 0) descontar.Quantidade -= 1;
             else
