@@ -110,9 +110,15 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
         pedidoAGerar.IdCliente = $localStorage.clienteAtivo.Id;
         pedidoAGerar.DataEntregaPrevista = $scope.pedido.DataEntregaPrevista;
         pedidoAGerar.IdTipoImovel = $scope.selecionarTipoImovel.Id;
-        pedidoAGerar.IdPacote= $scope.selecionarTamanhoImovel.Pacote.Id;
+        pedidoAGerar.IdPacote = $scope.selecionarTamanhoImovel.Pacote.Id;
         pedidoAGerar.Adicionais = [];
+        console.log($scope.adicionaisDoPedido);
+        for ( adicional of $scope.adicionaisDoPedido){
+            console.log(adicional);
+            pedidoAGerar.Adicionais.push({IdAdicional: adicional.Id, Quantidade:1});    
+        }
         console.log($scope.selecionarTamanhoImovel);
+        console.log(pedidoAGerar.Adicionais);
         console.log(pedidoAGerar);
         imovelService.gerarPedido(pedidoAGerar).then(
 

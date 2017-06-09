@@ -10,8 +10,8 @@
     <label for="selecionaTamanhoImovel"> Data Prevista de Entrega do Pedido.</label><br>
     <input class="input" type="date" ng-model="pedido.DataEntregaPrevista" placeholder="Data Prevista de Entrega do Pedido">
     <br>
-    <label for="selecionaTamanhoImovel"> Adicionais do Pedido.</label><br>
-    <select id="selecionarAdicionais"  multiple name="selecionaAdicionaisPedido" ng-init="listarAdicionais()" ng-model="pedido.Adicionais" ng-options="adicional.Nome for adicional in listaDeAdicionais  track by adicional.Nome"> </select>
+    <label > Adicionais do Pedido.</label><br>
+    <select id="selecionarAdicionais" multiple ng-init="listarAdicionais()" ng-model="adicionaisDoPedido" ng-options="adicional.Nome for adicional in listaDeAdicionais  track by adicional.Nome"> </select>
     <br>
     <button class="btn-md btn-success" ng-click="gerarPedido()">Gerar Pedido</button>
     
