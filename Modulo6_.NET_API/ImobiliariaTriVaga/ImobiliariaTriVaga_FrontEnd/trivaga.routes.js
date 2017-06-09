@@ -16,6 +16,9 @@ modulo.config(function ($routeProvider) {
     }).when('/gerencia', {
         controller: 'GerenciaController',
         templateUrl: 'gerencia.html'
+    }).when('/visualizarPedido/:id', {
+        controller: 'PedidoController',
+        templateUrl: 'VisualizarPedido.html'
     })
         .otherwise({redirectTo: 'Cadastro.html'});
 });

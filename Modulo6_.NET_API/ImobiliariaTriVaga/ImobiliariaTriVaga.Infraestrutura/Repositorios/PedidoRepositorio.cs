@@ -47,6 +47,17 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
            
         }
 
+        public object ObterTodosPedidos()
+        {
+            return contexto.Pedidos
+                .Include("Pacote")
+                .Include("Cliente")
+                .Include("TipoImovel")
+                .ToList();
+        }
+
+        
+
         public void Deletar(int id)
         {
             Pedido pedido = Obter(id);

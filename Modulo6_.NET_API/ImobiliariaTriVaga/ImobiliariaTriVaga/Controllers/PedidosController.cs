@@ -39,7 +39,16 @@ namespace ImobiliariaTriVaga.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido });
         }
 
-        [Route("retornar/{id:int}")]
+        [Route("obtertodos")]
+        [HttpGet]
+        public HttpResponseMessage ObterTodosPedidos()
+        {
+            var pedido = repositorio.ObterTodosPedidos();
+            if (pedido == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Erro no cadastro." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido });
+        }
+
+        [Route("deletar/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage DeletarPedido(int id)
         {

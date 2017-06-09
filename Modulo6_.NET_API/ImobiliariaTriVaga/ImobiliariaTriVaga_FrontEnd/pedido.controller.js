@@ -3,7 +3,45 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
 
 
 
+    $scope.obterPedido = function(){
+        console.log($routeParams.id);
+        var idPedido = $routeParams.id;
 
+        imovelService.obterPedido(idPedido).then(
+
+            function(response){
+                $scope.clienteDetalhe = response.data.data.Cliente;
+                $scope.tipoImovelDetalhe = response.data.data.TipoImovel;
+                $scope.pacoteDetalhe = response.data.data.Pacote;
+                $scope.totalAPagar = response.data.data.TotalASerPago;
+                $scope.totalPorDia = 700;
+                $scope.dataRealizadaDetalhe = response.data.data.DataEntregaRealizada;
+                $scope.dataVendaDetalhe = response.data.data.DataVenda;
+                $scope.dataEntregaPrevistaDetalhe = response.data.data.DataEntregaPrevista;
+                console.log(response);
+            }
+
+
+        )
+
+    }
+
+
+    $scope.excluirPedido = function(){
+        console.log($routeParams.id);
+        var idPedido = $routeParams.id;
+
+        imovelService.excluirPedido(idPedido).then(
+
+            function(response){
+                swal("Feito!", "Excluido com sucesso!", "success");
+                $location.url('/cadastro');
+            }
+
+
+        )
+
+    }
 
     $scope.listarTipos = function (){ 
         imovelService.obterImoveis().then(
@@ -56,6 +94,7 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
             function(response){
                 $scope.listarAdicionais();
                 $scope.listarTipos();
+                $location.url('/visualizarPedido/'+response.data.data.id)
                 console.log(response);
             },
 
