@@ -1,6 +1,7 @@
 ﻿using ImobiliariaTriVaga.Infraestrutura;
 using ImobiliariaTriVaga.Infraestrutura.Entidades;
 using ImobiliariaTriVaga.Infraestrutura.Repositorios;
+using ImobiliariaTriVaga.WebApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Web.Http.Cors;
 
 namespace ImobiliariaTriVaga.Controllers
 {
+    [BasicAuthorization]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Cliente")]
     public class ClientesController : ApiController

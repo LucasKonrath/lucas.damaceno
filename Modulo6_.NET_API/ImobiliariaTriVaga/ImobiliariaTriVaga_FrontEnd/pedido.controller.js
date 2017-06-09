@@ -1,7 +1,15 @@
-modulo.controller('PedidoController', function ($scope, clienteService, $routeParams, $location, $localStorage, imovelService) {
+modulo.controller('PedidoController', function ($scope, clienteService, $routeParams, $location, $localStorage, authService, imovelService) {
 
     
-  
+       $scope.auth = authService;
+    
+    
+     $scope.logout = function (usuario) {
+
+        authService.logout(usuario);
+
+    }
+    
     $scope.obterPedido = function(){
         console.log($routeParams.id);
         var idPedido = $routeParams.id;

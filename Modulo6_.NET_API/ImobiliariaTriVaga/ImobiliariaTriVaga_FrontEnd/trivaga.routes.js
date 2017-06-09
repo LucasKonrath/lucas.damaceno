@@ -26,7 +26,7 @@ modulo.config(function ($routeProvider) {
         controller: 'PedidoController',
         templateUrl: 'Pedidos.html'
     })
-        .otherwise({redirectTo: 'Cadastro.html'});
+        .otherwise({redirectTo: '/login'});
 });
 
 modulo.constant('authConfig', {

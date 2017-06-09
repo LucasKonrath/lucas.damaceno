@@ -1,6 +1,7 @@
 ﻿using ImobiliariaTriVaga.Infraestrutura;
 using ImobiliariaTriVaga.Infraestrutura.Entidades;
 using ImobiliariaTriVaga.Infraestrutura.Repositorios;
+using ImobiliariaTriVaga.WebApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace ImobiliariaTriVaga.Controllers
         //    repositorio = new PedidoRepositorio(contexto);
         //    adicionalRepositorio = new AdicionalRepositorio(contexto);
         //}
-
+        [BasicAuthorization]
         [Route("obter/{id:int}")]
         [HttpGet]
         public HttpResponseMessage ObterPedido(int id)
@@ -39,6 +40,7 @@ namespace ImobiliariaTriVaga.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido });
         }
 
+      
         [Route("obtertodos")]
         [HttpGet]
         public HttpResponseMessage ObterTodosPedidos()
@@ -47,7 +49,7 @@ namespace ImobiliariaTriVaga.Controllers
             if (pedido == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Erro no cadastro." } });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido });
         }
-
+        [BasicAuthorization]
         [Route("deletar/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage DeletarPedido(int id)
@@ -55,7 +57,7 @@ namespace ImobiliariaTriVaga.Controllers
             repositorio.Deletar(id);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
-
+        [BasicAuthorization]
         [Route("retornar/{id:int}")]
         [HttpDelete]
         public HttpResponseMessage RetornarPedido(int id)
@@ -64,7 +66,7 @@ namespace ImobiliariaTriVaga.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido});
         }
 
-
+        [BasicAuthorization]
         [Route("criar")]
         [HttpPost]
         public HttpResponseMessage CriarPedido(Pedido pedido)
