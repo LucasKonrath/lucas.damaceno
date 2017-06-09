@@ -33,5 +33,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Entidades
         public decimal? TotalASerPago { get; set; }
 
         public decimal? TotalPorDia { get; set; }
+
+        
     }
 }

@@ -82,6 +82,18 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 .Where(pedido => pedido.Id == id)
                 .FirstOrDefault();
 
+            var adicionais = contexto.PedidoAdicional.
+                Where(pedido => pedido.IdPedido == pedidoARetornar.Id).
+                ToList();
+
+            foreach(var adicional in adicionais)
+            {
+
+                var adicionalSelect = contexto.Adicionais.Where(adicionalRetornar => adicional.IdAdicional == adicionalRetornar.Id).FirstOrDefault();
+                pedidoARetornar.TotalPorDia += adicionalSelect.Custo;
+
+            }
+            pedidoARetornar.Adicionais = null;
             pedidoARetornar.DataEntregaRealizada = DateTime.Now;
             if (pedidoARetornar.DataVenda == null) return pedidoARetornar;
             TimeSpan? dataCalcular = (pedidoARetornar.DataEntregaRealizada.Value.Subtract(pedidoARetornar.DataVenda.Value));
