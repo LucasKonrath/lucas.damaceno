@@ -5,7 +5,9 @@ modulo.factory("imovelService", function ($http) {
         obterAdicionais: obterAdicionais,
         gerarPedido: gerarPedido,
         obterPedido: obterPedido,
-        excluirPedido: excluirPedido
+        excluirPedido: excluirPedido,
+        devolverPedido: devolverPedido,
+        obterPedidos: obterPedidos
 
     });
 
@@ -40,6 +42,11 @@ modulo.factory("imovelService", function ($http) {
     }
     
     function devolverPedido(id){
-        
+        return $http.delete('http://localhost:55508/api/pedidos/retornar/' + id);
+    }
+    
+    function obterPedidos(){
+
+        return $http.get('http://localhost:55508/api/pedidos/obtertodos');
     }
 });

@@ -1,20 +1,22 @@
-    <div ng-init="obterPedido()" class="col-md-4 col-md-offset-4">
-        
-        Nome :{{clienteDetalhe.Nome}}  <br>
-        Cpf: {{clienteDetalhe.Cpf}} <br>
-        Data Nascimento : {{clienteDetalhe.DataNascimento | date:'medium'}} <br>
-        Genero: {{clienteDetalhe.Genero}} <br>
-        Email: {{clienteDetalhe.Email}} <br>
-        Endereço: {{clienteDetalhe.Endereco}} <br>
-        Tipo do Imovel: {{tipoImovelDetalhe.NomeDoTipo}} Preço por dia: {{tipoImovelDetalhe.Preco}} <br>
-        Pacote: {{pacoteDetalhe.Nome}} Preço por dia: {{pacoteDetalhe.Custo}} <br>
-        Quartos: {{pacoteDetalhe.QtdQuartos}} Salas: {{pacoteDetalhe.QtdSalas}} Cozinhas: {{pacoteDetalhe.QtdCozinhas}} Banheiros: {{pacoteDetalhe.QtdBanheiros}}
-        
-        Data de Locação: {{dataVendaDetalhe | date:'medium' }} <br>
-        Data De Entrega Prevista : {{dataEntregaPrevistaDetalhe  | date:'medium'}} <br>
-        
-        <a href="#!/cadastro"><button class="btn btn-success">Confirmar criação.</button></a> 
-        
-        <button class="btn btn-info">Retornar pedido ao estoque.</button>
-        <button ng-click="excluirPedido()" class="btn btn-warning"> Cancelar pedido.</button>
-    </div>
+
+
+<br><br><br><br><br>
+<div ng-init="obterPedido()" class="col-md-8 col-md-offset-4">
+
+    Nome :{{clienteDetalhe.Nome}}  <br>
+    Cpf: {{clienteDetalhe.Cpf}} <br>
+    Data Nascimento : {{clienteDetalhe.DataNascimento | date:'medium'}} <br>
+    Genero: {{clienteDetalhe.Genero}} <br>
+    Email: {{clienteDetalhe.Email}} <br>
+    Endereço: {{clienteDetalhe.Endereco}} <br>
+    Tipo do Imovel: {{tipoImovelDetalhe.NomeDoTipo}}({{tipoImovelDetalhe.Preco}} R$ por dia.) <br>
+    Pacote: {{pacoteDetalhe.Nome}}({{pacoteDetalhe.Custo}} R$ por dia.) <br>
+    Quartos: {{pacoteDetalhe.QtdQuartos}} Salas: {{pacoteDetalhe.QtdSalas}} <br> Cozinhas: {{pacoteDetalhe.QtdCozinhas}} Banheiros: {{pacoteDetalhe.QtdBanheiros}}<br>
+    Data de Entrega Realizada : {{dataRealizadaDetalhe |  date:'medium' }}<br>
+    Data de Locação: {{dataVendaDetalhe | date:'medium' }} <br>
+    Data De Entrega Prevista : {{dataEntregaPrevistaDetalhe  | date:'medium'}} <br>
+    Preço a Cobrar: {{totalAPagar}} <br>
+    Preço por dia: {{totalPorDia}}<br>
+    <a href="#!/cadastro"><button ng-click="obterPedido()" class="btn btn-info">Concluir venda.</button></a>
+    <button ng-click="excluirPedido()" class="btn btn-warning"> Cancelar pedido.</button>
+</div>

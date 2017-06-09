@@ -1,8 +1,7 @@
 modulo.controller('PedidoController', function ($scope, clienteService, $routeParams, $location, $localStorage, imovelService) {
 
-
-
-
+    
+  
     $scope.obterPedido = function(){
         console.log($routeParams.id);
         var idPedido = $routeParams.id;
@@ -25,7 +24,25 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
         )
 
     }
+    
+    $scope.obterPedidos = function(){
+     
+        imovelService.obterPedidos().then(
 
+            function(response){
+         
+                $scope.pedidos = response.data.data;
+            }
+
+
+        )
+
+    }
+      $scope.obterPedidos();
+
+    
+    
+    
 
     $scope.excluirPedido = function(){
         console.log($routeParams.id);

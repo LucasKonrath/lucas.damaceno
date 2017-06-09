@@ -65,6 +65,13 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
+        public Pedido Retornar(int id)
+        {
+            Pedido pedido = Obter(id);
+            contexto.SaveChanges();
+            return pedido;
+        }
+
         public dynamic Obter(int id)
         {
            var pedidoARetornar = contexto.
@@ -76,6 +83,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 .FirstOrDefault();
 
             pedidoARetornar.DataEntregaRealizada = DateTime.Now;
+            if (pedidoARetornar.DataVenda == null) return pedidoARetornar;
             TimeSpan? dataCalcular = (pedidoARetornar.DataEntregaRealizada.Value.Subtract(pedidoARetornar.DataVenda.Value));
             pedidoARetornar.TotalASerPago = (decimal)(dataCalcular.Value.TotalDays) * pedidoARetornar.TotalPorDia;
             return pedidoARetornar;

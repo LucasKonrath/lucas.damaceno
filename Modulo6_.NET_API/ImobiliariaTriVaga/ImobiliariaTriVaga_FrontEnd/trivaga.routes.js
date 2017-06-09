@@ -19,6 +19,12 @@ modulo.config(function ($routeProvider) {
     }).when('/visualizarPedido/:id', {
         controller: 'PedidoController',
         templateUrl: 'VisualizarPedido.html'
+    }).when('/CriarPedido/:id', {
+        controller: 'PedidoController',
+        templateUrl: 'CriarPedido.html'
+    }).when('/pedidos', {
+        controller: 'PedidoController',
+        templateUrl: 'Pedidos.html'
     })
         .otherwise({redirectTo: 'Cadastro.html'});
 });

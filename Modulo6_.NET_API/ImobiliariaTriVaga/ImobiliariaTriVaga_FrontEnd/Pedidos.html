@@ -1,0 +1,11 @@
+<div  ng-init="obterPedidos()" class="col-md-6 col-md-offset-3" ng-repeat="pedido in pedidos">
+    <div id="divExibirPedidos">
+    Nome do Cliente: {{pedido.Cliente.Nome}} <br>
+    Cpf do Cliente: {{pedido.Cliente.Cpf}} <br>
+     Tipo do Imovel: {{pedido.TipoImovel.NomeDoTipo}} ({{pedido.TipoImovel.Preco}} reais por dia.) <br>
+        Pacote: {{pedido.Pacote.Nome}} ({{pedido.Pacote.Custo}} reais por dia.) <br>
+        
+        <a href="#!/visualizarPedido/{{pedido.Id}}"> <button class="btn-info">Visualizar pedido.</button></a>
+        <br>
+        </div>
+</div>

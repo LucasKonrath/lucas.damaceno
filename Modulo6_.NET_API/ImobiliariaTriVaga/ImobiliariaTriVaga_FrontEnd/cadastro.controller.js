@@ -1,9 +1,14 @@
-modulo.controller('CadastroController', function ($scope, clienteService, $routeParams, $location, $localStorage) {
+modulo.controller('CadastroController', function ($scope, clienteService, $routeParams, $location, authService, $localStorage) {
 
     
     $scope.exibirForm = false;
     $scope.cadastrarCliente = cadastrarCliente;
-    
+     $scope.auth = authService;
+    $scope.logout = function (usuario) {
+
+        authService.logout(usuario);
+
+    }
     
     function cadastrarCliente(){
   
