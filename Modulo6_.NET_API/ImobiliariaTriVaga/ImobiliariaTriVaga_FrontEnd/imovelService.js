@@ -2,7 +2,8 @@ modulo.factory("imovelService", function ($http) {
     return ({
         obterImoveis: obterImoveis,
         obterTamanhos: obterTamanhos,
-        obterAdicionais: obterAdicionais
+        obterAdicionais: obterAdicionais,
+        gerarPedido: gerarPedido
         
     });
 
@@ -17,6 +18,12 @@ modulo.factory("imovelService", function ($http) {
     function obterAdicionais(){
     
         return $http.get('http://localhost:55508/api/adicionais');
+
+    }
+    
+    function gerarPedido(pedido){
+    
+        return $http.post('http://localhost:55508/api/pedidos/criar',pedido);
 
     }
 });

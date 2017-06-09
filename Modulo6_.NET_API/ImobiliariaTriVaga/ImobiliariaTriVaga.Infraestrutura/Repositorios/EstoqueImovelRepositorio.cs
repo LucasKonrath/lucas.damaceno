@@ -26,7 +26,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 
         public List<TipoImovel> ObterTiposDeImoveis()
         {
-            return contexto.TiposImoveis.ToList();
+            return contexto.TiposImoveis.Take(4).ToList();
         }
 
         public int ObterEstoquePorId(int idImovel, int idPacote)
@@ -64,6 +64,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
         }
 
       
+
 
         public void Dispose()
         {

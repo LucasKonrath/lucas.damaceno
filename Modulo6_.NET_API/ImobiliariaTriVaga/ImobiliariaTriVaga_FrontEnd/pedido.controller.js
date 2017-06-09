@@ -21,9 +21,9 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
 
         )
     }
-    
-    
-     $scope.listarAdicionais = function (){ 
+
+
+    $scope.listarAdicionais = function (){ 
         imovelService.obterAdicionais().then(
 
 
@@ -39,22 +39,23 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
 
         )
     }
-     
-     
-     
-      $scope.gerarPedido = function (){ 
-          pedidoAGerar = {};
-          pedidoAGerar.IdCliente = $localStorage.clienteAtivo.Id;
-          pedidoAGerar.DataEntregaPrevista = $scope.pedido.DataEntregaPrevista;
-          pedidoAGerar.IdTipoImovel = $scope.selecionarTipoImovel.Id;
-          pedidoAGerar.IdTipoImovel = $scope.selecionarTipoImovel.Id;
-          pedidoAGerar.Adicionais = $scope.pedido.Adicionais;
-          console.log(pedidoAGerar);
+
+
+
+    $scope.gerarPedido = function (){ 
+        pedidoAGerar = {};
+        pedidoAGerar.IdCliente = $localStorage.clienteAtivo.Id;
+        pedidoAGerar.DataEntregaPrevista = $scope.pedido.DataEntregaPrevista;
+        pedidoAGerar.IdTipoImovel = $scope.selecionarTipoImovel.Id;
+        pedidoAGerar.IdPacote= $scope.selecionarTamanhoImovel.Pacote.Id;
+        pedidoAGerar.Adicionais = [];
+        console.log($scope.selecionarTamanhoImovel);
+        console.log(pedidoAGerar);
         imovelService.gerarPedido(pedidoAGerar).then(
 
-
             function(response){
-
+                $scope.listarAdicionais();
+                $scope.listarTipos();
                 console.log(response);
             },
 

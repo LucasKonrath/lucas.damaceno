@@ -28,6 +28,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
         public Pedido Criar(Pedido pedido, Contexto contextoOriginal)
         {
             
+            pedido.TotalPorDia = 0;
             pedido.DataVenda = DateTime.Now;
             pedido.TipoImovel = estoqueImovelRepositorio.ObterTipoDeImovelPorId(pedido.IdTipoImovel);
             pedido.Pacote = estoqueImovelRepositorio.ObterTamanhoPorId(pedido.IdPacote);
@@ -46,6 +47,13 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
            
         }
 
+        public void Deletar(int id)
+        {
+            Pedido pedido = Obter(id);
+            contexto.Pedidos.Remove(pedido);  
+            contexto.SaveChanges();
+        }
+
         public dynamic Obter(int id)
         {
            var pedidoARetornar = contexto.
@@ -56,6 +64,9 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 .Where(pedido => pedido.Id == id)
                 .FirstOrDefault();
 
+            pedidoARetornar.DataEntregaRealizada = DateTime.Now;
+            TimeSpan? dataCalcular = (pedidoARetornar.DataEntregaRealizada.Value.Subtract(pedidoARetornar.DataVenda.Value));
+            pedidoARetornar.TotalASerPago = (decimal)(dataCalcular.Value.TotalDays) * pedidoARetornar.TotalPorDia;
             return pedidoARetornar;
         }
     }
