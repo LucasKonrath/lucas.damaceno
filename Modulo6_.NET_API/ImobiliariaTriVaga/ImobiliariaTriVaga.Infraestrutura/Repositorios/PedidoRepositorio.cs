@@ -48,11 +48,15 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
 
         public dynamic Obter(int id)
         {
-            return contexto.
+           var pedidoARetornar = contexto.
                 Pedidos
+                .Include("Pacote")
+                .Include("Cliente")
+                .Include("TipoImovel")
                 .Where(pedido => pedido.Id == id)
-            
                 .FirstOrDefault();
+
+            return pedidoARetornar;
         }
     }
 }

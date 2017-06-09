@@ -13,7 +13,7 @@ modulo.controller('CadastroController', function ($scope, clienteService, $route
 
             function(response){
                 $localStorage.clienteAtivo = response.data.data;
-                console.log(clienteAtivo);
+                console.log($localStorage.clienteAtivo);
                 $location.path('/pedido');
                 swal("Feito!", "Cliente cadastrado com sucesso!", "success");
             },

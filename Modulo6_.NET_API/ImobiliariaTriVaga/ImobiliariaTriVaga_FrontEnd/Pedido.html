@@ -1,0 +1,14 @@
+<div class="form-group">
+    
+    <select  name="selecionaTipoImovel" ng-init="listarTipos()" ng-change="povoarTamanhos()" ng-model="selecionarTipoImovel" ng-options="tipoImovel.NomeDoTipo for tipoImovel in tiposDeImoveis  track by tipoImovel.NomeDoTipo"> </select>
+    
+    
+    <select  name="selecionaTamanhoImovel" ng-change="listarAdicionais()" ng-model="selecionarTamanhoImovel" ng-options="tamanhoImovel.Pacote.Nome + ' Qtd:' + tamanhoImovel.Quantidade  for tamanhoImovel in tamanhosImoveis "> </select>
+    
+    <input class="input" type="date" ng-model="pedido.DataEntregaPrevista" placeholder="Data Prevista de Entrega do Pedido">
+    
+    <select id="selecionarAdicionais"  multiple name="selecionaAdicionaisPedido" ng-init="listarAdicionais()" ng-model="pedido.Adicionais" ng-options="adicional.Nome for adicional in listaDeAdicionais  track by adicional.Nome"> </select>
+    
+    <button class="btn-md btn-success" ng-click="gerarPedido()">Gerar Pedido</button>
+    
+</div>
