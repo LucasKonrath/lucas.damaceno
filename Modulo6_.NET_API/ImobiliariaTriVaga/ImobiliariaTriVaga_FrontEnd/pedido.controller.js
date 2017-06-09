@@ -21,7 +21,7 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
                 $scope.tipoImovelDetalhe = response.data.data.TipoImovel;
                 $scope.pacoteDetalhe = response.data.data.Pacote;
                 $scope.totalAPagar = response.data.data.TotalASerPago;
-                $scope.totalPorDia = 700;
+                $scope.totalPorDia = response.data.data.TotalPorDia;
                 $scope.dataRealizadaDetalhe = response.data.data.DataEntregaRealizada;
                 $scope.dataVendaDetalhe = response.data.data.DataVenda;
                 $scope.dataEntregaPrevistaDetalhe = response.data.data.DataEntregaPrevista;

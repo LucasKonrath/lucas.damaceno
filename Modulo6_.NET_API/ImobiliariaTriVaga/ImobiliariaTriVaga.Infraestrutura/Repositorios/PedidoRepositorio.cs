@@ -98,6 +98,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             if (pedidoARetornar.DataVenda == null) return pedidoARetornar;
             TimeSpan? dataCalcular = (pedidoARetornar.DataEntregaRealizada.Value.Subtract(pedidoARetornar.DataVenda.Value));
             pedidoARetornar.TotalASerPago = (decimal)(dataCalcular.Value.TotalDays) * pedidoARetornar.TotalPorDia;
+          
             return pedidoARetornar;
         }
     }
