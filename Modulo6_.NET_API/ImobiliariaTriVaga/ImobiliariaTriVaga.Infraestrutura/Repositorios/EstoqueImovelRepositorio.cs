@@ -24,6 +24,11 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             return contexto.TiposImoveis.Where(imovel => imovel.Id == id).FirstOrDefault();
         }
 
+        public TipoImovel ObterTipoDeImovelPorId(int id, Contexto contextoOriginal)
+        {
+            return contextoOriginal.TiposImoveis.Where(imovel => imovel.Id == id).FirstOrDefault();
+        }
+
         public List<TipoImovel> ObterTiposDeImoveis()
         {
             return contexto.TiposImoveis.Take(4).ToList();
@@ -77,6 +82,12 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             return contexto.Pacotes.Where(pacote => pacote.Id == id).FirstOrDefault();
 
         }
+
+        public Pacote ObterTamanhoPorId(int id, Contexto contextoOriginal)
+        {
+            return contextoOriginal.Pacotes.Where(pacote => pacote.Id == id).FirstOrDefault();
+        }
+
 
         public dynamic ObterTamanhos(int id)
         {

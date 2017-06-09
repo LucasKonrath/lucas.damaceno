@@ -84,7 +84,7 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
 
         )
     }
-
+  
 
     $scope.listarAdicionais = function (){ 
         imovelService.obterAdicionais().then(

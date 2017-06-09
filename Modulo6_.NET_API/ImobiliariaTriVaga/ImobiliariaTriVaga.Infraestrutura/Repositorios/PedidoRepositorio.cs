@@ -30,8 +30,8 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             
             pedido.TotalPorDia = 0;
             pedido.DataVenda = DateTime.Now;
-            pedido.TipoImovel = estoqueImovelRepositorio.ObterTipoDeImovelPorId(pedido.IdTipoImovel);
-            pedido.Pacote = estoqueImovelRepositorio.ObterTamanhoPorId(pedido.IdPacote);
+            pedido.TipoImovel = estoqueImovelRepositorio.ObterTipoDeImovelPorId(pedido.IdTipoImovel, contextoOriginal);
+            pedido.Pacote = estoqueImovelRepositorio.ObterTamanhoPorId(pedido.IdPacote, contextoOriginal);
             pedido.TotalPorDia += (pedido.TipoImovel.Preco + pedido.Pacote.Custo);
             estoqueImovelRepositorio.descontarDoEstoque(pedido.IdTipoImovel, pedido.IdPacote,contextoOriginal);
             contextoOriginal.Pedidos.Add(pedido);
