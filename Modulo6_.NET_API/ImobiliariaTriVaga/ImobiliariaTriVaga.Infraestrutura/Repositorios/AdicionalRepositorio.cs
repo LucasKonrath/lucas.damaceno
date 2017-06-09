@@ -54,8 +54,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
         {
             var adicionalARemover = contextoRecebido.Adicionais.
                 Where(adicional => adicional.Id == idAdicional).FirstOrDefault();
-            if (adicionalARemover.Estoque <= 0) throw new Exception("Impossivel adicionar esse adicional, estoque ficaria menor que 0");
-            adicionalARemover.Estoque -= quantidade;
+            
             contextoRecebido.Entry(adicionalARemover).State = System.Data.Entity.EntityState.Modified;
         }
     }
