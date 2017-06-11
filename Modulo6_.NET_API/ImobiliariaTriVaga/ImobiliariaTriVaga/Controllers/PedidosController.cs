@@ -43,12 +43,14 @@ namespace ImobiliariaTriVaga.Controllers
 
         [BasicAuthorization]
         [Route("cancelarDevolucao/{id:int}")]
-        [HttpGet]
+        [HttpPut]
         public HttpResponseMessage CancelarDevolucaoPedido(int id)
         {
             var pedido = repositorio.cancelarDevolucao(id);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        
 
         [Route("obtertodos")]
         [HttpGet]

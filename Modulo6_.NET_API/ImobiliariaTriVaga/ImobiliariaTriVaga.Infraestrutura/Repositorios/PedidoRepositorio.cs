@@ -97,11 +97,11 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                        && item.IdPacote == pedido.IdPacote).FirstOrDefault();
             estoqueDoImovel.Quantidade += 1;
 
-            var adicionais = contexto.PedidoAdicional.
+            pedido.Adicionais = contexto.PedidoAdicional.
              Where(pedidoSelecionado => pedidoSelecionado.IdPedido == pedido.Id).
              ToList();
 
-            foreach (var adicional in adicionais)
+            foreach (var adicional in pedido.Adicionais)
             {
 
                 var adicionalSelect = contexto.Adicionais.Where(adicionalRetornar => adicional.IdAdicional ==
@@ -109,8 +109,9 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 adicionalSelect.Estoque += 1;
 
             }
-
+   
             contexto.SaveChanges();
+            pedido.Adicionais = null;
             return pedido;
         }
 
@@ -149,7 +150,6 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             if (pedidoARetornar.DataVenda == null) return pedidoARetornar;
             TimeSpan? dataCalcular = (pedidoARetornar.DataEntregaRealizada.Value.Date.Subtract(pedidoARetornar.DataVenda.Value.Date));
             pedidoARetornar.TotalASerPago = (decimal)(dataCalcular.Value.TotalDays) * pedidoARetornar.TotalPorDia;
-            contexto.SaveChanges();
             return pedidoARetornar;
         }
     }
