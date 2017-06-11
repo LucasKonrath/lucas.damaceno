@@ -114,6 +114,15 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             return pedido;
         }
 
+        public dynamic cancelarDevolucao(int id)
+        {
+            var pedidoSelecionado = contexto.Pedidos.Where(pedido => pedido.Id == id).FirstOrDefault();
+            pedidoSelecionado.DataEntregaRealizada = null;
+            pedidoSelecionado.TotalASerPago = null; 
+            contexto.SaveChanges();
+            return pedidoSelecionado.DataEntregaRealizada;
+        }
+
         public dynamic Obter(int id)
         {
            var pedidoARetornar = contexto.
@@ -138,9 +147,9 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             pedidoARetornar.Adicionais = null;
             pedidoARetornar.DataEntregaRealizada = DateTime.Now;
             if (pedidoARetornar.DataVenda == null) return pedidoARetornar;
-            TimeSpan? dataCalcular = (pedidoARetornar.DataEntregaRealizada.Value.Subtract(pedidoARetornar.DataVenda.Value));
+            TimeSpan? dataCalcular = (pedidoARetornar.DataEntregaRealizada.Value.Date.Subtract(pedidoARetornar.DataVenda.Value.Date));
             pedidoARetornar.TotalASerPago = (decimal)(dataCalcular.Value.TotalDays) * pedidoARetornar.TotalPorDia;
-          
+            contexto.SaveChanges();
             return pedidoARetornar;
         }
     }
