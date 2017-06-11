@@ -71,6 +71,18 @@ namespace ImobiliariaTriVaga.Controllers
             if (pedido == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Erro no cadastro." } });
             return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido });
         }
+
+        [BasicAuthorization]
+        [HttpGet]
+        [Route("obteratrasos")]
+        public HttpResponseMessage ObterTodosPedidosAtrasados()
+        {
+            var pedido = repositorio.ObterTodosPedidosAtrasados();
+            if (pedido == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Erro no cadastro." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido });
+        }
+
+
         [BasicAuthorization]
         [Route("deletar/{id:int}")]
         [HttpDelete]

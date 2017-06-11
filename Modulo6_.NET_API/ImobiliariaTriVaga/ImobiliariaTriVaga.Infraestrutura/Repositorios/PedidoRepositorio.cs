@@ -69,6 +69,22 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
         }
 
 
+        public dynamic ObterTodosPedidosAtrasados()
+        {
+            var dataCorte = DateTime.Now;
+            return contexto.Pedidos
+                .Include("Cliente")
+                .Where(pedido => pedido.DataEntregaPrevista < dataCorte && pedido.DataEntregaRealizada == null)
+                .Select( selecao => new {
+                    IdPedido = selecao.Id,
+                    Cliente = selecao.Cliente,
+                    DiasDeAtraso = DbFunctions.DiffDays(selecao.DataEntregaPrevista, dataCorte)
+                })
+                .OrderByDescending(x => x.DiasDeAtraso)
+                .ToList();
+        }
+
+
         public void Deletar(int id)
         {
             Pedido pedido = Obter(id);
