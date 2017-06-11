@@ -56,7 +56,18 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 .ToList();
         }
 
-        
+
+        public object ObterTodosPedidosFinalizados(DateTime dataRecebida)
+        {
+            var dataCorte = dataRecebida.AddDays(-30);
+            return contexto.Pedidos
+                .Include("Pacote")
+                .Include("Cliente")
+                .Include("TipoImovel")
+                .Where(pedido => pedido.DataEntregaRealizada.Value > dataCorte)
+                .ToList();
+        }
+
 
         public void Deletar(int id)
         {
