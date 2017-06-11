@@ -61,6 +61,29 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
         public void Deletar(int id)
         {
             Pedido pedido = Obter(id);
+            var estoqueDoImovel = contexto.EstoqueImovel
+                .Where(item => item.IdTipoImovel == pedido.IdTipoImovel
+                        && item.IdPacote == pedido.IdPacote).FirstOrDefault();
+            estoqueDoImovel.Quantidade += 1;
+
+            var adicionais = contexto.PedidoAdicional.
+               Where(pedidoSelecionado => pedidoSelecionado.IdPedido == pedido.Id).
+               ToList();
+
+            foreach (var adicional in adicionais)
+            {
+
+                var adicionalSelect = contexto.Adicionais.Where(adicionalRetornar => adicional.IdAdicional == 
+                adicionalRetornar.Id).FirstOrDefault();
+                adicionalSelect.Estoque += 1;
+
+            }
+            var adicionaisDaTabelaARemover = contexto.PedidoAdicional.Where(itens => itens.IdPedido == pedido.Id).ToList();
+            foreach(var adicional in adicionaisDaTabelaARemover)
+            {
+                contexto.PedidoAdicional.Remove(adicional);
+            }
+         
             contexto.Pedidos.Remove(pedido);  
             contexto.SaveChanges();
         }
@@ -68,6 +91,25 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
         public Pedido Retornar(int id)
         {
             Pedido pedido = Obter(id);
+
+            var estoqueDoImovel = contexto.EstoqueImovel
+               .Where(item => item.IdTipoImovel == pedido.IdTipoImovel
+                       && item.IdPacote == pedido.IdPacote).FirstOrDefault();
+            estoqueDoImovel.Quantidade += 1;
+
+            var adicionais = contexto.PedidoAdicional.
+             Where(pedidoSelecionado => pedidoSelecionado.IdPedido == pedido.Id).
+             ToList();
+
+            foreach (var adicional in adicionais)
+            {
+
+                var adicionalSelect = contexto.Adicionais.Where(adicionalRetornar => adicional.IdAdicional ==
+                adicionalRetornar.Id).FirstOrDefault();
+                adicionalSelect.Estoque += 1;
+
+            }
+
             contexto.SaveChanges();
             return pedido;
         }
