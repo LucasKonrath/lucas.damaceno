@@ -66,6 +66,13 @@ namespace ImobiliariaTriVaga.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido});
         }
 
+        [HttpGet, BasicAuthorization(Roles = "GERENTE")]
+        [Route("checarGerente")]
+        public HttpResponseMessage Get()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
         [BasicAuthorization]
         [Route("criar")]
         [HttpPost]
