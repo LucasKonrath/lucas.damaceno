@@ -166,6 +166,11 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
             function(response){
                 console.log(response.data.data)
             $scope.listaDePedidosGerencia = response.data.data;
+              $scope.totalFaturado=0.0;  
+                for(item of $scope.listaDePedidosGerencia){
+                    console.log(item);
+                    $scope.totalFaturado += item.TotalASerPago;
+                }
         })
         
     }
