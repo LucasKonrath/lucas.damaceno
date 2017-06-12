@@ -139,7 +139,8 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 adicionalSelect.Estoque += 1;
 
             }
-   
+            TimeSpan? dataCalcular = (pedido.DataEntregaRealizada.Value.Date.Subtract(pedido.DataVenda.Value.Date));
+            pedido.TotalASerPago = (decimal)(dataCalcular.Value.TotalDays) * pedido.TotalPorDia;
             contexto.SaveChanges();
             pedido.Adicionais = null;
             return pedido;
