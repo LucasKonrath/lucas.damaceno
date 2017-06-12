@@ -1,6 +1,11 @@
 
-   <button ng-click="obterRelatorioGerencia(dataRelatorioGerencia)" class="btn-md btn-info">Obter relatório a partir da data:</button>
-    <input ng-model="dataRelatorioGerencia" type="date"> <span>Total faturado nos 30 dias anteriores: R$ {{totalFaturado}}</span>
+   
+  
+    <a href="#!/pedidos"> <button class="btn btn-sm btn-success">Visualizar pedidos.</button></a>
+    <a href="#!/cadastro"> <button class="btn btn-sm btn-success">Efetuar nova venda.</button></a>
+   <a href="#!/visualizarAtrasos"> <button class="btn btn-sm btn-success">Visualizar pedidos em atraso.</button></a>
+    <button ng-click="obterRelatorioGerencia(dataRelatorioGerencia)" class="btn btn-sm btn-info">Obter relatório a partir da data:</button><input ng-model="dataRelatorioGerencia" type="date"> <span>Total faturado nos 30 dias anteriores: R$ {{totalFaturado}} </span>
+     
    <table class="table table-bordered">
     <br><br>
     <thead>

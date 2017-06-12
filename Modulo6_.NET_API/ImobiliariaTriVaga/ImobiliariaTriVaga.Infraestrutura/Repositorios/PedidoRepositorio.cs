@@ -84,7 +84,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 .Include("Pacote")
                 .Include("Cliente")
                 .Include("TipoImovel")
-                .Where(pedido => pedido.DataEntregaRealizada.Value > dataCorte)
+                .Where(pedido => pedido.DataEntregaRealizada.Value > dataCorte && pedido.DataEntregaRealizada.Value < dataRecebida)
                 .ToList();
         }
 
