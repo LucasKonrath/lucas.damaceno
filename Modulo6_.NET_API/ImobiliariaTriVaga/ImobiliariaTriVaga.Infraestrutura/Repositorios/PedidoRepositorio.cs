@@ -40,6 +40,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
             {
                 itemAdicional.Pedido = pedido;
                 itemAdicional.Adicional = adicionalRepositorio.ObterPorId(itemAdicional.IdAdicional);
+                pedido.TotalPorDia += itemAdicional.Adicional.Custo;
                 contextoOriginal.Entry(itemAdicional.Adicional).State = EntityState.Unchanged;
             }
 
@@ -53,6 +54,8 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 .Include("Pacote")
                 .Include("Cliente")
                 .Include("TipoImovel")
+                .Where(pedido => pedido.DataEntregaRealizada == null)
+                .OrderByDescending(pedido => pedido.Id)
                 .ToList();
         }
 
@@ -79,7 +82,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                     IdPedido = selecao.Id,
                     Cliente = selecao.Cliente,
                     DiasDeAtraso = DbFunctions.DiffDays(selecao.DataEntregaPrevista, dataCorte)
-                })
+                })  
                 .OrderByDescending(x => x.DiasDeAtraso)
                 .ToList();
         }
@@ -118,7 +121,7 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
         public Pedido Retornar(int id)
         {
             Pedido pedido = Obter(id);
-
+            pedido.DataEntregaRealizada = DateTime.Now;
             var estoqueDoImovel = contexto.EstoqueImovel
                .Where(item => item.IdTipoImovel == pedido.IdTipoImovel
                        && item.IdPacote == pedido.IdPacote).FirstOrDefault();
@@ -160,23 +163,22 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
                 .Include("TipoImovel")
                 .Where(pedido => pedido.Id == id)
                 .FirstOrDefault();
-
-            var adicionais = contexto.PedidoAdicional.
-                Where(pedido => pedido.IdPedido == pedidoARetornar.Id).
-                ToList();
-
-            foreach(var adicional in adicionais)
-            {
-
-                var adicionalSelect = contexto.Adicionais.Where(adicionalRetornar => adicional.IdAdicional == adicionalRetornar.Id).FirstOrDefault();
-                pedidoARetornar.TotalPorDia += adicionalSelect.Custo;
-
-            }
+            
             pedidoARetornar.Adicionais = null;
-            pedidoARetornar.DataEntregaRealizada = DateTime.Now;
+            bool nullar = false;
+            if(pedidoARetornar.DataEntregaRealizada == null)
+            {
+                nullar = true;
+                pedidoARetornar.DataEntregaRealizada = DateTime.Now;
+            }
+                    
             if (pedidoARetornar.DataVenda == null) return pedidoARetornar;
             TimeSpan? dataCalcular = (pedidoARetornar.DataEntregaRealizada.Value.Date.Subtract(pedidoARetornar.DataVenda.Value.Date));
             pedidoARetornar.TotalASerPago = (decimal)(dataCalcular.Value.TotalDays) * pedidoARetornar.TotalPorDia;
+            if (nullar == true)
+            {
+                pedidoARetornar.DataEntregaRealizada = null;
+            }
             return pedidoARetornar;
         }
     }

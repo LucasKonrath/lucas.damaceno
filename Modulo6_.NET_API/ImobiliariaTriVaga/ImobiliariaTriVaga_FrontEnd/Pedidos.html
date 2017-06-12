@@ -1,15 +1,16 @@
 
    
 <a href="#!/cadastro"> <button class="btn btn-success">Cadastrar novo cliente.</button></a> <a href="#!/login"> <button class="btn btn-info" ng-if="auth.isAutenticado()" ng-click="logout()">Logout.</button></a> <a href="#!/login"><button class="btn btn-info" ng-if="!auth.isAutenticado()">Login.</button></a>
-   
-<div  ng-init="obterPedidos()" class="col-md-6 col-md-offset-3" ng-repeat="pedido in pedidos">
+   <div ng-init="obterPedidos()">
+<div   class="col-md-6 col-md-offset-3" ng-repeat="pedido in pedidos">
     <div id="divExibirPedidos">
     Nome do Cliente: {{pedido.Cliente.Nome}} <br>
     Cpf do Cliente: {{pedido.Cliente.Cpf}} <br>
      Tipo do Imovel: {{pedido.TipoImovel.NomeDoTipo}} ({{pedido.TipoImovel.Preco}} reais por dia.) <br>
         Pacote: {{pedido.Pacote.Nome}} ({{pedido.Pacote.Custo}} reais por dia.) <br>
         
-        <a href="#!/visualizarPedido/{{pedido.Id}}"> <button class="btn-info">Visualizar pedido.</button></a>
+        <a href="#!/visualizarPedidoARetornar/{{pedido.Id}}"> <button class="btn-info">Visualizar pedido.</button></a>
         <br>
         </div>
+</div>
 </div>

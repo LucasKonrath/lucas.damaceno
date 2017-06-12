@@ -14,11 +14,17 @@ modulo.config(function ($routeProvider) {
         controller: 'PedidoController',
         templateUrl: 'Pedido.html'
     }).when('/gerencia', {
-        controller: 'GerenciaController',
+        controller: 'PedidoController',
         templateUrl: 'gerencia.html'
+    }).when('/visualizarAtrasos', {
+        controller: 'PedidoController',
+        templateUrl: 'RelatoriosAtraso.html'
     }).when('/visualizarPedido/:id', {
         controller: 'PedidoController',
         templateUrl: 'VisualizarPedido.html'
+    }).when('/visualizarPedidoARetornar/:id', {
+        controller: 'PedidoController',
+        templateUrl: 'VisualizarPedidoARetornar.html'
     }).when('/CriarPedido/:id', {
         controller: 'PedidoController',
         templateUrl: 'CriarPedido.html'

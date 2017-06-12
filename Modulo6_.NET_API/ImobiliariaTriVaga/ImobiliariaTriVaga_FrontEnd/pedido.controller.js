@@ -1,15 +1,15 @@
 modulo.controller('PedidoController', function ($scope, clienteService, $routeParams, $location, $localStorage, authService, imovelService) {
 
-    
-       $scope.auth = authService;
-    
-    
-     $scope.logout = function (usuario) {
+
+    $scope.auth = authService;
+
+     $scope.obterRelatorioAtraso = obterRelatorioAtraso;
+    $scope.logout = function (usuario) {
 
         authService.logout(usuario);
 
     }
-    
+
     $scope.obterPedido = function(){
         console.log($routeParams.id);
         var idPedido = $routeParams.id;
@@ -32,13 +32,25 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
         )
 
     }
-    
+
+    $scope.retornarPedido = function(){
+        console.log($routeParams.id);
+        var idPedido = $routeParams.id;
+        imovelService.retornarPedido(idPedido).then(
+            function(response){
+                swal("Feito!", "Itens retornados com sucesso!", "success");
+                console.log(response);
+            }
+        )
+
+    }
+
     $scope.obterPedidos = function(){
-     
+
         imovelService.obterPedidos().then(
 
             function(response){
-         
+
                 $scope.pedidos = response.data.data;
             }
 
@@ -46,11 +58,11 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
         )
 
     }
-      $scope.obterPedidos();
+    $scope.obterPedidos();
 
-    
-    
-    
+
+
+
 
     $scope.excluirPedido = function(){
         console.log($routeParams.id);
@@ -84,7 +96,7 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
 
         )
     }
-  
+
 
     $scope.listarAdicionais = function (){ 
         imovelService.obterAdicionais().then(
@@ -135,7 +147,28 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
 
         )
     }
+    
+    function obterRelatorioAtraso(){
+        
+        imovelService.obterRelatorioAtraso().then(
+            function(response){
+        console.log(response);
+        $scope.listaDePedidos = response.data.data;
+            })
+        
+    }
 
+   $scope.obterRelatorioGerencia = obterRelatorioGerencia;
+    
+    function obterRelatorioGerencia(data){
+        console.log('eita');
+        imovelService.obterRelatorioGerencia(data).then(
+            function(response){
+                console.log(response.data.data)
+            $scope.listaDePedidosGerencia = response.data.data;
+        })
+        
+    }
 
     $scope.povoarTamanhos = function(){
         console.log($scope.selecionarTipoImovel);

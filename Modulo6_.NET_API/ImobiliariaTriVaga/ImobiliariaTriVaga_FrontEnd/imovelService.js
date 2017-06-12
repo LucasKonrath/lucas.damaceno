@@ -7,7 +7,10 @@ modulo.factory("imovelService", function ($http) {
         obterPedido: obterPedido,
         excluirPedido: excluirPedido,
         devolverPedido: devolverPedido,
-        obterPedidos: obterPedidos
+        obterPedidos: obterPedidos,
+        retornarPedido: retornarPedido,
+        obterRelatorioAtraso: obterRelatorioAtraso,
+        obterRelatorioGerencia: obterRelatorioGerencia
 
     });
 
@@ -30,15 +33,29 @@ modulo.factory("imovelService", function ($http) {
         return $http.post('http://localhost:55508/api/pedidos/criar',pedido);
 
     }
+    
+    function obterRelatorioGerencia(data){
+        console.log(data.toLocaleDateString());
+        return $http.get('http://localhost:55508/api/pedidos/obterfinalizados/' + data.toLocaleDateString() +'');
+    }
 
     function obterPedido(id){
 
         return $http.get('http://localhost:55508/api/pedidos/obter/'+id);
     }
     
+    function retornarPedido(id){
+
+        return $http.delete('http://localhost:55508/api/pedidos/retornar/'+id);
+    }
+    
     function excluirPedido(id){
         
         return $http.delete('http://localhost:55508/api/pedidos/deletar/' + id);
+    }
+    
+    function obterRelatorioAtraso(){
+        return $http.get('http://localhost:55508/api/pedidos/obteratrasos/');
     }
     
     function devolverPedido(id){
