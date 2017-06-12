@@ -48,6 +48,23 @@ namespace ImobiliariaTriVaga.Infraestrutura.Repositorios
            
         }
 
+        public List<Adicional> ObterAdicionaisDoPedido(int id)
+        {
+            AdicionalRepositorio addRepo = new AdicionalRepositorio();
+            var listaDeIds = contexto.PedidoAdicional
+                .Where(pedidoAdd => pedidoAdd.IdPedido == id)
+                .Select(adicional => new { Id = adicional.IdAdicional})
+                .ToList();
+            var listaDeAdicionais = new List<Adicional>();
+            foreach( var item in listaDeIds)
+            {
+                listaDeAdicionais.Add(addRepo.ObterPorId(item.Id));
+
+            }
+
+            return listaDeAdicionais;
+        }
+
         public object ObterTodosPedidos()
         {
             return contexto.Pedidos

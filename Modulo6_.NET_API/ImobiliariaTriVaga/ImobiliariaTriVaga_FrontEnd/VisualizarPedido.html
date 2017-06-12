@@ -12,6 +12,7 @@
     Tipo do Imovel: {{tipoImovelDetalhe.NomeDoTipo}}({{tipoImovelDetalhe.Preco}} R$ por dia.) <br>
     Pacote: {{pacoteDetalhe.Nome}}({{pacoteDetalhe.Custo}} R$ por dia.) <br>
     Quartos: {{pacoteDetalhe.QtdQuartos}} Salas: {{pacoteDetalhe.QtdSalas}} <br> Cozinhas: {{pacoteDetalhe.QtdCozinhas}} Banheiros: {{pacoteDetalhe.QtdBanheiros}}<br>
+    Adicionais: <span ng-repeat="adicional in adicionaisPedidoAVisualizar"> {{adicional.Nome}}, Diária {{adicional.Custo}} <br></span>
     Data de Entrega Realizada : {{dataRealizadaDetalhe |  date:'medium' }}<br>
     Data de Locação: {{dataVendaDetalhe | date:'medium' }} <br>
     Data De Entrega Prevista : {{dataEntregaPrevistaDetalhe  | date:'medium'}} <br>

@@ -40,6 +40,17 @@ namespace ImobiliariaTriVaga.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new { data = pedido });
         }
 
+        [BasicAuthorization]
+        [Route("obterAdicionaisDoPedido/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage ObterAdicionaisDoPedido(int id)
+        {
+            var adicionais = repositorio.ObterAdicionaisDoPedido(id);
+            if (adicionais == null) return Request.CreateResponse(HttpStatusCode.NotFound, new { mensagens = new string[] { "Erro no cadastro." } });
+            return Request.CreateResponse(HttpStatusCode.OK, new { data = adicionais});
+        }
+
+
 
         [BasicAuthorization]
         [Route("cancelarDevolucao/{id:int}")]

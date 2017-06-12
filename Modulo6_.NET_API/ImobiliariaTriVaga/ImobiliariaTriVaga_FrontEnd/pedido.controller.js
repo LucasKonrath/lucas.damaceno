@@ -3,12 +3,13 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
 
     $scope.auth = authService;
 
-     $scope.obterRelatorioAtraso = obterRelatorioAtraso;
+    $scope.obterRelatorioAtraso = obterRelatorioAtraso;
     $scope.logout = function (usuario) {
 
         authService.logout(usuario);
 
     }
+
 
     $scope.obterPedido = function(){
         console.log($routeParams.id);
@@ -25,10 +26,22 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
                 $scope.dataRealizadaDetalhe = response.data.data.DataEntregaRealizada;
                 $scope.dataVendaDetalhe = response.data.data.DataVenda;
                 $scope.dataEntregaPrevistaDetalhe = response.data.data.DataEntregaPrevista;
+                $scope.Id = response.data.data.Id;
+                obterAdicionaisDoPedido();
                 console.log(response);
             }
 
 
+        )
+
+    }
+
+    function obterAdicionaisDoPedido(){
+        console.log($scope.Id);
+        imovelService.obterAdicionaisDoPedido($scope.Id).then(
+            function(response){
+                $scope.adicionaisPedidoAVisualizar = response.data.data;
+            }
         )
 
     }
@@ -147,32 +160,32 @@ modulo.controller('PedidoController', function ($scope, clienteService, $routePa
 
         )
     }
-    
+
     function obterRelatorioAtraso(){
-        
+
         imovelService.obterRelatorioAtraso().then(
             function(response){
-        console.log(response);
-        $scope.listaDePedidos = response.data.data;
+                console.log(response);
+                $scope.listaDePedidos = response.data.data;
             })
-        
+
     }
 
-   $scope.obterRelatorioGerencia = obterRelatorioGerencia;
-    
+    $scope.obterRelatorioGerencia = obterRelatorioGerencia;
+
     function obterRelatorioGerencia(data){
         console.log('eita');
         imovelService.obterRelatorioGerencia(data).then(
             function(response){
                 console.log(response.data.data)
-            $scope.listaDePedidosGerencia = response.data.data;
-              $scope.totalFaturado=0.0;  
+                $scope.listaDePedidosGerencia = response.data.data;
+                $scope.totalFaturado=0.0;  
                 for(item of $scope.listaDePedidosGerencia){
                     console.log(item);
                     $scope.totalFaturado += item.TotalASerPago;
                 }
-        })
-        
+            })
+
     }
 
     $scope.povoarTamanhos = function(){

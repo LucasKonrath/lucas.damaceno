@@ -10,7 +10,8 @@ modulo.factory("imovelService", function ($http) {
         obterPedidos: obterPedidos,
         retornarPedido: retornarPedido,
         obterRelatorioAtraso: obterRelatorioAtraso,
-        obterRelatorioGerencia: obterRelatorioGerencia
+        obterRelatorioGerencia: obterRelatorioGerencia,
+        obterAdicionaisDoPedido: obterAdicionaisDoPedido
 
     });
 
@@ -32,6 +33,11 @@ modulo.factory("imovelService", function ($http) {
 
         return $http.post('http://localhost:55508/api/pedidos/criar',pedido);
 
+    }
+    
+    function obterAdicionaisDoPedido(idPedido){
+        
+        return $http.get('http://localhost:55508/api/pedidos/obterAdicionaisDoPedido/' + idPedido +'');
     }
     
     function obterRelatorioGerencia(data){
