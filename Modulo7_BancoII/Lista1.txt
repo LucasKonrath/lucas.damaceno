@@ -15,3 +15,11 @@ INNER JOIN PEDIDOITEM ON PEDIDOITEM.IDPRODUTO = p.IDPRODUTO
 INNER JOIN PEDIDO ON PEDIDO.IDPEDIDO = PEDIDOITEM.IDPEDIDO
 HAVING max(PEDIDO.DATAPEDIDO) <= ADD_MONTHS(TRUNC(SYSDATE), -4)
 GROUP BY p.IDPRODUTO)
+
+//EX3 
+
+SELECT SUM(item.Quantidade) Quantidade
+FROM PedidoItem item
+inner join Pedido ped on ped.IDPedido = item.IDPedido
+WHERE item.IDProduto = :p_IDProduto
+and ped.DataPedido >= trunc(sysdate, 'yyyy');
