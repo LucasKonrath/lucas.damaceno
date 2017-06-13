@@ -1,0 +1,27 @@
+//EX1
+
+DECLARE
+
+CURSOR C_CidadesRepetidas IS
+SELECT NOME,UF, COUNT(*)  as quantidade
+  from   CIDADE cid
+  group  by  NOME,UF
+  having count(*) > 1; 
+  
+  CURSOR C_CLIENTES_DA_CIDADE(nomeCidade in varchar) IS
+  SELECT cli.NOME
+  FROM CLIENTE cli
+  INNER JOIN cidade cid ON cli.IDCidade = cid.IDCIDADE
+  where cid.NOME = nomeCidade;
+  
+  BEGIN 
+    FOR cidade IN C_CidadesRepetidas LOOP
+        FOR cliente IN C_CLIENTES_DA_CIDADE(cidade.NOME) LOOP
+          DBMS_OUTPUT.PUT_LINE('Nome do cliente: ' || cliente.NOME || '  Nome da Cidade: '|| cidade.NOME);
+        END LOOP;
+    END LOOP;
+  END;
+  
+  
+  
+  
