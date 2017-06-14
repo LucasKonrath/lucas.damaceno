@@ -37,7 +37,7 @@ BEGIN
            set idcidade = vIdMinimo
            where idcliente = cliente.idcliente
            and idcidade != vIdMinimo;
-           print('linhas alterados: '|| sql%rowcount );
+
            dbms_output.put_line(to_char(cliente.idcliente) || '-' || to_char(vIdMinimo) || '-' || cidade.nome);
      END LOOP;
 
@@ -45,8 +45,6 @@ BEGIN
            where nome = cidade.nome
            and uf = cidade.uf
            and idcidade != vIdMinimo;
-
-          print('linhas excluidas: '|| sql%rowcount );
    END LOOP;
 END;
 ---------------------
