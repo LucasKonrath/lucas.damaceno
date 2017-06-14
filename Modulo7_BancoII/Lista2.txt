@@ -22,6 +22,7 @@ SELECT NOME,UF, COUNT(*)  as quantidade
           DBMS_OUTPUT.PUT_LINE('Nome do cliente: ' || cliente.NOME || '  Nome da Cidade: '|| cidade.NOME || '  Nome da UF: ' || cidade.UF);
         END LOOP;
     END LOOP;
+
   END;
 
 
@@ -41,6 +42,23 @@ where ped.IDPEDIDO = :pCodigo
 where idpedido = :pCodigo;
 END;
   
+
+
+
+//EX3
+
+DECLARE 
+CURSOR C_ClientesQueNaoPediram IS
+select IDCliente 
+from pedido
+having max(DATAPEDIDO) <= ADD_MONTHS(TRUNC(SYSDATE), -4)
+group by IDCliente;
+BEGIN
+    FOR clienteSelecionado IN C_ClientesQueNaoPediram LOOP
+        UPDATE CLIENTE SET SITUACAO = 'I'
+        WHERE CLIENTE.IDCLIENTE = clienteSelecionado.IDCLIENTE;
+    END LOOP;
+END;
   
   
   
