@@ -47,8 +47,8 @@ enum Estados {
         }
         
         String estados = tmp.toString();
-        List<String> listaDeEstados = new ArrayList<String>(Arrays.asList(estados.split(",")));
-        java.util.Collections.sort(listaDeEstados);
+        List<String> listaDeEstados = new ArrayList<>(Arrays.asList(estados.split(",")));
+        listaDeEstados.sort(null);
         System.out.println(listaDeEstados.toString());
         
     }
