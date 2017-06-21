@@ -30,6 +30,8 @@ public class ManipulaStrings implements StringUtils {
     public  int contaVogais(String recebida){
         
         recebida = recebida.toLowerCase();
+        recebida = Normalizer.normalize(recebida, Normalizer.Form.NFD);
+        recebida = recebida.replaceAll("[^\\p{ASCII}]", "");
         int contagemDeVogais = 0;
         
         for(int letra = 0; letra < recebida.length();letra++){
