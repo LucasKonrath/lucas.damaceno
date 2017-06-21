@@ -51,4 +51,13 @@ public class ManipulaDatas implements CalendarUtils{
     
         return ("Provisorio");
     }
+    
+    
+    public Date adicionarDiasAUmaData(Date dataRecebida, int qtdDias){
+        
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dataRecebida);
+        calendar.add(Calendar.DAY_OF_MONTH,qtdDias);
+        return calendar.getTime();
+    }
 }
