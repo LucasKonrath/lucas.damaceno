@@ -18,14 +18,15 @@ public class RepositorioParcelator implements Parcelator{
     @Override
     public Map<String, BigDecimal> calcular (BigDecimal valorParcelar, int numeroDeParcelas, double taxaDeJuros, Date dataPrimeiroVencimento){
     
-        Map <String, BigDecimal> hm = new TreeMap<String, BigDecimal>();
+        Map <String, BigDecimal> hm = new LinkedHashMap<String, BigDecimal>();
         BigDecimal um = new BigDecimal(1.00000);
         BigDecimal taxaDeJurosBig = new BigDecimal(taxaDeJuros);
         BigDecimal cemPorcento = new BigDecimal(100.0);
-        BigDecimal PorcentagemDosJuros = taxaDeJurosBig.divide(cemPorcento, 3, RoundingMode.CEILING);
+        BigDecimal PorcentagemDosJuros = taxaDeJurosBig.divide(cemPorcento, 2, RoundingMode.HALF_UP);
         PorcentagemDosJuros.add(um);
         BigDecimal valorTotal = valorParcelar.multiply(PorcentagemDosJuros);
-        BigDecimal valorDeCadaParcela = valorParcelar.divide(new BigDecimal(numeroDeParcelas));
+        valorTotal = valorTotal.add(valorParcelar);
+        BigDecimal valorDeCadaParcela = valorTotal.divide(new BigDecimal(numeroDeParcelas), 2, BigDecimal.ROUND_HALF_UP);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dataPrimeiroVencimento);
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -36,7 +37,7 @@ public class RepositorioParcelator implements Parcelator{
            }
            Date dataImprimir =  calendar.getTime();
            String stringData = df.format(dataImprimir);
-           hm.put(stringData, valorDeCadaParcela);
+           hm.put(stringData, valorDeCadaParcela.divide(um,2,BigDecimal.ROUND_DOWN));
         }
         return hm;
     }

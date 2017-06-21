@@ -36,7 +36,7 @@ public class ClassePrincipal {
         System.out.println("Checando se quatro dias atras eh sexta: " + manipuladorDatas.diaSemana(dataBase));
         System.out.println("Parcelator, man:");
         Map <String, BigDecimal> hm = new TreeMap<String, BigDecimal>();
-        hm = repoParcelator.calcular(new BigDecimal(2000.0), 4, 4.7, new Date());
+        hm = repoParcelator.calcular(new BigDecimal(2000.0),19, 20.2, new Date());
         System.out.println(hm);
         System.out.println("Diferença entre datas:");
         Date dataAAdd = new Date();

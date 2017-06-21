@@ -14,7 +14,9 @@ import java.text.Normalizer;
 public class ManipulaStrings implements StringUtils {
     @Override
     public  boolean isEmpty(String recebida){
-        
+       
+        if(recebida == null) return true;
+        recebida = recebida.replace(" ", "");
         return (recebida.isEmpty());
         
     }
