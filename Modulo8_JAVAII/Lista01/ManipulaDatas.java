@@ -49,7 +49,16 @@ public class ManipulaDatas implements CalendarUtils{
     @Override
     public String tempoDecorrido (Date dataRecebida){
     
-        return ("Provisorio");
+        Date dataAtual = new Date();
+        Calendar calendarNovo = Calendar.getInstance();
+        calendarNovo.setTime(dataAtual);
+        Calendar calendarAntigo = Calendar.getInstance();
+        calendarAntigo.setTime(dataRecebida);
+        int difAnos = calendarNovo.get(Calendar.YEAR) - calendarAntigo.get(Calendar.YEAR);
+        int difMeses = calendarNovo.get(Calendar.MONTH) - calendarAntigo.get(Calendar.MONTH);
+        int difDias = calendarNovo.get(Calendar.DAY_OF_MONTH) - calendarAntigo.get(Calendar.DAY_OF_MONTH);
+        String aSerRetornada = " Tempo decorrido: \n Anos: " + difAnos + " Meses: " + difMeses + " Dias: " + difDias;
+        return aSerRetornada;
     }
     
     

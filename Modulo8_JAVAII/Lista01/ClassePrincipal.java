@@ -6,9 +6,11 @@
 package br.com.crescer.lista01;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
@@ -33,8 +35,15 @@ public class ClassePrincipal {
         dataBase = manipuladorDatas.adicionarDiasAUmaData(dataBase, -4);
         System.out.println("Checando se quatro dias atras eh sexta: " + manipuladorDatas.diaSemana(dataBase));
         System.out.println("Parcelator, man:");
-        Map <String, BigDecimal> hm = new HashMap<String, BigDecimal>();
+        Map <String, BigDecimal> hm = new TreeMap<String, BigDecimal>();
         hm = repoParcelator.calcular(new BigDecimal(2000.0), 4, 4.7, new Date());
         System.out.println(hm);
+        System.out.println("Diferença entre datas:");
+        Date dataAAdd = new Date();
+        Calendar calendarioDataAdd = Calendar.getInstance();
+        calendarioDataAdd.set(1997,12,10);
+        dataAAdd = calendarioDataAdd.getTime();
+        String diffDatas = manipuladorDatas.tempoDecorrido(dataAAdd);
+        System.out.println(diffDatas);
     }
 }
