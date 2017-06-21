@@ -6,6 +6,7 @@
 package br.com.crescer.lista01;
 import java.text.*;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.*;
 
@@ -27,6 +28,7 @@ public class RepositorioParcelator implements Parcelator{
         BigDecimal valorTotal = valorParcelar.multiply(PorcentagemDosJuros);
         valorTotal = valorTotal.add(valorParcelar);
         BigDecimal valorDeCadaParcela = valorTotal.divide(new BigDecimal(numeroDeParcelas), 2, BigDecimal.ROUND_HALF_UP);
+        valorDeCadaParcela = valorDeCadaParcela.round(new MathContext(3, RoundingMode.HALF_DOWN));
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(dataPrimeiroVencimento);
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -37,7 +39,7 @@ public class RepositorioParcelator implements Parcelator{
            }
            Date dataImprimir =  calendar.getTime();
            String stringData = df.format(dataImprimir);
-           hm.put(stringData, valorDeCadaParcela.divide(um,2,BigDecimal.ROUND_DOWN));
+           hm.put(stringData, valorDeCadaParcela);
         }
         return hm;
     }
