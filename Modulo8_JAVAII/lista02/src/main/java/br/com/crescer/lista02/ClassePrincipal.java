@@ -22,7 +22,7 @@ public class ClassePrincipal {
             System.out.println(repo.ls("TestFolder\\Testando.txt"));
             System.out.println(repo.ls("TestFolder"));
             repo.rm("TestFolder\\Testando2.txt");
-            repo.mv("TestFolder\\Testando.txt", "C:\\Users\\lucas\\Desktop\\alemao");
+            repo.mv("TestFolder\\Testando.txt", "C:\\Users\\lucas.damaceno\\Documents\\lucas.damaceno\\lucas.damaceno\\Modulo8_JAVAII\\lista02\\TestMoveFile");
             
             System.out.println(reader.read("BlackParade.txt"));
             System.out.println(reader.read("MusicaMasTristeDoLinkPark.xml"));
