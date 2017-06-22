@@ -6,6 +6,7 @@
 package br.com.crescer.lista02;
 
 import java.io.*;
+import java.util.Arrays;
 
 /**
  *
@@ -59,12 +60,37 @@ public class FileUtilsImpl implements FileUtils {
     }
     @Override
     public String ls(String string){
-    
-        return "Ainda não implementado";
+        File file = new File(string);
+        if(!file.exists()) return "Arquivo não existe.";
+        if(file.isFile())
+            return file.getAbsolutePath();
+        else{
+             String[] listaArquivos = file.list();
+             return Arrays.toString(listaArquivos);
+        }
+        
     }
     @Override
     public boolean mv(String in, String out){
-   
+        File file = new File(in);
+        if(file.isDirectory()) 
+            {
+                System.out.println("Não pode mover diretorio. Operação invalida");
+                return false;
+            }
+        try{
+           if(file.renameTo(new File(out +"\\"+ file.getName()))){
+                    System.out.println("Operação realizada com sucesso.");
+           return true;
+           }
+            else{
+                System.out.println("Jabulani na operação.");
+                    return false;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
         return false;
     }
     
