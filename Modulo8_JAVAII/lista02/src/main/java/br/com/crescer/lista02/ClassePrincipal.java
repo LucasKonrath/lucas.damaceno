@@ -15,7 +15,7 @@ public class ClassePrincipal {
         FileUtilsImpl repo = new FileUtilsImpl();
         ReaderUtils reader = new ReaderUtilsImpl();
         WriterUtils writer = new WriterUtilsImpl();
-            repo.mkDir("TestFolder");
+            repo.mk("TestFolder");
             repo.mk("TestFolder\\Testando.txt");
             repo.mk("TestFolder\\Testando2.txt");
             repo.mk("TestFolder\\Testando3.txt");

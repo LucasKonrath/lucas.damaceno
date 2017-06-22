@@ -17,7 +17,9 @@ public class FileUtilsImpl implements FileUtils {
     //mk deve criar arquivo ou diretório. mk criará arquivo, mkdir criará diretório.
     @Override
      public boolean mk(String string){
-         
+         if(!string.contains(".")){
+             mkDir(string);
+         }
          File file = new File(string);
          try{
              final boolean b = file.createNewFile();
