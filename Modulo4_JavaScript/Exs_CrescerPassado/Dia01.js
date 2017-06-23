@@ -93,6 +93,40 @@ function find(arrayRecebido , funcao){
 
 
 
+/*
+
+
+4. Você sabe subtrair?
+
+Crie uma função chamada subtrair que realiza a subtração de dois números em duas chamadas de funções diferentes. NÃO SURTEM! Exemplo:
+
+*/
+
+function subtrair(a){
+
+    function subtrairComA(b){
+        
+        return a - b;
+        
+    }
+
+    return subtrairComA;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
