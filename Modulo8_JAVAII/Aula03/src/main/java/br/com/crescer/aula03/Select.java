@@ -22,7 +22,7 @@ public class Select {
         SQLUtils teste = new SQLUtilsImpl();
         
         System.out.println(teste.executeQuery("SELECT * FROM ESTADO"));
-         
+        teste.exportCSV("SELECT * FROM ESTADO");
     }
 }
 

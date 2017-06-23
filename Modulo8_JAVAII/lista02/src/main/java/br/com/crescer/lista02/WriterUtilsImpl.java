@@ -24,7 +24,8 @@ public class WriterUtilsImpl implements WriterUtils {
                  throw new Exception("Cara, isso ai num é um txt não.");
              }
              if(!fileEscrever.exists()){
-                 throw new Exception("Cara, esse arquivo ai num existe não.");
+                 FileUtils fileUtils = new FileUtilsImpl();
+                 fileUtils.mk(file);
              }
              
              final Writer writer = new FileWriter(fileEscrever);
