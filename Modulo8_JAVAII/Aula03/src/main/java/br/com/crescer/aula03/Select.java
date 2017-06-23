@@ -6,6 +6,7 @@
 package br.com.crescer.aula03;
 
 import br.com.crescer.lista02.*;
+import java.io.File;
 
 
 /**
@@ -20,9 +21,12 @@ public class Select {
         System.out.println(verCaminho.ls("TestarSQL.sql"));
         TesteDAO testando = new TesteDAO();
         SQLUtils teste = new SQLUtilsImpl();
-        teste.runFile("TestarSQL.sql");
+        //teste.runFile("TestarSQL.sql");
+        
         System.out.println(teste.executeQuery("SELECT * FROM ESTADO"));
-        teste.exportCSV("SELECT * FROM ESTADO");
+        //teste.exportCSV("SELECT * FROM ESTADO");
+        File estado = new File("estado.txt");
+        teste.importCSV(estado);
     }
 }
 
