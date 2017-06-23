@@ -5,7 +5,8 @@
  */
 package br.com.crescer.aula03;
 
-import java.sql.*;
+import br.com.crescer.lista02.*;
+
 
 /**
  *
@@ -14,13 +15,14 @@ import java.sql.*;
 public class Select {
 
     public static void main(String[] args) {
-
-        // Oracle Thin 
-// jdbc:oracle:thin:@<HOST>:<PORT>:<SID>
-// oracle.jdbc.driver.OracleDriver
-        TesteDAO testando = new TesteDAO();
         
-        testando.insert();
+        FileUtils verCaminho = new FileUtilsImpl();
+        System.out.println(verCaminho.ls("TestarSQL.sql"));
+        TesteDAO testando = new TesteDAO();
+        SQLUtils teste = new SQLUtilsImpl();
+        
+        
+        teste.runFile("TestarSQL.sql");
          
     }
 }

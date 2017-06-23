@@ -5,7 +5,9 @@
  */
 package br.com.crescer.lista02;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import static java.util.stream.Collectors.toList;
 
 /**
  *
@@ -13,37 +15,14 @@ import java.io.*;
  */
 public class ReaderUtilsImpl implements ReaderUtils {
 
-    @Override
+   @Override
     public String read(String string) {
-
-        try {
-            File file = new File(string);
-
-            if (!file.exists()) {
-                throw new Exception("Esse arquivo ai nao existe man.");
-            }
-            String extensao = FileExtensionRepo.getFileExtension(file);
-            if (!(extensao.equalsIgnoreCase("txt"))) {
-                System.out.println("Arquivo mandado não foi txt.");
-                throw new Exception("Manda txt amigao");
-            }
-            StringBuilder sb = new StringBuilder();
-            final Reader reader = new FileReader(string);
-            final BufferedReader bufferReader = new BufferedReader(reader);
-            String linha;
-            while ((linha = bufferReader.readLine()) != null) {
-                if (linha != null) { sb.append("\n");
-                    sb.append(bufferReader.readLine());
-                     sb.append("\n");
-                }
-            }
-            reader.close();
-            bufferReader.close();
-            return sb.toString();
+        try (final BufferedReader b = new BufferedReader(new FileReader(string))) {
+            return String.join("\n", b.lines().collect(toList()));
         } catch (Exception e) {
-            e.printStackTrace();
+            // ...
         }
-        return "Não foi possivel ler o arquivo.";
+        return null;
     }
 
 }

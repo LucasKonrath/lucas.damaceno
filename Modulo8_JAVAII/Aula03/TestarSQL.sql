@@ -1,0 +1,2 @@
+INSERT INTO ESTADO (ID, NOME, UF, PAIS)
+VALUES(30, 'Jabulani', 'kk', 1)
