@@ -92,8 +92,10 @@ public class SQLUtilsImpl implements SQLUtils {
         try (final PreparedStatement statement = ConnectionUtils
                 .retornaConexao()
                 .prepareStatement(criarInserts(file, contentCSV))) {
-           
+           int i = 0;
             for(String cadaLinha : contentCSV){
+                
+                if( i != 0){
                 System.out.println(cadaLinha);
                 String[] item = cadaLinha.split(",");
                 for(int x = 1; x <= item.length; x++){
@@ -105,7 +107,8 @@ public class SQLUtilsImpl implements SQLUtils {
                 
                 statement.executeQuery();
                
-            
+                }
+                i++;
             }
             
         } catch (final SQLException e) {
