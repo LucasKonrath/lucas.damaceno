@@ -20,11 +20,14 @@ public class SQLUtilsImpl implements SQLUtils {
     public void runFile(String filename) {
         ReaderUtils repoLeitura = new ReaderUtilsImpl();
         String query = repoLeitura.read(filename);
-
+        
         try (final Connection connection = ConnectionUtils.retornaConexao()) {
-
+            
             try (final Statement statement = connection.createStatement()) {
-                statement.executeQuery(query);
+                for(String cadaComando : query.split(";")){
+                    statement.executeQuery(cadaComando);
+                }
+                
             } catch (SQLException e) {
                 System.err.format("SQLException: %s", e);
             }

@@ -20,7 +20,7 @@ public class Select {
         System.out.println(verCaminho.ls("TestarSQL.sql"));
         TesteDAO testando = new TesteDAO();
         SQLUtils teste = new SQLUtilsImpl();
-        
+        teste.runFile("TestarSQL.sql");
         System.out.println(teste.executeQuery("SELECT * FROM ESTADO"));
         teste.exportCSV("SELECT * FROM ESTADO");
     }
