@@ -21,8 +21,7 @@ public class Select {
         TesteDAO testando = new TesteDAO();
         SQLUtils teste = new SQLUtilsImpl();
         
-        
-        teste.runFile("TestarSQL.sql");
+        System.out.println(teste.executeQuery("SELECT * FROM ESTADO"));
          
     }
 }

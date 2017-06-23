@@ -7,9 +7,8 @@ package br.com.crescer.aula03;
 
 import br.com.crescer.lista02.*;
 import java.io.File;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 
 /**
  *
@@ -37,7 +36,37 @@ public class SQLUtilsImpl implements SQLUtils {
 
     @Override
     public String executeQuery(String query) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+          StringBuilder sb = new StringBuilder();
+        try (final Connection connection = ConnectionUtils.retornaConexao()) {
+            
+          
+            try (final Statement statement = connection.createStatement()) {
+                ResultSet rs = statement.executeQuery(query);
+                ResultSetMetaData rsmd = rs.getMetaData();
+                for(int index = 1; index <= rsmd.getColumnCount(); index++){
+                    
+                    sb.append(rsmd.getColumnName(index)).append("--");
+                }
+                sb.append("\n");
+                
+                while(rs.next()){
+                    for(int x = 1; x <= rsmd.getColumnCount(); x++ ){
+                    
+                        Object valor = rs.getObject(x);
+                        sb.append(valor.toString()).append("--");
+                        
+                    }
+                    sb.append("\n");
+                
+                }
+            } catch (SQLException e) {
+                System.err.format("SQLException: %s", e);
+            }
+        } catch (final SQLException e) {
+            System.err.format("SQLException: %s", e);
+        }
+        
+        return sb.toString();
     }
 
     @Override
