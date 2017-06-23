@@ -58,6 +58,37 @@ function diglettDig(){
 }
 
 
+/*
+
+3. Funções por parâmetro!?
+
+Crie uma função chamada find que recebe um array e uma função por parâmetro. A função (passada por parâmetro) deverá informar um critério de busca de elementos dentro do array e a função find utilizará este critério para retornar todos elementos do array que encontram-se dentro dele. NÃO SURTEM! 
+
+*/
+
+function maiorIgualA2(element){
+    return element >= 2;
+}
+
+function find(arrayRecebido , funcao){
+
+    var segundoArray = [];
+    
+    if(typeof funcao !== 'function'){
+        
+        console.log("Isso ai nao e uma funcao mano.");
+        return null;
+        
+    }
+    for(var x = 0; x < arrayRecebido.length; x++){
+        
+        if(funcao(arrayRecebido[x]) === true){
+            segundoArray.push(arrayRecebido[x]);
+        }
+        
+    }
+    return segundoArray;
+}
 
 
 
