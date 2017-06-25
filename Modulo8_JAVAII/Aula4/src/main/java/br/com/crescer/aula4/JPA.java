@@ -21,17 +21,12 @@ public class JPA {
         em = emf.createEntityManager();
 
        
+        em.getTransaction().begin();
+        Genero genero = new Genero();
         
-        Cliente cliente = new Cliente();
-        cliente = em.find(Cliente.class,1L);
+        genero.setDescricao("Terror mucho loko.");
         
-         
-         
-  
-        cliente.setNome("Minha Mãe");
-        em.getTransaction().begin(); 
-        em.merge(cliente);
-        
+        em.persist(genero);
         em.getTransaction().commit();
 
         em.close();
