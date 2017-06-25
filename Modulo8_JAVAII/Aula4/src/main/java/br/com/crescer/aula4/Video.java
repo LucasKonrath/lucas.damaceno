@@ -36,7 +36,7 @@ public class Video implements Serializable{
     private String duracao;
     
     
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "ID_GENERO")
     private Genero genero;
     

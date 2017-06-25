@@ -18,16 +18,17 @@ public class Run {
     public static void main(String[] args) {
 
         CrudDao generos = new GeneroDao();
-       
-       Genero gen = new Genero();
-       gen.setDescricao("Batata e calzone");
-       generos.save(gen);
-       Genero gen2 = (Genero)generos.loadById(10l);
-        System.out.println(gen2.getDescricao());
-        List<Genero> listGen = generos.findAll();
-        for(Genero gene : listGen){
-            System.out.println(gene.getDescricao());
-        }
+        CrudDao clientes = new ClienteDao();
+        CrudDao funcionarios = new FuncionarioDao();
+        CrudDao locacoes = new LocacaoDao();
+        VideoDao videos = new VideoDao();
+        
+        Genero gen = (Genero) generos.loadById(10l);
+        Video vid = new Video();
+        vid.setNome("Joaozinho dinheiros");
+        vid.setGenero(gen);
+        vid.setValor(100.2);
+        videos.save(vid);
     }
 
 }
