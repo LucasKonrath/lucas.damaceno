@@ -7,6 +7,7 @@ package br.com.crescer.aula4;
 
 import javax.persistence.*;
 import org.hibernate.Session;
+import java.util.List;
 
 /**
  *
@@ -16,23 +17,17 @@ public class Run {
 
     public static void main(String[] args) {
 
-        final EntityManagerFactory emf;
-        emf = Persistence.createEntityManagerFactory("CRESCER");
-        final EntityManager em;
-        em = emf.createEntityManager();
-
-
-        
-        final Session session = em.unwrap(Session.class);
-        final Cliente cliente = (Cliente) session.load(Cliente.class, 1l);
-        cliente.setNome("Enéas 56");
-      
-        em.getTransaction().begin();
-        session.saveOrUpdate(cliente);
-        em.getTransaction().commit();
-        em.close();
-        emf.close();
-
+        CrudDao generos = new GeneroDao();
+       
+       Genero gen = new Genero();
+       gen.setDescricao("Batata e calzone");
+       generos.save(gen);
+       Genero gen2 = (Genero)generos.loadById(10l);
+        System.out.println(gen2.getDescricao());
+        List<Genero> listGen = generos.findAll();
+        for(Genero gene : listGen){
+            System.out.println(gene.getDescricao());
+        }
     }
 
 }
