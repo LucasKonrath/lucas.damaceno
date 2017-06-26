@@ -22,13 +22,19 @@ public class Run {
         CrudDao funcionarios = new FuncionarioDao();
         CrudDao locacoes = new LocacaoDao();
         VideoDao videos = new VideoDao();
+    
+        Locacao loc = new Locacao();
         
-        Genero gen = (Genero) generos.loadById(10l);
-        Video vid = new Video();
-        vid.setNome("Joaozinho dinheiros");
-        vid.setGenero(gen);
-        vid.setValor(100.2);
-        videos.save(vid);
+        Funcionario func = (Funcionario) funcionarios.loadById(1l);
+        Cliente cli = (Cliente) clientes.loadById(1l);
+        Video vid = (Video) videos.loadById(1l);
+        
+        loc.setFuncionario(func);
+        loc.setCliente(cli);
+        loc.setVideo(vid);
+        loc.setValorTotal(122.22);
+        
+        locacoes.save(loc);
     }
 
 }
