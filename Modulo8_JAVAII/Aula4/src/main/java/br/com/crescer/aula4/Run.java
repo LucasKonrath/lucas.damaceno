@@ -23,18 +23,6 @@ public class Run {
         CrudDao locacoes = new LocacaoDao();
         VideoDao videos = new VideoDao();
     
-        Locacao loc = new Locacao();
-        
-        Funcionario func = (Funcionario) funcionarios.loadById(1l);
-        Cliente cli = (Cliente) clientes.loadById(1l);
-        Video vid = (Video) videos.loadById(1l);
-        
-        loc.setFuncionario(func);
-        loc.setCliente(cli);
-        loc.setVideo(vid);
-        loc.setValorTotal(122.22);
-        
-        locacoes.save(loc);
     }
 
 }
