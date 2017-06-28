@@ -1,1 +1,5 @@
 br\com\crescer\aula7\Run.class
+br\com\crescer\aula7\GeneroRepository.class
+br\com\crescer\aula7\Genero.class
+br\com\crescer\aula7\controllers\Example.class
+br\com\crescer\aula7\services\GeneroService.class

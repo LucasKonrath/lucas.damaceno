@@ -11,6 +11,7 @@ public class Run {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Run.class, args);
+        
     }
 
 }

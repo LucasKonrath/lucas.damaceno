@@ -16,7 +16,7 @@ public class Genero implements Serializable{
     
     @Id
     @Basic(optional = false)
-    @Column(name = "ID")
+    @Column(name = "ID_GENERO")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_GENERO")
     @SequenceGenerator(
             name = "SEQ_GENERO",
@@ -26,7 +26,7 @@ public class Genero implements Serializable{
     private Long id;
     
     @Basic(optional = false)
-    @Column(name = "DESCRICAO")
+    @Column(name = "DS_GENERO")
     private String descricao;
 
     public Long getId() {
