@@ -19,6 +19,21 @@ public class GeneroService {
         
             return generoRepository.findAll();
         }
+        
+        public Genero getById(Long id){
+        
+           return generoRepository.findOne(id);
+        }
+        
+        public Genero addGenero(Genero gen){
+        
+            return generoRepository.save(gen);
+        }
+        
+        public void deletar(Genero gen){
+        
+            generoRepository.delete(gen);
+        }
 
                 
 
