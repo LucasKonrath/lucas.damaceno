@@ -19,6 +19,21 @@ public class VideoService {
         
             return videoRepository.findAll();
         }
+        
+        public Video getById(Long id){
+        
+           return videoRepository.findOne(id);
+        }
+        
+        public Video addVideo(Video vid){
+        
+            return videoRepository.save(vid);
+        }
+        
+        public void deletar(Video vid){
+        
+            videoRepository.delete(vid);
+        }
 
                 
 

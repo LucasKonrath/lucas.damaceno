@@ -19,6 +19,22 @@ public class LocacaoService {
         
             return locacaoRepository.findAll();
         }
+        
+        
+        public Locacao getById(Long id){
+        
+           return locacaoRepository.findOne(id);
+        }
+        
+        public Locacao addLocacao(Locacao loc){
+        
+            return locacaoRepository.save(loc);
+        }
+        
+        public void deletar(Locacao loc){
+        
+            locacaoRepository.delete(loc);
+        }
 
                 
 

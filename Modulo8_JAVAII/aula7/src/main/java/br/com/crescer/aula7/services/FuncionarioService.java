@@ -19,6 +19,21 @@ public class FuncionarioService {
         
             return funcionarioRepository.findAll();
         }
+        
+        public Funcionario getById(Long id){
+        
+           return funcionarioRepository.findOne(id);
+        }
+        
+        public Funcionario addFuncionario(Funcionario func){
+        
+            return funcionarioRepository.save(func);
+        }
+        
+        public void deletar(Funcionario func){
+        
+            funcionarioRepository.delete(func);
+        }
 
                 
 
