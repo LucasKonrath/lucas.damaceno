@@ -7,8 +7,9 @@ package br.com.crescer.social.repositories;
 
 import br.com.crescer.social.models.Postagem;
 import br.com.crescer.social.models.Usuario;
-import java.awt.print.Pageable;
+
 import java.util.List;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
