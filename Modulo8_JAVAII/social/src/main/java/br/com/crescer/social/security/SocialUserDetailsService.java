@@ -18,11 +18,15 @@ public class SocialUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final List<GrantedAuthority> grants = new ArrayList<>();
-        if ("admin".equals(username)) {
-            grants.add(() -> "ROLE_ADMIN");
+         Usuario usuario = usuarioService.findByEmail(username);
+        if (usuario == null) {
+            throw new UsernameNotFoundException(
+                    String.format(
+                            "User with username=%s was not found", username));
         }
-        return new User(username, new BCryptPasswordEncoder().encode("password"), grants);
+        final List<GrantedAuthority> grants = new ArrayList<>();
+       
+        return new User(username, usuario.getSenha(), grants);
     }
 
 }
