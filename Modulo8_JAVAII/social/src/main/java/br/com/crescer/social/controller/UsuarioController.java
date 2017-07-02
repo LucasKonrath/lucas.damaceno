@@ -59,8 +59,11 @@ public class UsuarioController {
     
     
     @PostMapping(value = "/usuario")
-    public void addUsuario(@RequestBody Usuario usuario) {
-        us.save(usuario);
+    public Usuario addUsuario(@RequestBody Usuario usuario) {
+        Usuario teste = us.findByEmail(usuario.getEmail());
+        if(teste == null)
+                us.save(usuario);
+        return us.findByEmail(usuario.getEmail());
     }
     
     @PutMapping(value = "/usuario")

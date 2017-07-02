@@ -6,19 +6,29 @@ modulo.config(function ($routeProvider) {
         controller: 'LoginController',
         templateUrl: 'Login.html',
         css: 'login.css'
-    }).otherwise({redirectTo: '/login2'});
+    }).when('/cadastro', {
+         controller: 'CadastroController',
+        templateUrl: 'cadastro.html',
+        css: 'cadastro.css'
+    })
+    .when('/feed', {
+         controller: 'FeedController',
+        templateUrl: 'feed.html',
+        css: 'feed.css'
+    })
+     .otherwise({redirectTo: '/login'});
 });
 
 modulo.constant('authConfig', {
 
     // Obrigatória - URL da API que retorna o usuário
-    urlUsuario: 'http://localhost:9090/api/Usuario',
+    urlUsuario: 'http://localhost:9090/usuarioAtual',
 
     // Obrigatória - URL da aplicação que possui o formulário de login
     urlLogin: '/login',
 
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGIN com sucesso
-    urlPrivado: '/login2',
+    urlPrivado: '/feed',
 
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGOUT
     urlLogout: '/login'
