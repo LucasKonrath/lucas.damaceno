@@ -8,6 +8,7 @@ package br.com.crescer.social.services;
 import br.com.crescer.social.models.Postagem;
 import br.com.crescer.social.models.Usuario;
 import br.com.crescer.social.repositories.PostagemRepository;
+import java.util.ArrayList;
 import java.util.List;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -60,8 +61,11 @@ public class PostagemService {
     }
     
     
-    public List<Postagem> getPostagensByUserId(Long id) {
-        return us.findById(id).getPostagens();
+    public List<Postagem> getPostagensByUserId(Long id, Pageable pageable) {
+        Usuario user = us.findById(id);
+        List<Usuario> lu = new ArrayList<Usuario>();
+        lu.add(user);
+        return pr.findByUsuarioInOrderByIdDesc(lu, pageable);
     }
     
     

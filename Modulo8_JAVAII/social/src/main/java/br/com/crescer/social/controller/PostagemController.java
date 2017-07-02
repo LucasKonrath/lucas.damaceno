@@ -43,8 +43,8 @@ public class PostagemController {
     }
     
     @GetMapping(value = "postagens/{id}")
-    public List<Postagem> getPostsByUser(@PathVariable Long id) {
-        return ps.getPostagensByUserId(id);
+    public List<Postagem> getPostsByUser(@PathVariable Long id, Pageable pageable) {
+        return ps.getPostagensByUserId(id, pageable);
     }
     
      @GetMapping(value = "postagem/{id}")
