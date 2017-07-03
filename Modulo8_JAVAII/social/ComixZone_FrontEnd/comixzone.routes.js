@@ -23,6 +23,9 @@ modulo.config(function ($routeProvider) {
          controller: 'FeedController',
         templateUrl: 'newPost.html',
         css: 'feed.css'
+    }).when('/procurar', {
+         controller: 'ProcurarController',
+        templateUrl: 'procurar.html', 
     })
      .otherwise({redirectTo: '/login'});
 });

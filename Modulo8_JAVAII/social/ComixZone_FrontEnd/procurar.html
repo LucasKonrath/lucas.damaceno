@@ -1,0 +1,27 @@
+<div class="fundo">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column is-10 is-offset-1">
+            <h1 class="title" id="titulo">
+              Procurar Usuários
+            </h1>
+            <div class="box">
+              <label class="label">Digite o nome do usuario</label>
+              <p class="control">
+                <input class="input" ng-model="searchText" ng-change="procurarUsuarios(usuario.nome)" type="text" placeholder="Blackagar Boltagon.">
+              </p>
+                   <div class="columns box">
+                 <div class="column is-multiline" ng-repeat="usuario in usuarios | filter:searchText">
+                          {{usuario.nome}} <a href="#!/usuario/{{usuario.id}}"><img class="image is-32x32" src="{{usuario.foto}}" alt=""></a> 
+                  </div>
+                  </div>
+              <hr>
+             </div>
+             
+            <p class="has-text-centered">
+              <a href="#!/feed"  id="link">Voltar para o Feed</a>
+            </p>
+          </div>
+        </div>
+      </div>
+</div>  
