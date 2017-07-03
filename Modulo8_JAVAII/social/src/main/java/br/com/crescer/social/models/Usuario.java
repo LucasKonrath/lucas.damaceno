@@ -36,9 +36,22 @@ public class Usuario implements Serializable{
     @Column(name="EMAIL_USUARIO")
     private String email;
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+    
+
     @Basic(optional = false)
     @Column(name = "SENHA_USUARIO")
     private String senha;
+    
+    @Basic(optional = true)
+    @Column(name = "FOTO_USUARIO")
+    private String foto;
     
     @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)

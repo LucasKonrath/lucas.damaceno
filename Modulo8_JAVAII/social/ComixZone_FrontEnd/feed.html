@@ -27,7 +27,7 @@
                     </header>
                     <div class="card-content">
                         <a class="card-avatar">
-                            <img src="greenArrow.jpg" class="card-avatar-img">
+                            <img src="{{accountOwner.foto}}" class="card-avatar-img">
                         </a>
 
                         <div class="card-user">
@@ -63,7 +63,11 @@
                 <div class="spacer"></div>
                 <div class="box trending">
             <p class="trend-title"><span class="title is-5">Solicitações de amizade</span></p>
-            <p ng-repeat="solicitacao in solicitacoes" class="trend-hashtag"> {{solicitacao.nome}} <a class="button" href="#" ng-click="aceitar(solicitacao.id)">
+            <p ng-repeat="solicitacao in solicitacoes" class="trend-hashtag">
+                   <figure class="image is-64x64">
+                                <img src="{{solicitacao.foto}}" alt="Image">
+                            </figure>
+                             {{solicitacao.nome}} <a class="button" href="#" ng-click="aceitar(solicitacao.id)">
                     <span class="icon is-small">
                         <i class="fa fa-check"></i>
                     </span>
@@ -79,7 +83,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-64x64">
-                                <img src="http://vignette3.wikia.nocookie.net/batman/images/f/f7/The_Batman.jpg" alt="Image">
+                                <img src="{{postagem.usuario.foto}}" alt="Image">
                             </figure>
 
                         </div>
