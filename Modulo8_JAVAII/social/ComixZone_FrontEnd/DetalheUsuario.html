@@ -1,7 +1,7 @@
 <nav class="nav has-shadow">
     <div class="container">
         <div class="nav-left">
-            <a class="nav-item is-tab is-active" href="#!/feed"><i class="fa fa-home"></i> &nbsp; Home</a>
+            <a class="nav-item is-tab is-active" href="#!/feed"><i class="fa fa-home"></i> &nbsp; Voltar para meu feed</a>
             <a class="nav-item is-tab"><i class="fa fa-bullhorn"></i> &nbsp; Solicitações</a>
             <a class="nav-item is-tab"><i class="fa fa-folder-open"></i> &nbsp; Editar dados</a>
         </div>
@@ -32,8 +32,6 @@
 
                         <div class="card-user">
                             <div class="card-user-name">
-                                   <a href="#"> Você:</a>
-                               <br>
                                 <a href="#">{{accountOwner.nome}}</a>
                             </div>
                             <span>
@@ -65,7 +63,7 @@
             </div>
             <div class="column is-8 is-offset-1">
 
-                <div ng-repeat="postagem in postagens" class="box">
+                <div ng-repeat="postagem in postagensDoUsuario" class="box">
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-64x64">
@@ -76,7 +74,7 @@
                         <div class="media-content">
                             <div class="content">
                                 
-                                    <a href="#!/usuario/{{postagem.usuario.id}}"><strong>{{postagem.usuario.nome}}</strong></a><small>      {{postagem.usuario.email}}</small>
+                                    <strong>{{postagem.usuario.nome}}</strong><small>      {{postagem.usuario.email}}</small>
                                     <br>
                                     <h2>{{postagem.titulo}}</h2>
                                 <p>

@@ -15,6 +15,9 @@ modulo.config(function ($routeProvider) {
          controller: 'FeedController',
         templateUrl: 'feed.html',
         css: 'feed.css'
+    }).when('/usuario/:idUsuario', {
+        controller: 'UsuarioDetalhadoController',
+        templateUrl: 'DetalheUsuario.html'
     })
     .when('/newPost', {
          controller: 'FeedController',
