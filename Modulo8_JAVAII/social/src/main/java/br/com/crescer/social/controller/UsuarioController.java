@@ -59,7 +59,9 @@ public class UsuarioController {
      @GetMapping(value = "/usuario/amigos")
     public List<Usuario> getAmigosDoUsuario(@AuthenticationPrincipal User usuario){
        Usuario user = us.findByEmail(usuario.getUsername());
-       return user.getAmigos();
+       List<Usuario> lu = user.getAmigos();
+      
+       return lu;
     }
     
     @GetMapping(value = "/usuario/solicitacoes")

@@ -72,6 +72,7 @@ public class PostagemService {
     public List<Postagem> getFeedPosts(Usuario usuario, Pageable pageable) {
         List<Usuario> amigos = 
                 us.findByEmail(usuario.getEmail()).getAmigos();
+        amigos.add(us.findByEmail(usuario.getEmail()));
         return pr.findByUsuarioInOrderByIdDesc(amigos, pageable);
     }
     
