@@ -4,7 +4,8 @@ modulo.factory("usuarioService", function ($http) {
         getPostagensDosAmigos:getPostagensDosAmigos,
         getDadosEspecificos:getDadosEspecificos,
         getPostagensEspecificas:getPostagensEspecificas,
-        getSolicitacoes:getSolicitacoes
+        getSolicitacoes:getSolicitacoes,
+        aceitar:aceitar
     });
 
     function getDados(){
@@ -28,6 +29,10 @@ modulo.factory("usuarioService", function ($http) {
     
     function getSolicitacoes(){
         return $http.get("http://localhost:9090/usuario/solicitacoes");
+    }
+    function aceitar(id){
+        return $http.post("http://localhost:9090/usuario/aceitar/" + id);
+        
     }
 
 });

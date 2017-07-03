@@ -43,12 +43,7 @@
 
                         <div class="card-stats">
                             <ul class="card-stats-list">
-                                <li class="card-stats-item">
-                                    <a href="#" title="9.840 Tweet">
-                                        <span class="card-stats-key">Postagens</span>
-                                        <span class="card-stats-val">1</span>
-                                    </a>
-                                </li>
+                              
                                 <li class="card-stats-item">
                                     <a href="#/following" title="885 Following">
                                         <span class="card-stats-key">Amigos</span>
@@ -63,16 +58,17 @@
                 <div class="spacer"></div>
                 <div class="box trending">
             <p class="trend-title"><span class="title is-5">Solicitações de amizade</span></p>
+            
             <p ng-repeat="solicitacao in solicitacoes" class="trend-hashtag">
-                   <figure class="image is-64x64">
-                                <img src="{{solicitacao.foto}}" alt="Image">
-                            </figure>
-                             {{solicitacao.nome}} <a class="button" href="#" ng-click="aceitar(solicitacao.id)">
+                   <img src="{{solicitacao.foto}}" class="image is-64x64" alt="">
+                             {{solicitacao.nome}} 
+            <a class="button"  ng-click="aceitar(solicitacao.id)">
                     <span class="icon is-small">
                         <i class="fa fa-check"></i>
                     </span>
                 
-            </a></p>
+            </a>
+            </p>
             
           </div>
 

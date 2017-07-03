@@ -2,6 +2,8 @@ modulo.controller('FeedController', function ($scope, usuarioService, postagemSe
 
     carregarUsuario();
     carregarSolicitacoes();
+    $scope.aceitar=aceitar;
+  
     var idUsuarioEspecifico = $routeParams.idUsuario;
     $scope.enviarPostagem = enviarPostagem;
     
@@ -21,12 +23,24 @@ modulo.controller('FeedController', function ($scope, usuarioService, postagemSe
         
     }
     
+    function aceitar(id){
+        usuarioService.aceitar(id).then(
+        
+            function(response){
+                carregarUsuario();
+                carregarSolicitacoes();
+            }
+        
+        )
+    }
+    
     function carregarSolicitacoes(){
         usuarioService.getSolicitacoes().then(
         
         function(response){
-            console.log(response);
+            console.log(response.data);
             $scope.solicitacoes = response.data;
+            console.log($scope.solicitacoes);
         }
         
         )

@@ -27,7 +27,7 @@
                     </header>
                     <div class="card-content">
                         <a class="card-avatar">
-                            <img src="greenArrow.jpg" class="card-avatar-img">
+                            <img src="{{accountOwner.foto}}" class="card-avatar-img">
                         </a>
 
                         <div class="card-user">
@@ -44,7 +44,7 @@
                                 <li class="card-stats-item">
                                     <a href="#" title="9.840 Tweet">
                                         <span class="card-stats-key">Postagens</span>
-                                        <span class="card-stats-val">1</span>
+                                        <span class="card-stats-val">{{postagensDoUsuario.length}}</span>
                                     </a>
                                 </li>
                                 <li class="card-stats-item">
@@ -67,7 +67,7 @@
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-64x64">
-                                <img src="http://vignette3.wikia.nocookie.net/batman/images/f/f7/The_Batman.jpg" alt="Image">
+                                <img src="{{postagem.usuario.foto}}" alt="Image">
                             </figure>
 
                         </div>
