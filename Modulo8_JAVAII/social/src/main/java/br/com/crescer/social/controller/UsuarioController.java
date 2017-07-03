@@ -43,6 +43,12 @@ public class UsuarioController {
         return us.findById(ID);
     }
     
+    @GetMapping(value = "/dadosUsuarioAtual")
+    public Usuario getDataLoggedUser(@AuthenticationPrincipal User usuario){
+      
+        return us.findByEmail(usuario.getUsername());
+    }
+    
     @GetMapping(value = "/usuarioAtual")
     public Map<String, Object> getLoggedUser(@AuthenticationPrincipal User usuario){
         Map<String, Object> mapa = new HashMap<>();

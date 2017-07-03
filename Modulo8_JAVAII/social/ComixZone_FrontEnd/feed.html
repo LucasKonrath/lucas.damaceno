@@ -1,0 +1,99 @@
+<nav class="nav has-shadow">
+    <div class="container">
+        <div class="nav-left">
+            <a class="nav-item is-tab is-active" href="#!/feed"><i class="fa fa-home"></i> &nbsp; Home</a>
+            <a class="nav-item is-tab"><i class="fa fa-bullhorn"></i> &nbsp; Solicitações</a>
+            <a class="nav-item is-tab"><i class="fa fa-folder-open"></i> &nbsp; Editar dados</a>
+        </div>
+
+        <div class="nav-right nav-menu">
+            <span class="nav-item">
+                <a class="button" >
+                    <span class="icon">
+                        <i class="fa fa-commenting"></i>
+                    </span>
+                    <span>Criar nova postagem</span>
+                </a>
+            </span>
+        </div>
+    </div>
+</nav>
+<section class="section main">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-3">
+                <div class="card is-fullwidth">
+                    <header class="card-header">
+                    </header>
+                    <div class="card-content">
+                        <a class="card-avatar">
+                            <img src="greenArrow.jpg" class="card-avatar-img">
+                        </a>
+
+                        <div class="card-user">
+                            <div class="card-user-name">
+                                <a href="#">{{accountOwner.nome}}</a>
+                            </div>
+                            <span>
+                                <a href="#"><span>{{accountOwner.email}}</span></a>
+                            </span>
+                        </div>
+
+                        <div class="card-stats">
+                            <ul class="card-stats-list">
+                                <li class="card-stats-item">
+                                    <a href="#" title="9.840 Tweet">
+                                        <span class="card-stats-key">Postagens</span>
+                                        <span class="card-stats-val">1</span>
+                                    </a>
+                                </li>
+                                <li class="card-stats-item">
+                                    <a href="#/following" title="885 Following">
+                                        <span class="card-stats-key">Amigos</span>
+                                        <span class="card-stats-val">0</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="spacer"></div>
+
+            </div>
+            <div class="column is-8 is-offset-1">
+
+                <div ng-repeat="postagem in postagens" class="box">
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image is-64x64">
+                                <img src="http://vignette3.wikia.nocookie.net/batman/images/f/f7/The_Batman.jpg" alt="Image">
+                            </figure>
+
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong>{{postagem.usuario.nome}}</strong><small>      {{postagem.usuario.email}}</small>
+                                    <br>
+                                    {{postagem.texto}}
+                                </p>
+                            </div>
+                            <nav class="level">
+                                <div class="level-left">
+
+                                    <a class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                                    </a>
+                                    <small>  {{postagem.curtidas.length}}</small>
+                                </div>
+                            </nav>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
