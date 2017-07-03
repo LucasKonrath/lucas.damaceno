@@ -16,6 +16,11 @@ modulo.config(function ($routeProvider) {
         templateUrl: 'feed.html',
         css: 'feed.css'
     })
+    .when('/newPost', {
+         controller: 'FeedController',
+        templateUrl: 'newPost.html',
+        css: 'feed.css'
+    })
      .otherwise({redirectTo: '/login'});
 });
 

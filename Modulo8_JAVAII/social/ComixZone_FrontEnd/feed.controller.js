@@ -1,7 +1,7 @@
-modulo.controller('FeedController', function ($scope, usuarioService, authService, $routeParams, $location) {
+modulo.controller('FeedController', function ($scope, usuarioService, postagemService, authService, $routeParams, $location) {
 
     carregarUsuario();
- 
+    $scope.enviarPostagem = enviarPostagem;
     
     function carregarUsuario(){
         
@@ -17,6 +17,19 @@ modulo.controller('FeedController', function ($scope, usuarioService, authServic
             
         )
         
+    }
+    
+    function enviarPostagem(){
+        
+        postagemService.inserirPostagem($scope.postagem).then(
+        function(response){
+            
+            console.log(response.data);
+            $location.path('/feed');
+            
+        }
+        
+        );
     }
     
     function carregarPostagens(){
