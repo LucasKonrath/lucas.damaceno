@@ -6,7 +6,9 @@ modulo.factory("usuarioService", function ($http) {
         getPostagensEspecificas:getPostagensEspecificas,
         getSolicitacoes:getSolicitacoes,
         aceitar:aceitar,
-        getUsuarios:getUsuarios
+        getUsuarios:getUsuarios,
+        adicionarAmigo:adicionarAmigo,
+        getAmigos:getAmigos
     });
 
     function getDados(){
@@ -35,7 +37,17 @@ modulo.factory("usuarioService", function ($http) {
         return $http.post("http://localhost:9090/usuario/aceitar/" + id);
     }
     function getUsuarios(){
-        return $http.get("http://localhost:9090/usuarios")
+        return $http.get("http://localhost:9090/usuarios");
         }
+    
+    function adicionarAmigo(id){
+        
+        return $http.post("http://localhost:9090/usuario/convidar/" + id + "");
+        
+    }
+    
+    function getAmigos(){
+        return $http.get("http://localhost:9090/usuario/amigos")
+    }
 
 });

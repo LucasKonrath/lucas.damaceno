@@ -47,6 +47,18 @@
                                         <span class="card-stats-val">{{postagensDoUsuario.length}}</span>
                                     </a>
                                 </li>
+                                
+                                <li class="card-stats-item">
+                                   <a ng-if="solicitado" class="button is-small">
+                                        <span class="card-stats-key">Solicitado</span>
+                                    </a>
+                                    <a ng-if="exibirAdicionar" ng-click="adicionar()" class="button is-small">
+                                        <span class="card-stats-key">Adicionar</span>
+                                    </a>
+                                    <a ng-if="amigos"  class="button is-small is-info">
+                                        <span>Amigos </span>
+                                    </a>
+                                </li>
                                
 
                             </ul>
