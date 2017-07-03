@@ -8,7 +8,9 @@ modulo.factory("usuarioService", function ($http) {
         aceitar:aceitar,
         getUsuarios:getUsuarios,
         adicionarAmigo:adicionarAmigo,
-        getAmigos:getAmigos
+        getAmigos:getAmigos,
+        modificar:modificar
+        
     });
 
     function getDados(){
@@ -48,6 +50,12 @@ modulo.factory("usuarioService", function ($http) {
     
     function getAmigos(){
         return $http.get("http://localhost:9090/usuario/amigos")
+    }
+    
+    function modificar(usuario){
+        
+         return $http.put("http://localhost:9090/usuario", usuario);
+        
     }
 
 });

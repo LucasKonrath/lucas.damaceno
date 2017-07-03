@@ -26,6 +26,9 @@ modulo.config(function ($routeProvider) {
     }).when('/procurar', {
          controller: 'ProcurarController',
         templateUrl: 'procurar.html', 
+    }).when('/editar', {
+         controller: 'EditarController',
+        templateUrl: 'editar.html', 
     })
      .otherwise({redirectTo: '/login'});
 });

@@ -20,6 +20,7 @@ modulo.controller('CadastroController', function ($scope, cadastroService, authS
 
     function cadastrar(usuario){
         console.log(usuario);
+        authService.logout();
         cadastroService.cadastrarUsuario(usuario).then(response => {
             
             console.log(response);
