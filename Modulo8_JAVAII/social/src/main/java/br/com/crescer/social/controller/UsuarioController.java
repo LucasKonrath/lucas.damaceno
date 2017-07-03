@@ -82,7 +82,7 @@ public class UsuarioController {
     
     @PutMapping(value = "/usuario")
     public void updateUsuario(@RequestBody Usuario usuario) {
-        us.update(usuario);
+        us.save(usuario);
     }
     @PostMapping(value = "/usuario/convidar/{ID}")
     public void enviarSolicitacao(@PathVariable Long ID, @AuthenticationPrincipal User usuario){
