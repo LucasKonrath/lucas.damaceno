@@ -3,7 +3,8 @@ modulo.factory("usuarioService", function ($http) {
         getDados:getDados,
         getPostagensDosAmigos:getPostagensDosAmigos,
         getDadosEspecificos:getDadosEspecificos,
-        getPostagensEspecificas:getPostagensEspecificas
+        getPostagensEspecificas:getPostagensEspecificas,
+        getSolicitacoes:getSolicitacoes
     });
 
     function getDados(){
@@ -23,6 +24,10 @@ modulo.factory("usuarioService", function ($http) {
     
     function getPostagensEspecificas(id){
         return $http.get("http://localhost:9090/postagens/" + id + "");
+    }
+    
+    function getSolicitacoes(){
+        return $http.get("http://localhost:9090/usuario/solicitacoes");
     }
 
 });

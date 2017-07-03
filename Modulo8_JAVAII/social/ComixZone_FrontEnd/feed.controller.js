@@ -1,6 +1,7 @@
 modulo.controller('FeedController', function ($scope, usuarioService, postagemService, authService, $routeParams, $location) {
 
     carregarUsuario();
+    carregarSolicitacoes();
     var idUsuarioEspecifico = $routeParams.idUsuario;
     $scope.enviarPostagem = enviarPostagem;
     
@@ -17,6 +18,20 @@ modulo.controller('FeedController', function ($scope, usuarioService, postagemSe
             }
             
         )
+        
+    }
+    
+    function carregarSolicitacoes(){
+        usuarioService.getSolicitacoes().then(
+        
+        function(response){
+            console.log(response);
+            $scope.solicitacoes = response.data;
+        }
+        
+        )
+            
+            
         
     }
     

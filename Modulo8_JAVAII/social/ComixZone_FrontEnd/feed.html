@@ -61,6 +61,16 @@
                     </div>
                 </div>
                 <div class="spacer"></div>
+                <div class="box trending">
+            <p class="trend-title"><span class="title is-5">Solicitações de amizade</span></p>
+            <p ng-repeat="solicitacao in solicitacoes" class="trend-hashtag"> {{solicitacao.nome}} <a class="button" href="#" ng-click="aceitar(solicitacao.id)">
+                    <span class="icon is-small">
+                        <i class="fa fa-check"></i>
+                    </span>
+                
+            </a></p>
+            
+          </div>
 
             </div>
             <div class="column is-8 is-offset-1">
