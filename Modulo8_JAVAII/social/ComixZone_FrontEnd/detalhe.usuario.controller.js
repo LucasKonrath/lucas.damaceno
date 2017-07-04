@@ -4,6 +4,7 @@ modulo.controller('UsuarioDetalhadoController', function ($scope, usuarioService
     carregarUsuarioLogado();
     carregarUsuario();
     checarSeEAmigo();
+    $scope.logout = logout;
     $scope.adicionar = adicionar;
     $scope.checarSolicitacao = checarSolicitacao;
     $scope.exibirAdicionar = true;
@@ -19,6 +20,9 @@ modulo.controller('UsuarioDetalhadoController', function ($scope, usuarioService
     }
 
 
+    function logout(){
+        authService.logout();
+    }
 
     function adicionar(){
         usuarioService.adicionarAmigo(idUsuarioEspecifico).then(

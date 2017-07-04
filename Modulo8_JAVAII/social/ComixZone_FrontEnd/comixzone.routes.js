@@ -25,7 +25,7 @@ modulo.config(function ($routeProvider) {
         css: 'feed.css'
     }).when('/procurar', {
          controller: 'ProcurarController',
-        templateUrl: 'procurar.html', 
+        templateUrl: 'procurar.html'
     }).when('/editar', {
          controller: 'EditarController',
         templateUrl: 'editar.html', 

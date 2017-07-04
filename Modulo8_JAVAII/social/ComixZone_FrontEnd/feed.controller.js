@@ -4,9 +4,15 @@ modulo.controller('FeedController', function ($scope, usuarioService, postagemSe
     carregarSolicitacoes();
     $scope.curtir = curtir;
     $scope.aceitar=aceitar;
+    $scope.logout = logout;
     $scope.descurtir = descurtir;
     var idUsuarioEspecifico = $routeParams.idUsuario;
     $scope.enviarPostagem = enviarPostagem;
+    
+    
+    function logout(){
+        authService.logout();
+    }
 
     function carregarUsuario(){
 
