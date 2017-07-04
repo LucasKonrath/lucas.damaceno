@@ -45,9 +45,8 @@
                             <ul class="card-stats-list">
                               
                                 <li class="card-stats-item">
-                                    <a href="#/following" title="885 Following">
+                                    <a href="#!/amigos">
                                         <span class="card-stats-key">Amigos</span>
-                                        <span class="card-stats-val">0</span>
                                     </a>
                                 </li>
 
@@ -96,10 +95,15 @@
                             <nav class="level">
                                 <div class="level-left">
 
-                                    <a class="level-item">
+                                    <a ng-if="!postagem.foiCurtida" ng-click="curtir(postagem.id)" class="level-item">
+                                        <span class="icon is-small"><i class="fa fa-heart-o"></i>Curtir</span>
+                                    </a>
+                                    
+                                    <a ng-if="postagem.foiCurtida" ng-click="descurtir(postagem.id)" class="level-item">
                                         <span class="icon is-small"><i class="fa fa-heart"></i></span>
                                     </a>
                                     <small>  {{postagem.curtidas.length}}</small>
+                                    
                                 </div>
                             </nav>
                         </div>
