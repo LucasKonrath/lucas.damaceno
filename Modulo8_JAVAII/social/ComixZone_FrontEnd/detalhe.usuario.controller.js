@@ -3,12 +3,12 @@ modulo.controller('UsuarioDetalhadoController', function ($scope, usuarioService
     var idUsuarioEspecifico = $routeParams.idUsuario;
     carregarUsuarioLogado();
     carregarUsuario();
-    carregarPostagens();
     checarSeEAmigo();
     $scope.adicionar = adicionar;
     $scope.checarSolicitacao = checarSolicitacao;
     $scope.exibirAdicionar = true;
     $scope.curtir = curtir;
+    $scope.descurtir = descurtir;
     Array.prototype.contains = function(elem)
     {
         for (var i in this)
@@ -108,24 +108,70 @@ modulo.controller('UsuarioDetalhadoController', function ($scope, usuarioService
             .then(function(response){
 
             console.log(response.data);
-            $scope.postagensDoUsuario = response.data;
+            var postagens = response.data;
+
+            for(x = 0; x < postagens.length; x++){
+                postagens[x].foiCurtida = false;
+                for(i = 0; i < postagens[x].curtidas.length; i++){
+
+                    if(postagens[x].curtidas[i].usuarioCurtidor.id == $scope.donoAntigo.id ){  
+                        postagens[x].foiCurtida = true;
+                    }
+
+                }
+
+
+            }
+            $scope.postagensDoUsuario = postagens;
 
         });
 
     }
     
-    function curtir(id){
+    
+    
+    
+   
+    
+     function curtir(id){
         console.log('entrou aqui');
         postagemService.curtirPostagem(id).then(
-        
+
             function(response){
-                
+
                 console.log(response.data);
                 carregarPostagens();
             }
-            
+
         )
-        
+    }
+
+    function descurtir(id){
+        console.log('entrou aqui');
+        var idsLikeDoUser = [];
+        var postagens = $scope.postagensDoUsuario;
+        for(x = 0; x < postagens.length; x++){
+            for(i = 0; i < postagens[x].curtidas.length; i++){
+                console.log($scope.donoAntigo.id);
+                if(postagens[x].curtidas[i].usuarioCurtidor.id == $scope.donoAntigo.id && postagens[x].id == id){  
+                    idsLikeDoUser.push(postagens[x].curtidas[i].id);
+                }
+            }
+        }
+        var contador = 0;
+        for(cadaId of idsLikeDoUser){
+            console.log(cadaId);
+            contador ++;
+            postagemService.descurtirPostagem(cadaId).then(
+                function(response){
+                    console.log(response.data);
+                    carregarPostagens();
+                    
+                     
+                }
+                
+            );
+        }
     }
 
 
