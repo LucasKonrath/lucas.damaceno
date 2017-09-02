@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace demo1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            var qtdElementos = 0;
+            var entradas = new int[] {};
+           
+            while (true)
+            {
+                
+                Console.WriteLine("Digite um valor");
+                var entrada = Console.ReadLine();
+                if (entrada == "exit") {
+                    var nrEntradas = entradas.Length;
+                    for (int i = 0; i < nrEntradas; i++)
+                    {
+
+                        Console.WriteLine(entradas[i]);
+                        
+                    }
+                    Console.ReadKey();
+                    return;
+
+                }
+                else
+                {
+                    qtdElementos++;
+                    Array.Resize(ref entradas, qtdElementos);
+                    entradas[qtdElementos-1] = int.Parse(entrada) ;
+                }
+            }
+
+        }
+    }
+}

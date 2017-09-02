@@ -1,0 +1,6 @@
+C:\Users\lucas.damaceno\Documents\lucas.damaceno\lucas.damaceno\Modulo6_.NET_API\Exercicio1\aula1\demo1\bin\Debug\demo1.exe.config
+C:\Users\lucas.damaceno\Documents\lucas.damaceno\lucas.damaceno\Modulo6_.NET_API\Exercicio1\aula1\demo1\bin\Debug\demo1.exe
+C:\Users\lucas.damaceno\Documents\lucas.damaceno\lucas.damaceno\Modulo6_.NET_API\Exercicio1\aula1\demo1\bin\Debug\demo1.pdb
+C:\Users\lucas.damaceno\Documents\lucas.damaceno\lucas.damaceno\Modulo6_.NET_API\Exercicio1\aula1\demo1\obj\Debug\demo1.csprojResolveAssemblyReference.cache
+C:\Users\lucas.damaceno\Documents\lucas.damaceno\lucas.damaceno\Modulo6_.NET_API\Exercicio1\aula1\demo1\obj\Debug\demo1.exe
+C:\Users\lucas.damaceno\Documents\lucas.damaceno\lucas.damaceno\Modulo6_.NET_API\Exercicio1\aula1\demo1\obj\Debug\demo1.pdb

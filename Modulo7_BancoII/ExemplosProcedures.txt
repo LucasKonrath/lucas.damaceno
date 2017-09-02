@@ -1,0 +1,15 @@
+CREATE OR REPLACE
+PROCEDURE Atualiza_Valor_Pedido (pIDPedido IN INTEGER) AS
+  vValorPedido  Pedido.ValorPedido%type;
+BEGIN
+
+   Select SUM(Quantidade * PrecoUnitario)
+   into   vValorPedido
+   From   PedidoItem
+   Where  IDPedido = pIDPedido;
+   
+   Update Pedido
+   Set    ValorPedido = vValorPedido
+   Where  IDPedido    = pIDPedido;
+
+END;

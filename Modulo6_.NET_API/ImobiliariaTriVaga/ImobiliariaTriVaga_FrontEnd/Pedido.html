@@ -1,0 +1,19 @@
+<div class="col-md-4 col-md-offset-4">
+   <div class="form-group">
+   <br><br><br><br><br>
+    <label for="selecionaTipoImovel"> Selecione o Tipo de Imóvel que deseja alocar.</label><br>
+    <select  name="selecionaTipoImovel" ng-init="listarTipos()" ng-change="povoarTamanhos()" ng-model="selecionarTipoImovel" ng-options="tipoImovel.NomeDoTipo for tipoImovel in tiposDeImoveis  track by tipoImovel.NomeDoTipo"> </select>
+    <br>
+    <label for="selecionaTamanhoImovel"> Selecione o Tamanho do Imóvel que deseja alocar.</label><br>
+    <select  name="selecionaTamanhoImovel" ng-change="listarAdicionais()" ng-model="selecionarTamanhoImovel" ng-options="tamanhoImovel.Pacote.Nome + ' Qtd:' + tamanhoImovel.Quantidade  for tamanhoImovel in tamanhosImoveis "> </select>
+    <br>
+    <label for="selecionaTamanhoImovel"> Data Prevista de Entrega do Pedido.</label><br>
+    <input class="input" type="date" ng-model="pedido.DataEntregaPrevista" placeholder="Data Prevista de Entrega do Pedido">
+    <br>
+    <label > Adicionais do Pedido.</label><br>
+    <select id="selecionarAdicionais" multiple ng-init="listarAdicionais()" ng-model="adicionaisDoPedido" ng-options="adicional.Nome for adicional in listaDeAdicionais  track by adicional.Nome"> </select>
+    <br>
+    <button class="btn-md btn-success" ng-click="gerarPedido()">Gerar Pedido</button>
+    
+</div>
+</div>

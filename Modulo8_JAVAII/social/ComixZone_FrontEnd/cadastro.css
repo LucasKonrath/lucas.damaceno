@@ -1,0 +1,29 @@
+.fundo{
+        background-image: url(fundoHqs.jpg) ;
+        background-position: center center;
+        background-repeat:  no-repeat;
+        background-attachment: fixed;
+        background-size:  cover;
+        background-color: #999;
+    height:100vh;
+}
+.fundo2{
+    background-image:url(fundoHqs2.jpg);
+    
+}
+#titulo{
+    font-size:22pt;
+    color:yellow;
+    text-shadow: 2px 2px #ff0000;
+}
+
+#link{
+    font-size:14pt;
+    color:#00c4ff;
+    text-shadow: 2px 2px blue;
+}
+.inputTexto{
+    
+    height:40vh;
+    
+}

@@ -1,0 +1,40 @@
+<div class="fundo">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column is-4 is-offset-4">
+            <h1 class="title" id="titulo">
+              Registre uma nova conta.
+            </h1>
+            <div class="box">
+              <label class="label">Username</label>
+              <p class="control">
+                <input class="input" ng-model="usuario.nome" type="text" placeholder="Blackagar Boltagon.">
+              </p>
+             
+             <label class="label">Url da Foto</label>
+              <p class="control">
+                <input class="input" ng-model="usuario.foto" type="text" placeholder="">
+              </p>
+              <img src="{{usuario.foto}}" alt="">
+              <label class="label">Email</label>
+              <p class="control">
+                <input class="input" type="text" ng-model="usuario.email" placeholder="starlord@gog.com">
+              </p>
+              <hr>
+              <label class="label">Senha</label>
+              <p class="control">
+                <input class="input" type="password" ng-model="usuario.senha" placeholder="●●●●●●●">
+              </p>
+            
+              <hr>
+              <p class="control">
+                <button class="button is-primary" ng-click="cadastrar(usuario)">Cadastrar</button>
+              </p>
+            </div>
+            <p class="has-text-centered">
+              <a href="#!/login"  id="link">Voltar para o Login</a>
+            </p>
+          </div>
+        </div>
+      </div>
+</div>  

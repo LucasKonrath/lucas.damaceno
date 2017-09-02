@@ -1,0 +1,51 @@
+body{
+
+    background-image:url(http://wallpapercave.com/wp/xLZrFev.png);
+    background-size:100%;
+
+}
+.moveDown{
+    position:relative;
+    top:10vh;
+
+}
+#inputIDPokemon{
+    background-color:red;
+    color:white;
+    
+}
+#moveDownPokeMixin{
+    top:32vh;
+    left:17.6%;
+}
+#divPokemon{
+    visibility:hidden;
+    top:30px;
+    background-color:#ffffff;
+    line-height:19px;
+}
+#pokeMixinDiv{
+    height:13vh;
+    width:10%;
+    position:relative;
+    visibility:hidden;
+    background-color:white;
+}
+#img-pokemon1{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+#img-pokemon2{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+#img-pokemon3{
+ position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}

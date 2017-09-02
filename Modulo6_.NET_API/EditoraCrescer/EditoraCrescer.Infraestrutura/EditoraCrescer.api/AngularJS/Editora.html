@@ -1,0 +1,145 @@
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
+            </a>
+            <a class="navbar-brand" href="">             
+                <img src="http://blog.appliedis.com/wp-content/uploads/2013/03/ASP-NET-logo.png" id="brandAngular" alt="ASP .Net">
+            </a>
+            <p class="navbar-text">Editora Crescer</p>
+
+        </div>
+        <a href="#!/administrativo"><button class="pull-right btn-success btn btn-sm" ng-if="auth.isAutenticado()" >Setor administrativo.</button></a>
+        <a href="#!/login"><button class="pull-right btn-success btn btn-sm" ng-if="!auth.isAutenticado()"> Efetuar login </button></a>
+        <a href="#!/editora"><button class="pull-right btn-success btn btn-sm" ng-click="logout()" ng-if="auth.isAutenticado()"> Efetuar logout </button></a>
+        <button class="pull-right btn-success btn btn-sm" ng-click="mostrarModal = !mostrarModal"> Inscrever E-Mail Para Receber Newsletters</button>
+    </div>
+</nav>
+
+
+<div class="modal" ng-class="{'is-active' : mostrarModal}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <!-- Any other Bulma elements you want -->
+        <div class="field">
+
+            <form action="">
+                <label class="label">Digite o seu Email</label>
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="Email">
+                    <span class="icon is-left">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    <span class="icon is-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </p>
+                <button type="submit" class="btn btn-success btn-md"> Cadastrar E-Mail</button>
+            </form>
+
+        </div>
+    </div>
+    <button ng-click="mostrarModal = !mostrarModal" class="modal-close"></button>
+</div>
+
+
+
+<div>
+
+    <carousel  interval="myInterval">
+
+        <slide ng-repeat="livro in lancamentos" active="slide.active">
+            <h1 id="textoTitulo">Lançamentos</h1>
+            <a href="#!/livro/{{livro.Isbn}}"><img href="" id="imagem-livro" ng-src="{{livro.Capa}}"></a>
+            <div class="carousel-caption">
+
+            </div>
+        </slide>
+    </carousel>
+</div>
+<br>
+
+
+
+
+<h1 id="textoTitulo">Livros da Editora</h1>
+<br>
+<div class="columns is-multiline ">
+    <div class="column is-4" ng-repeat="livro in livros">
+        <article class="media">
+            <figure class="media-left">
+                <p class="image is-64x64">
+                    <a href="#!/livro/{{livro.Isbn}}"><img src="{{livro.Capa}}"> </a>
+                </p>
+            </figure>
+            <div class="media-content">
+                <div class="content">
+                    <p>
+                        <strong>Título:</strong> <small>{{livro.Titulo}}</small>
+                        <br>
+                        <strong>Autor:</strong> <small>{{livro.NomeAutor}}</small>
+                        <br>
+                        <strong>Gênero:</strong> <small>{{livro.Genero}}</small>
+                    </p>
+                </div>
+
+            </div>
+
+        </article>
+    </div>
+</div>
+
+
+<div class="modal" ng-class="{'is-active' : mostrarModal}">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <!-- Any other Bulma elements you want -->
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+                </figure>
+            </div>
+            <div class="card-content">
+                <div class="media">
+
+                    <div class="media-content pull-left">
+
+                        <span>
+                            <p class="title is-4">Inserir e-mail aqui.</p>
+                            <button class="btn-success">VAI!</button>
+                        </span>
+
+
+
+
+                    </div>
+                </div>
+
+                <div class="content">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button ng-click="mostrarModal = !mostrarModal" class="modal-close"></button>
+</div>
+
+<nav aria-label="...">
+    <ul class="pagination pagination-lg justify-content-center">
+        <li class="page-item" ng-class="{'disabled': controlePaginas < 1}">
+            <a class="page-link" ng-click="paginaAnterior()">Anterior</a>
+        </li>
+
+        <li class="page-item">
+            <a class="page-link" ng-click="proximaPagina()">Próxima</a>
+        </li>
+    </ul>
+</nav>
+
+
+
+

@@ -1,0 +1,55 @@
+{
+  "aula": [
+    {
+      "id": 0,
+      "nome": "Nenhuma"
+    },
+    {
+      "id": 1,
+      "nome": "HTML e CSS"
+    },
+    {
+      "nome": "AngularJs",
+      "id": 3
+    },
+    {
+      "id": 9,
+      "nome": "JavaScript"
+    },
+    {
+      "id": 21,
+      "nome": "Awesome Changes V3.0"
+    },
+    {
+      "nome": "Orientação a Objetos",
+      "id": 24
+    }
+  ],
+  "instrutor": [
+    {
+      "aula": [
+        9,
+        21
+      ],
+      "nome": "Bernardo",
+      "sobrenome": "The Master Of Wizards",
+      "urlFoto": "https://cdn.pensador.com/img/authors/me/st/mestre-dos-magos-l.jpg",
+      "idade": 33,
+      "email": "bernardo@dungeonmaster.com",
+      "dandoAula": true,
+      "id": 1
+    },
+    {
+      "aula": [
+        21,
+        24
+      ],
+      "nome": "Luke",
+      "sobrenome": "Skywalker",
+      "urlFoto": "https://vignette2.wikia.nocookie.net/starwars/images/5/57/Luke_Skywalker_SWGTCG.jpg/revision/latest/scale-to-width-down/230?cb=20090319142920",
+      "idade": 87,
+      "email": "luke@lookatme",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+   <html  ng-app="aula01">
+    <head>
+        <meta charset="utf-8">
+        <title> Exemplo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="Ex1.css">
+        <script src="controller.js"></script>
+    </head>
+    <body>
+         <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
+      </a>
+      <p class="navbar-text">Exercício 1 Em Angular</p>
+    </div>
+  </div>
+</nav>
+          <div class="container-fluid">
+         
+          <div class="col-md-4 col-md-offset-4" ng-controller="Exemplo2">
+            <input type="text" class="input-lg" ng-model="filtro ">
+             <ul class="list-group"  >
+              <li class="list-group-item"  ng-repeat="pokemon in pokemons | filter:{nome: filtro}">
+                  Nome: {{pokemon.nome}}    Tipo: {{pokemon.tipo | uppercase}}
+              </li>
+          </ul>
+      </div>
+        
+        </div>
+       <!--- <div ng-controller="Exemplo1">
+        <input type="text" ng-model="pikachu.nome">
+        
+        <h1 ng-model="pikachu"> Oi {{nomeCampo}} {{pikachu.nome}} do tipo {{pikachu.tipo}}</h1>
+        
+         <select name="singleSelect" ng-model="pikachu.tipo">
+      <option value="Fogo">Fogo</option>
+      <option value="Terra">Terra</option>
+      <option value="Água">Água</option>
+      <option value="Elétrico">Elétrico</option>
+    </select><br>
+        </div> --->
+        
+    </body>
+</html>

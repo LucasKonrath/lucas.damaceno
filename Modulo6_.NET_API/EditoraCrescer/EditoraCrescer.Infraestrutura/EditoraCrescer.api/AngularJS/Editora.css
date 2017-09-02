@@ -1,0 +1,181 @@
+#brandAngular{
+    
+    height:20px;
+    width:30px;
+    
+}
+
+*{
+    box-sizing: border-box;
+}
+
+#imgListaLivros{
+    
+    height:120px;
+    width:160px;
+    
+}
+#imagem-livro{
+    
+    height:500px;
+    width:500px;
+    
+}
+#imagemTabela{
+     height:60px;
+    width:80px;
+}
+#divLivros{
+    text-align:center;
+    background-color:rgba(167, 175, 169, 0.72);
+    
+}
+
+#controlePages{
+    
+    position:relative;
+    top:-300px;
+    
+}
+
+
+#slides_control > div{
+  height: 200px;
+}
+img{
+  margin:auto;
+  width: 400px;
+}
+#slides_control {
+  position:absolute;
+  width: 400px;
+  left:50%;
+  top:20px;
+ margin-left:-200px;
+}
+
+ul.galeria, ul.galeria > li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.galeria {
+    
+}
+
+ul.galeria > li {
+    outline: 1px red solid;
+    float: left;
+}
+@media(max-width:639px){
+    ul.galeria > li {
+        width: 50%;
+    }
+}
+@media(min-width:640px){
+    ul.galeria > li {
+        width: 33.33333333333333%;
+    }
+}
+@media(min-width:768px){
+    ul.galeria > li {
+        width: 33.33333333333333%;
+    }
+}
+@media(min-width:992px){
+    ul.galeria > li {
+        width: 25%;
+    }
+}
+@media(min-width:1200px){
+    ul.galeria > li {
+        width: 25%;
+    }
+}
+
+
+ul.galeria > li img {
+    width: 100%;
+}
+
+div.row {
+     outline: 1px blue solid;
+}
+
+
+.no-gutter [class^="col-"] {
+    padding-left:0;
+    padding-right:0;
+}
+
+#textoTitulo{
+    color:#016005;
+    text-align:center;
+}
+html,body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.email-input,
+.password-input {
+  border-radius: 40px;
+  font-size: 20px;
+  padding-left: 15px;
+  color: #95A5A6;
+}
+
+.icon.user,
+.icon.password {
+  margin: 5px 10px 0 0;
+}
+
+.avatar img {
+  border-radius: 100px;
+  padding: 5px;
+  border: 1px solid #dbdbdb;
+}
+
+.forgot-password a {
+  color: #95A5A6;
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.login {
+  padding-top: 20px;
+}
+
+.login button {
+  border-radius: 40px;
+  font-weight: bold;
+}
+
+.hero-body .container {
+  margin-top: -100px;
+}
+
+.hero.is-dark .section {
+  background-color: transparent;
+}
+
+.login-wrapper {
+  margin: -0.75rem;
+  overflow-y: hidden;
+}
+
+.hero-banner .hero {
+  background: url('https://upload.wikimedia.org/wikipedia/commons/2/2b/Bookshelf.jpg');
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: screen;
+}
+
+.hero-banner .title {
+  display: inline-block;
+  background-color: rgba(0,0,0, 0.6);
+  padding: 5px;
+}

@@ -1,0 +1,37 @@
+     
+      
+       <form novalidate name="inserirAula" ng-init="listarAulas()">
+        
+            <label for="inputAulaAInserir"> Nome da Aula que deseja inserir (no minimo 3 letras).</label>
+            <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputAulaAInserir" ng-model="aulaAInserir"> </span>
+            <button type="submit" ng-disabled="inserirAula.$invalid || inserirAula.$pending" class="btn btn-success" ng-click="insereAula(aulaAInserir)"> Adicionar.</button>
+            <button type="reset" class="btn btn-primary"> Reset.</button>
+            <hr>
+        </form>
+
+        <table  class="table table-bordered">
+            <thead>
+                <th>ID</th><th>Nome</th> 
+            </thead>
+            <tr ng-repeat="aula in listaDeAulas | orderBy:'nome' ">
+                <td>{{aula.id}}</td>  <td>{{aula.nome}}</td> 
+            </tr>
+        </table>
+
+        <form novalidate class="formCRUD"  name="modificarAula">
+         <hr>
+         
+       
+         <label for="inputNomeAula"> Selecione a aula que deseja modificar.</label>
+         <div class="form-group">
+         <select name="selecionaAula"  ng-change="povoarAulaMod()" ng-model="selecionarAula" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
+         </select>
+         </div>
+         
+         <hr><label for="inputNomeAula"> Nome novo que deseja dar para aula existente (no minimo 3 letras).</label>
+         <span> <input class="mdl-textfield__input" type="text" required minlength="3" name="inputNomeAula" ng-model="novoNome"> </span>
+         <button type="submit" ng-disabled="modificarAula.$invalid || modificarAula.$pending" class="btn btn-primary" ng-click="modificaAula()"> Modificar aula.</button>
+         <button type="submit" class="btn btn-danger" ng-click="excluiAula()"> Deletar Esta Aula.</button>
+         <br> <br>
+        
+     </form >

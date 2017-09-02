@@ -1,0 +1,31 @@
+<div class="fundo fundo2">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column is-4 is-offset-4">
+            
+            <div class="box">
+             <h1 class="title" id="titulo">
+              O que está pensando, Fellow Geek?
+            </h1>
+              <label class="label">Titulo da Postagem</label>
+              <p class="control">
+                <input class="input" ng-model="postagem.titulo" type="text" placeholder="I Am Groot.">
+              </p>
+                 <hr>
+              <label class="label">Conteúdo da Postagem</label>
+              <p class="control">
+                  <textarea class="input inputTexto" type="textarea" ng-model="postagem.texto" placeholder="I am Daenerys Stormborn of House Targaryen, the Unburnt, Mother of Dragons, khaleesi to Drogo’s riders, and queen of the Seven Kingdoms of Westeros."></textarea>
+              </p>
+              
+            
+              <hr>
+              <p class="control">
+                <button class="button is-primary" ng-click="enviarPostagem()">Enviar postagem</button>
+                <a href="#!/feed"  id="link">Voltar para o Feed</a>
+              </p>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+</div>  

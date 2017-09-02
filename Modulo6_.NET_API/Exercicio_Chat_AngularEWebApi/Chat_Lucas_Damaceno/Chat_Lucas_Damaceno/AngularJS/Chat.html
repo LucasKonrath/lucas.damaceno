@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html  ng-app="chatApp">
+    <head>
+        <meta charset="utf-8">
+        <title> Chat Dos Monstros</title>
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="Chat.css">
+    </head>
+    <body ng-controller="ChatController">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
+                    </a>
+                    <a class="navbar-brand" href="">             
+                    <img src="http://blog.appliedis.com/wp-content/uploads/2013/03/ASP-NET-logo.png" id="brandAngular" alt="ASP .Net">
+                    </a>
+                    <p class="navbar-text">BirlChat (AngularJS + .Net Web Api)</p>
+
+                </div>
+            </div>
+
+
+
+        </nav>
+
+        <form class="form-control" id="containerLogin" ng-class="{'esconder': usuarioCadastrado}">
+           <br>
+           <br>
+           <br>
+            <div class="form-group">
+                <label > Insira o nome do MONSTRÃO. </label>
+                <input class="form-control" type="text" ng-model="nomeUser">
+            </div>
+            <div class="form-group">
+                <label > Insira a URL da foto do MONSTRÃO.</label>
+                <input class="form-control" type="text" ng-model="imagemUser">
+            </div>
+
+            <button class="btn-sm btn-success" ng-click="enviarUser()" type="submit"> Cadastrar monstro.</button>             
+        </form>
+
+
+
+
+        <div ng-class="{'esconder': !usuarioCadastrado}" class="chat_window">
+            <div class="top_menu">
+                <div class="title">Chat Dos Monstros</div>
+            </div>
+            <ul class="messages" id="listaDeMensagens">
+                <li ng-repeat="mensagem in mensagens" class="message right appeared">
+                
+                    <div class="text_wrapper clearfix">
+                        <div class="text"> 
+                            {{mensagem.CorpoMensagem}} 
+                            <div class="pull-right">
+                                <img id="imagem-chat" src="{{mensagem.FotoUrlUsuario}}" alt=""><br>
+                                {{mensagem.NomeUsuario}}
+                            </div>
+
+                        </div>
+                        {{mensagem.DataMensagem | date :  "EEEE HH:mm"}}  
+                    </div>        
+                </li>
+            </ul>
+
+            <div class="bottom_wrapper clearfix">
+                <div class="message_input_wrapper">
+                   <form ng-submit="enviarMensagem()">
+                    <input ng-model="textoMensagem" class="message_input" placeholder="Digite sua mensagem, Monstrão..." />
+                    </form>
+                </div>
+                <div class="send_message">
+                    <button class="btn-link btn-lg" id="btnChat" ng-click="enviarMensagem()">BIRL!</button>
+                </div></div></div><div class="message_template">
+        <li class="message"><div class="avatar"></div><div class="text_wrapper"><div class="text"></div></div></li></div>
+
+
+        <audio id="birl" src="birl.mp3"></audio>
+        <script src="ChatController.js"></script>
+        <script src="ChatService.js"></script>
+    </body>
+</html>
+
+
+

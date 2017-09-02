@@ -1,0 +1,11 @@
+<table ng-init="obterRelatorioAtraso()" class="table table-bordered">
+    <br><br>
+    <thead>
+        <th> Nome do Cliente </th> <th>Id Do Pedido</th> <th>Dias de Atraso</th>
+    </thead>
+    <tr ng-repeat="pedido in listaDePedidos">
+       <td>{{pedido.Cliente.Nome}}</td>
+       <td> {{pedido.IdPedido}} <a href="#!/visualizarPedido/{{pedido.IdPedido}}"><button class="btn-sm btn-success">Visualizar</button></a></td>
+       <td>  {{pedido.DiasDeAtraso}} </td>
+    </tr>
+</table>

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html  ng-app="ListaExercicios">
+    <head>
+        <meta charset="utf-8">
+        <title> Exemplo</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="ListaExercicios.css">
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="controller.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <img alt="Brand" id="brandAngular"src="https://angular.io/resources/images/logos/angular/angular_solidBlack.png">
+                    </a>
+                    <p class="navbar-text">Aula  19/05 (AngularJS)</p>
+                </div>
+            </div>
+        </nav>
+        <div class="container" ng-controller="Lista">
+        <div class="container-fluid" id="branco">
+        
+        <form novalidate name="meuForm">
+            
+            <label for="nome"> Nome:</label>
+            <input type="text" name="nome" ng-model="nomeInserir" minlength="3" maxlength="20" required /> <span ng-show="meuForm.nome.$error.required"> Campo Obrigatorio</span> <span ng-show="meuForm.nome.$error.minlength"> Digite no minimo 3 letras.</span>
+             <br>
+            <label for="sobrenome"> Sobrenome:</label>
+            <input type="text" name="sobrenome" ng-model="sobrenomeInserir" maxlength="30"  /> <span ng-show="meuForm.sobrenome.$error.required"> Campo Obrigatorio</span> <span ng-show="meuForm.sobrenome.$error.maxlength"> Digite no maximo 30 letras.</span>
+             <br>
+            <label for="nome"> Idade:</label>
+            <input type="number" name="idade" ng-model="idadeInserir" minlength="2"  /> <span ng-show="meuForm.idade.$error.required"> Campo Obrigatorio</span> <span ng-show="meuForm.idade.$error.minlength"> Digite no minimo 2 casas.</span>
+             <br>
+            <label for="email"> Email:</label>
+            <input type="email" name="email" ng-model="emailInserir" required /> <span ng-show="meuForm.email.$error.required"> Campo Obrigatorio</span> 
+             <br>
+            <label for="checkboxAula"> Ja Deu Aula?:</label>
+            <input type="checkbox" name="jaDeuAulaCheckbox" ng-model="inserirJaDeuAula" /> 
+            <br>
+            <label for="aulasMinistradasLista">Aula ministrada.</label>
+            <select name="aulasMinistradasLista" ng-model="inserirAulaDada" required> <span ng-show="meuForm.aulasMinistradasLista.$error.required"> Campo Obrigatorio</span> 
+                
+                <option ng-repeat="aula in aulas">
+                    
+                    {{aula}}
+                </option>
+                
+                
+            </select>
+            
+     
+             <button type="submit" ng-click="incluir()"> Adicionar.</button>
+             <button type="reset"> Reset.</button>
+        </form>
+        
+         <h1> Instrutores </h1>
+         <ul>
+             <li ng-repeat="n in instrutores">
+                 <h4>Nome : {{n.nome}} {{n.sobrenome}}</h4>
+                 <h4>Idade: {{n.idade}}</h4>
+                 <h4>Email: {{n.email}}</h4>
+                 <h4>Ja deu aula: {{n.jaDeuAula}}</h4>
+                 <h4>Aula Ministrada: {{n.aulaMinistrada}}</h4>
+             </li>
+         </ul>
+        </div>
+        </div>
+
+
+    </body>
+</html>

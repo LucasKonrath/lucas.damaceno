@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DDF5A570-E7E0-4C30-904A-0F4F427D17FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ImobiliariaTriVaga.Infraestrutura</RootNamespace>
+    <AssemblyName>ImobiliariaTriVaga.Infraestrutura</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Contexto.cs" />
+    <Compile Include="Entidades\Adicional.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\EntidadeBasica.cs" />
+    <Compile Include="Entidades\EstoqueImovel.cs" />
+    <Compile Include="Entidades\Pacote.cs" />
+    <Compile Include="Entidades\Pedido.cs" />
+    <Compile Include="Entidades\PedidoAdicional.cs" />
+    <Compile Include="Entidades\Permissao.cs" />
+    <Compile Include="Entidades\TipoImovel.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Mappings\AdicionalMap.cs" />
+    <Compile Include="Mappings\ClienteMap.cs" />
+    <Compile Include="Mappings\EstoqueImovelMap.cs" />
+    <Compile Include="Mappings\PacoteMap.cs" />
+    <Compile Include="Mappings\PedidoAdicionalMap.cs" />
+    <Compile Include="Mappings\PedidoMap.cs" />
+    <Compile Include="Mappings\PermissaoMap.cs" />
+    <Compile Include="Mappings\TipoImovelMap.cs" />
+    <Compile Include="Mappings\UsuarioMap.cs" />
+    <Compile Include="Migrations\201706061415297_CriarBanco.cs" />
+    <Compile Include="Migrations\201706061415297_CriarBanco.Designer.cs">
+      <DependentUpon>201706061415297_CriarBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061833150_modificarAdicionais.cs" />
+    <Compile Include="Migrations\201706061833150_modificarAdicionais.Designer.cs">
+      <DependentUpon>201706061833150_modificarAdicionais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061856492_modificarTotalASerPago.cs" />
+    <Compile Include="Migrations\201706061856492_modificarTotalASerPago.Designer.cs">
+      <DependentUpon>201706061856492_modificarTotalASerPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706061932330_modificarNullables.cs" />
+    <Compile Include="Migrations\201706061932330_modificarNullables.Designer.cs">
+      <DependentUpon>201706061932330_modificarNullables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706071337166_adicionarPrecoAoImovel.cs" />
+    <Compile Include="Migrations\201706071337166_adicionarPrecoAoImovel.Designer.cs">
+      <DependentUpon>201706071337166_adicionarPrecoAoImovel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706071740092_dataVendaNaoObrigatoria.cs" />
+    <Compile Include="Migrations\201706071740092_dataVendaNaoObrigatoria.Designer.cs">
+      <DependentUpon>201706071740092_dataVendaNaoObrigatoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706081230022_dataNascimentoNaoObrigatoria.cs" />
+    <Compile Include="Migrations\201706081230022_dataNascimentoNaoObrigatoria.Designer.cs">
+      <DependentUpon>201706081230022_dataNascimentoNaoObrigatoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706082052501_CorrigindoMapeamento.cs" />
+    <Compile Include="Migrations\201706082052501_CorrigindoMapeamento.Designer.cs">
+      <DependentUpon>201706082052501_CorrigindoMapeamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\AdicionalRepositorio.cs" />
+    <Compile Include="Repositorios\ClienteRepositorio.cs" />
+    <Compile Include="Repositorios\EstoqueImovelRepositorio.cs" />
+    <Compile Include="Repositorios\PedidoRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706061415297_CriarBanco.resx">
+      <DependentUpon>201706061415297_CriarBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061833150_modificarAdicionais.resx">
+      <DependentUpon>201706061833150_modificarAdicionais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061856492_modificarTotalASerPago.resx">
+      <DependentUpon>201706061856492_modificarTotalASerPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061932330_modificarNullables.resx">
+      <DependentUpon>201706061932330_modificarNullables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706071337166_adicionarPrecoAoImovel.resx">
+      <DependentUpon>201706071337166_adicionarPrecoAoImovel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706071740092_dataVendaNaoObrigatoria.resx">
+      <DependentUpon>201706071740092_dataVendaNaoObrigatoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706081230022_dataNascimentoNaoObrigatoria.resx">
+      <DependentUpon>201706081230022_dataNascimentoNaoObrigatoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706082052501_CorrigindoMapeamento.resx">
+      <DependentUpon>201706082052501_CorrigindoMapeamento.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

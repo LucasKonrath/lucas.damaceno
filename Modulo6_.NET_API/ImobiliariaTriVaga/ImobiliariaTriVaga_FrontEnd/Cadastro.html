@@ -1,0 +1,97 @@
+
+
+
+   
+   <div class="column is-half is-offset-one-quarter">
+      <a href="#!/pedidos"> <button class="btn btn-sm btn-success">Devolver Pedidos.</button></a> <a href="#!/login"> <button class="btn btn-sm btn-info" ng-if="auth.isAutenticado()" ng-click="logout()">Logout.</button></a>
+      <a href="#!/visualizarAtrasos"> <button class="btn btn-sm btn-success">Visualizar  atrasos.</button></a>
+      <a href="#!/gerencia"> <button class="btn btn-sm btn-success">Pedidos fechados(gerência).</button></a>
+    <div class="field is-large has-addons">
+        <label class="label is-small">CPF</label>
+        <p class="control">
+            <input class="input is-large" ng-model="cliente.Cpf" type="text" placeholder="CPF Do Cliente">  
+        </p>
+        <p class="control">
+            <a ng-click="obterCPF()" ng-if="!exibirForm" class="button is-info"> Prosseguir </a>
+        </p>
+    </div>
+</div>
+<div ng-if="exibirForm" class="column is-half is-offset-one-quarter">
+
+    <h2 > Insira os dados de cadastro do Cliente. </h2>
+
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">Nome</label>
+        </div>
+        <div class="field-body">
+            <div class="field is-grouped">
+                <p class="control is-expanded has-icons-left">
+                    <input class="input" ng-model="cliente.Nome" type="text" placeholder="Nome do Cliente">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-user"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <label class="label">Email</label>
+                <p class="control is-expanded has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="Email" ng-model="cliente.Email" value="nunes@illuminatti.com">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="field is-horizontal">
+        <div class="field-label is-normal">
+            <label class="label">Endereço</label>
+        </div>
+        <div class="field-body">
+            <div class="field is-grouped">
+                <p class="control is-expanded has-icons-left">
+                    <input class="input" type="text" ng-model="cliente.Endereco" placeholder="Endereço do Cliente">
+                </p>
+            </div>
+            <div class="field">
+                <label class="label">Data de Nascimento no seguinte formato: DD/MM/AAAA ex (15/10/1996)</label>
+                <p class="control is-expanded has-icons-left has-icons-right">
+                    <input class="input" type="date" ng-model="cliente.DataNascimento" placeholder="Data de Nascimento">
+                </p>
+            </div>
+            <div class="field is-horizontal">
+                <p class="control">
+                    <span class="select">
+                        <label class="label is-left">Gênero</label>
+                        <select  ng-model="cliente.Genero">
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                    </span>
+                        
+                </p>
+                
+                <p class="control">
+                    <br>
+                    <a ng-click="cadastrarCliente()" class="button is-info"> Prosseguir </a>    
+                </p>
+             
+                    
+                
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+

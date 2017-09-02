@@ -1,0 +1,37 @@
+
+        <table ng-init="listarInstrutores()" class="table table-bordered">
+         <br><br>
+         <thead>
+            <th> Foto </th> <th>ID</th><th>Nome</th> <th>Idade</th> <th>Email</th> <th>Dando Aula?</th><th>Aulas</th> 
+        </thead>
+        <tr ng-repeat="instrutor in listaDeInstrutores | orderBy:'nome' ">
+            <td > <img src="{{instrutor.urlFoto}}" width="50px" height="50px" alt=""></td> <td>{{instrutor.id}}</td> <td>{{instrutor.nome}} {{instrutor.sobrenome}}</td> <td>{{instrutor.idade}}</td>  <td>{{instrutor.email}}</td><td>{{instrutor.dandoAula ? 'Sim' : 'Não'}}
+            </td>  <td>
+            <p ng-repeat="aula in instrutor.aula">{{getAulaByID(aula).nome}}</p>
+            </td>
+    </tr>
+</table>
+<form novalidate class="formCRUD"    name="adicionarInstrutor">
+ <hr>
+ <label for="inputInstrutorNome"> Nome do Instrutor que deseja adicionar (3 a 20 letras).</label>
+ <input class="mdl-textfield__input" type="text" name="inputInstrutorNome"  placeholder="Campo obrigatório. 3 a 20 letras." required minlength="3" maxlength="20" ng-model="nomeInstrutorAInserir">
+ <label for="inputInstrutorSobrenome"> Sobrenome do Instrutor.</label>
+ <input class="mdl-textfield__input" type="text" maxlength="30" name="inputInstrutorSobrenome" ng-model="sobrenomeInstrutorAInserir">
+ <label for="inputInstrutorIdade"> Idade do Instrutor (máxima: 90)</label>
+ <input class="mdl-textfield__input" placeholder="Campo obrigatório. Idade máxima é 90." type="number" name="inputInstrutorIdade" required max="90" ng-model="idadeInstrutorAInserir">
+ <label for="inputInstrutorEmail"> Email do Instrutor.</label>
+ <input class="mdl-textfield__input"  placeholder="Campo obrigatório." id="campoEmail" type="email" required name="inputInstrutorEmail" ng-model="emailInstrutorAInserir">
+ <label><input  type="checkbox" name="inputInstrutorDandoAula" ng-model="dandoAulalInstrutorAInserir"> Instrutor esta dando aula? </label> <br>
+ <label for="inputInstrutorUrlFoto"> Insira a URL da foto de perfil do instrutor.</label>
+ <input class="mdl-textfield__input" type="text" name="inputInstrutorURLfoto" ng-model="fotoInstrutorAInserir">
+ <label for="selecionaAulaInstrutor"> Selecione as aulas do Instrutor. Selecione mais de uma segurando CTRL e clicando.</label>
+ <br>
+ <div class="form-group">
+ <select id="selecionarVarios"multiple name="selecionaAulaInstrutor" ng-init="listarAulas()" ng-model="selecionarAulaInstrutor" ng-options="aula.nome for aula in listaDeAulas  track by aula.nome">
+
+ </select>
+ </div>
+ <button type="submit" class="btn btn-success" ng-disabled="adicionarInstrutor.$invalid || adicionarInstrutor.$pending" ng-click="insereInstrutor()"> Adicionar novo instrutor.</button>
+ <br>
+ <br><br><br>
+</form>

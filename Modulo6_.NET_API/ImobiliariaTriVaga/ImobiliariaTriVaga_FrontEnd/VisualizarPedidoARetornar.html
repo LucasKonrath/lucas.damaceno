@@ -1,0 +1,21 @@
+
+
+<br><br><br><br><br>
+<div ng-init="obterPedido()" class="col-md-8 col-md-offset-4">
+    Nome :{{clienteDetalhe.Nome}}  <br>
+    Cpf: {{clienteDetalhe.Cpf}} <br>
+    Data Nascimento : {{clienteDetalhe.DataNascimento | date:'medium'}} <br>
+    Genero: {{clienteDetalhe.Genero}} <br>
+    Email: {{clienteDetalhe.Email}} <br>
+    Endereço: {{clienteDetalhe.Endereco}} <br>
+    Tipo do Imovel: {{tipoImovelDetalhe.NomeDoTipo}}({{tipoImovelDetalhe.Preco}} R$ por dia.) <br>
+    Pacote: {{pacoteDetalhe.Nome}}({{pacoteDetalhe.Custo}} R$ por dia.) <br>
+    Quartos: {{pacoteDetalhe.QtdQuartos}} Salas: {{pacoteDetalhe.QtdSalas}} <br> Cozinhas: {{pacoteDetalhe.QtdCozinhas}} Banheiros: {{pacoteDetalhe.QtdBanheiros}}<br>
+    Adicionais: <span ng-repeat="adicional in adicionaisPedidoAVisualizar"> {{adicional.Nome}}, Diária {{adicional.Custo}} <br></span>
+    Data de Entrega Realizada : {{dataRealizadaDetalhe |  date:'medium' }}<br>
+    Data de Locação: {{dataVendaDetalhe | date:'medium' }} <br>
+    Data De Entrega Prevista : {{dataEntregaPrevistaDetalhe  | date:'medium'}} <br>
+    Preço a Cobrar: {{totalAPagar}} <br>
+    Preço por dia: {{totalPorDia}}<br>
+    <a href="#!/cadastro"><button ng-click="retornarPedido()" class="btn btn-info">Retornar pedido.</button></a>
+</div>
